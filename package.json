@@ -1,0 +1,21 @@
+{
+  "name": "company_dtb",
+  "version": "0.0.1",
+  "description": "this is a project which name is daitoubing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ccc",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^0.4.6",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-less": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "imagemin-pngquant": "^5.0.1"
+  }
+}
