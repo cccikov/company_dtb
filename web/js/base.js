@@ -5,7 +5,13 @@ function baseFontSize() {
     document.documentElement.style.fontSize = rootfontsize + "px"
     return rootfontsize;
 }
-var rem = baseFontSize();
-window.addEventListener("resize", function() {
-    rem = baseFontSize();
-}, false);
+function htmlFull() {
+    var html = document.documentElement;
+    html.style.height = "100%";
+    if (html.scrollHeight > html.offsetHeight) {
+        html.style.height = "auto";
+    } else {
+        html.style.height = "100%";
+    }
+}
+
