@@ -262,6 +262,13 @@ html {
 .main ul li.register-li a {
   color: #ff3300;
 }
+.main ul li.error-li p {
+  line-height: 2.5;
+  background: #cc0000;
+  color: #fff;
+  text-indent: 16px;
+  border-radius: 5px;
+}
 .footer {
   position: absolute;
   bottom: 0;
