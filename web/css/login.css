@@ -97,6 +97,20 @@ body {
   background: #fff;
   box-shadow: -8px 0px 10px #018cbb, 8px 0px 10px #018cbb;
 }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  line-height: 35px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+.footer span {
+  margin: 0 8px;
+}
 ::-webkit-input-placeholder {
   /* WebKit browsers */
   color: #979797;
