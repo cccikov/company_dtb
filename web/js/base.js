@@ -5,6 +5,7 @@ function baseFontSize() {
     document.documentElement.style.fontSize = rootfontsize + "px"
     return rootfontsize;
 }
+
 function htmlFull() {
     var html = document.documentElement;
     html.style.height = "100%";
@@ -14,4 +15,9 @@ function htmlFull() {
         html.style.height = "100%";
     }
 }
-
+$(function() {
+    htmlFull();
+    $(window).on("resize", function() {
+        htmlFull();
+    });
+});
