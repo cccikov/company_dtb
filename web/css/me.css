@@ -1,0 +1,345 @@
+/* 代替base.css作为清除默认样式less */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul,
+li {
+  list-style: none;
+}
+.mouse-hover:hover {
+  text-decoration: underline;
+}
+html,
+body {
+  font: 16px/1.5 "\5FAE\8F6F\96C5\9ED1";
+}
+body {
+  min-width: 1360px;
+  height: 100%;
+  position: relative;
+}
+.width-wrap {
+  width: 1280px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+.width-wrap:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.nav {
+  color: #fff;
+}
+.nav .nav-line {
+  line-height: 40px;
+  font-size: 13px;
+  background: #333333;
+}
+.nav .nav-line:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.nav .nav-line .nav-line-l {
+  float: left;
+  color: #d9d9d9;
+}
+.nav .nav-line .nav-line-r {
+  float: right;
+}
+.nav .nav-line .nav-line-r a {
+  padding: 0 8px;
+}
+.nav .nav-line .nav-line-r a:nth-of-type(-n+2) {
+  border-right: 1px solid #fff;
+}
+.nav .nav-line .nav-line-r a.active {
+  color: #ff9900;
+}
+.nav .nav-main {
+  line-height: 104px;
+  padding: 0 6px;
+  overflow: hidden;
+  background: #009AD2 url(../img/common00.png) bottom left repeat-x;
+}
+.nav .nav-main:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.nav .nav-main .top-img {
+  float: left;
+}
+.nav .nav-main .top-img img {
+  vertical-align: middle;
+  margin: 0 25px 0 0;
+}
+.nav .nav-main .top-link {
+  float: right;
+}
+.nav .nav-main .top-link a {
+  float: left;
+  padding: 0 35px;
+  color: #fff;
+  font-size: 18px;
+}
+.nav .nav-main .top-link a.active {
+  color: #009AD2;
+  background: #fff;
+  box-shadow: -8px 0px 10px #018cbb, 8px 0px 10px #018cbb;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  line-height: 35px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+.footer span {
+  margin: 0 8px;
+}
+html {
+  background: #eaeaea;
+}
+.main {
+  padding: 40px 0 210px;
+}
+.main:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-left {
+  float: left;
+  min-height: 560px;
+  padding: 20px;
+  margin: 0 20px 0 0;
+  background: #fff;
+}
+.main-left .self {
+  text-align: center;
+  font-size: 14px;
+}
+.main-left .self .img-wrap {
+  width: 180px;
+  height: 110px;
+  line-height: 110px;
+}
+.main-left .self .img-wrap img {
+  display: block;
+  max-width: 170px;
+  max-height: 100px;
+  border: 5px solid #eaeaea;
+  margin: 0 auto;
+}
+.main-left .self strong {
+  display: block;
+  margin: 10px 0;
+  font-weight: 700;
+  color: #333;
+}
+.main-left .self a {
+  color: #009ad2;
+}
+.main-left ul {
+  margin: 20px 0 0;
+}
+.main-left ul li {
+  margin: 1px 0;
+}
+.main-left ul li a {
+  display: block;
+  padding: 8px 20px;
+  background: #eaeaea url(../img/arrow.png) right 12px center no-repeat;
+}
+.main-left ul li a.active {
+  background-color: #009ad2;
+  color: #fff;
+}
+.main-right {
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+}
+.main-right h4 {
+  font-size: 18px;
+  line-height: 1;
+  margin: 0 0 15px;
+  color: #333;
+}
+.main-right .tab-nav:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-right .tab-nav li {
+  float: left;
+  font-size: 14px;
+}
+.main-right .tab-nav li:last-of-type a {
+  border-right: 1px solid #ccc;
+}
+.main-right .tab-nav li a {
+  display: block;
+  padding: 4px 21px;
+  color: #666666;
+  background: #eaeaea;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+.main-right .tab-nav li a.active {
+  background: #009ad2;
+  color: #fff;
+}
+.main-right .tab {
+  display: none;
+  border-top: 1px solid #ccc;
+  margin: -1px 0 0;
+}
+.main-right .tab.active {
+  display: block;
+}
+.main-right .tab .type {
+  padding: 12px 6px 0;
+  font-size: 12px;
+}
+.main-right .tab .type a {
+  display: inline-block;
+  padding: 3px 8px;
+  color: #666;
+  background: #eaeaea;
+  border-radius: 5px;
+  margin: 0 6px 0 0;
+}
+.main-right .tab .type a.active {
+  background: #acd6ff;
+}
+.main-right .tab ul {
+  margin: 12px 0 0;
+}
+.main-right .tab ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+.main-right .tab ul li:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-right .tab ul li.item-title {
+  padding: 0;
+  background: #eaeaea;
+  color: #333;
+  font-size: 12px;
+  text-align: center;
+}
+.main-right .tab ul li.item-title .item-box {
+  line-height: 2.5;
+}
+.main-right .tab ul li .item-box {
+  float: left;
+}
+.main-right .tab ul li .item-box.item-box-1 {
+  width: 45%;
+}
+.main-right .tab ul li .item-box.item-box-2 {
+  width: 15%;
+}
+.main-right .tab ul li .item-box.item-box-3 {
+  width: 15%;
+}
+.main-right .tab ul li .item-box.item-box-4 {
+  width: 25%;
+}
+.main-right .tab ul li .item-box-1 i {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: url(../img/default.png) center / cover no-repeat;
+}
+.main-right .tab ul li .item-box-1 p {
+  line-height: 30px;
+  margin: 0 0 0 110px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.main-right .tab ul li .item-box-1 div {
+  margin: 10px 0 0 110px;
+}
+.main-right .tab ul li .item-box-1 div:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-right .tab ul li .item-box-1 div em {
+  float: left;
+  width: 5em;
+  padding: 5px 0;
+  margin-right: 5px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  background: #eaeaea;
+}
+.main-right .tab ul li .item-box-1 div em:before {
+  display: block;
+  font-weight: normal;
+}
+.main-right .tab ul li .item-box-1 div em:nth-of-type(1):before {
+  content: "已完成";
+}
+.main-right .tab ul li .item-box-1 div em:nth-of-type(2):before {
+  content: "已筹集";
+}
+.main-right .tab ul li .item-box-1 div em:nth-of-type(3):before {
+  content: "剩余时间";
+}
+.main-right .tab ul li .item-box-2 span {
+  display: block;
+  line-height: 100px;
+  color: #ff3300;
+  font-weight: 700;
+  text-align: center;
+}
+.main-right .tab ul li .item-box-3 span {
+  display: block;
+  line-height: 100px;
+  color: #009ad2;
+  text-align: center;
+}
+.main-right .tab ul li .item-box-4 {
+  line-height: 100px;
+  text-align: center;
+}
+.main-right .tab ul li .item-box-4 a {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 0 5px;
+  border-radius: 5px;
+  color: #fff;
+  line-height: 1.5;
+}
+.main-right .tab ul li .item-box-4 a.detail {
+  background: #339966;
+}
+.main-right .tab ul li .item-box-4 a.del {
+  background: #b02300;
+}
+.main-right .tab.black .item-box-3 span {
+  color: inherit;
+}

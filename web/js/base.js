@@ -16,8 +16,7 @@ function htmlFull() {
     }
 }
 $(function() {
-    htmlFull();
     $(window).on("resize", function() {
         htmlFull();
-    });
+    }).resize();
 });
