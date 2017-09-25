@@ -446,6 +446,101 @@ html {
 .main-input .agree-file a {
   color: #333;
 }
+.card-main {
+  min-height: 497px;
+  padding: 30px 10px 0;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+}
+.card-main .card-main-top:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.card-main .card-main-top .card {
+  float: left;
+  width: 218px;
+  padding: 0 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 0 200px 0 0;
+}
+.card-main .card-main-top .card .name {
+  padding: 10px 18px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  margin: 0 0 10px;
+  background: #009AD2;
+  color: #fff;
+}
+.card-main .card-main-top .card p {
+  padding: 2px 18px;
+  color: #666;
+}
+.card-main .card-main-top .pay {
+  float: left;
+  width: 250px;
+  line-height: 115px;
+  text-align: center;
+}
+.card-main .card-main-top .pay em {
+  display: inline-block;
+  width: 100%;
+  color: #ff3300;
+  font-style: normal;
+  font-weight: 700;
+}
+.card-main .card-main-top .pay span {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.5;
+  color: #333;
+}
+.card-main .card-main-top .receive {
+  float: left;
+  width: 250px;
+  line-height: 115px;
+  text-align: center;
+}
+.card-main .card-main-top .receive em {
+  display: inline-block;
+  width: 100%;
+  color: #ff3300;
+  font-style: normal;
+  font-weight: 700;
+}
+.card-main .card-main-top .receive span {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.5;
+  color: #333;
+}
+.card-main .card-main-bottom {
+  margin: 100px 0 0;
+}
+.card-main .card-main-bottom table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0 0;
+  text-align: center;
+  color: #666;
+}
+.card-main .card-main-bottom table th,
+.card-main .card-main-bottom table td {
+  padding: 6px 0;
+  border: 1px solid #ccc;
+}
+.card-main .card-main-bottom table th:nth-of-type(1),
+.card-main .card-main-bottom table td:nth-of-type(1) {
+  border-left: none;
+}
+.card-main .card-main-bottom table th:nth-last-of-type(1),
+.card-main .card-main-bottom table td:nth-last-of-type(1) {
+  border-right: none;
+}
+.card-main .card-main-bottom table th {
+  background: #eaeaea;
+}
 ::-webkit-input-placeholder {
   /* WebKit browsers */
   color: #aaa;
