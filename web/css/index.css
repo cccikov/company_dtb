@@ -203,141 +203,28 @@ body {
 .main {
   padding: 40px 0 210px;
 }
-.main h4 {
-  font-size: 20px;
-  color: #333;
-}
-.main .main-top {
-  padding: 10px 0 5px;
-  border-top: 1px solid #c6c6c6;
-  border-bottom: 1px solid #c6c6c6;
-  margin: 20px 0 0;
-  color: #646464;
-  font-size: 14px;
-}
-.main .main-top .main-top-status,
-.main .main-top .main-top-type {
-  margin: 5px 0 ;
-}
-.main .main-top .main-top-status:after,
-.main .main-top .main-top-type:after {
+.main:after {
   content: '';
   display: block;
   clear: both;
 }
-.main .main-top .main-top-status i,
-.main .main-top .main-top-type i {
-  float: left;
-  padding: 5px 6px 5px 2px;
-  font-style: normal;
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #aaa;
+  font-family: "SimSun";
 }
-.main .main-top .main-top-status p,
-.main .main-top .main-top-type p {
-  overflow: hidden;
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #aaa;
+  font-family: "SimSun";
 }
-.main .main-top .main-top-status p a,
-.main .main-top .main-top-type p a {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin: 0 0 5px;
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #aaa;
+  font-family: "SimSun";
 }
-.main .main-top .main-top-status p a.active,
-.main .main-top .main-top-type p a.active {
-  background: #009ad2;
-  color: #fff;
-}
-.main .main-top .main-top-status p a:hover,
-.main .main-top .main-top-type p a:hover {
-  background: #1FB1E6;
-  color: #fff;
-}
-.main .main-content:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main .main-content .main-content-item {
-  float: left;
-  width: 296px;
-  margin: 30px 0 0;
-  margin-right: 32px;
-}
-.main .main-content .main-content-item a {
-  display: block;
-}
-.main .main-content .main-content-item img {
-  display: block;
-  width: 296px;
-  height: 195px;
-}
-.main .main-content .main-content-item:nth-of-type(4n) {
-  margin-right: 0;
-}
-.main .main-content .main-content-item .item-title,
-.main .main-content .main-content-item .item-middle {
-  padding: 10px 12px;
-  border: 1px solid #dddddd;
-  border-top: none;
-}
-.main .main-content .main-content-item .item-title {
-  border-bottom: 1px dotted #dddddd;
-  font-size: 14px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.main .main-content .main-content-item .item-middle {
-  font-size: 12px;
-  border-bottom: none;
-}
-.main .main-content .main-content-item .item-middle:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main .main-content .main-content-item .item-middle span:nth-of-type(1) {
-  float: left;
-}
-.main .main-content .main-content-item .item-middle span:nth-of-type(2) {
-  float: right;
-}
-.main .main-content .main-content-item .item-line {
-  height: 4px;
-  background: #dddddd;
-}
-.main .main-content .main-content-item .item-line .item-percent {
-  height: 100%;
-  background: #009ad2;
-}
-.main .main-content .main-content-item .item-bottom {
-  padding: 15px 0;
-  border: 1px solid #dddddd;
-  border-top: none;
-}
-.main .main-content .main-content-item .item-bottom:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main .main-content .main-content-item .item-bottom p {
-  box-sizing: border-box;
-  float: left;
-  width: 33.333333333333%;
-  border-right: 1px solid #ddd;
-  text-align: center;
-  font-size: 14px;
-}
-.main .main-content .main-content-item .item-bottom p:nth-of-type(3) {
-  border-right: none;
-}
-.main .main-content .main-content-item .item-bottom p em {
-  display: block;
-  color: #333333;
-  font-style: normal;
-  font-weight: 700;
-}
-.main .main-content .main-content-item .item-bottom p span {
-  display: block;
-  color: #646464;
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #aaa;
+  font-family: "SimSun";
 }

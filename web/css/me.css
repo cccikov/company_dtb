@@ -111,6 +111,95 @@ body {
 .footer span {
   margin: 0 8px;
 }
+.projectlist:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.projectlist .projectlist-item {
+  float: left;
+  width: 296px;
+  margin: 30px 0 0;
+  margin-right: 32px;
+}
+.projectlist .projectlist-item a {
+  display: block;
+}
+.projectlist .projectlist-item img {
+  display: block;
+  width: 296px;
+  height: 195px;
+}
+.projectlist .projectlist-item:nth-of-type(4n) {
+  margin-right: 0;
+}
+.projectlist .projectlist-item .item-title,
+.projectlist .projectlist-item .item-middle {
+  padding: 10px 12px;
+  border: 1px solid #dddddd;
+  border-top: none;
+}
+.projectlist .projectlist-item .item-title {
+  border-bottom: 1px dotted #dddddd;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.projectlist .projectlist-item .item-middle {
+  font-size: 12px;
+  border-bottom: none;
+}
+.projectlist .projectlist-item .item-middle:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.projectlist .projectlist-item .item-middle span:nth-of-type(1) {
+  float: left;
+}
+.projectlist .projectlist-item .item-middle span:nth-of-type(2) {
+  float: right;
+}
+.projectlist .projectlist-item .item-line {
+  height: 4px;
+  background: #dddddd;
+}
+.projectlist .projectlist-item .item-line .item-percent {
+  height: 100%;
+  background: #009ad2;
+}
+.projectlist .projectlist-item .item-bottom {
+  padding: 15px 0;
+  border: 1px solid #dddddd;
+  border-top: none;
+}
+.projectlist .projectlist-item .item-bottom:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.projectlist .projectlist-item .item-bottom p {
+  box-sizing: border-box;
+  float: left;
+  width: 33.333333333333%;
+  border-right: 1px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+}
+.projectlist .projectlist-item .item-bottom p:nth-of-type(3) {
+  border-right: none;
+}
+.projectlist .projectlist-item .item-bottom p em {
+  display: block;
+  color: #333333;
+  font-style: normal;
+  font-weight: 700;
+}
+.projectlist .projectlist-item .item-bottom p span {
+  display: block;
+  color: #646464;
+}
 html {
   background: #eaeaea;
 }
