@@ -133,6 +133,19 @@ body {
 .projectlist .projectlist-item:nth-of-type(4n) {
   margin-right: 0;
 }
+.projectlist .projectlist-item.finish-project {
+  position: relative;
+}
+.projectlist .projectlist-item.finish-project:after {
+  content: "";
+  position: absolute;
+  top: 130px;
+  right: 20px;
+  width: 96px;
+  height: 96px;
+  background: url(../img/home03.png) center no-repeat;
+  pointer-events: none;
+}
 .projectlist .projectlist-item .item-title,
 .projectlist .projectlist-item .item-middle {
   padding: 10px 12px;

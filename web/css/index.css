@@ -133,6 +133,19 @@ body {
 .projectlist .projectlist-item:nth-of-type(4n) {
   margin-right: 0;
 }
+.projectlist .projectlist-item.finish-project {
+  position: relative;
+}
+.projectlist .projectlist-item.finish-project:after {
+  content: "";
+  position: absolute;
+  top: 130px;
+  right: 20px;
+  width: 96px;
+  height: 96px;
+  background: url(../img/home03.png) center no-repeat;
+  pointer-events: none;
+}
 .projectlist .projectlist-item .item-title,
 .projectlist .projectlist-item .item-middle {
   padding: 10px 12px;
@@ -200,13 +213,262 @@ body {
   display: block;
   color: #646464;
 }
+.swiper-container .swiper-slide {
+  position: relative;
+}
+.swiper-container .swiper-slide div {
+  position: absolute;
+  top: 60px;
+  right: 300px;
+  color: #fff;
+  text-align: right;
+  line-height: 2;
+}
+.swiper-container .swiper-slide div h2 {
+  font-size: 60px;
+}
+.swiper-container .swiper-slide div p {
+  font-size: 25px;
+}
+.swiper-container .swiper-slide a {
+  position: absolute;
+  bottom: 100px;
+  right: 300px;
+}
+.swiper-container .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 1;
+  border-radius: 10px;
+  transition: width 0.2s;
+}
+.swiper-container .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 20px;
+  background: #fff;
+}
+.swiper-container img {
+  display: block;
+  max-width: 100%;
+}
 .main {
-  padding: 40px 0 210px;
+  padding: 0 0 210px;
 }
 .main:after {
   content: '';
   display: block;
   clear: both;
+}
+.main-nav {
+  position: relative;
+}
+.cognize {
+  margin: 40px 0 0;
+}
+.cognize:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.cognize a {
+  float: left;
+  width: 624px;
+  background: #339966;
+}
+.cognize a img {
+  display: block;
+  margin: 0 auto;
+}
+.cognize a:nth-of-type(2) {
+  float: right;
+  background: #009ad2;
+}
+h3 {
+  margin: 30px 0 0;
+  font-size: 22px;
+  line-height: 30px;
+  color: #333;
+}
+h3 a {
+  float: right;
+  line-height: 16px;
+  margin: 12px 0 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+h4 {
+  font-size: 22px;
+  line-height: 30px;
+  color: #333;
+}
+.news-notice {
+  margin: 30px 0 0;
+}
+.news-notice:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.news {
+  float: left;
+  width: 880px;
+}
+.news h4 {
+  padding: 0 0 6px;
+  border-bottom: 3px solid #ccc;
+}
+.news h4:after {
+  content: "";
+  display: inline-block;
+  width: 68px;
+  height: 21px;
+  vertical-align: middle;
+  margin: -3px 0 0 5px;
+  background: url(../img/home04.png) center no-repeat;
+}
+.news .news-content {
+  margin: -33px 0 0;
+}
+.news .news-content .news-tab-btn {
+  float: right;
+}
+.news .news-content .news-tab-btn a {
+  float: left;
+  line-height: 24px;
+  padding: 0 35px 6px;
+  border-bottom: 3px solid #ccc;
+  color: #3a3a3a;
+  font-size: 16px;
+  font-weight: 700;
+}
+.news .news-content .news-tab-btn a.active {
+  border-color: #009ad2;
+}
+.news .news-content .news-tab {
+  clear: both;
+}
+.news .news-content .news-tab .news-tab-box {
+  display: none;
+  min-height: 325px;
+  padding: 15px 0 0;
+}
+.news .news-content .news-tab .news-tab-box.active {
+  display: block;
+}
+.news .news-content .news-tab .news-tab-box .news-item {
+  display: block;
+  line-height: 35px;
+  margin: 0 0 15px;
+  color: #3d3d3d;
+  font-size: 14px;
+  font-family: "宋体";
+  cursor: default;
+}
+.news .news-content .news-tab .news-tab-box .news-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.news .news-content .news-tab .news-tab-box .news-item .item-img,
+.news .news-content .news-tab .news-tab-box .news-item .item-info {
+  display: none;
+}
+.news .news-content .news-tab .news-tab-box .news-item .item-label {
+  float: left;
+  width: 80px;
+  margin: 0 20px 0 0;
+  text-align: center;
+  background: #ebebeb;
+}
+.news .news-content .news-tab .news-tab-box .news-item .item-date {
+  float: right;
+  margin: 0 0 0 20px;
+  color: #999999;
+}
+.news .news-content .news-tab .news-tab-box .news-item .item-title {
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.news .news-content .news-tab .news-tab-box .news-item .item-title:hover {
+  color: #298cd6;
+  text-decoration: underline;
+}
+.news .news-content .news-tab .news-tab-box .news-item .item-info {
+  color: #959595;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.news .news-content .news-tab .news-tab-box .news-item.major .item-img,
+.news .news-content .news-tab .news-tab-box .news-item.major .item-info {
+  display: block;
+}
+.news .news-content .news-tab .news-tab-box .news-item.major .item-label,
+.news .news-content .news-tab .news-tab-box .news-item.major .item-date {
+  display: none;
+}
+.news .news-content .news-tab .news-tab-box .news-item.major .item-img {
+  float: left;
+}
+.news .news-content .news-tab .news-tab-box .news-item.major .item-img img {
+  display: block;
+  max-height: 120px;
+  margin: 0 20px 0 0;
+}
+.news .news-content .news-tab .news-tab-box .news-item.major .item-title {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: "微软雅黑";
+}
+.news .news-content .news-tab .news-tab-box .news-read-more {
+  text-align: center;
+  line-height: 40px;
+  background: #ebebeb;
+}
+.news .news-content .news-tab .news-tab-box .news-read-more a {
+  color: #21699b;
+}
+.notice {
+  float: right;
+  width: 370px;
+}
+.notice h4 {
+  padding: 0 0 6px;
+  border-bottom: 3px solid #ccc;
+}
+.notice h4:after {
+  content: "";
+  display: inline-block;
+  width: 78px;
+  height: 21px;
+  vertical-align: middle;
+  margin: -3px 0 0 5px;
+  background: url(../img/home05.png) center no-repeat;
+}
+.notice .notice-content {
+  min-height: 340px;
+}
+.notice .notice-content li a {
+  display: block;
+  line-height: 47px;
+  font-size: 14px;
+  color: #666;
+  background: url(../img/home07.png) bottom left repeat-x;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.notice .notice-content li a:hover {
+  color: #298cd6;
+}
+.notice .notice-content li a:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: -3px 15px 0 0;
+  vertical-align: middle;
+  background: url(../img/home06.png) center no-repeat;
 }
 ::-webkit-input-placeholder {
   /* WebKit browsers */

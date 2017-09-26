@@ -254,6 +254,19 @@ body {
         &:nth-of-type(4n) {
             margin-right: 0;
         }
+        &.finish-project {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                top: 130px;
+                right: 20px;
+                width: 96px;
+                height: 96px;
+                background: url(../img/home03.png) center no-repeat;
+                pointer-events: none;
+            }
+        }
         .item-title,
         .item-middle {
             padding: 10px 12px;

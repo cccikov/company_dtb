@@ -1,11 +1,256 @@
 @import url("./common.less");
+.swiper-container {
+    .swiper-slide{
+        position:relative;
+        div{
+            position:absolute;
+            top:60px;
+            right:300px;
+            color:#fff;
+            text-align: right;
+            line-height:2;
+            h2{
+                font-size:60px;
+            }
+            p{
+                font-size:25px;
+            }
+        }
+        a{
+            position:absolute;
+            bottom:100px;
+            right:300px;
+        }
+    }
+    .swiper-pagination-bullet {
+        background: #fff;
+        opacity: 1;
+        border-radius: 10px;
+        transition: width 0.2s;
+        &.swiper-pagination-bullet-active {
+            width: 20px;
+            background: #fff;
+        }
+    }
+    img {
+        display: block;
+        max-width: 100%;
+    }
+}
 
 .main {
-    padding: 40px 0 40+170px;
+    padding: 0 0 40+170px;
     .clearfix();
 }
 
+.main-nav {
+    position: relative;
+}
 
+.cognize {
+    .clearfix();
+    margin: 40px 0 0;
+    a {
+        float: left;
+        width: 624px;
+        background: #339966;
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+        &:nth-of-type(2) {
+            float: right;
+            background: #009ad2;
+        }
+    }
+}
+
+h3 {
+    margin: 30px 0 0;
+    font-size: 22px;
+    line-height: 30px;
+    color: #333;
+    a {
+        float: right;
+        line-height: 16px;
+        margin: 12px 0 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+}
+
+// 新闻通知
+h4 {
+    font-size: 22px;
+    line-height: 30px;
+    color: #333;
+}
+
+.news-notice {
+    margin: 30px 0 0;
+    .clearfix();
+}
+
+.news {
+    float: left;
+    width: 880px;
+    h4 {
+        padding: 0 0 6px;
+        border-bottom: 3px solid #ccc;
+        &:after {
+            content: "";
+            display: inline-block;
+            width: 68px;
+            height: 21px;
+            vertical-align: middle;
+            margin: -3px 0 0 5px;
+            background: url(../img/home04.png) center no-repeat;
+        }
+    }
+    .news-content {
+        margin: -33px 0 0;
+        .news-tab-btn {
+            float: right;
+            a {
+                float: left;
+                line-height: 24px;
+                padding: 0 35px 6px;
+                border-bottom: 3px solid #ccc;
+                color: #3a3a3a;
+                font-size: 16px;
+                font-weight: 700;
+                &.active {
+                    border-color: #009ad2;
+                }
+            }
+        }
+        .news-tab {
+            clear: both;
+            .news-tab-box {
+                display: none;
+                min-height: 325px;
+                padding: 15px 0 0;
+                &.active {
+                    display: block;
+                }
+                .news-item {
+                    display: block;
+                    line-height: 35px;
+                    margin: 0 0 15px;
+                    color: #3d3d3d;
+                    font-size: 14px;
+                    font-family: "宋体";
+                    cursor: default;
+                    .clearfix();
+                    .item-img,
+                    .item-info {
+                        display: none;
+                    }
+                    .item-label {
+                        float: left;
+                        width: 80px;
+                        margin: 0 20px 0 0;
+                        text-align: center;
+                        background: #ebebeb;
+                    }
+                    .item-date {
+                        float: right;
+                        margin: 0 0 0 20px;
+                        color: #999999;
+                    }
+                    .item-title {
+                        overflow: hidden;
+                        cursor: pointer;
+                        .elli();
+                        &:hover{
+                            color:#298cd6;
+                            text-decoration:underline;
+                        }
+                    }
+                    .item-info {
+                        color: #959595;
+                        overflow: hidden;
+                        .elli();
+                    }
+                }
+                .news-item.major {
+                    .item-img,
+                    .item-info {
+                        display: block;
+                    }
+                    .item-label,
+                    .item-date {
+                        display: none;
+                    }
+                    .item-img {
+                        float: left;
+                        img {
+                            display: block;
+                            max-height: 120px;
+                            margin: 0 20px 0 0;
+                        }
+                    }
+                    .item-title {
+                        font-size: 22px;
+                        font-weight: 700;
+                        font-family: "微软雅黑";
+                    }
+                }
+                .news-read-more{
+                    text-align: center;
+                    line-height:40px;
+                    background: #ebebeb;
+                    a{
+                        color:#21699b;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.notice{
+    float: right;
+    width:400-30px;
+    h4 {
+        padding: 0 0 6px;
+        border-bottom: 3px solid #ccc;
+        &:after {
+            content: "";
+            display: inline-block;
+            width: 78px;
+            height: 21px;
+            vertical-align: middle;
+            margin: -3px 0 0 5px;
+            background: url(../img/home05.png) center no-repeat;
+        }
+    }
+    .notice-content{
+        min-height: 340px;
+        li{
+            a{
+                display:block;
+                line-height:47px;
+                font-size:14px;
+                color:#666;
+                background: url(../img/home07.png) bottom left repeat-x;
+                .elli();
+                &:hover{
+                    color:#298cd6;
+                }
+                &:before{
+                    content:"";
+                    display:inline-block;
+                    width: 15px;
+                    height: 15px;
+                    margin:-3px 15px 0 0;
+                    vertical-align:middle;
+                    background: url(../img/home06.png) center no-repeat;
+                }
+            }
+        }
+    }
+}
 
 ::-webkit-input-placeholder {
     /* WebKit browsers */

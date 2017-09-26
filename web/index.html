@@ -3,35 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>银行卡管理</title>
-    <style>
-        .swiper-container img{
-            width: 100%;
-        }
-    </style>
+    <title>带投兵</title>
     <link rel="stylesheet" type="text/css" href="plugins/swiper/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
     <script type="text/javascript" src="plugins/swiper/swiper.jquery.min.js"></script>
     <script src="js/base.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            var mySwiper = new Swiper ('.swiper-container', {
-                // 如果需要分页器
-                pagination: '.swiper-pagination',
-              });
-        });
-    </script>
+    <script type="text/javascript" src='js/index.js'></script>
 </head>
 
 <body>
     <div id="wrap">
 
+
         <!-- 导航 begin -->
         <div class="nav">
-
             <div class="nav-line">
-
                 <div class="width-wrap">
                     <p class="nav-line-l">
                         <span>客服热线：400-157-8880</span>
@@ -46,33 +35,29 @@
                     </p>
                 </div>
                 <!-- width-wrap end -->
-
             </div>
             <!-- nav-line end -->
 
+
             <div class="nav-main">
-
                 <div class="width-wrap">
-
                     <div class="top-img">
                         <img src="img/logo.png">
                         <img src="img/index00.png">
                     </div>
-
                     <div class="top-link">
-                        <a href="###">首页</a>
+                        <a class="active" href="###">首页</a>
                         <a href="###">众筹项目</a>
                         <a href="###">发起项目</a>
                         <a href="###">新手指南</a>
                         <a href="###">关于我们</a>
                     </div>
                     <!-- top-link end -->
-
                 </div>
                 <!-- width-wrap end -->
-
             </div>
             <!-- nav-main end -->
+
 
         </div>
         <!-- 导航 end -->
@@ -89,24 +74,53 @@
 
 
 
-        <!-- 主要内容 begin -->
+        <!-- 主要 begin -->
         <div class="main">
 
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="img/test/test06.png">
+
+
+
+
+
+
+            <!-- 主要 轮播轮播区域 -->
+            <div class="main-nav">
+                <!-- 轮播图片 -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/test/test06.jpg">
+                            <div>
+                                <img src="img/test/test09.png">
+                            </div>
+                            <a href="###">
+                                <img src="img/home08.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/test/test07.jpg">
+                            <div>
+                                <h2>带投兵——超级汽车产业链金融</h2>
+                                <p>电动化、智能化、互联网化、社会化</p>
+                                <p>[ 完整的汽车生态系统 ]</p>
+                            </div>
+                            <a href="###">
+                                <img src="img/home08.png">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/test/test08.jpg">
+                            <a href="###">
+                                <img src="img/home08.png">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="img/test/test06.png">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/test/test06.png">
-                </div>
+                <!-- 轮播图片 end -->
             </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
-        </div>
+            <!-- 主要 轮播轮播区域 end -->
 
 
 
@@ -115,72 +129,196 @@
 
 
 
-            <!--  -->
-            <ul class="projectlist">
-                <li class="projectlist-item">
+
+
+            <!-- 主要 内容区域 -->
+            <div class="main-content width-wrap">
+
+
+
+
+                <!-- 认识带投兵 -->
+                <p class="cognize">
                     <a href="###">
-                        <img src="./img/test/test01.jpg" alt="聚能环">
-                        <p class="item-title">测试项目01测试项目01测试项目01测试项目01测试项目01测试项目01</p>
-                        <p class="item-middle">
-                            <span>计划融资：1000万</span>
-                            <span>出让股份：10%</span>
-                        </p>
-                        <!-- 完成进度条 -->
-                        <div class="item-line">
-                            <div class="item-percent" style="width:72%"></div>
-                        </div>
-                        <div class="item-bottom">
-                            <p>
-                                <em>72%</em>
-                                <span>已完成</span>
-                            </p>
-                            <p>
-                                <em>720 万</em>
-                                <span>已筹资</span>
-                            </p>
-                            <p>
-                                <em>42 天</em>
-                                <span>剩余时间</span>
-                            </p>
-                        </div>
+                        <img src="img/home01.jpg">
                     </a>
-                </li>
-            </ul>
-
-            <!--  -->
-            <ul class="projectlist">
-                <li class="projectlist-item">
                     <a href="###">
-                        <img src="./img/test/test01.jpg" alt="聚能环">
-                        <p class="item-title">测试项目01测试项目01测试项目01测试项目01测试项目01测试项目01</p>
-                        <p class="item-middle">
-                            <span>计划融资：1000万</span>
-                            <span>出让股份：10%</span>
-                        </p>
-                        <!-- 完成进度条 -->
-                        <div class="item-line">
-                            <div class="item-percent" style="width:72%"></div>
-                        </div>
-                        <div class="item-bottom">
-                            <p>
-                                <em>72%</em>
-                                <span>已完成</span>
-                            </p>
-                            <p>
-                                <em>720 万</em>
-                                <span>已筹资</span>
-                            </p>
-                            <p>
-                                <em>42 天</em>
-                                <span>剩余时间</span>
-                            </p>
-                        </div>
+                        <img src="img/home02.jpg">
                     </a>
-                </li>
-            </ul>
+                </p>
+
+
+
+
+                <!-- 众筹项目 -->
+                <div class="project">
+                    <h3>众筹项目<a href="###">查看更多项目+</a></h3>
+                    <!-- 项目列表 -->
+                    <ul class="projectlist">
+                        <li class="projectlist-item">
+                            <a href="###">
+                                <img src="./img/test/test01.jpg" alt="聚能环">
+                                <p class="item-title">测试项目01测试项目01测试项目01测试项目01测试项目01测试项目01</p>
+                                <p class="item-middle">
+                                    <span>计划融资：1000万</span>
+                                    <span>出让股份：10%</span>
+                                </p>
+                                <!-- 完成进度条 -->
+                                <div class="item-line">
+                                    <div class="item-percent" style="width:72%"></div>
+                                </div>
+                                <div class="item-bottom">
+                                    <p>
+                                        <em>72%</em>
+                                        <span>已完成</span>
+                                    </p>
+                                    <p>
+                                        <em>720 万</em>
+                                        <span>已筹资</span>
+                                    </p>
+                                    <p>
+                                        <em>42 天</em>
+                                        <span>剩余时间</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 众筹项目 end -->
+
+
+
+
+
+                <!-- 完成项目 -->
+                <div class="finish">
+                    <h3>完成项目<a href="###">查看更多完成项目+</a></h3>
+                    <!-- 项目列表 -->
+                    <ul class="projectlist">
+                        <li class="projectlist-item finish-project">
+                            <a href="###">
+                                <img src="./img/test/test01.jpg" alt="聚能环">
+                                <p class="item-title">测试项目01测试项目01测试项目01测试项目01测试项目01测试项目01</p>
+                                <p class="item-middle">
+                                    <span>计划融资：1000万</span>
+                                    <span>出让股份：10%</span>
+                                </p>
+                                <!-- 完成进度条 -->
+                                <div class="item-line">
+                                    <div class="item-percent" style="width:72%"></div>
+                                </div>
+                                <div class="item-bottom">
+                                    <p>
+                                        <em>72%</em>
+                                        <span>已完成</span>
+                                    </p>
+                                    <p>
+                                        <em>720 万</em>
+                                        <span>已筹资</span>
+                                    </p>
+                                    <p>
+                                        <em>42 天</em>
+                                        <span>剩余时间</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 完成项目 end -->
+
+
+
+
+
+
+
+
+                <!-- 新闻与通知 -->
+                <div class="news-notice">
+
+                    <!-- 新闻 -->
+                    <div class="news">
+                        <h4>新闻动态</h4>
+                        <div class="news-content">
+                            <!-- tab切换 按钮 -->
+                            <div class="news-tab-btn">
+                                <a href="javascript:void(0)">媒体报道</a>
+                                <a href="javascript:void(0)">新三板资讯</a>
+                            </div>
+                            <!-- tab切换 视图 -->
+                            <div class="news-tab">
+                                <!-- 视图-媒体报道 -->
+                                <div class="news-tab-box news-list">
+                                    <!-- 一般情况下 , 无论有无 , .item-img .item-info 都会隐藏起来-->
+                                    <!-- 重要新闻.major , .item-img .item-info 显示 ; .item-label .item-date 隐藏-->
+                                    <a class="news-item major" href="###">
+                                        <p class="item-label">媒体</p>
+                                        <p class="item-date">2017-08-28</p>
+                                        <p class="item-img"><img src="img/test/test01.jpg"></p>
+                                        <p class="item-title">我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题</p>
+                                        <p class="item-info">我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要</p>
+                                    </a>
+                                    <a class="news-item" href="###">
+                                        <p class="item-label">媒体</p>
+                                        <p class="item-date">2017-08-28</p>
+                                        <p class="item-img"><img src="img/test/test01.jpg"></p>
+                                        <p class="item-title">我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题</p>
+                                        <p class="item-info">我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要</p>
+                                    </a>
+                                    <p class="news-read-more">阅读更多<a href="###">媒体报道</a></p>
+                                </div>
+                                <!-- 视图-媒体报道 end -->
+                                <!-- 视图-新三板资讯 -->
+                                <div class="news-tab-box news-list">
+                                     <a class="news-item major" href="###">
+                                        <p class="item-label">媒体</p>
+                                        <p class="item-date">2017-08-28</p>
+                                        <p class="item-title">我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题</p>
+                                        <p class="item-info">我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要</p>
+                                    </a>
+                                    <a class="news-item" href="###">
+                                        <p class="item-label">媒体</p>
+                                        <p class="item-date">2017-08-28</p>
+                                        <p class="item-img"><img src="img/test/test01.jpg"></p>
+                                        <p class="item-title">我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题我是新闻标题</p>
+                                        <p class="item-info">我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要我是新闻内容摘要</p>
+                                    </a>
+                                    <p class="news-read-more">阅读更多<a href="###">媒体报道</a></p>
+                                </div>
+                                <!-- 视图-新三板资讯 end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 新闻 edn -->
+
+                    <div class="notice">
+                        <h4>通知公告</h4>
+                        <ul class="notice-content">
+                            <li>
+                                <a href="###">带投兵专题报道：走进北大学子的XXX驱蚊器翁群翁群翁群翁</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- 新闻与通知 end -->
+
+
+
+
+
+
+            </div>
+            <!-- 主要 内容区域 end -->
+
+
+
+
 
         </div>
-        <!-- 主要内容 end -->
+        <!-- 主要 end -->
 
 
 
