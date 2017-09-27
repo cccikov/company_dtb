@@ -237,184 +237,244 @@ body {
   display: block;
   color: #646464;
 }
-::-webkit-input-placeholder {
-  /* WebKit browsers */
-  color: #979797;
-  font-family: "SimSun";
-}
-:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: #979797;
-  font-family: "SimSun";
-}
-::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: #979797;
-  font-family: "SimSun";
-}
-:-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  color: #979797;
-  font-family: "SimSun";
-}
-html {
-  height: 100%;
-  background: #eaeaea;
-}
 .main {
-  padding: 25px 0 195px;
+  padding: 40px 0 210px;
 }
-.main .main-wrap {
-  background: #fff;
-}
-.main .main-wrap .main-middle {
-  width: 500px;
-  padding: 30px 0;
-  margin: 0 auto;
-}
-.main .main-wrap .main-middle h4 {
-  padding: 0 0 8px;
-  border-bottom: 1px solid #d5d5d5;
-  font-size: 18px;
-  color: #333;
-  text-align: center;
-}
-.main .main-wrap .main-middle ul li {
-  padding: 0 5px;
-  margin: 20px 0;
-  font-size: 14px;
-}
-.main .main-wrap .main-middle ul li input {
-  box-sizing: border-box;
-  width: 100%;
-  line-height: 2.5;
-  font-size: inherit;
-  padding: 0 15px;
-  border: 1px solid #e4e4e4;
-  border-radius: 5px;
-}
-.main .main-wrap .main-middle ul li input:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 1px #a6c7ff;
-}
-.main .main-wrap .main-middle ul li.code-li {
-  padding: 0;
-  margin: -5px 0;
-}
-.main .main-wrap .main-middle ul li.code-li:after {
+.main:after {
   content: '';
   display: block;
   clear: both;
 }
-.main .main-wrap .main-middle ul li.code-li label {
-  display: block;
-  overflow: auto;
-  padding: 5px;
+.main h4 {
+  color: #333333;
+  font-size: 20px;
 }
-.main .main-wrap .main-middle ul li.code-li a {
-  float: right;
-  padding: 5px;
-  line-height: 2.5;
+.main .step {
+  padding: 0 0 0 5px;
+  margin: 50px 0 40px;
+}
+.main .step:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main .step p {
+  position: relative;
+  box-sizing: border-box;
+  width: 33.333333333333%;
+  float: left;
+  padding: 0 5px 0 0;
+  color: #d0d0d0;
+  font-size: 16px;
+  text-align: center;
+}
+.main .step p:before {
+  content: "";
+  display: block;
+  border: 4px solid #d0d0d0;
+  margin: 0 0 15px;
+}
+.main .step p span {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 26px;
+  line-height: 26px;
+  border-radius: 15px;
+  margin-left: -15px;
+  background: #d0d0d0;
+  color: #fff;
+}
+.main .step p.active {
+  color: #66cc66;
+}
+.main .step p.active:before {
+  border-color: #66cc66;
+}
+.main .step p.active span {
+  background-color: #66cc66;
+}
+.content {
+  padding: 25px 30px;
+  border: 1px solid #dfdfdf;
+  font-size: 15px;
+  color: #333;
+}
+.content h5 {
+  margin: 0 0 40px;
+  color: #009ad2;
+  font-size: 19px;
+  font-weight: 500;
+}
+.content label,
+.content .label {
+  display: block;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.content label:after,
+.content .label:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.content label span,
+.content .label span {
+  float: left;
+  line-height: 34px;
+  width: 148px;
+  margin: 0 24px 0 0;
+  text-align: right;
+}
+.content label p,
+.content .label p {
+  overflow: hidden;
+  line-height: 34px;
+  margin: 0 0 0 172px;
+}
+.content label p i,
+.content .label p i,
+.content label p em,
+.content .label p em,
+.content label p strong,
+.content .label p strong {
+  font-style: normal;
+}
+.content label p i,
+.content .label p i {
+  margin: 0 0 0 5px;
+}
+.content label p strong,
+.content .label p strong {
+  color: #d50000;
+  font-size: 20px;
+}
+.content label p a,
+.content .label p a {
+  color: #0099cc;
+}
+.content label p button,
+.content .label p button {
+  width: 192px;
+  height: 42px;
+  border-radius: 5px;
+  background: #d50000;
+  color: #fff;
+  font-size: 16px;
+}
+.content label p.invest a,
+.content .label p.invest a {
+  float: left;
+  line-height: 32px;
+  width: 32px;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: inherit;
+}
+.content label p.invest input,
+.content .label p.invest input {
+  float: left;
+  width: 114px;
+  line-height: 32px;
+  border: 1px solid #cccccc;
+  border-left: none;
+  border-right: none;
+  color: #333;
+  text-align: center;
+  font-size: 18px;
+}
+.content .notice span {
+  line-height: 30px;
+}
+.content .notice em {
+  display: block;
+  line-height: 30px;
+  color: #a4a4a4;
+  font-size: 14px;
+}
+.content.submitted {
+  text-align: center;
+}
+.content.submitted h5 {
+  text-align: left;
+}
+.content.submitted div {
+  position: relative;
+  margin: 70px 0 0;
+  display: inline-block;
+  text-align: left;
+}
+.content.submitted div:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -79px;
+  width: 59px;
+  height: 46px;
+  background: url(../img/order01.png) center no-repeat;
+}
+.content.submitted div p {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 20px;
+}
+.content.submitted div p strong {
+  color: #ff6600;
+  font-weight: 500;
+}
+.content.submitted div a {
+  display: block;
+  margin: 0 0 30px 0;
   color: #0099cc;
   text-decoration: underline;
 }
-.main .main-wrap .main-middle ul li.code-li p {
-  float: right;
-  height: 2.5em;
-  padding: 5px;
-  border: 1px solid #fff;
-  font-size: inherit;
-}
-.main .main-wrap .main-middle ul li.code-li p img {
-  height: 100%;
-}
-.main .main-wrap .main-middle ul li.check-li:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main .main-wrap .main-middle ul li.check-li label {
-  width: 320px;
-  float: left;
-  margin: 0 10px 0 0;
-}
-.main .main-wrap .main-middle ul li.check-li a {
-  float: right;
-  width: 158px;
-  text-align: center;
-  height: 2.5em;
-  line-height: 35px;
-  border: 1px solid #8ad1ea;
+.content.submitted div button {
+  width: 192px;
+  height: 42px;
   border-radius: 5px;
-  color: #009AD2;
-}
-.main .main-wrap .main-middle ul li.remeber-li label,
-.main .main-wrap .main-middle ul li.readme-li label {
-  margin: 0 25px 0 0;
-}
-.main .main-wrap .main-middle ul li.remeber-li label input,
-.main .main-wrap .main-middle ul li.readme-li label input {
-  width: auto;
-  margin: -3px 5px 0;
-  vertical-align: middle;
-}
-.main .main-wrap .main-middle ul li.remeber-li label input:focus,
-.main .main-wrap .main-middle ul li.readme-li label input:focus {
-  outline: none;
-  box-shadow: none;
-}
-.main .main-wrap .main-middle ul li.remeber-li a,
-.main .main-wrap .main-middle ul li.readme-li a {
-  color: #0072c6;
-}
-.main .main-wrap .main-middle ul li.readme-li a {
-  color: #ec5f00;
-}
-.main .main-wrap .main-middle ul li button {
-  width: 100%;
-  line-height: 3;
-  border: 1px solid #007ead;
-  border-radius: 5px;
-  text-align: center;
-  background: #009AD2;
+  margin: 0 0 100px 0;
+  background: #d50000;
   color: #fff;
-  cursor: pointer;
+  font-size: 16px;
 }
-.main .main-wrap .main-middle ul li button:active {
-  opacity: 0.8;
-}
-.main .main-wrap .main-middle ul li button:focus {
-  outline: none;
-}
-.main .main-wrap .main-middle ul li.register-li {
+.content.upload {
   text-align: center;
 }
-.main .main-wrap .main-middle ul li.register-li a {
-  color: #ff3300;
-}
-.main .main-wrap .main-middle ul li.error-li p {
-  line-height: 2.5;
-  background: #cc0000;
-  color: #fff;
-  text-indent: 16px;
-  border-radius: 5px;
-}
-.main .main-wrap .main-middle h4 {
+.content.upload h5 {
   text-align: left;
-  padding-left: 5px;
-  padding-right: 5px;
 }
-.main .main-wrap .main-middle h4:after {
-  content: '';
-  display: block;
-  clear: both;
+.content.upload div {
+  display: inline-block;
+  text-align: left;
+  font-size: 0;
 }
-.main .main-wrap .main-middle h4 span {
-  float: right;
-  font-size: 14px;
-  font-weight: 500;
-  margin: 3px 0 0;
+.content.upload div span {
+  display: inline-block;
+  width: 8em;
+  float: none;
+  margin: 0 5px 0 0;
+  font-size: 15px;
 }
-.main .main-wrap .main-middle h4 span a {
-  color: #ff6600;
+.content.upload div input {
+  line-height: 32px;
+  width: 200px;
+  padding: 0 12px 0;
+  border: 1px solid #cccccc;
+  color: #333;
+  text-align: center;
+  font-size: 15px;
+  text-align: left;
+}
+.content.upload div input[type="file"] {
+  border: none;
+  padding: 0;
+}
+.content.upload button {
+  width: 192px;
+  height: 42px;
+  border-radius: 5px;
+  margin: 0 0 50px 125px;
+  font-size: 15px;
+  background: #009ad2;
+  color: #fff;
 }
