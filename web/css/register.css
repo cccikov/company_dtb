@@ -205,6 +205,7 @@ body {
 .projectlist .projectlist-item .item-line .item-percent {
   height: 100%;
   background: #009ad2;
+  max-width: 100%;
 }
 .projectlist .projectlist-item .item-bottom {
   padding: 15px 0;
