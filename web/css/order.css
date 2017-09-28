@@ -295,6 +295,31 @@ body {
 .main .step p.active span {
   background-color: #66cc66;
 }
+button {
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+button:focus {
+  outline: none;
+}
+button:active {
+  opacity: 0.6;
+}
+.order-msg table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 -1px;
+  background: #f0f0f0;
+}
+.order-msg table td {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  padding: 10px 18px;
+}
+.order-msg table td strong {
+  font-family: "SimSun";
+}
 .content {
   padding: 25px 30px;
   border: 1px solid #dfdfdf;
@@ -399,13 +424,13 @@ body {
 .content.submitted h5 {
   text-align: left;
 }
-.content.submitted div {
+.content.submitted form {
   position: relative;
   margin: 70px 0 0;
   display: inline-block;
   text-align: left;
 }
-.content.submitted div:before {
+.content.submitted form:before {
   content: "";
   position: absolute;
   top: 0;
@@ -414,22 +439,22 @@ body {
   height: 46px;
   background: url(../img/order01.png) center no-repeat;
 }
-.content.submitted div p {
+.content.submitted form p {
   margin: 0 0 10px 0;
   color: #333;
   font-size: 20px;
 }
-.content.submitted div p strong {
+.content.submitted form p strong {
   color: #ff6600;
   font-weight: 500;
 }
-.content.submitted div a {
+.content.submitted form a {
   display: block;
   margin: 0 0 30px 0;
   color: #0099cc;
   text-decoration: underline;
 }
-.content.submitted div button {
+.content.submitted form button {
   width: 192px;
   height: 42px;
   border-radius: 5px;
@@ -444,19 +469,19 @@ body {
 .content.upload h5 {
   text-align: left;
 }
-.content.upload div {
+.content.upload form {
   display: inline-block;
   text-align: left;
   font-size: 0;
 }
-.content.upload div span {
+.content.upload form span {
   display: inline-block;
   width: 8em;
   float: none;
   margin: 0 5px 0 0;
   font-size: 15px;
 }
-.content.upload div input {
+.content.upload form input {
   line-height: 32px;
   width: 200px;
   padding: 0 12px 0;
@@ -466,7 +491,7 @@ body {
   font-size: 15px;
   text-align: left;
 }
-.content.upload div input[type="file"] {
+.content.upload form input[type="file"] {
   border: none;
   padding: 0;
 }

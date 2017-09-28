@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/order.css">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script src="js/base.js"></script>
+    <script type="text/javascript" src='js/order.js'></script>
 </head>
 
 <body>
@@ -88,28 +89,63 @@
                 <p><span>3</span>上传保密金凭证</p>
             </div>
 
+
+
+
+            <!-- 项目信息 -->
+            <div class="order-msg">
+                <table>
+                    <tr>
+                        <td>
+                            <strong>项目名称：</strong>巨能还
+                        </td>
+                        <td>
+                            <strong>目标筹资额：</strong>￥ 729万
+                        </td>
+                        <td>
+                            <strong>目标出让股份：</strong>18%
+                        </td>
+                        <td>
+                            <strong>已募集总额：</strong>￥ 360万
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>剩余募集时间：</strong>15天13事50分
+                        </td>
+                        <td colspan="3">
+                            <strong>打款账户：</strong>建设银行 &nbsp;&nbsp; 赖XX &nbsp;&nbsp; 6227 0031 1602 0111 078
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
             <!-- 填写意向投资金额 -->
             <div class="content">
                 <h5>填写意向投资金额</h5>
-                <div class="form">
+                <form>
                     <label>
                         <span>意向投资金额:</span>
                         <p class="invest">
-                            <a href="javascript:void(0)">-</a>
-                            <input type="text" value="0" readonly="true">
-                            <a href="javascript:void(0)">+</a>
+                            <a id="minus" href="javascript:void(0)">-</a>
+                            <input id="money" type="text" value="0" readonly="true">
+                            <a id="add" href="javascript:void(0)">+</a>
                             <i>万元</i>
                         </p>
                     </label>
                     <div class="label">
                         <span>应付保密金:</span>
                         <p>
-                            <strong>￥ 100,000</strong>
+                            <strong id="deposit">￥ 0</strong>
                         </p>
                     </div>
                     <label>
                         <p>
-                            <input type="radio" name="">
+                            <input type="checkbox" name="">
                             <em>我已经阅读并同意带投兵众筹的<a href="###">《保密金协议》</a></em>
                         </p>
                     </label>
@@ -118,7 +154,7 @@
                             <button>提交订单</button>
                         </p>
                     </div>
-                </div>
+                </form>
                 <div class="notice">
                     <div class="label">
                         <span>风险提示:</span>
@@ -136,17 +172,17 @@
             <!-- 提交订单 -->
             <div class="content submitted">
                 <h5>提交订单</h5>
-                <div>
+                <form>
                     <p>订单提交成功，请在<strong>24小时内</strong>支付保密金</p>
                     <a href="###">点击查看订单详情</a>
                     <button>我已完成支付，下一步</button>
-                </div>
+                </form>
             </div>
 
             <!-- 上传保密金凭证 -->
             <div class="content upload">
                 <h5>上传保密金凭证</h5>
-                <div>
+                <form>
                     <label>
                         <span>付款银行:</span>
                         <input type="text" name="">
@@ -164,7 +200,7 @@
                         <input type="file" name="" accept="image/*">
                     </label>
                     <button>提交</button>
-                </div>
+                </form>
             </div>
 
         </div>

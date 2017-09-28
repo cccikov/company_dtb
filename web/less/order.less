@@ -50,6 +50,35 @@
     }
 }
 
+button{
+    cursor: pointer;
+    opacity:1;
+    transition:opacity 0.2s;
+    &:focus{
+        outline:none;
+    }
+    &:active{
+        opacity: 0.6;
+    }
+}
+
+.order-msg {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 0 -1px;
+        background: #f0f0f0;
+        td {
+            border: 1px solid #ccc;
+            font-size:16px;
+            padding:10px 18px;
+            strong{
+                font-family: "SimSun"; // 宋体
+            }
+        }
+    }
+}
+
 .content {
     padding: 25px 30px;
     border: 1px solid #dfdfdf;
@@ -143,7 +172,7 @@
             text-align: left;
         }
         text-align: center;
-        div {
+        form {
             position: relative;
             margin: 70px 0 0;
             display: inline-block;
@@ -190,39 +219,39 @@
         text-align: left;
     }
     text-align: center;
-    div {
+    form {
         display: inline-block;
         text-align: left;
-        font-size:0;
+        font-size: 0;
         span {
-            display:inline-block;
+            display: inline-block;
             width: 8em;
             float: none;
             margin: 0 5px 0 0;
-            font-size:15px;
+            font-size: 15px;
         }
         input {
             line-height: 32px;
-            width:200px;
+            width: 200px;
             padding: 0 12px 0;
             border: 1px solid #cccccc;
             color: #333;
             text-align: center;
             font-size: 15px;
             text-align: left;
-            &[type="file"]{
-                border:none;
-                padding:0;
+            &[type="file"] {
+                border: none;
+                padding: 0;
             }
         }
     }
-    button{
+    button {
         width: 192px;
         height: 42px;
-        border-radius:5px;
+        border-radius: 5px;
         margin: 0 0 50px 8*15+5px;
-        font-size:15px;
+        font-size: 15px;
         background: #009ad2;
-        color:#fff;
+        color: #fff;
     }
 }
