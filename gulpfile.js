@@ -54,8 +54,8 @@ function synclessFn(path, base, destPath) { // 用于浏览器同步刷新 , 先
 /**
  * default 任务
  */
-gulp.task('default', ["lessmini", "syncLess2"], function() {
-    console.log("********\n执行了 lessmini & syncLess2\n********");
+gulp.task('default', ["less", "syncLess2"], function() {
+    console.log("********\n执行了 less & syncLess2\n********");
 });
 
 

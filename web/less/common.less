@@ -192,8 +192,9 @@ body {
             float: right;
             a {
                 padding: 0 8px;
-                &:nth-of-type(-n+2) {
-                    border-right: 1px solid #fff;
+                border-right: 1px solid #fff;
+                &:last-of-type{
+                    border-right:none;
                 }
                 &.active {
                     color: #ff9900;
