@@ -309,6 +309,128 @@ html {
   margin: 0 0 15px;
   color: #333;
 }
+.main-right-content {
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+}
+.main-right-content h4 {
+  font-size: 18px;
+  line-height: 1;
+  margin: 0 0 15px;
+  color: #333;
+}
+.me-project-detail {
+  color: #333;
+  font-size: 14px;
+}
+.me-project-detail h5 {
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 0 8px 12px ;
+  border-bottom: 2px solid #ccc;
+  margin: 0 0 0px;
+  color: #333;
+}
+.me-project-detail .info {
+  margin: 0 0 20px;
+}
+.me-project-detail .info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.me-project-detail .info .img-wrap {
+  float: left;
+  padding: 3px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin: 0 -1px 0 0;
+}
+.me-project-detail .info .img-wrap img {
+  display: block;
+  height: 75px;
+}
+.me-project-detail .info p {
+  overflow: hidden;
+  margin: 0 0 -1px 0;
+  background: #eaeaea;
+  border: 1px solid #ccc;
+}
+.me-project-detail .info p:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.me-project-detail .info p span {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 0 12px;
+  line-height: 40px;
+}
+.me-project-detail .detail {
+  margin: 0 0 20px;
+}
+.me-project-detail .detail p {
+  line-height: 40px;
+  border-bottom: 1px dotted #ccc;
+}
+.me-project-detail .detail p:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.me-project-detail .detail p span {
+  float: left;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0 12px;
+}
+.me-project-detail .detail p span.only {
+  width: 100%;
+}
+.me-project-detail .detail p i,
+.me-project-detail .detail p em {
+  font-style: normal;
+}
+.me-project-detail .detail p i.orange,
+.me-project-detail .detail p em.orange {
+  color: #ff9900;
+}
+.me-project-detail .detail p i.bold,
+.me-project-detail .detail p em.bold {
+  font-weight: bold;
+}
+.me-project-detail .detail p i.green,
+.me-project-detail .detail p em.green {
+  color: #339966;
+}
+.me-project-detail .detail p em {
+  margin: 0 10px 0 0;
+}
+.me-project-detail .cert h5 {
+  border: none;
+}
+.me-project-detail .cert table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.me-project-detail .cert table th {
+  padding: 6px 12px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background: #eaeaea;
+}
+.me-project-detail .cert table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #ccc;
+}
+.me-project-detail .cert table td a {
+  color: #009ad2;
+  text-decoration: underline;
+}
 .tab-nav:after {
   content: '';
   display: block;
