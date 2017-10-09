@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模板</title>
+    <link rel="stylesheet" type="text/css" href="../plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/font_awesome/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/tpl.css">
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div class="test" id="wrap">
+
+        <div id="btns">
+            <p>
+                <button v-on:click = 'btnFn1'>直接实例</button>
+            </p>
+        </div>
+
+
+        <div id="detail-win" v-show='show_win' class="mask" :class="{show:show_win}">
+            <div class="detail-win">
+                <h4>项目详细信息<a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a></h4>
+                <!-- tab切换 导航 -->
+                <ul class="detail-win-nav">
+                    <li :class="{active:tab=='tab1'}">
+                        <a href="javascript:void(0)" @click="changeView('tab1')">项目基本信息</a>
+                    </li>
+                    <li :class="{active:tab=='tab2'}">
+                        <a href="javascript:void(0)" @click="changeView('tab2')">融资需求</a>
+                    </li>
+                    <li :class="{active:tab=='tab3'}">
+                        <a href="javascript:void(0)" @click="changeView('tab3')">团队成员</a>
+                    </li>
+                    <li :class="{active:tab=='tab4'}">
+                        <a href="javascript:void(0)" @click="changeView('tab4')">项目材料</a>
+                    </li>
+                    <li :class="{active:tab=='tab5'}">
+                        <a href="javascript:void(0)" @click="changeView('tab5')">收款人信息</a>
+                    </li>
+                </ul>
+                <ul class="detail-win-nav">
+                    <li v-for="(value,index) in ['项目基本信息','融资需求','团队成员','项目材料','收款人信息']" :class="{active:(tab=='tab'+(index+1))}"><a href="javascript:void(0)" @click="changeView('tab'+(index+1))">{{value}}</a></li>
+                </ul>
+
+                <!-- tab切换 内容 -->
+                <div class="detail-win-box">
+                    <!-- 项目基本信息 -->
+                    <div class="detail-content" v-show='tab=="tab1"'>
+                        <div class="detail-content-left">
+                            <label>
+                                <span>项目名称：</span>
+                                <input type="text" readonly v-model="info.name">
+                            </label>
+                            <label>
+                                <span>项目阶段：</span>
+                                <input type="text" readonly v-if="info.status === -1" value="反驳">
+                                <input type="text" readonly v-else-if="info.status === 0" value="待审核">
+                                <input type="text" readonly v-else-if="info.status === 1" value="已审核">
+                                <input type="text" readonly v-else-if="info.status === 10" value="暂停">
+                                <input type="text" readonly v-else-if="info.status === 20" value="预热">
+                                <input type="text" readonly v-else-if="info.status === 30" value="募集">
+                                <input type="text" readonly v-else-if="info.status === 40" value="交割">
+                                <input type="text" readonly v-else-if="info.status === -100" value="失败">
+                            </label>
+                            <label>
+                                <span>团队人数：</span>
+                                <input type="text" readonly v-model="teams.length">
+                            </label>
+                        </div>
+                        <div class="detail-content-right">
+                            <label>
+                                <span>项目标签：</span>
+                                <input type="text" readonly v-model="info.tab">
+                            </label>
+                            <label>
+                                <span>注册资本：</span>
+                                <input type="text" readonly v-model="formatAmount(info.capital)">
+                                <i>万元</i>
+                            </label>
+                            <label>
+                                <span>创建者：</span>
+                                <input type="text" readonly v-model="info.creator">
+                            </label>
+                        </div>
+                        <div class="detail-content-bottom">
+                            <label>
+                                <span>项目简介：</span>
+                                <textarea v-model="info.brief" readonly></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- 融资需求 -->
+                    <div class="detail-content" v-show='tab=="tab2"' v-for="finacing in finacings">
+                        <div class="detail-content-left">
+                            <label>
+                                <span>目标金额：</span>
+                                <input type="text" readonly v-model="formatAmount(finacing.amount)">
+                                <i>万元</i>
+                            </label>
+                            <label>
+                                <span>起投金额：</span>
+                                <input type="text" readonly v-model="formatAmount(finacing.minamount)">
+                                <i>万元</i>
+                            </label>
+                            <label>
+                                <span>募资期限：</span>
+                                <input type="text" readonly v-model="finacing.days">
+                                <i> 天</i>
+                            </label>
+                        </div>
+                        <div class="detail-content-right">
+                            <label>
+                                <span>拟出让出股份：</span>
+                                <input type="text" readonly v-model="finacing.sellrate">
+                                <i>%</i>
+                            </label>
+                            <label>
+                                <span>最高目标金额：</span>
+                                <input type="text" readonly v-model="formatAmount(finacing.maxamount)">
+                                <i>万元</i>
+                            </label>
+                        </div>
+                        <div class="detail-content-bottom">
+                            <label>
+                                <span>资金用途：</span>
+                                <textarea v-model="finacing.useto" readonly></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- 团队成员 -->
+                    <div class="detail-table" v-show='tab=="tab3"'>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>姓名</th>
+                                <th>职位</th>
+                                <th>联系方式</th>
+                                <th>详情</th>
+                            </tr>
+                            <tr v-for='item in teams' :key='item.id'>
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.position}}</td>
+                                <td>{{item.intro}}</td>
+                                <td>
+                                    <a @click="showTeamWin(item.id)" class="table-action" href="javascript:void(0)">
+                                        <i class="icon-search"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 项目材料 -->
+                    <div class="detail-table" v-show='tab=="tab4"'>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>上传者</th>
+                                <th>材料类型</th>
+                                <th>上传时间</th>
+                                <th>详情</th>
+                            </tr>
+                            <tr v-for='item in documents' :key='item.id'>
+                                <td>{{item.id}}</td>
+                                <td>{{item.creator}}</td>
+                                <td>{{item.type}}</td>
+                                <td>{{item.createtime}}</td>
+                                <td>
+                                    <a @click="showDocumentWin(item.id)" class="table-action" href="javascript:void(0)">
+                                        <i class="icon-search"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 收款人信息 -->
+                    <div class="detail-content" v-show='tab=="tab5"' v-for="receiver in receivers">
+                        <h5>收款人基础信息</h5>
+                        <div class="detail-content-left">
+                            <label>
+                                <span>真实姓名：</span>
+                                <input type="text" readonly v-model="receiver.realname">
+                            </label>
+                            <label>
+                                <span>联系电话：</span>
+                                <input type="text" readonly v-model="receiver.phone">
+                            </label>
+                        </div>
+                        <div class="detail-content-right">
+                            <label>
+                                <span>邮箱地址：</span>
+                                <input type="text" readonly v-model="receiver.email">
+                            </label>
+                        </div>
+                        <h5>收款人账号信息</h5>
+                        <div class="detail-content-left">
+                            <label>
+                                <span>银行名称：</span>
+                                <input type="text" readonly v-model="receiver.bankname">
+                            </label>
+                            <label>
+                                <span>网点名称：</span>
+                                <input type="text" readonly v-model="receiver.branch">
+                            </label>
+                        </div>
+                        <div class="detail-content-right">
+                            <label>
+                                <span>开户名称：</span>
+                                <input type="text" readonly v-model="receiver.accname">
+                            </label>
+                            <label>
+                                <span>银行卡号：</span>
+                                <input type="text" readonly v-model="receiver.accno">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="../js/tpl.js"></script>
+</body>
+
+</html>
