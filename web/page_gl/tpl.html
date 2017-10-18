@@ -15,41 +15,29 @@
 
         <div id="btns">
             <p>
-                <button v-on:click = 'btnFn1'>直接实例</button>
+                <button v-on:click='btnFn1'>直接实例</button>
             </p>
         </div>
 
-
-        <div id="detail-win" v-show='show_win' class="mask" :class="{active:show_win}">
-            <div class="detail-win haha">
-                <h4>项目详细信息<a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a></h4>
-                <!-- tab切换 导航 -->
-                <ul class="detail-win-nav">
-                    <li :class="{active:tab=='tab1'}">
-                        <a href="javascript:void(0)" @click="changeView('tab1')">项目基本信息</a>
+        <div id="win" v-show='show_win' class="mask" :class="{active:show_win}">
+            <div class="win">
+                <h4>
+                    <span>项目详细信息</span>
+                    <a href="javascript:void(0)" @click='closewin'>
+                        <i class="fa fa-close"></i>
+                    </a>
+                </h4>
+                <ul class="win-nav">
+                    <li v-for="(value,index) in tabArr" :class="{active:(tab==(index+1))}">
+                        <a href="javascript:void(0)" @click="changeView(index+1)">{{value}}</a>
                     </li>
-                    <li :class="{active:tab=='tab2'}">
-                        <a href="javascript:void(0)" @click="changeView('tab2')">融资需求</a>
-                    </li>
-                    <li :class="{active:tab=='tab3'}">
-                        <a href="javascript:void(0)" @click="changeView('tab3')">团队成员</a>
-                    </li>
-                    <li :class="{active:tab=='tab4'}">
-                        <a href="javascript:void(0)" @click="changeView('tab4')">项目材料</a>
-                    </li>
-                    <li :class="{active:tab=='tab5'}">
-                        <a href="javascript:void(0)" @click="changeView('tab5')">收款人信息</a>
-                    </li>
-                </ul>
-                <ul class="detail-win-nav">
-                    <li v-for="(value,index) in ['项目基本信息','融资需求','团队成员','项目材料','收款人信息']" :class="{active:(tab=='tab'+(index+1))}"><a href="javascript:void(0)" @click="changeView('tab'+(index+1))">{{value}}</a></li>
                 </ul>
 
                 <!-- tab切换 内容 -->
-                <div class="detail-win-box">
+                <div class="win-box">
                     <!-- 项目基本信息 -->
-                    <div class="detail-content" v-show='tab=="tab1"'>
-                        <div class="detail-content-left">
+                    <div class="box-content" v-show='tab=="1"'>
+                        <div class="box-content-left">
                             <label>
                                 <span>项目名称：</span>
                                 <input type="text" readonly v-model="info.name">
@@ -70,7 +58,7 @@
                                 <input type="text" readonly v-model="teams.length">
                             </label>
                         </div>
-                        <div class="detail-content-right">
+                        <div class="box-content-right">
                             <label>
                                 <span>项目标签：</span>
                                 <input type="text" readonly v-model="info.tab">
@@ -85,7 +73,7 @@
                                 <input type="text" readonly v-model="info.creator">
                             </label>
                         </div>
-                        <div class="detail-content-bottom">
+                        <div class="box-content-bottom">
                             <label>
                                 <span>项目简介：</span>
                                 <textarea v-model="info.brief" readonly></textarea>
@@ -93,8 +81,8 @@
                         </div>
                     </div>
                     <!-- 融资需求 -->
-                    <div class="detail-content" v-show='tab=="tab2"' v-for="finacing in finacings">
-                        <div class="detail-content-left">
+                    <div class="box-content" v-show='tab=="2"' v-for="finacing in finacings">
+                        <div class="box-content-left">
                             <label>
                                 <span>目标金额：</span>
                                 <input type="text" readonly v-model="formatAmount(finacing.amount)">
@@ -111,7 +99,7 @@
                                 <i> 天</i>
                             </label>
                         </div>
-                        <div class="detail-content-right">
+                        <div class="box-content-right">
                             <label>
                                 <span>拟出让出股份：</span>
                                 <input type="text" readonly v-model="finacing.sellrate">
@@ -123,7 +111,7 @@
                                 <i>万元</i>
                             </label>
                         </div>
-                        <div class="detail-content-bottom">
+                        <div class="box-content-bottom">
                             <label>
                                 <span>资金用途：</span>
                                 <textarea v-model="finacing.useto" readonly></textarea>
@@ -131,7 +119,7 @@
                         </div>
                     </div>
                     <!-- 团队成员 -->
-                    <div class="detail-table" v-show='tab=="tab3"'>
+                    <div class="box-table" v-show='tab=="3"'>
                         <table>
                             <tr>
                                 <th></th>
@@ -154,7 +142,7 @@
                         </table>
                     </div>
                     <!-- 项目材料 -->
-                    <div class="detail-table" v-show='tab=="tab4"'>
+                    <div class="box-table" v-show='tab=="4"'>
                         <table>
                             <tr>
                                 <th></th>
@@ -177,9 +165,9 @@
                         </table>
                     </div>
                     <!-- 收款人信息 -->
-                    <div class="detail-content" v-show='tab=="tab5"' v-for="receiver in receivers">
+                    <div class="box-content" v-show='tab=="5"' v-for="receiver in receivers">
                         <h5>收款人基础信息</h5>
-                        <div class="detail-content-left">
+                        <div class="box-content-left">
                             <label>
                                 <span>真实姓名：</span>
                                 <input type="text" readonly v-model="receiver.realname">
@@ -189,14 +177,14 @@
                                 <input type="text" readonly v-model="receiver.phone">
                             </label>
                         </div>
-                        <div class="detail-content-right">
+                        <div class="box-content-right">
                             <label>
                                 <span>邮箱地址：</span>
                                 <input type="text" readonly v-model="receiver.email">
                             </label>
                         </div>
                         <h5>收款人账号信息</h5>
-                        <div class="detail-content-left">
+                        <div class="box-content-left">
                             <label>
                                 <span>银行名称：</span>
                                 <input type="text" readonly v-model="receiver.bankname">
@@ -206,7 +194,7 @@
                                 <input type="text" readonly v-model="receiver.branch">
                             </label>
                         </div>
-                        <div class="detail-content-right">
+                        <div class="box-content-right">
                             <label>
                                 <span>开户名称：</span>
                                 <input type="text" readonly v-model="receiver.accname">

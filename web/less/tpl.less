@@ -141,12 +141,12 @@
     }
 
 
-    .detail-win .no-tab{
+    .win .no-tab{
         top:0;
         border:none;
     }
 
-    .detail-win .no-tab.detail-table{
+    .win .no-tab.table{
         padding: 0;
         margin:0;
     }
@@ -166,7 +166,7 @@
     }
 }
 
-.detail-win {
+.win {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -249,7 +249,7 @@
     }
 
     // tab切换
-    .detail-win-nav {
+    .win-nav {
         position: relative;
         z-index: 10;
         overflow: hidden;
@@ -283,13 +283,18 @@
 
 
     // 内容-普通
-    .detail-content {
+    .box-content {
         position: relative;
         top: -1px;
         padding: 15px 0 30px;
         border: 1px solid #c3c3c3;
         margin: 0px 15px 15px;
         overflow: hidden;
+        &.no-tab,&.only{
+            padding:0;
+            margin:0;
+            top: 0px;
+        }
         label {
             font-size: 0;
             &.half-input{
@@ -310,26 +315,30 @@
                 margin: 0 0 0 5px;
             }
         }
-        .detail-content-left {
+        .box-content-left {
             float: left;
             width: 50%;
         }
-        .detail-content-right {
+        .box-content-right {
             float: right;
             width: 50%;
         }
-        .detail-content-bottom {
+        .box-content-bottom {
             clear: both;
         }
     }
     // 内容-表格
-    .detail-table {
+    .box-table {
         position: relative;
         top: -1px;
         padding: 0 0 30px;
         border: none;
         margin: 0px 15px 15px;
         text-align: center;
+        &.no-tab,&.only{
+            padding:0;
+            margin:0;
+        }
         table {
             width: 100%;
             line-height: 30px;

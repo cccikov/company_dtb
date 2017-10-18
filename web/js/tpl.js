@@ -1,17 +1,16 @@
 // 模板
 var vm_btn = new Vue({
-    el:"#btns",
-    methods:{
-        btnFn1:function(){
+    el: "#btns",
+    methods: {
+        btnFn1: function () {
             r = data;
-            console.log(vm_win);
             vm_win.info = r.pjInfo;
             vm_win.teams = r.pjTeams;
             vm_win.documents = r.pjDocuments;
             vm_win.finacings = r.pjFinacings;
             vm_win.receivers = r.pjReceivers;
-            if(!vm_win.$el){
-                vm_win.$mount("#detail-win");
+            if (!vm_win.$el) {
+                vm_win.$mount("#win");
             };
             vm_win.show_win = true;
         }
@@ -21,12 +20,16 @@ var vm_btn = new Vue({
 
 
 
+
+
+
 // vue弹窗实例1
 var vm_win = new Vue({
-    // el: "#detail-win",
+    // el: "#win",
     data: {
-        tab: "tab1", // 标记打开的是哪一个tab
-        show_win: false
+        tab: "1", // 标记打开的是哪一个tab
+        tabArr: ['项目基本信息', '融资需求', '团队成员', '项目材料', '收款人信息'],
+        show_win: false,
     },
     methods: {
         formatAmount: function (val) {
@@ -62,10 +65,29 @@ var vm_win = new Vue({
 
 
 var data = {
-    "pjReceivers": [],
+    "pjReceivers": [
+        {
+            "realname": "你叫圣诞节"
+        }
+    ],
     "code": 0,
-    "pjFinacings": [],
-    "pjTeams": [],
+    "pjFinacings": [
+        {
+            amount: 100000,
+            minamount: 100000000,
+            days: 15,
+            sellrate: "15%",
+            maxamount: "100万",
+            useto: "nothing"
+        }
+    ],
+    "pjTeams": [
+        {
+            id: 123,
+            name: "哈哈",
+            position: "经理",
+        }
+    ],
     "pjDetails": [
         {
             "content": " 奥术大师大所大所大所  ",
@@ -75,7 +97,11 @@ var data = {
             "pjid": 7
         }
     ],
-    "pjDocuments": [],
+    "pjDocuments": [
+        {
+            id: 12312314123
+        }
+    ],
     "pjInfo": {
         "brief": "123123",
         "capital": 1231230000,
