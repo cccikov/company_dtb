@@ -88,6 +88,30 @@ function formatNum(str) {
     return str;
 }
 
+/**
+ * 滚动检测
+ * @param  {number} posi 滚动条某个位置
+ * @param  {function} cb1  回到posi之前操作(只操作一次)
+ * @param  {function} cb2  到达posi操作(只操作一次)
+ */
+function scrollPosi(posi, cb1, cb2) {
+    var flag = true; //表示在posi之前 , 用于限制值操作一次
+    window.onscroll = function() {
+        var top = document.body.scrollTop;
+        if (top > posi) { // 在posi下面的时候
+            if (flag) { // 要是true , 超过posi没有执行过
+                cb2 && cb2();
+                flag = false; // 设为false , 表示超过posi已经执行过一次了 , 要返回posi之上之后 , 才有可能再执行cb2
+            }
+        } else { // 在posi上面的时候
+            if (!flag) {
+                cb1 && cb1();
+                flag = true;
+            }
+        }
+    }
+}
+
 $(function() {
     $(window).on("resize", function() {
         htmlFull();

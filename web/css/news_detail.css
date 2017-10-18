@@ -1,3 +1,6 @@
+.float {
+  display: none;
+}
 body {
   min-width: 1360px;
   height: 100%;

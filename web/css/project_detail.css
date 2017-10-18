@@ -277,6 +277,12 @@ body {
   float: right;
   width: 420px;
 }
+.main-content .main-right .fixed-box.fixed {
+  position: fixed;
+  width: 420px;
+  top: 0px;
+  background: #fff;
+}
 .left-top:after {
   content: '';
   display: block;
