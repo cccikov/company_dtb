@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模板</title>
+    <link rel="stylesheet" type="text/css" href="../plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/font_awesome/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/tpl.css">
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="btns">
+            <p>
+                <button v-on:click='btnFn1'>模板</button>
+            </p>
+        </div>
+        <div id="win">
+            <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin" @team-detail="showTeamWin" @document-detail="showDocumentWin"></detail-win-tpl>
+        </div>
+    </div>
+
+    <!-- 想用模板只要引入 detail_win_tpl.js 就可以了-->
+    <script src="detail_win_tpl.js"></script>
+    <script type="text/javascript" src="tpl3.js"></script>
+</body>
+
+</html>
