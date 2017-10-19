@@ -19,7 +19,7 @@ let imgPath = "web/images/**/*.{png,jpg,gif,ico}"; // 需要压缩的img路径
 let img2miniPath = "web/img"; // 压缩后的img路径
 
 let browserSyncPath = ["web/**/*.html", "web/css/*.css", "web/js/*.js"]; // 监视同步路径
-let browserSyncWithoutCssPath = ["web/**/*.html", "web/js/*.js"]; // 监视路径不要css
+let browserSyncWithoutCssPath = ["web/**/*.html", "web/js/*.js","web/page_gl/*.js"]; // 监视路径不要css
 let browserSyncRootPath = "./web";
 let browserSyncIndex = "index.html"; // 服务器启动的时候,默认打开的文件
 

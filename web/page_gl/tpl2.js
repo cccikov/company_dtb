@@ -4,7 +4,7 @@ var vm_btn = new Vue({
     methods: {
         btnFn1: function () {
             r = data;
-            vm_win.msg = r;
+            vm_win.projectData = r;
             if (!vm_win.$el) {
                 vm_win.$mount("#win");
             };
@@ -14,38 +14,22 @@ var vm_btn = new Vue({
 });
 
 
-var dataEmpty = {
-    "pjReceivers": [
-       
-    ],
-    "code": 0,
-    "pjFinacings": [
-      
-    ],
-    "pjTeams": [
-      
-    ],
-    "pjDetails": [],
-    "pjDocuments": [
-        
-    ],
-    "pjInfo": {
-        
-    }
-};
 
 
 
 
-// vue弹窗实例1
-var vm_win = new Vue({
-    // el: "#win",
-    data: {
-        tab: "1", // 标记打开的是哪一个tab
-        tabArr: ['项目基本信息', '融资需求', '团队成员', '项目材料', '收款人信息'],
-        show_win: false,
-        msg:dataEmpty
+
+// 组件
+Vue.component("detail-win-tpl", {
+    template:"#win_tpl",
+    data: function () {
+        var _this = this;
+        return {
+            tab: "1", // 标记打开的是哪一个tab
+            tabArr: ['项目基本信息', '融资需求', '团队成员', '项目材料', '收款人信息'],
+        }
     },
+    props: ["msg","show"],
     methods: {
         formatAmount: function (val) {
             return val / 10000
@@ -54,16 +38,39 @@ var vm_win = new Vue({
             this.tab = view;
         },
         closewin: function () {
-            this.show_win = !this.show_win;
+            this.$emit("close");
+        },
+        showTeamDetail: function (id) {
+            this.$emit("team-detail",id);
+        },
+        showDocumentDetail: function (id) {
+            this.$emit("document-detail",id);
+        }
+    }
+});
+
+
+// vue弹窗实例1
+var vm_win = new Vue({
+    // el: "#win",
+    data: {
+        show_win:false,
+        projectData: null
+    },
+    methods:{
+        closewin:function(){
+            this.show_win = false;
         },
         showTeamWin: function (id) {
-            console.log(id);
+            console.log("点击成员详情",id);
         },
         showDocumentWin: function (id) {
             console.log(id);
         }
     }
+
 });
+
 
 
 

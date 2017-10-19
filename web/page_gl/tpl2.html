@@ -12,13 +12,58 @@
 </head>
 
 <body>
+    <p class="&quot;haha&quot;">Lorem, ipsum dolor.</p>
+
+    <div class="" id="wrap">
+        <div id="btns">
+            <p>
+                <button v-on:click='btnFn1'>模板</button>
+            </p>
+        </div>
+
+
+
+
+        <div id="win">
+            <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin" @team-detail="showTeamWin" @document-detail="showDocumentWin"></detail-win-tpl>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script type="x-template" id="win_tpl">
-        <div v-show='show_win' class="mask" :class="{active:show_win}">
+        <div v-show="show" class="mask" :class="{active:show}">
             <div class="float-win">
                 <h4>
                     <span>项目详细信息</span>
-                    <a href="javascript:void(0)" @click='closewin'>
+                    <a href="javascript:void(0)" @click="closewin">
                         <i class="fa fa-close"></i>
                     </a>
                 </h4>
@@ -31,52 +76,52 @@
                 <!-- tab切换 内容 -->
                 <div class="win-box">
                     <!-- 项目基本信息 -->
-                    <div class="box-content" v-show='tab=="1"'>
+                    <div class="box-content" v-show="tab==&quot;1&quot;">
                         <div class="box-content-left">
                             <label>
                                 <span>项目名称：</span>
-                                <input type="text" readonly v-model="info.name">
+                                <input type="text" readonly v-model="msg.pjInfo.name">
                             </label>
                             <label>
                                 <span>项目阶段：</span>
-                                <input type="text" readonly v-if="info.status === -1" value="反驳">
-                                <input type="text" readonly v-else-if="info.status === 0" value="待审核">
-                                <input type="text" readonly v-else-if="info.status === 1" value="已审核">
-                                <input type="text" readonly v-else-if="info.status === 10" value="暂停">
-                                <input type="text" readonly v-else-if="info.status === 20" value="预热">
-                                <input type="text" readonly v-else-if="info.status === 30" value="募集">
-                                <input type="text" readonly v-else-if="info.status === 40" value="交割">
-                                <input type="text" readonly v-else-if="info.status === -100" value="失败">
+                                <input type="text" readonly v-if="msg.pjInfo.status === -1" value="反驳">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === 0" value="待审核">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === 1" value="已审核">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === 10" value="暂停">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === 20" value="预热">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === 30" value="募集">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === 40" value="交割">
+                                <input type="text" readonly v-else-if="msg.pjInfo.status === -100" value="失败">
                             </label>
                             <label>
                                 <span>团队人数：</span>
-                                <input type="text" readonly v-model="teams.length">
+                                <input type="text" readonly v-model="msg.pjTeams.length">
                             </label>
                         </div>
                         <div class="box-content-right">
                             <label>
                                 <span>项目标签：</span>
-                                <input type="text" readonly v-model="info.tab">
+                                <input type="text" readonly v-model="msg.pjInfo.tab">
                             </label>
                             <label>
                                 <span>注册资本：</span>
-                                <input type="text" readonly v-model="formatAmount(info.capital)">
+                                <input type="text" readonly v-model="formatAmount(msg.pjInfo.capital)">
                                 <i>万元</i>
                             </label>
                             <label>
                                 <span>创建者：</span>
-                                <input type="text" readonly v-model="info.creator">
+                                <input type="text" readonly v-model="msg.pjInfo.creator">
                             </label>
                         </div>
                         <div class="box-content-bottom">
                             <label>
                                 <span>项目简介：</span>
-                                <textarea v-model="info.brief" readonly></textarea>
+                                <textarea v-model="msg.pjInfo.brief" readonly></textarea>
                             </label>
                         </div>
                     </div>
                     <!-- 融资需求 -->
-                    <div class="box-content" v-show='tab=="2"' v-for="finacing in finacings">
+                    <div class="box-content" v-show ="tab==&quot;2&quot;" v-for="finacing in msg.pjFinacings">
                         <div class="box-content-left">
                             <label>
                                 <span>目标金额：</span>
@@ -92,11 +137,6 @@
                                 <span>募资期限：</span>
                                 <input type="text" readonly v-model="finacing.days">
                                 <i> 天</i>
-                            </label>
-                            <label>
-                                <span></span>
-                                <input type="checkbox">
-                                <i>是否启用时间限制</i>
                             </label>
                         </div>
                         <div class="box-content-right">
@@ -119,7 +159,7 @@
                         </div>
                     </div>
                     <!-- 团队成员 -->
-                    <div class="box-table" v-show='tab=="3"'>
+                    <div class="box-table" v-show="tab==&quot;3&quot;">
                         <table>
                             <tr>
                                 <th></th>
@@ -128,13 +168,13 @@
                                 <th>联系方式</th>
                                 <th>详情</th>
                             </tr>
-                            <tr v-for='item in teams' :key='item.id'>
+                            <tr v-for="item in msg.pjTeams" :key="item.id">
                                 <td>{{item.id}}</td>
                                 <td>{{item.name}}</td>
                                 <td>{{item.position}}</td>
                                 <td>{{item.intro}}</td>
                                 <td>
-                                    <a @click="showTeamWin(item.id)" class="table-action" href="javascript:void(0)">
+                                    <a @click="showTeamDetail(item.id)" class="table-action" href="javascript:void(0)">
                                         <i class="icon-search"></i>
                                     </a>
                                 </td>
@@ -142,7 +182,7 @@
                         </table>
                     </div>
                     <!-- 项目材料 -->
-                    <div class="box-table" v-show='tab=="4"'>
+                    <div class="box-table" v-show="tab==&quot;4&quot;">
                         <table>
                             <tr>
                                 <th></th>
@@ -151,13 +191,13 @@
                                 <th>上传时间</th>
                                 <th>详情</th>
                             </tr>
-                            <tr v-for='item in documents' :key='item.id'>
+                            <tr v-for="item in msg.pjDocuments" :key="item.id">
                                 <td>{{item.id}}</td>
                                 <td>{{item.creator}}</td>
                                 <td>{{item.type}}</td>
                                 <td>{{item.createtime}}</td>
                                 <td>
-                                    <a @click="showDocumentWin(item.id)" class="table-action" href="javascript:void(0)">
+                                    <a @click="showDocumentDetail(item.id)" class="table-action" href="javascript:void(0)">
                                         <i class="icon-search"></i>
                                     </a>
                                 </td>
@@ -165,7 +205,7 @@
                         </table>
                     </div>
                     <!-- 收款人信息 -->
-                    <div class="box-content" v-show='tab=="5"' v-for="receiver in receivers">
+                    <div class="box-content" v-show="tab==&quot;5&quot;" v-for="receiver in msg.pjReceivers">
                         <h5>收款人基础信息</h5>
                         <div class="box-content-left">
                             <label>
@@ -210,19 +250,7 @@
         </div>
     </script>
 
-    <div class="" id="wrap">
-
-        <div id="btns">
-            <p>
-                <button v-on:click='btnFn1'>直接实例</button>
-            </p>
-        </div>
-
-        
-    </div>
-
-
-    <script type="text/javascript" src="../js/tpl.js"></script>
+    <script type="text/javascript" src="tpl2.js"></script>
 </body>
 
 </html>
