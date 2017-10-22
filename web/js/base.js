@@ -7,13 +7,9 @@ function baseFontSize() {
 }
 
 function htmlFull() {
-    var html = document.documentElement;
-    html.style.height = "100%";
-    if (html.scrollHeight > html.offsetHeight) {
-        html.style.height = "auto";
-    } else {
-        html.style.height = "100%";
-    }
+    var screenH = window.innerHeight;
+    var body = document.body;
+    body.style.minHeight = screenH + "px";
 }
 
 // tab 切换
@@ -25,7 +21,7 @@ function Tab(obj) {
     _this.btn.eq(_this.defalut).addClass("active");
     _this.box.eq(_this.defalut).addClass("active");
 
-    _this.btn.on("click", function() {
+    _this.btn.on("click", function () {
         var that = $(this);
         var _index = that.index();
         _this.btn.removeClass("active");
@@ -44,12 +40,12 @@ function AddMinus(obj) {
     _this.action = obj.action || null;
     _this.val = Number(_this.input[0].value) || 0;
 
-    _this.add.on("click", function() {
+    _this.add.on("click", function () {
         _this.val += 10;
         _this.input[0].value = _this.val;
         _this.action && _this.action(_this.val);
     });
-    _this.minus.on("click", function() {
+    _this.minus.on("click", function () {
         _this.val -= 10;
         if (_this.val < 0) {
             _this.val = 0;
@@ -60,7 +56,7 @@ function AddMinus(obj) {
 }
 
 function formatNum(str) {
-    str = ""+str;
+    str = "" + str;
     var newStr = "";
     var count = 0;
 
@@ -96,7 +92,7 @@ function formatNum(str) {
  */
 function scrollPosi(posi, cb1, cb2) {
     var flag = true; //表示在posi之前 , 用于限制值操作一次
-    window.onscroll = function() {
+    window.onscroll = function () {
         var top = document.body.scrollTop;
         if (top > posi) { // 在posi下面的时候
             if (flag) { // 要是true , 超过posi没有执行过
@@ -112,8 +108,8 @@ function scrollPosi(posi, cb1, cb2) {
     }
 }
 
-$(function() {
-    $(window).on("resize", function() {
+$(function () {
+    $(window).on("resize", function () {
         htmlFull();
     }).resize();
 });
