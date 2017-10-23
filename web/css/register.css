@@ -47,7 +47,6 @@ body {
 }
 body {
   min-width: 1360px;
-  height: 100%;
   position: relative;
 }
 .width-wrap {
@@ -171,6 +170,32 @@ body {
   background: url(../img/home03.png) center no-repeat;
   pointer-events: none;
 }
+.projectlist .projectlist-item.mj-project {
+  position: relative;
+}
+.projectlist .projectlist-item.mj-project:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: 74px;
+  height: 51px;
+  background: url(../img/mj.png) center no-repeat;
+  pointer-events: none;
+}
+.projectlist .projectlist-item.yr-project {
+  position: relative;
+}
+.projectlist .projectlist-item.yr-project:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: 74px;
+  height: 51px;
+  background: url(../img/yr.png) center no-repeat;
+  pointer-events: none;
+}
 .projectlist .projectlist-item .item-title,
 .projectlist .projectlist-item .item-middle {
   padding: 10px 12px;
@@ -260,7 +285,6 @@ body {
   font-family: "SimSun";
 }
 html {
-  height: 100%;
   background: #eaeaea;
 }
 .main {
