@@ -348,19 +348,29 @@ gulp.task('clear', function (done) {
 
 /* 手机端 */
 gulp.task("m_less", function () { // gulp less 
+
     gulp.src("moblie/less/**/*.less", {
             base: "moblie/less"
         })
         .pipe(less())
         .pipe(gulp.dest("moblie/css"));
+
 });
 
 
 gulp.task('m_syncless', function () {
+
     browserSync.init({
         server: {
             baseDir: "moblie/",
             index: "index.html"
+        },
+        port: 3000,
+        ui: {// ui的默认端口
+            port: 3001,
+            weinre: { // 不知道什么鬼 "weinre"好像也是用于远程调试的nodejs工具
+                port: 3002
+            }
         }
     });
 
@@ -375,10 +385,12 @@ gulp.task('m_syncless', function () {
                 stream: true
             }));;
     });
+
     // 监视文件变化同步浏览器
     gulp.watch(["moblie/**/*.html", "moblie/js/*.js"]).on("change", function (event) {
         gulp.src(event.path).pipe(browserSync.reload({
             stream: true
         }));
     });
+    
 });
