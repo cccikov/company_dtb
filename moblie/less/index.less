@@ -5,18 +5,57 @@ body {
 }
 
 
-.section{
+/* 共用部分 */
+
+
+/* 部分 */
+
+.section {
     background: #fff;
     margin: 0 0 10px;
 }
 
+
+/* 标题 */
+
+.title {
+    line-height: 30px;
+    padding: 2px 0 0;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333333;
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 16px;
+        margin: -3px 10px 0;
+        vertical-align: middle;
+        background: url(../img/listicon.png) center/contain no-repeat;
+    }
+}
+
+
+/* 查看更多 */
+
+.more {
+    display: block;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    color: #999999;
+}
+
+
 /* 登录 */
+
 .login {
     position: relative;
     height: 98px;
-    background: -webkit-linear-gradient(left, #ffaa00, #ff7700);
-    background: -o-linear-gradient(left, #ffaa00, #ff7700);
-    background: linear-gradient(to right, #ffaa00, #ff7700);
+    background: -webkit-linear-gradient(left, #ff9900, #ff6600);
+    background: -o-linear-gradient(left, #ff9900, #ff6600);
+    background: linear-gradient(to right, #ff9900, #ff6600);
     color: #fff;
     i {
         position: absolute;
@@ -33,6 +72,7 @@ body {
         padding: 0 50px 0 24+50+12px;
         line-height: 2em;
         font-size: 16px;
+        font-weight: 800;
         &:after {
             position: absolute;
             top: 8px;
@@ -47,13 +87,14 @@ body {
 
 
 /* 导航 */
+
 .nav {
     .clearfix();
     text-align: center;
     a {
         float: left;
         width: 33.33333333333%;
-        padding:0 0 6px;
+        padding: 0 0 6px;
         color: #585858;
         font-size: 14px;
         &:before {
@@ -72,6 +113,40 @@ body {
         }
         &:nth-of-type(3):before {
             background-image: url(../img/index03.png);
+        }
+    }
+}
+
+
+/* 通知公告 */
+
+.notice {
+    position: relative;
+    padding: 6px 6px 6px 68px;
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 67px;
+        height: 60px;
+        background: #fff url(../img/noticpic.png) left bottom/contain no-repeat;
+    }
+    a {
+        display: block;
+        line-height: 21px;
+        color: #3d3d3d;
+        font-size: 13px;
+        line-height: 24px;
+        .elli();
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            vertical-align: middle;
+            background: url(../img/notice.png) center/contain no-repeat;
+            margin: -3px 5px 0;
         }
     }
 }

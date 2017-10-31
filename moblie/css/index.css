@@ -21,21 +21,349 @@ html,
 body {
   font-size: 14px;
 }
+img {
+  max-width: 100%;
+}
+.btn-normal {
+  opacity: 1;
+}
+.btn-active {
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+/* 内容区域 */
+.container {
+  padding-bottom: 80px;
+}
+/* 底栏 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  font-size: 12px;
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
+}
+.footer a {
+  float: left;
+  width: 25%;
+  height: 48px;
+  color: #6d6d6d;
+  line-height: 1em;
+}
+.footer a:before {
+  content: "";
+  display: block;
+  height: 24px;
+  margin: 4px 0;
+  background: url(../img/navicon_01s.png) center / contain no-repeat;
+}
+.footer a:nth-of-type(1):before {
+  background-image: url(../img/navicon_01s.png);
+}
+.footer a:nth-of-type(2):before {
+  background-image: url(../img/navicon_02s.png);
+}
+.footer a:nth-of-type(3):before {
+  background-image: url(../img/navicon_03s.png);
+}
+.footer a:nth-of-type(4):before {
+  background-image: url(../img/navicon_04s.png);
+}
+.footer a.active {
+  color: #ff7200;
+}
+.footer a.active:nth-of-type(1):before {
+  background-image: url(../img/navicon_01.png);
+}
+.footer a.active:nth-of-type(2):before {
+  background-image: url(../img/navicon_02.png);
+}
+.footer a.active:nth-of-type(3):before {
+  background-image: url(../img/navicon_03.png);
+}
+.footer a.active:nth-of-type(4):before {
+  background-image: url(../img/navicon_04.png);
+}
+/* 项目列表 少 */
+.project-list.little .project-item {
+  position: relative;
+  display: block;
+  padding: 12px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.project-list.little .project-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.project-list.little .project-item .project-img img {
+  display: block;
+  border-radius: 5px;
+}
+.project-list.little .project-item .project-content {
+  position: relative;
+  margin: 11px 0 0;
+}
+.project-list.little .project-item .project-content .project-major:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.project-list.little .project-item .project-content .project-major .project-title {
+  margin: 0 45px 0 0;
+  color: #333;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.project-list.little .project-item .project-content .project-major .project-abstract {
+  margin: 5px 45px 0 0;
+  color: #999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.project-list.little .project-item .project-content .project-major .item-line {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 91px;
+  background: #d9d9d9;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.project-list.little .project-item .project-content .project-major .item-line span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  line-height: 14px;
+  margin: -7px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+}
+.project-list.little .project-item .project-content .project-major .item-line .item-percent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 10%;
+  width: 100%;
+  background: #ff9400;
+}
+.project-list.little .project-item .project-content .project-major .project-status {
+  display: none;
+}
+.project-list.little .project-item .project-content .project-info {
+  margin: 8px 45px 0 0;
+}
+.project-list.little .project-item .project-content .project-info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.project-list.little .project-item .project-content .project-info span {
+  float: left;
+  width: 25%;
+  color: #333333;
+}
+.project-list.little .project-item .project-content .project-info span:after {
+  content: "";
+  display: block;
+  color: #999;
+  font-size: 13px;
+}
+.project-list.little .project-item .project-content .project-info span:nth-of-type(1):after {
+  content: "融资目标";
+}
+.project-list.little .project-item .project-content .project-info span:nth-of-type(2):after {
+  content: "已众筹";
+}
+.project-list.little .project-item .project-content .project-info span:nth-of-type(3):after {
+  content: "剩余时间";
+}
+.project-list.little .project-item .project-content .project-info span:nth-of-type(4):after {
+  content: "出让股份";
+}
+.project-list.little .project-item:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 34px;
+  width: 58px;
+  height: 39px;
+  background: url(../img/yr.png) center / contain no-repeat;
+}
+.project-list.little .project-item.yr:before {
+  background-image: url(../img/yr.png);
+}
+.project-list.little .project-item.mj:before {
+  background-image: url(../img/mj.png);
+}
+.project-list.little .project-item.jg:before {
+  background-image: url(../img/jg.png);
+}
+.project-list.little .project-item.cz:before {
+  background-image: url(../img/cz.png);
+}
+.project-list.many .project-item {
+  padding: 8px 8px;
+  display: block;
+  border-bottom: 1px solid #e6e6e6;
+}
+.project-list.many .project-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.project-list.many .project-item .project-img {
+  float: left;
+  width: 93px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 4px 8px 4px 0;
+  background: #f0f0f0;
+}
+.project-list.many .project-item .project-img img {
+  display: block;
+  width: 93px;
+  height: 61.5px;
+}
+.project-list.many .project-item .project-content {
+  overflow: hidden;
+}
+.project-list.many .project-item .project-content .project-major:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.project-list.many .project-item .project-content .project-major .project-title {
+  margin: 0 60px 0 0;
+  color: #333;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.project-list.many .project-item .project-content .project-major .project-abstract {
+  display: none;
+}
+.project-list.many .project-item .project-content .project-major .item-line {
+  position: relative;
+  height: 12px;
+  margin: 5px 60px 5px 0;
+  background: #d9d9d9;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.project-list.many .project-item .project-content .project-major .item-line span {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  line-height: 10px;
+  color: #fff;
+}
+.project-list.many .project-item .project-content .project-major .item-line .item-percent {
+  height: 100%;
+  background: #ff9400;
+  max-width: 100%;
+}
+.project-list.many .project-item .project-content .project-major .project-status {
+  float: right;
+  line-height: 2;
+  padding: 0 6px;
+  border: 1px solid #ff9400;
+  border-radius: 5px;
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #ff9400;
+}
+.project-list.many .project-item .project-content .project-info {
+  text-align: center;
+}
+.project-list.many .project-item .project-content .project-info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.project-list.many .project-item .project-content .project-info span {
+  float: left;
+  width: 25%;
+  color: #333333;
+}
+.project-list.many .project-item .project-content .project-info span:after {
+  content: "";
+  display: block;
+  color: #999;
+  font-size: 13px;
+}
+.project-list.many .project-item .project-content .project-info span:nth-of-type(1):after {
+  content: "融资目标";
+}
+.project-list.many .project-item .project-content .project-info span:nth-of-type(2):after {
+  content: "已众筹";
+}
+.project-list.many .project-item .project-content .project-info span:nth-of-type(3):after {
+  content: "剩余时间";
+}
+.project-list.many .project-item .project-content .project-info span:nth-of-type(4):after {
+  content: "出让股份";
+}
 html,
 body {
   background: #e6e6e6;
 }
+/* 共用部分 */
+/* 部分 */
 .section {
   background: #fff;
   margin: 0 0 10px;
+}
+/* 标题 */
+.title {
+  line-height: 30px;
+  padding: 2px 0 0;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333333;
+}
+.title:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 16px;
+  margin: -3px 10px 0;
+  vertical-align: middle;
+  background: url(../img/listicon.png) center / contain no-repeat;
+}
+/* 查看更多 */
+.more {
+  display: block;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: center;
+  color: #999999;
 }
 /* 登录 */
 .login {
   position: relative;
   height: 98px;
-  background: -webkit-linear-gradient(left, #ffaa00, #ff7700);
-  background: -o-linear-gradient(left, #ffaa00, #ff7700);
-  background: linear-gradient(to right, #ffaa00, #ff7700);
+  background: -webkit-linear-gradient(left, #ff9900, #ff6600);
+  background: -o-linear-gradient(left, #ff9900, #ff6600);
+  background: linear-gradient(to right, #ff9900, #ff6600);
   color: #fff;
 }
 .login i {
@@ -53,6 +381,7 @@ body {
   padding: 0 50px 0 86px;
   line-height: 2em;
   font-size: 16px;
+  font-weight: 800;
 }
 .login a:after {
   position: absolute;
@@ -95,4 +424,37 @@ body {
 }
 .nav a:nth-of-type(3):before {
   background-image: url(../img/index03.png);
+}
+/* 通知公告 */
+.notice {
+  position: relative;
+  padding: 6px 6px 6px 68px;
+}
+.notice:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 67px;
+  height: 60px;
+  background: #fff url(../img/noticpic.png) left bottom / contain no-repeat;
+}
+.notice a {
+  display: block;
+  line-height: 21px;
+  color: #3d3d3d;
+  font-size: 13px;
+  line-height: 24px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.notice a:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  vertical-align: middle;
+  background: url(../img/notice.png) center / contain no-repeat;
+  margin: -3px 5px 0;
 }
