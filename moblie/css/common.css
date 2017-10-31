@@ -23,6 +23,7 @@ body {
 }
 img {
   max-width: 100%;
+  display: block;
 }
 .btn-normal {
   opacity: 1;
@@ -31,11 +32,9 @@ img {
   opacity: 0.8;
   transform: scale(0.95);
 }
-/* 内容区域 */
 .container {
   padding-bottom: 80px;
 }
-/* 底栏 */
 .footer {
   position: fixed;
   bottom: 0;
@@ -88,7 +87,6 @@ img {
 .footer a.active:nth-of-type(4):before {
   background-image: url(../img/navicon_04.png);
 }
-/* 项目列表 少 */
 .project-list.little .project-item {
   position: relative;
   display: block;
@@ -201,7 +199,9 @@ img {
   left: 34px;
   width: 58px;
   height: 39px;
-  background: url(../img/yr.png) center / contain no-repeat;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 .project-list.little .project-item.yr:before {
   background-image: url(../img/yr.png);
@@ -214,6 +214,16 @@ img {
 }
 .project-list.little .project-item.cz:before {
   background-image: url(../img/cz.png);
+}
+.project-list.little .project-item.finish:after {
+  content: "";
+  position: absolute;
+  bottom: 90px;
+  right: 14px;
+  z-index: 3;
+  width: 100px;
+  height: 100px;
+  background: url(../img/home03.png) center / contain no-repeat;
 }
 .project-list.many .project-item {
   padding: 8px 8px;
@@ -320,4 +330,49 @@ img {
 }
 .project-list.many .project-item .project-content .project-info span:nth-of-type(4):after {
   content: "出让股份";
+}
+.news-list .news-item {
+  display: block;
+  padding: 8px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.news-list .news-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.news-list .news-item .news-img {
+  float: right;
+  height: 62px;
+}
+.news-list .news-item .news-img img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 5px 0 5px 8px;
+}
+.news-list .news-item .news-content {
+  overflow: hidden;
+}
+.news-list .news-item .news-content p {
+  line-height: 24px;
+}
+.news-list .news-item .news-content .news-title {
+  color: #333;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.news-list .news-item .news-content .news-abstract {
+  font-size: 13px;
+  color: #999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.news-list .news-item .news-content .news-date {
+  text-align: right;
+  font-size: 13px;
+  color: #999;
 }
