@@ -67,6 +67,8 @@ var toArray = (function () {
 
 // 图片load好 , 一般来说图片load好 , 基本页面的其他内容也load好了
 function imgAllLoad(imgArr, cb) {
+    // 如果imgArr里面有img元素已经load好了 , 就不会再触发 load事件
+    // 这里采用 different 函数 , arr2为以前已经load好的元素 , arr1是包含load好元素和未load好元素 , 取差集;
     var len = imgArr.length;
     var n = 0
 
