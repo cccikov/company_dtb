@@ -10,21 +10,22 @@ img {
 }
 
 // 按钮动画效果
-.btn-normal {
-    opacity: 1; // transition: opacity 0.1s;
-}
-
+// .btn-normal {
+//     opacity: 1; // transition: opacity 0.1s;
+// }
 // 没有按钮动画效果
 .no-animation {
-    // opacity: 1;
-    // &.touch {
+    opacity: 1; // &.touch {
     //     opacity: 0.95;
     // }
 }
 
-.btn-active {
-    opacity: 0.8;
-    transform: scale(0.95);
+// .btn-active {
+//     opacity: 0.8;
+//     transform: scale(0.95);
+// }
+a {
+    opacity: 1;
 }
 
 // 内容区域
@@ -88,11 +89,17 @@ img {
 
 // 项目列表 少
 .project-list.little {
+    border-bottom: 1px solid #e6e6e6;
+    background: #e6e6e6;
     .project-item {
         position: relative;
         display: block;
-        padding: 12px;
-        border-bottom: 1px solid #e6e6e6;
+        padding: 12px; // border-bottom: 1px solid #e6e6e6;
+        margin: 0 0 1px;
+        background: #fff;
+        &:last-of-type {
+            margin: 0 0 0px;
+        }
         .clearfix(); // 项目图片
         .project-img {
             img {
@@ -218,10 +225,16 @@ img {
 
 // 项目列表 多项目的时候
 .project-list.many {
+    border-bottom: 1px solid #e6e6e6;
+    background: #e6e6e6;
     .project-item {
         padding: 8px 8px;
-        display: block;
-        border-bottom: 1px solid #e6e6e6;
+        display: block; // border-bottom: 1px solid #e6e6e6;
+        margin: 0 0 1px;
+        background: #fff;
+        &:last-of-type {
+            margin: 0 0 0px;
+        }
         .clearfix(); // 项目图片
         .project-img {
             float: left;
@@ -316,10 +329,16 @@ img {
 
 // 新闻列表
 .news-list {
+    border-bottom: 1px solid #e6e6e6;
+    background: #e6e6e6;
     .news-item {
         display: block;
-        padding: 8px;
-        border-bottom: 1px solid #e6e6e6;
+        padding: 8px; // border-bottom: 1px solid #e6e6e6;
+        margin: 0 0 1px;
+        background: #fff;
+        &:last-of-type {
+            margin: 0 0 0px;
+        }
         .clearfix(); // 资讯图片
         .news-img {
             float: right;

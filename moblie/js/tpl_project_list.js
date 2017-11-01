@@ -2,7 +2,7 @@ Vue.component("tpl-project-list", {
     template: `
         <!-- 项目列表 -->
         <div class="project-list little">
-            <a class="project-item no-animation" @click="click" @touchstart="touchstart" @touchend="touchend" v-for="val in data" :href="val.link" :class="{finish:val.status=='finish',yr:val.status=='yr'}" :key="val.id" :data-key="val.id">
+            <a class="project-item no-animation" @click="click" v-for="val in data" :href="val.link" :class="{finish:val.status=='finish',yr:val.status=='yr',jg:val.status=='jg',mj:val.status=='mj',cz:val.status=='cz'}" :key="val.id" :data-key="val.id">
                 <!-- 项目图片 -->
                 <div class="project-img">
                     <img :src="val.img">
@@ -43,21 +43,6 @@ Vue.component("tpl-project-list", {
     },
     props: ["data"],
     methods: {
-        touchend: function (e) {
-            // var _this = e.currentTarget;
-            // _this.classList.remove("touch");
-        },
-        touchstart: function (e) {
-            // var _this = e.currentTarget;
-            // _this.classList.add("touch");
-        },
-        click:function(e){
-            var _this = e.currentTarget;
-            _this.style.transition = "transform 0.1s";
-            _this.style.transform = "scale(0.95)";
-            setTimeout(function() {
-                _this.style.transform = "scale(1)";
-            }, 100);
-        }
+        click: listAnimation
     }
 });

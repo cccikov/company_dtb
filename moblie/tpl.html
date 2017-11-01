@@ -36,11 +36,13 @@
         <div id="vueDemo">
             <h2>以下都是vue用实例</h2>
             <tpl-project-list :data="projectListData"></tpl-project-list>
+            <tpl-news-list :data="newsData"></tpl-news-list>
         </div>
 
 
 
         <script src="./js/tpl_project_list.js"></script>
+        <script src="./js/tpl_news_list.js"></script>
         <script>
             new Vue({
                 el: "#vueDemo",
@@ -68,7 +70,8 @@
                         link: "###",
                         img: "./img/test/test02.png",
                         percent: 50,
-                    }]
+                    }],
+                    newsData:[1,23,4]
                 }
             });
         </script>

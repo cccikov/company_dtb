@@ -25,12 +25,11 @@ img {
   max-width: 100%;
   display: block;
 }
-.btn-normal {
+.no-animation {
   opacity: 1;
 }
-.btn-active {
-  opacity: 0.8;
-  transform: scale(0.95);
+a {
+  opacity: 1;
 }
 .container {
   padding-bottom: 80px;
@@ -87,11 +86,19 @@ img {
 .footer a.active:nth-of-type(4):before {
   background-image: url(../img/navicon_04.png);
 }
+.project-list.little {
+  border-bottom: 1px solid #e6e6e6;
+  background: #e6e6e6;
+}
 .project-list.little .project-item {
   position: relative;
   display: block;
   padding: 12px;
-  border-bottom: 1px solid #e6e6e6;
+  margin: 0 0 1px;
+  background: #fff;
+}
+.project-list.little .project-item:last-of-type {
+  margin: 0 0 0px;
 }
 .project-list.little .project-item:after {
   content: '';
@@ -225,10 +232,18 @@ img {
   height: 100px;
   background: url(../img/home03.png) center / contain no-repeat;
 }
+.project-list.many {
+  border-bottom: 1px solid #e6e6e6;
+  background: #e6e6e6;
+}
 .project-list.many .project-item {
   padding: 8px 8px;
   display: block;
-  border-bottom: 1px solid #e6e6e6;
+  margin: 0 0 1px;
+  background: #fff;
+}
+.project-list.many .project-item:last-of-type {
+  margin: 0 0 0px;
 }
 .project-list.many .project-item:after {
   content: '';
@@ -331,10 +346,18 @@ img {
 .project-list.many .project-item .project-content .project-info span:nth-of-type(4):after {
   content: "出让股份";
 }
+.news-list {
+  border-bottom: 1px solid #e6e6e6;
+  background: #e6e6e6;
+}
 .news-list .news-item {
   display: block;
   padding: 8px;
-  border-bottom: 1px solid #e6e6e6;
+  margin: 0 0 1px;
+  background: #fff;
+}
+.news-list .news-item:last-of-type {
+  margin: 0 0 0px;
 }
 .news-list .news-item:after {
   content: '';
