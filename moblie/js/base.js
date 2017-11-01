@@ -14,18 +14,18 @@ function htmlFull() {
 
 /* 按钮,标签动画 */
 function alinkAnimation() {
-    // var alink = $("a").add(".alink").not(".no-animation");
-    // alink.addClass("btn-normal");
-    // alink.off("touchstart.ani").on("touchstart.ani", function(e) {
-    //     // e.preventDefault();
-    //     $(this).addClass("btn-active");
-    // });
-    // // 因为有可能不是在元素上面离开手指
-    // $(window).off("touchend.ani").on("touchend.ani",function(){
-    //     alink.removeClass("btn-active");
-    // });
+    /* var alink = $("a").add(".alink").not(".no-animation");
+    alink.addClass("btn-normal");
+    alink.off("touchstart.ani").on("touchstart.ani", function(e) {
+        // e.preventDefault();
+        $(this).addClass("btn-active");
+    });
+    // 因为有可能不是在元素上面离开手指
+    $(window).off("touchend.ani").on("touchend.ani",function(){
+        alink.removeClass("btn-active");
+    }); */
     var alink = $("a").add(".alink").not(".no-animation");
-    alink.on("click",function(){
+    alink.on("click", function () {
         var _this = this;
         _this.style.transition = "transform 0.1s,opacity 0.1s";
         _this.style.transform = "scale(0.95)";
@@ -37,7 +37,8 @@ function alinkAnimation() {
     });
 }
 
-function listAnimation(e){
+/* 列表按钮动画 */
+function listAnimation(e) {
     var _this = e.currentTarget;
     _this.style.transition = "transform 0.1s";
     _this.style.transform = "scale(0.95)";
@@ -46,6 +47,41 @@ function listAnimation(e){
     }, 100);
 }
 
-$(function() {
+// 两个数组 除去arr1里面同时存在于两个数组的元素
+function different(arr1, arr2) {
+    var arr = [];
+    arr1.forEach(function (val) {
+        if (arr2.indexOf(val) == -1) {
+            arr.push(val);
+        }
+    });
+    return arr;
+}
+
+// 将类数组对象转为数组
+var toArray = (function () {
+    return Array.from ? Array.from : function (arrLike) {
+        return [].slice.call(arrLike);
+    }
+})();
+
+// 图片load好 , 一般来说图片load好 , 基本页面的其他内容也load好了
+function imgAllLoad(imgArr, cb) {
+    var len = imgArr.length;
+    var n = 0
+
+    function handle() { // 事件监听器
+        n++;
+        if (n >= len) {
+            cb && cb();
+        }
+    }
+    for (var i = 0; i < len; i++) {
+        imgArr[i].removeEventListener("load", handle);
+        imgArr[i].addEventListener("load", handle, false);
+    }
+}
+
+$(function () {
     alinkAnimation();
 });

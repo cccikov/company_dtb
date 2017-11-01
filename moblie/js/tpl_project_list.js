@@ -38,11 +38,30 @@ Vue.component("tpl-project-list", {
     `,
     data: function () {
         return {
-            tplName: "项目列表模板"
+            tplName: "项目列表模板",
+            newimgarr: null,
+            oldimgarr: null
         }
     },
     props: ["data"],
     methods: {
         click: listAnimation
+    },
+    mounted: function () {
+        var _this = this;
+        Vue.nextTick(function () {
+            imgAllLoad($(_this.$el).find("img"), function () {
+                _this.$emit("imgload");
+                _this.oldimgarr = $(_this.$el).find("img");
+            });
+        });
+    },
+    updated: function () {
+        var _this = this;
+        _this.newimgarr = $(_this.$el).find("img").not(_this.oldimgarr);
+        imgAllLoad(_this.newimgarr, function () {
+            _this.$emit("imgload");
+            _this.oldimgarr = $(_this.$el).find("img");
+        });
     }
 });

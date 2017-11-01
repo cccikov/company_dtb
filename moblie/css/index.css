@@ -395,8 +395,7 @@ a {
   overflow: hidden;
 }
 .news-list .news-item .news-content .news-date {
-  text-align: right;
-  font-size: 13px;
+  font-size: 10px;
   color: #999;
 }
 html,

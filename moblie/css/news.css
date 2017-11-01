@@ -398,3 +398,7 @@ a {
   font-size: 10px;
   color: #999;
 }
+html,
+body {
+  background: #e6e6e6;
+}
