@@ -152,11 +152,6 @@ function GetMore(obj) {
     _this.winH = window.innerHeight;
     _this.eleTop = $(".tips").offset().top;
 
-    if (_this.eleTop < _this.winH) {
-        _this.loading = true;
-        !!_this.cb && _this.cb();
-    }
-
     $(window).on("scroll", function() {
         _this.winH = window.innerHeight;
         _this.eleTop = $(".tips").offset().top;
