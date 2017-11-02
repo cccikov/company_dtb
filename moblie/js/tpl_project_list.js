@@ -2,7 +2,7 @@ Vue.component("tpl-project-list", {
     template: `
         <!-- 项目列表 -->
         <div class="project-list little">
-            <a class="project-item no-animation" @click="click" v-for="val in data" :href="val.link" :class="{finish:val.status=='finish',yr:val.status=='yr',jg:val.status=='jg',mj:val.status=='mj',cz:val.status=='cz'}" :key="val.id" :data-key="val.id">
+            <a class="project-item no-animation" @click="click" v-for="(val , index) in data" :href="val.link" :class="{finish:val.status=='finish',yr:val.status=='yr',jg:val.status=='jg',mj:val.status=='mj',cz:val.status=='cz'}" :key="val.id" :data-key="val.id">
                 <!-- 项目图片 -->
                 <div class="project-img">
                     <img :src="val.img">
@@ -12,7 +12,7 @@ Vue.component("tpl-project-list", {
                     <!-- 标题 与 进度 -->
                     <div class="project-major">
                         <!-- 标题 -->
-                        <p class="project-title">{{val.title}}</p>
+                        <p class="project-title">{{index}} {{val.title}}</p>
                         <!-- 摘要 -->
                         <p class="project-abstract">{{val.abstract}}</p>
                         <!-- 进度 -->
