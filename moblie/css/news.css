@@ -73,6 +73,7 @@ a {
 }
 .footer a.active {
   color: #ff7200;
+  pointer-events: none;
 }
 .footer a.active:nth-of-type(1):before {
   background-image: url(../img/navicon_01.png);
@@ -401,4 +402,34 @@ a {
 html,
 body {
   background: #e6e6e6;
+}
+.nav {
+  padding: 10px 0;
+  margin: 0 0 1px;
+  text-align: center;
+  background: #fff;
+}
+.nav a {
+  display: inline-block;
+  line-height: 32px;
+  width: 7em;
+  border-radius: 100px;
+  font-size: 15px;
+  color: #3d3d3d;
+}
+.nav a.active {
+  pointer-events: none;
+  background: #ff9400;
+  color: #fff;
+}
+.tips {
+  line-height: 40px;
+  color: #acacac;
+  text-align: center;
+}
+.tips p {
+  display: none;
+}
+.tips p.active {
+  display: block;
 }

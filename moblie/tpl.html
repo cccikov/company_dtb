@@ -8,22 +8,23 @@
     <title>模板</title>
     <link rel="stylesheet" href="./css/common.css">
     <style>
-        html {
-            background: #e6e6e6;
-        }
+    html {
+        background: #e6e6e6;
+    }
 
-        h2 {
-            margin: 40px 20px;
-        }
+    h2 {
+        margin: 40px 20px;
+    }
 
-        #vueDemo {
-            margin: 10px 0 100px;
-            background: #fff;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-        }
-        .project-item.active{
-            background: #ff0;
-        }
+    #vueDemo {
+        margin: 10px 0 100px;
+        background: #fff;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-item.active {
+        background: #ff0;
+    }
     </style>
     <script type="text/javascript" src="js/vue.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
@@ -32,61 +33,45 @@
 
 <body>
     <div id="wrap">
-
         <div id="vueDemo">
             <h2>以下都是vue用实例</h2>
             <tpl-project-list :data="projectListData"></tpl-project-list>
             <tpl-news-list :data="newsData"></tpl-news-list>
         </div>
-
-
-
         <script src="./js/tpl_project_list.js"></script>
         <script src="./js/tpl_news_list.js"></script>
         <script>
-            new Vue({
-                el: "#vueDemo",
-                data: {
-                    projectListData: [{
-                        id: 1,
-                        title: "saas平台",
-                        abstract: "这是一个神奇的平台",
-                        link: "###",
-                        img: "./img/test/test02.png",
-                        percent: 50,
-                        status:"finish"
-                    }, {
-                        id: 2,
-                        title: "saas平台",
-                        abstract: "这是一个神奇的平台",
-                        link: "###",
-                        img: "./img/test/test02.png",
-                        percent: 50,
-                        status: "yr"
-                    }, {
-                        id: 3,
-                        title: "saas平台",
-                        abstract: "这是一个神奇的平台",
-                        link: "###",
-                        img: "./img/test/test02.png",
-                        percent: 50,
-                    }],
-                    newsData:[1,23,4]
-                }
-            });
+        new Vue({
+            el: "#vueDemo",
+            data: {
+                projectListData: [{
+                    id: 1,
+                    title: "saas平台",
+                    abstract: "这是一个神奇的平台",
+                    link: "###",
+                    img: "./img/test/test02.png",
+                    percent: 50,
+                    status: "finish"
+                }, {
+                    id: 2,
+                    title: "saas平台",
+                    abstract: "这是一个神奇的平台",
+                    link: "###",
+                    img: "./img/test/test02.png",
+                    percent: 50,
+                    status: "yr"
+                }, {
+                    id: 3,
+                    title: "saas平台",
+                    abstract: "这是一个神奇的平台",
+                    link: "###",
+                    img: "./img/test/test02.png",
+                    percent: 50,
+                }],
+                newsData: [1, 23, 4]
+            }
+        });
         </script>
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- 项目列表 -->
         <div class="project-list little">
             <a class="project-item no-animation mj" href="###">
@@ -124,7 +109,6 @@
                 </div>
             </a>
         </div>
-
         <!-- 新闻资讯 -->
         <div class="news-list">
             <a href="###" class="news-item no-animation">
@@ -137,23 +121,19 @@
                     <!-- 资讯标题 -->
                     <p class="news-title">南方日报：顺德资本招商 引国内投资大咖抢滩</p>
                     <!-- 资讯摘要 -->
-                    <p class="news-abstract">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim id est laborum.</p>
+                    <p class="news-abstract">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <p class="news-date">2017-08-28 &nbsp; 12:58</p>
                 </div>
             </a>
         </div>
-
-
-
-
+        <!-- 底部 -->
+        <div class="footer">
+            <a :class="{active:page=='1'}" " href="index.html ">首页</a>
+            <a :class="{active:page=='2' } "" href="project.html">项目</a>
+            <a :class="{active:page=='3'}" " href="news.html ">资讯</a>
+            <a :class="{active:page=='4' } "" href="me.html">我的</a>
+        </div>
     </div>
-
-
-
 </body>
 
 </html>

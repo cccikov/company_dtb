@@ -73,6 +73,7 @@ a {
 }
 .footer a.active {
   color: #ff7200;
+  pointer-events: none;
 }
 .footer a.active:nth-of-type(1):before {
   background-image: url(../img/navicon_01.png);

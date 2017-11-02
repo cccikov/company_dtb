@@ -57,5 +57,10 @@ var vm = new Vue({
 
         // 新闻资讯
         newsData: [1, 23, 4]
+    },
+    computed:{
+        page:function(){
+            return navActive();
+        }
     }
 });

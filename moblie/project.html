@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>资讯</title>
-    <link rel="stylesheet" href="./css/news.css">
+    <title>项目</title>
+    <link rel="stylesheet" href="./css/project.css">
     <script type="text/javascript" src="js/vue.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/base.js"></script>
@@ -19,17 +19,18 @@
         <div class="container">
             <!-- 导航 -->
             <div class="nav">
-                <a class="active" href="###">新闻动态</a>
-                <a href="###">通知公告</a>
+                <a class="active" href="###">新项目</a>
+                <a href="###">预热中</a>
+                <a href="###">已完成</a>
             </div>
 
-            <!-- 新闻资讯 -->
+            <!-- 项目列表 -->
             <div class="main">
-                <tpl-news-list :data="newsData" @imgload="load"></tpl-news-list>
+                <tpl-project-list :data="projectListData"></tpl-project-list>
             </div>
             <div class="tips">
                 <p class="loading active">正在加载...</p>
-                <p class="nomore">暂无更多资讯</p>
+                <p class="nomore">暂无更多项目</p>
             </div>
 
         </div>
@@ -40,8 +41,8 @@
         <footer-tpl :page="page"></footer-tpl>
     </div>
 
-    <script src="./js/tpl_news_list.js"></script>
-    <script type="text/javascript" src="js/news.js"></script>
+    <script src="./js/tpl_project_list.js"></script>
+    <script type="text/javascript" src="js/project.js"></script>
 </body>
 
 </html>
