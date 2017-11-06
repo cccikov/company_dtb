@@ -64,7 +64,7 @@ function navActive() {
             return 3;
             break;
         case "me":
-            return 3;
+            return 4;
             break;
         default:
             return 0;
