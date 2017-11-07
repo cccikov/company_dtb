@@ -5,7 +5,7 @@ var vm = new Vue({
             id: 1,
             title: "saas平台",
             abstract: "这是一个神奇的平台",
-            link: "###",
+            link: "project_detail.html",
             img: "./img/test/test02.png",
             percent: 50,
             status: "finish"
@@ -13,7 +13,7 @@ var vm = new Vue({
             id: 2,
             title: "saas平台",
             abstract: "这是一个神奇的平台",
-            link: "###",
+            link: "project_detail.html",
             img: "./img/test/test02.png",
             percent: 50,
             status: "yr"
@@ -21,7 +21,7 @@ var vm = new Vue({
             id: 3,
             title: "saas平台",
             abstract: "这是一个神奇的平台",
-            link: "###",
+            link: "project_detail.html",
             img: "./img/test/test02.png",
             percent: 50,
             status: "mj"
