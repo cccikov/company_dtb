@@ -50,6 +50,10 @@ $(function() {
                 success: function(data) {
                     vm.projectListData = vm.projectListData.concat(data);
                     _this.loading = false;
+
+                    // 没有数据后
+                    // _this.loading不设置为false
+                    //  $(".tips .loading").removeClass("active").siblings().addClass("active");
                 },
                 error:function(XMLHttpRequest, textStatus, errorThrown){
                     console.log(XMLHttpRequest, textStatus, errorThrown)
