@@ -1,362 +1,277 @@
 @import url("./common.less");
-
-.main .part {
-    padding:15px 20px;
-    border: 1px solid #dfdfdf;
-    margin: 0 0 32px;
-    font-size: 15px;
-    color:#333;
-    .part-title{
-        display: inline-block;
-        padding: 0 5px 12px;
-        border-bottom:2px solid #009ad2;
-        margin:0 0 -2px;
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .part-content{
-        padding:20px 0 0;
-        border-top: 2px solid #eaeaea;
-    }
+html {
+    background: #f0f0f0;
+    color: #2b2b2b;
 }
 
+img {
+    max-width: 100%;
+}
 
 .main {
-    padding: 0 0 170px;
+    padding: 40px 0 40+170px;
 }
 
 .main-content {
-    padding: 30px 0 10px;
+    width: 1203px;
+    margin: 0 auto;
     .clearfix();
     .main-left {
         float: left;
-        width: 830px;
+        width: 776px;
     }
     .main-right {
         float: right;
-        width: 420px;
-        .fixed-box.fixed {
-            position: fixed;
-            width: 420px;
-            top: 0px;
+        width: 385px;
+        ///////////////////////////////
+        // 项目融资信息 , 进度 , 剩余时间 , 投资按钮 //
+        ///////////////////////////////
+        .info {
+            padding: 20px;
             background: #fff;
-        }
-    }
-}
-
-.left-top {
-    .clearfix();
-    .left-top-img {
-        float: left;
-        margin:0 20px 0 0;
-        img {
-            display: block;
-            height:150px;
-        }
-    }
-    .left-top-content { // 3*40 + 15*2 刚好150; 这样图片的高度定了 , 内容方面就会根据图片宽度调整自身宽度
-        overflow: hidden;
-        p {
-            line-height: 40px;
-            padding:0 18px;
-            margin: 15px 0 0;
-            background: #eaeaea;
-            &:before{
-                font-weight: 700;
-                color:#333;
-            }
-            &.left-top-p1{
-                margin:0;
-                color:#990000;
-                font-weight: 700;
-                &:before{
-                    content:"领投人：";
+            h5 {
+                position: relative;
+                line-height: 1.5;
+                padding: 3px 0 23px;
+                font-size: 16px;
+                .elli();
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 90%;
+                    margin: 0 0 0 5%;
+                    border-top: 1px solid #f0f0f0;
                 }
             }
-            &.left-top-p2{
-                &:before{
-                    content:"领投资金：";
+            .percent {
+                height: 6px;
+                border-radius: 6px;
+                margin: 15px 10px;
+                background: #bfbfbf;
+                overflow: hidden;
+                .percent-color {
+                    height: 100%;
+                    max-width: 100%;
+                    background: -webkit-linear-gradient(left, #ff8935, #ff3a35);
+                    background: -o-linear-gradient(left, #ff8935, #ff3a35);
+                    background: linear-gradient(to right, #ff8935, #ff3a35);
+                    background: linear-gradient(90deg, #ff8935, #ff3a35);
                 }
             }
-            &.left-top-p3{
-                &:before{
-                    content:"领投时间：";
+            .info-msg {
+                .clearfix();
+                p {
+                    float: left;
+                    width: 50%;
+                    line-height: 45px;
+                    span {
+                        float: left;
+                        width: 60%;
+                        font-size: 12px;
+                        color: #666;
+                        text-align: right;
+                    }
+                    strong {
+                        float: left;
+                        width: 40%;
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+            .remain {
+                padding: 15px 0;
+                p {
+                    line-height: 44px;
+                    // background: url(../img/border.png) top center repeat-x;
+                    color: #b6b6b6;
+                    font-size: 14px;
+                    &:before {
+                        content: "";
+                        display: inline-block;
+                        width: 22px;
+                        height: 22px;
+                        margin: -3px 5px 0 32px;
+                        vertical-align: middle;
+                        background: #f00 url(../img/clock.png) center no-repeat;
+                    }
+                    span {
+                        box-sizing: border-box;
+                        display: inline-block;
+                        height: 38px;
+                        line-height: 38px;
+                        min-width: 38px;
+                        padding: 0 6px;
+                        margin: -3px 4px 0 5px;
+                        border-radius: 5px;
+                        vertical-align: middle;
+                        text-align: center;
+                        font-size: 19px;
+                        color: #ff3835;
+                        background: #f0f0f0;
+                    }
+                    &.error {
+                        em {
+                            padding: 0 0 0 20px;
+                            // color: red;
+                            font-style: normal;
+                        }
+                    }
+                }
+            }
+            .action {
+                padding: 15px 0;
+                .btn {
+                    display: block;
+                    width: 100%;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 8px;
+                    background: #3286dc;
+                    color: #fff;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+            .star {
+                text-align: center;
+                a {
+                    display: block;
+                    line-height: 30px;
+                    color: #979797;
+                    font-size: 12px;
                 }
             }
         }
-    }
-}
-
-.left-intro{
-    line-height: 1;
-    .clearfix();
-    .left-intro1{
-        float: left;
-        width: 360px;
-        &:before{
-            content:"项目名称：";
-            font-weight: 700;
-        }
-    }
-    .left-intro2{
-        float: right;
-        width: 360px;
-        &:before{
-            content:"融资方案：";
-            font-weight: 700;
-        }
-    }
-}
-
-.left-info{
-    .info-img{
-        img{
-            display: block;
-            width: 100%;
-            margin:20px 0 0;
-        }
-    }
-}
-
-.keyman-list{
-    margin:-20px 0 0;
-    .keyman-item{
-        margin:20px 0 0;
-        .clearfix();
-        i{
-            float: left;
-            width: 100px;
-            height: 100px;
-            margin:0 20px 0 0;
-            background:url(./img/default.png)  center/cover no-repeat;
-        }
-        div{
-            overflow: hidden;
-            padding: 10px 0 0;
-            p{
-                margin: 0 0 1em;
-                span{
-                    margin: 0 15px 0 0;
-                }
-            }
-        }
-    }
-}
-
-.investor-list{
-    margin:-20px 0 0;
-    .investor-item{
-        margin:20px 0 0;
-        .clearfix();
-        i{
-            float: left;
-            width: 72px;
-            height: 72px;
-            border-radius: 100px;
-            margin:0 100-72+20px 0 0;
-            background:url(./img/)  center/cover no-repeat;
-        }
-        div{
-            overflow: hidden;
-            line-height: 72px;
-            span{
-                float: left;
-                width: 33.333333333%;
-            }
-        }
-    }
-}
-
-
-.ad.part{
-    a,img{
-        display: block;
-        width: 100%;
-    }
-}
-
-.download.part{
-    padding:0;
-    border:none;
-    background: #009ad2;
-    a{
-        display: block;
-        line-height: 46px;
-        color:#fff;
-        text-align: center;
-        font-size: 18px;
-        border-bottom: 2px solid #006a93;
-    }
-}
-
-.part .part-content .notice{
-    margin: 0 0 20px;
-    color:#999;
-    font-size: 14px;
-    p{
-        line-height: 2;
-    }
-}
-
-.part.process{
-    padding:0;
-    color:#666666;
-    em{
-        padding: 0 5px 0 0;
-        font-size:20px;
-        font-style: normal;
-        color:#333;
-    }
-    h4{
-        background: #eaeaea;
-        text-align: center;
-        line-height: 40px;
-        font-size: inherit;
-        font-weight: 700;
-        border-bottom: 1px solid #dfdfdf;
-    }
-    .process-step{
-        position: relative;
-        height:105px;
-        border-bottom: 1px solid #dfdfdf;
-        span{
-            position: absolute;
-            top: 16px;
-            text-align: center;
-            color:#999;
-            &:before{
-                content:"";
-                display: block;
-                width:50px;
-                height: 50px;
-                margin: 0 0 6px;
-            }
-            &:after{
-                content:"";
-                position:absolute;
-                top:25px;
-                right:-46-5px;
-                width: 46px;
-                height: 12px;
-                background:url(../img/detail01.png) center no-repeat;
-            }
-        }
-
-        .step1{
-            left:25px;
-            &:before{
-                background:url(../img/liucheng_hui01.png) center no-repeat;
-            }
-        }
-        .step2{
-            left:25+50+56px;
-            &:before{
-                background:url(../img/liucheng_hui02.png) center no-repeat;
-            }
-        }
-        .step3{
-            right:25+50+56px;
-            &:before{
-                background:url(../img/liucheng_hui03.png) center no-repeat;
-            }
-        }
-        .step4{
-            right:25px;
-            &:before{
-                background:url(../img/liucheng_hui04.png) center no-repeat;
-            }
-            &:after{
-                content:none;
-            }
-        }
-         span.active{
-            color:#333;
-        }
-        .step1.active{
-            &:before{
-                background:url(../img/liucheng_lan01.png) center no-repeat;
-            }
-        }
-        .step2.active{
-            &:before{
-                background:url(../img/liucheng_lan02.png) center no-repeat;
-            }
-        }
-        .step3.active{
-            &:before{
-                background:url(../img/liucheng_lan03.png) center no-repeat;
-            }
-        }
-        .step4.active{
-            &:before{
-                background:url(../img/liucheng_lan04.png) center no-repeat;
-            }
-        }
-    }
-
-    .process-status{
-        padding:20px 0 0;
-        .clearfix();
-        .status-left{
-            position:relative;
-            box-sizing: border-box;
-            float: left;
-            width: 50%;
-            padding: 0 30px;
-            &:after{
-                content:"";
-                position:absolute;
-                top:9px;
-                right:0;
-                height:145px;
-                border-right: 1px solid #ccc;
-            }
-        }
-        .status-right{
-            box-sizing: border-box;
-            float: right;
-            width: 50%;
-            padding: 0 30px;
-        }
-        .status-bottom{
-            clear: both;
-            margin:0 20px;
-            background: #cccccc;
-            .status-percent{
-                width:50%;
-                max-width: 100%;
-                height:4px;
-                background: #00a0db;
-            }
-        }
-        h6{
-            font-size: inherit;
-            font-weight: inherit;
-        }
-        p{
-            text-align: center;
-            margin:20px 0;
-        }
-    }
-
-    .process-received{
-        margin:10px 20px 0;
-        padding: 0 0 20px;
-        .clearfix();
-        p{
-            float: left;
-            width: 50%;
+        //////////////////
+        // 流程 , 下载融资计划书 //
+        //////////////////
+        .step {
             padding: 0 0 10px;
-        }
-        a{
-            clear:both;
-            display: block;
-            line-height: 46px;
-            color:#fff;
+            margin: 30px 0;
+            background: #fff;
             text-align: center;
-            font-size: 18px;
-            border-bottom: 2px solid #006a93;
-            background: #009ad2;
+            h6 {
+                line-height: 39px;
+                font-size: 12px;
+                color: #666;
+            }
+            .process-step {
+                display: inline-block;
+                span {
+                    position: relative;
+                    float: left;
+                    padding: 0 50px 0 0;
+                    color: #999;
+                    font-size: 14px;
+                    &:before {
+                        content: "";
+                        display: block;
+                        width: 50px;
+                        height: 50px;
+                        margin: 0 0 6px;
+                    }
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        right: 2px;
+                        width: 46px;
+                        height: 55px;
+                        background: url(../img/detail01.png) center no-repeat;
+                    }
+                }
+                .step1 {
+                    &:before {
+                        background: url(../img/liucheng_hui01.png) center no-repeat;
+                    }
+                }
+                .step2 {
+                    &:before {
+                        background: url(../img/liucheng_hui02.png) center no-repeat;
+                    }
+                }
+                .step3 {
+                    &:before {
+                        background: url(../img/liucheng_hui03.png) center no-repeat;
+                    }
+                }
+                .step4 {
+                    padding: 0;
+                    &:before {
+                        background: url(../img/liucheng_hui04.png) center no-repeat;
+                    }
+                    &:after {
+                        content: none;
+                    }
+                }
+                span.active {
+                    color: #333;
+                }
+                .step1.active {
+                    &:before {
+                        background: url(../img/liucheng_lan01.png) center no-repeat;
+                    }
+                }
+                .step2.active {
+                    &:before {
+                        background: url(../img/liucheng_lan02.png) center no-repeat;
+                    }
+                }
+                .step3.active {
+                    &:before {
+                        background: url(../img/liucheng_lan03.png) center no-repeat;
+                    }
+                }
+                .step4.active {
+                    &:before {
+                        background: url(../img/liucheng_lan04.png) center no-repeat;
+                    }
+                }
+            }
+            .plan {
+                padding: 15px 20px;
+                a {
+                    display: block;
+                    width: 100%;
+                    line-height: 40px;
+                    border-radius: 8px;
+                    background: #ff6935;
+                    color: #fff;
+                    font-size: 14px;
+                }
+            }
+        }
+        //////////
+        // 通知公告 //
+        //////////
+        .notice {
+            padding: 0px 20px 20px;
+            background: #fff;
+            h5 {
+                font-size: 16px;
+                line-height: 80px;
+                font-weight: 500;
+                text-align: center;
+            }
+            div {
+                display: inline !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 13px !important;
+                font-weight: 500 !important;
+                color: #999 !important;
+                * {
+                    display: inline !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    font-size: 13px !important;
+                    font-weight: 500 !important;
+                    color: #999 !important;
+                }
+            }
         }
     }
 }
