@@ -52,7 +52,7 @@
                 <div class="swiper-container carouse-swiper">
                     <div class="swiper-wrapper">
                         <a class="swiper-slide" v-for='val in carouselListData' :key='val.id' class="pre-project no-animation" onclick="listAnimation(window.event)" :href="'project_detail.html?id='+val.id">
-                            <img v-if="val.pjDocumentEntities.YR" :src="val.pjDocumentEntities.YR.pic">
+                            <img v-if="val.pjDocumentEntities.YR" :src="val.pjDocumentEntities.YR[0].pic">
                         </a>
                     </div>
                 </div>

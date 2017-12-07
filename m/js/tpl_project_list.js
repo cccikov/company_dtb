@@ -5,7 +5,7 @@ Vue.component("tpl-project-list", {
             <a class="project-item no-animation" @click="click" v-for="(val , index) in data" :href="'/m/page/project_detail.html?id='+val.id" :class="{finish:val.status=='100',yr:val.status=='20',jg:val.status=='50',mj:val.status=='30',cz:val.status=='40'}" :key="val.id" :data-key="val.id">
                 <!-- 项目图片 -->
                 <div class="project-img">
-                    <img v-if="val.pjDocumentEntities.LOGO" :src="val.pjDocumentEntities.LOGO.pic">
+                    <img v-if="val.pjDocumentEntities.LOGO" :src="val.pjDocumentEntities.LOGO[0].pic">
                 </div>
                 <!-- 项目内容 -->
                 <div class="project-content">
