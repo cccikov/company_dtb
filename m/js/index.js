@@ -1,4 +1,3 @@
-
 var vm = new Vue({
     el: "#wrap",
     data: {
@@ -19,15 +18,15 @@ var vm = new Vue({
 
     },
     computed: {
-        page: function() {
+        page: function () {
             return navActive();
         },
-        noticeComputedData: function() {
+        noticeComputedData: function () {
             var _this = this;
             var originArr = _this.noticeData;
             var newArr = [];
             var smallArr = [];
-            originArr.forEach(function(val, index) {
+            originArr.forEach(function (val, index) {
                 smallArr.push(val);
                 if (index % 2 != 0) {
                     newArr.push(smallArr);
@@ -41,9 +40,13 @@ var vm = new Vue({
         }
     },
     methods: {
-        getdata: function() {
-            $.get("/m/getIndexData", function(r) {
-                var result = eval('(' + r + ')');
+        getdata: function () {
+            $.get("/m/data/indexData.json", function (r) {
+                r = JSON.stringify(r);
+
+             
+
+                var result = JSON.parse(r);
                 vm.carouselListData = result.CarouselList;
                 vm.projectListData = result.ProjectList;
                 vm.finishProjectListData = result.CompleteList;
@@ -52,17 +55,17 @@ var vm = new Vue({
             });
         }
     },
-    mounted: function() {
+    mounted: function () {
         var _this = this;
-        Vue.nextTick(function() { // Vue初始化完成
+        Vue.nextTick(function () { // Vue初始化完成
 
             var notice_swiper = new Swiper('.notice-swiper', { // 资讯swiper
                 autoplay: 2000,
-                direction : 'vertical',
-                height: 48,//你的slide高度
+                direction: 'vertical',
+                height: 48, //你的slide高度
                 observer: true, //修改swiper自己或子元素时，自动初始化swiper
                 observeParents: false, //修改swiper的父元素时，自动初始化swiper
-                onSlideChangeEnd: function(swiper) {　　　
+                onSlideChangeEnd: function (swiper) {　　　
                     swiper.update();　　　
                     notice_swiper.startAutoplay();　　
                     // notice_swiper.reLoop();
@@ -73,7 +76,7 @@ var vm = new Vue({
                 autoplay: 2000,
                 observer: true, //修改swiper自己或子元素时，自动初始化swiper
                 observeParents: false, //修改swiper的父元素时，自动初始化swiper
-                onSlideChangeEnd: function(swiper) {　　　
+                onSlideChangeEnd: function (swiper) {　　　
                     swiper.update();　　　
                     notice_swiper.startAutoplay();　　
                     // notice_swiper.reLoop();
