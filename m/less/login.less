@@ -1,0 +1,146 @@
+@import url("./reset.less");
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    background: url(../img/bg.jpg) top/100% no-repeat;
+}
+
+#wrap {
+    padding: 0 0 50px;
+    color: #e3e3e3;
+}
+
+h1 {
+    padding: 0 0 10px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+input {
+    &:focus {
+        outline: none;
+    }
+}
+
+.name {
+    line-height: 32px;
+    font-size: 14px;
+}
+
+.input {
+    input {
+        box-sizing: border-box;
+        width: 100%;
+        line-height: 32px;
+        padding: 0 12px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        box-shadow: -1px -1px 3px 1px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.login-box {
+    width: 72%;
+    padding: 20% 0;
+    margin: 0 auto 0;
+}
+
+.error {
+    opacity: 0;
+    color: #e4393c;
+    font-size: 14px;
+    line-height: 1.5;
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        margin: -3px 5px 0 0;
+        background: url(../img/error.png) center/contain no-repeat;
+    }
+    &.active {
+        opacity: 1;
+    }
+}
+
+.code {
+    .code-wrap {
+        .clearfix();
+        a {
+            float: right;
+            margin: 0 0 0 12px;
+            img {
+                display: block;
+                border-radius:5px;
+                max-height: 32px;
+                box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+            }
+        }
+        .input {
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: -1px -1px 3px 1px rgba(0, 0, 0, 0.3);
+            input {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.remember {
+    padding: 6px 0 6px;
+    .clearfix();
+    font-size: 14px;
+    label {
+        float: left;
+        input {
+            margin: -3px 0 0;
+            vertical-align: middle;
+            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+        }
+    }
+    a {
+        float: right;
+        line-height: 32px;
+        font-size: inherit;
+        text-decoration: underline
+    }
+}
+
+.action {
+    .clearfix();
+    a {
+        float: left;
+        width: 45%;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 7px;
+        color: #fff;
+        font-size: 14px;
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+        &:nth-of-type(1) {
+            background: #ff8000;
+            margin: 0 10% 0 0;
+        }
+        &:nth-of-type(2) {
+            background: #3399cc;
+        }
+    }
+}
+
+.bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+}

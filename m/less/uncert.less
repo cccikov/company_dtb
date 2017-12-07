@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background: url(../../m/img/mao.png) top/cover no-repeat;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+#wrap {
+    height: 100%;
+    background: url(../../m/img/mao.png) top/cover no-repeat;
+    /* Chrome, Opera */
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px); // filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius=3, MakeShadow=false);
+    /* IE6~IE9 */
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    .float {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        box-sizing: border-box;
+        width: 80%;
+        padding: 12px;
+        background: #fff;
+        border-radius: 20px;
+        font-size: 14px;
+        transform: translate(-50%, -50%);
+        p {
+            text-align: left;
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                margin: 10px 0;
+                text-indent: 2em;
+            }
+        }
+        a {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 5px;
+            margin: 5px 0 10px;
+            color: #fff;
+            background: #ff7d12;
+            text-decoration: none;
+        }
+    }
+}

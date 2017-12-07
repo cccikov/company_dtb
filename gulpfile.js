@@ -349,11 +349,11 @@ gulp.task('clear', function (done) {
 /* 手机端 */
 gulp.task("m_less", function () { // gulp less 
 
-    gulp.src("moblie/less/**/*.less", {
-            base: "moblie/less"
+    gulp.src("m/less/**/*.less", {
+            base: "m/less"
         })
         .pipe(less())
-        .pipe(gulp.dest("moblie/css"));
+        .pipe(gulp.dest("m/css"));
 
 });
 
@@ -362,8 +362,8 @@ gulp.task('m_syncless', function () {
 
     browserSync.init({
         server: {
-            baseDir: "moblie/",
-            index: "index.html"
+            baseDir: "",
+            index: "m/page/index.html"
         },
         port: 3000,
         ui: {// ui的默认端口
@@ -375,19 +375,19 @@ gulp.task('m_syncless', function () {
     });
 
     // 转换less
-    gulp.watch("moblie/less/**/*.less").on('change', function (event) {
-        gulp.src("moblie/less/**/*.less", { // 这个是全部css变化且刷新
-                base: "moblie/less"
+    gulp.watch("m/less/**/*.less").on('change', function (event) {
+        gulp.src("m/less/**/*.less", { // 这个是全部css变化且刷新
+                base: "m/less"
             })
             .pipe(less())
-            .pipe(gulp.dest("moblie/css"))
+            .pipe(gulp.dest("m/css"))
             .pipe(browserSync.reload({
                 stream: true
             }));;
     });
 
     // 监视文件变化同步浏览器
-    gulp.watch(["moblie/**/*.html", "moblie/js/*.js"]).on("change", function (event) {
+    gulp.watch(["m/**/*.html", "m/js/*.js"]).on("change", function (event) {
         gulp.src(event.path).pipe(browserSync.reload({
             stream: true
         }));

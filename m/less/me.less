@@ -1,0 +1,149 @@
+@import url("./common.less");
+html,
+body {
+    background: #e6e6e6;
+}
+
+
+/* 共用部分 */
+
+// 部分
+.section {
+    background: #fff;
+    margin: 0 0 16px;
+}
+
+// 登录
+.login {
+    position: relative;
+    height: 98px;
+    background: -webkit-linear-gradient(left, #ff9900, #ff6600);
+    background: -o-linear-gradient(left, #ff9900, #ff6600);
+    background: linear-gradient(to right, #ff9900, #ff6600);
+    color: #fff;
+    i {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        width: 50px;
+        height: 50px;
+        background: url(../img/userpic.png) center/cover no-repeat;
+    }
+    a {
+        position: relative;
+        top: 32px;
+        display: block;
+        padding: 0 50px 0 24+50+12px;
+        line-height: 2em;
+        font-size: 16px;
+        font-weight: 800;
+        &:after {
+            position: absolute;
+            top: 8px;
+            right: 30px;
+            content: "";
+            width: 16px;
+            height: 16px;
+            background: url(../img/arrow.png) center/contain no-repeat;
+        }
+    }
+}
+
+// 导航
+.nav {
+    .clearfix();
+    text-align: center;
+    a {
+        float: left;
+        width: 33.33333333333%;
+        padding: 0 0 6px;
+        color: #585858;
+        font-size: 14px;
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 24px;
+            margin: 10px 0 6px;
+            background: url(../img/index01.png) center/contain no-repeat;
+        }
+        &:nth-of-type(1):before {
+            background-image: url(../img/me1.png);
+        }
+        &:nth-of-type(2):before {
+            background-image: url(../img/me2.png);
+        }
+        &:nth-of-type(3):before {
+            background-image: url(../img/me3.png);
+        }
+    }
+}
+
+// 按钮
+.list {
+    background: #e6e6e6;
+    a {
+        display: block;
+        line-height: 3;
+        padding: 0 26px;
+        margin: 0 0 1px;
+        background: #fff;
+        font-size: 16px;
+        &:last-of-type {
+            margin: 0;
+        }
+        &:before {
+            content: "";
+            display: inline-block;
+            height: 16px;
+            width: 28px;
+            margin: -3px 0 0;
+            vertical-align: middle;
+            background: url(../img/me4.png) left center/contain no-repeat;
+        }
+    }
+}
+
+.list1 {
+    a {
+        &:nth-of-type(1):before {
+            background-image: url(../img/me4.png);
+        }
+        &:nth-of-type(2):before {
+            background-image: url(../img/me9.png);
+        }
+        &:nth-of-type(3):before {
+            background-image: url(../img/me10.png);
+        }
+    }
+}
+
+.list2 {
+    a {
+        &:nth-of-type(1):before {
+            background-image: url(../img/me6.png);
+        }
+        &:nth-of-type(2):before {
+            background-image: url(../img/me7.png);
+        }
+        &:nth-of-type(3):before {
+            background-image: url(../img/me8.png);
+        }
+    }
+}
+
+// 热线
+.service {
+    text-align: center;
+    p {
+        line-height: 3*16px;
+        color: #ff6600;
+        a{
+            text-decoration: underline;
+        }
+        &:nth-of-type(2) {
+            background: #e6e6e6;
+            color: #999;
+        }
+    }
+}

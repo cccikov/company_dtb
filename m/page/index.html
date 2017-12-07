@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/index.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 登录和导航 -->
+            <div class="section">
+                <!-- 登录 -->
+                <div class="login">
+                    <i></i>
+                    <a href="login.html">点击登录</a>
+                </div>
+                <!-- 导航 -->
+                <div class="nav">
+                    <a href="javascript:void(0)">投后资讯</a>
+                    <a href="javascript:void(0)">等待付款</a>
+                    <a href="javascript:void(0)">全部订单</a>
+                </div>
+            </div>
+
+            <!-- 通知公告 -->
+            <div class="section notice">
+                <div class="swiper-container notice-swiper" style="height:48px">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for='smallArr in noticeComputedData'>
+                            <a href="javascript:void(0)"  v-for='val in smallArr' :key='val.id'>{{val.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 预热项目 -->
+            <div class="section">
+                <div class="title">预热项目</div>
+                <div class="swiper-container carouse-swiper">
+                    <div class="swiper-wrapper">
+                        <a class="swiper-slide" v-for='val in carouselListData' :key='val.id' class="pre-project no-animation" onclick="listAnimation(window.event)" :href="'project_detail.html?id='+val.id">
+                            <img v-if="val.pjDocumentEntities.YR" :src="val.pjDocumentEntities.YR.pic">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 众筹项目 -->
+            <div class="section">
+                <h5 class="title">众筹项目</h5>
+                <tpl-project-list :data="projectListData"></tpl-project-list>
+                <a class="more" href="project.html">查看更多众筹项目</a>
+            </div>
+
+            <!-- 完成项目 -->
+            <div class="section">
+                <h5 class="title">完成项目</h5>
+                <tpl-project-list :data="finishProjectListData"></tpl-project-list>
+                <a class="more" href="project.html?qstatus=100">查看更多众筹项目</a>
+            </div>
+
+            <!-- 新闻资讯 -->
+            <div class="section">
+                <div class="title">新闻资讯</div>
+                <tpl-news-list :data="newsData"></tpl-news-list>
+                <a class="more" href="news.html">查看更多新闻资讯</a>
+            </div>
+
+        </div>
+        <!-- 内容 end -->
+
+        <!-- 底部 -->
+        <footer-tpl :page="page"></footer-tpl>
+    </div>
+
+    <script src="/m/js/tpl_project_list.js"></script>
+    <script src="/m/js/tpl_news_list.js"></script>
+    <script type="text/javascript" src="/m/js/index.js"></script>
+</body>
+
+</html>

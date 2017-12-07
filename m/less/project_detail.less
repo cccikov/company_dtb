@@ -1,0 +1,230 @@
+@import url("./common.less");
+html,
+body {
+    background: #e6e6e6;
+}
+
+.top {
+    position: relative;
+    line-height: 40px;
+    background: #ff6600;
+    color: #fff;
+    text-align: center;
+    h2 {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .back {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+        background: url(../img/arrow.png) center/21px no-repeat;
+        transform: rotate(180deg);
+    }
+    .star {
+        position: absolute;
+        top: 7px;
+        right: 12px;
+        line-height: 20px;
+        padding: 3px 8px 3px 25px;
+        border-radius: 5px;
+        background: #ffb380 url(../img/star-empty.png) left 5px center/18px no-repeat;
+        &:after {
+            content: "收藏"
+        }
+        &.active {
+            background-image: url(../img/star-full.png);
+            &:after {
+                content: "已收藏"
+            }
+        }
+    }
+}
+
+.project-item {
+    pointer-events: none;
+}
+
+// 部分
+.section {
+    background: #fff;
+    margin: 0 0 10px;
+    // 标题
+    .title {
+        line-height: 32px;
+        padding: 2px 0 0;
+        border-bottom: 1px solid #e6e6e6;
+        margin: 0 0 -1px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #333333;
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 16px;
+            margin: -3px 10px 0;
+            vertical-align: middle;
+            background: url(../img/listicon.png) center/contain no-repeat;
+        }
+    }
+}
+
+.step {
+    .step-main {
+        padding: 10px 0 8px;
+        text-align: center;
+        p {
+            display: inline-block;
+            span {
+                position: relative;
+                float: left;
+                color: #666;
+                margin: 0 50px 0 0;
+                &:before {
+                    content: "";
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    margin: 0 0 8px;
+                    background: url(../img/yr_01.png) center/contain no-repeat;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: -45px;
+                    width: 40px;
+                    height: 40px;
+                    background: url(../img/jiantou.png) center/contain no-repeat;
+                }
+            }
+            span {
+                &:nth-of-type(2) {
+                    &:before {
+                        background-image: url(../img/mj_01.png)
+                    }
+                }
+                &:nth-of-type(3) {
+                    &:before {
+                        background-image: url(../img/cz_01.png)
+                    }
+                }
+                &:last-of-type {
+                    margin: 0;
+                    &:before {
+                        background-image: url(../img/jg_01.png)
+                    }
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+            span.active {
+                &:nth-of-type(1) {
+                    &:before {
+                        background-image: url(../img/yr_02.png)
+                    }
+                }
+                &:nth-of-type(2) {
+                    &:before {
+                        background-image: url(../img/mj_02.png)
+                    }
+                }
+                &:nth-of-type(3) {
+                    &:before {
+                        background-image: url(../img/cz_02.png)
+                    }
+                }
+                &:last-of-type {
+                    &:before {
+                        background-image: url(../img/jg_02.png)
+                    }
+                }
+            }
+        }
+    }
+}
+
+.team-list {
+    padding: 0 0 1px;
+    color: #525252;
+    font-size: 14px;
+    .team-item {
+        padding: 0 10px;
+        margin: 10px 0;
+        .clearfix();
+        i {
+            float: left;
+            width: 65px;
+            height: 65px;
+            background-color: #eee;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        div {
+            overflow: hidden;
+            padding: 0 0 0 10px;
+            p {
+                line-height: 1.5;
+                span {
+                    &:first-of-type {
+                        margin: 0 15px 0 0;
+                    }
+                }
+                &:first-of-type {
+                    margin: 0 0 5px;
+                }
+                &:nth-of-type(2) {
+                    height: 3em;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+
+.investor-list {
+    padding: 0 0 1px;
+    color: #525252;
+    font-size: 14px;
+    .investor-item {
+        padding: 0 10px;
+        margin: 10px 0;
+        .clearfix();
+        i {
+            float: left;
+            width: 65px;
+            height: 65px;
+            border-radius:100px;
+            background-color: #eee;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        div {
+            overflow: hidden;
+            padding: 7px 0 0 10px;
+            p {
+                line-height: 25px;
+                span {
+                    &:first-of-type {
+                        margin: 0 15px 0 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    line-height:2.5em;
+    background: #ff6e0d;
+    color:#fff;
+    font-size: 16px;
+}

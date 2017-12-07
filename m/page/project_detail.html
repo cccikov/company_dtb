@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目详情</title>
+    <link rel="stylesheet" href="/m/css/project_detail.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>项目详情</h2>
+                <a class="star" href="javascript:void(0)"></a>
+            </div>
+
+            <div class="main">
+                <!-- 项目列表 -->
+                <div class="section">
+                    <tpl-project-list :data="[projectListData]"></tpl-project-list>
+                </div>
+
+                <!-- 项目筹资流程 -->
+                <div class="section step">
+                    <div class="title">项目筹资流程</div>
+                    <div class="step-main">
+                        <p>
+                            <span :class="{active:projectListData.status === 20}">预热</span>
+                            <span :class="{active:projectListData.status === 30}">募集</span>
+                            <span :class="{active:projectListData.status === 40}">出资</span>
+                            <span :class="{active:projectListData.status === 50}">交割</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 项目详情 -->
+                <div class="section">
+                    <div class="title">项目详情</div>
+                    <div>
+                        <img v-if="projectListData.pjDocumentEntities.TB" :src="projectListData.pjDocumentEntities.TB.pic">
+                        <img v-if="projectListData.pjDocumentEntities.XQ" :src="projectListData.pjDocumentEntities.XQ.pic">
+                        <img v-if="projectListData.pjDocumentEntities.DB" :src="projectListData.pjDocumentEntities.DB.pic">
+                    </div>
+                </div>
+                <!-- 核心成员 -->
+                <div class="section ">
+                    <div class="title">核心成员</div>
+                    <ul class="team-list">
+                        <li class="team-item" v-for='val in projectListData.pjTeamEntities' key='val.id' >
+                            <i :style="'background-image: url('+val.pic+')'"></i>
+                            <div>
+                                <p>
+                                    <span>姓名：{{val.name}}</span>
+                                    <span>职位：{{val.position}}</span>
+                                </p>
+                                <p>
+                                   	 描述：{{val.intro}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 本轮投资意向 -->
+                <div class="section ">
+                    <div class="title">本轮投资意向</div>
+                    <ul class="investor-list" v-if="projectListData.status === 20">
+                        <li class="investor-item" v-for='val in projectListData.orderList' key='val.id'>
+                            <i :style="'background-image: url('+unescape(val.tbUserEntity.pic)+')'"></i>
+                            <div>
+                                <p>
+                                    <span>{{formatPhone(val.tbUserEntity.mobile)}}</span>
+                                    <span>意向投资金额：{{changeMillion(val.intentionamount)}}元</span>
+                                </p>
+                                <p>
+                                    	意向确认时间：{{val.createtime}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="investor-list" v-else>
+                        <li class="investor-item" v-for='val in projectListData.orderList' key='val.id'>
+                            <i :style="'background-image: url('+unescape(val.tbUserEntity.pic)+')'"></i>
+                            <div>
+                                <p>
+                                    <span>{{formatPhone(val.tbUserEntity.mobile)}}</span>
+                                    <span>投资金额：{{changeMillion(val.amount)}}元</span>
+                                </p>
+                                <p>
+                                    	确认时间：{{val.createtime}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!-- 内容 end -->
+
+
+
+        <!-- 底部 -->
+        <a class="footer" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 20 && !projectListData.userOrder && projectListData.userContract">我要报名</a>
+        <a class="footer" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 20 && !projectListData.userOrder && !projectListData.userContract">我要报名</a>
+        <a class="footer" href="###" v-if="projectListData.status === 20 && projectListData.userOrder">已报名</a>
+        <a class="footer" href="###" v-if="projectListData.status === 30 && projectListData.userOrder && projectListData.userOrder.status === 10 && projectListData.userOrder.amount > 0">已投资</a>
+        <a class="footer" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 30 && projectListData.userOrder && projectListData.userOrder.status === 10 && projectListData.userOrder.amount === 0">我要投资</a>
+        <a class="footer" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 40 && projectListData.userOrder && projectListData.userOrder.status === 20">我要出资</a>
+    </div>
+
+    <script src="/m/js/tpl_project_list.js"></script>
+    <script type="text/javascript" src="/m/js/project_detail.js"></script>
+</body>
+
+</html>
