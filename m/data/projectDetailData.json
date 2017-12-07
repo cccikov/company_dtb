@@ -1,0 +1,73 @@
+{
+    "code": 0,
+    "pjInfoEntity": {
+        "brief": "还是等还哦是京东i",
+        "capital": null,
+        "companyname": null,
+        "completePercent": "0.4",
+        "createtime": "2017-12-01 15:11:07",
+        "creator": "admin",
+        "daysBetween": 0,
+        "deliverystatus": null,
+        "establishmentdate": null,
+        "id": 52,
+        "logo": null,
+        "name": "呵呵呵呵_测试",
+        "notices": [],
+        "orderAmount": 40000,
+        "orderList": [],
+        "pjDocumentEntities": {
+            "LOGO": [
+                {
+                    "createtime": "2017-12-01 15:11:44",
+                    "creator": "admin",
+                    "id": 116,
+                    "num": 1,
+                    "pic": "/m/img/test/test02.png",
+                    "pjid": 52,
+                    "type": "LOGO",
+                    "typedes": "标志"
+                }
+            ],
+            "YR": [
+                {
+                    "createtime": "2017-12-01 15:12:33",
+                    "creator": "admin",
+                    "id": 117,
+                    "num": 1,
+                    "pic": "/m/img/test/test02.png",
+                    "pjid": 52,
+                    "type": "YR",
+                    "typedes": "预热"
+                }
+            ]
+        },
+        "pjFinacingEntity": {
+            "amount": 10000000,
+            "autoflag": null,
+            "contributivedays": 0,
+            "deliverydays": 0,
+            "id": 39,
+            "maxamount": 200000,
+            "minamount": 50000,
+            "pjid": 52,
+            "preheatdays": 0,
+            "raisedays": 0,
+            "sellrate": 20,
+            "useto": "辉煌或按实际打款了圣诞节"
+        },
+        "pjLogEntities": null,
+        "pjReceiverEntity": null,
+        "pjTeamEntities": null,
+        "pjbegindate": "2017-12-01 17:06:10",
+        "pjenddate": "2017-12-01 17:06:10",
+        "status": 40,
+        "statusDesc": "出资",
+        "tabs": "测试",
+        "updater": "admin",
+        "updatetime": "2017-12-01 17:06:10",
+        "userBookmark": null,
+        "userContract": null,
+        "userOrder": null
+    }
+}
