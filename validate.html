@@ -15,12 +15,12 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html;charset=utf-8"%>
 <%
-    request.setCharacterEncoding("UTF-8");
-    response.setContentType("text/html;charset=UTF-8");
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
-    TbUserEntity userEntity = request.getAttribute("tbUserEntity") != null ? (TbUserEntity)request.getAttribute("tbUserEntity"):null;   
-    List<BankcardEntity> bankcardEntities = request.getAttribute("bankcardEntities") != null ? (List<BankcardEntity>)request.getAttribute("bankcardEntities"):null; 
-    String optype = request.getAttribute("optype") != null ? (String)request.getAttribute("optype"):""; 
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html;charset=UTF-8");
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
+	TbUserEntity userEntity = request.getAttribute("tbUserEntity") != null ? (TbUserEntity)request.getAttribute("tbUserEntity"):null;
+	List<BankcardEntity> bankcardEntities = request.getAttribute("bankcardEntities") != null ? (List<BankcardEntity>)request.getAttribute("bankcardEntities"):null;
+	String optype = request.getAttribute("optype") != null ? (String)request.getAttribute("optype"):"";
 %>
 <head>
     <meta charset="UTF-8">
@@ -33,302 +33,345 @@
     <script type="text/javascript" src="/statics/libs/pc.js"></script>
     <script src="/statics/libs/ajaxupload.js"></script>
     <script type="text/javascript" src="/statics/libs/jquery.validate.1.9.min.js"></script>
-    <script type="text/javascript" src="/statics/libs/jquery.form.js"></script>
-    
-    <style type="text/css">
-        .tips{
-            display: none;
-        }
-    </style>
+	<script type="text/javascript" src="/statics/libs/jquery.form.js"></script>
+
 </head>
 <script type="text/javascript">
-    var Url = "";
-    var button = "";
-    var InterValObj; //timer变量，控制时间
-    var count = 30; //间隔函数，1秒执行
-    var curCount;//当前剩余秒数
-    var clickCount = 0;
-    var cclickCount = 0;
-    $(function() {
-        $.validator.addMethod("isIdcard", function(value, element){
-            //身份证正则表达式(15位)    
-             var isIDCard1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/; 
-              //身份证正则表达式(18位)    
-            return this.optional(element) || (isIDCard1.test(value));
-        }, "请输入正确的身份证号码");
-        $.validator.addMethod("isMobile", function(value, element){
-            var chrnum = /^1[3|4|5|6|7|8][0-9]\d{8}$/;
-            return this.optional(element) || (chrnum.test(value));
-        }, "请输入正确的手机号码");
-        
-        $.validator.addMethod("isBankCard", function(){
-            var ischeck = $("#ischeck").val();
-            if(ischeck == 1){
-                var cardnoS = $('input:radio[name="cardnoS"]:checked').val();
-                if(cardnoS == undefined || cardnoS == ""){
-                    return false;
-                }else{
-                    return true;
-                }
-            }else{
-                var cardNo = $('#cardNo').val();
-                var bankName = $('#bankName').val();
-                var dotName = $('#dotName').val();
-                if(cardNo == "" || bankName == "" || dotName == ""){
-                    return false;
-                }else{
-                    return true
-                }
-            }
-        }, "请输入或选择银行卡信息");
-        
-         
-        var attemp=0,flag=true;
+	var Url = "";
+	var button = "";
+	var InterValObj; //timer变量，控制时间
+	var count = 30; //间隔函数，1秒执行
+	var curCount; //当前剩余秒数
+	var clickCount = 0;
+	var cclickCount = 0;
 
-        
-        // 表单验证
-        $('#frmaction').validate({
-            //debug:true,
-            onkeyup: false,
-            onfocusout:function(element){
-                $(element).valid();
-            },
-            errorPlacement:function(error, element){
-                var placeholder=element.parents('.item2').next('.item3');
-                placeholder.find('span.reg-valid-valid').remove();
-                placeholder.find('span.reg-valid-error').remove();
-                error.appendTo(placeholder);
-            },
-            submitHandler:function(){
-                  $('#frmaction').ajaxSubmit({
-                    type:"post",
-                    url:"/member/certaction",
-                    success: function(data){
-                        var result =  eval('(' + data + ')');
-                        if(result.code == 0){
-                            location.reload()
-                        }else{
-                            alert(data.msg)
-                        }
-                    }
-                  });
-                },
-            errorClass:'reg-valid-error',
-            errorElement:'span',
-            success: function(label){
-                label.html("&nbsp;").attr("class","reg-valid-valid");
-            },
-            rules:{
-                username:{
-                    required:true,
-                    maxlength:20
-                },
-                idCard:{
-                    required:true,
-                    isIdcard:true
-                },
-                mobile:{
-                    required:true,
-                    isMobile:true,
-                    remote:{
-                        url:"/member/certvalid?optype=validmobile",
-                        data:{
-                            mobile:function(){return $('#mobile').val();}
-                        }
-                    }
-                },
-                mobilevaildcode:{
-                    required:true,
-                    remote:{
-                        url:"/member/certvalid?optype=validmobilecode",
-                        data:{
-                            mobilevaildcode:function(){return $('#mobilevaildcode').val();},
-                            mobile:function(){return $('#mobile').val();}
-                        }
-                    }
-                },
-                frontpic:{
-                    required:true
-                },
-                backpic:{
-                    required:true
-                },
-                cardNo:{
-                    isBankCard:true
-                },
-                bankName:{
-                    isBankCard:true
-                },
-                dotName:{
-                    isBankCard:true
-                },
-                cardnoS:{
-                    isBankCard:true
-                }
-            },
-            messages:{
-                username:{
-                    required:'请输入姓名',
-                    maxlength:jQuery.format("姓名不能超过{0}个字符")  
-                },
-                idCard:{
-                    required:'请输入身份证号码'
-                },
-                mobile:{
-                    required:'请输入手机号',
-                    remote:'该手机号码无效或已被认证！'
-                },
-                mobilevaildcode:{
-                    required:'请输入短信验证码',
-                    remote:'验证码错误或已失效！'
-                },
-                frontpic:{
-                    required:'请上传身份证正面'
-                },
-                backpic:{
-                    required:'请上传身份证反面'
-                }
-            }
-        });
 
-        
-        $('input').focus(function(){
-            if($(this).is(":text"))
-                $(this).addClass('reg-input-focus');
-            if(!$(this).hasClass('reg-valid-error')&&$(this).parent().next('.item3').find('span.reg-valid-error').size()==0)
-                $(this).parent().next('.item3').find('.reg-valid-tip').removeClass('tip-hidden').siblings().remove();
-        });
 
-        $('input').blur(function(){
-            $(this).removeClass('reg-input-focus').parent().next('.item3').find('.reg-valid-tip').addClass('tip-hidden');
-        });
+	$(function () {
 
-    
-        
-        $("#edit").click(function(){
-            window.location.href='/member/cert?optype=edit';
-        })
-        
-        
-        <%if(userEntity.getAuditStatus() <= 0 || optype.equals("edit")){ %>
-            getToken()
-            
-            new AjaxUpload('#front', {
-                action: '/upload/up?type=type=project/team',
-                name: 'file',
-                autoSubmit:true,
-                responseType:"json",
-                onSubmit:function(file, extension){
-                    if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
-                        alert('只支持jpg、png、gif格式的图片！');
-                        return false;
-                    }
-                    button = "frontpic";
-                    var token = $("#token").val();
-                    this.setData({
-                        'token': token
-                    });
-                    $(".loader-float",top.document).addClass("active"); // loading效果出现
-                },
-                onComplete : function(file, r){
-                }
-            });
-            new AjaxUpload('#back', {
-                action: '/upload/up?type=type=project/team',
-                name: 'file',
-                autoSubmit:true,
-                responseType:"json",
-                onSubmit:function(file, extension){
-                    if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
-                        alert('只支持jpg、png、gif格式的图片！');
-                        return false;
-                    }
-                    button = "backpic";
-                    var token = $("#token").val();
-                    this.setData({
-                        'token': token
-                    });
-                    $(".loader-float",top.document).addClass("active"); // loading效果出现
-                },
-                onComplete : function(file, r){
-                }
-            });
-        <%}%>
-         
-        
-    });
-    function getToken(){
-        $.ajax({
-            type: "POST",
-            url: "/gettoken",
-            success: function(r){
-                var result =  eval('(' + r + ')');
-                var token = result.token;
-                $("#token").val(token)
-            }
-        });
-    }
-    
-    <!-- 上传图片完成时触发 -->
-    function onAjaxUploadComplete(j) {
-        r = JSON.parse(j);
-        getToken();
-        if (r.url != "没有上传权限") {
-            var url = r.url;
-            Url = url;
-            if(button == "frontpic"){
-                $("#frontpic").val(url);
-                $("#front .img-wrap").html("<img src="+url+">");
-                $(".loader-float",top.document).removeClass("active"); // loading效果消失
-            }else if(button == "backpic"){
-                $("#backpic").val(url);
-                $("#back .img-wrap").html("<img src="+url+">");
-                $(".loader-float",top.document).removeClass("active"); // loading效果消失
-            }
-            
-        } else {
-            alert(r.msg);
-        }
-    }
+		/**
+		 * 表单验证 begin
+		 */
 
-    
-  //timer处理函数
-    function SetRemainTime() {
-        if (curCount == 0) {
-            window.clearInterval(InterValObj);//停止计时器
-            $("#btnSendCode").attr("href","javascript:sendMessage()");
-            $("#btnSendCode").html("重新发送短信验证码");
-            clickCount = clickCount + 1;
-        }
-        else {
-            curCount--;
-            $("#btnSendCode").html("重新获取("+curCount +")");
-        }
-    }
-    
-    function sendMessage() {
-         if($("#frmaction").validate().element($("#mobile")) ==true){
-                curCount = count;
-                //设置button效果，开始计时
-                $("#btnSendCode").attr("href","javascript:void(0)");
-                $("#btnSendCode").html("重新获取("+curCount +")");
-                InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
-                (jQuery).ajax({
-                     type : "POST",
-                     url : "/member/sendcode",//发送验证码
-                     data : {
-                     'mobile' : $('#mobile').val()//传入参数
-                     },
-                     success : function(data) {
-                         if(data == "true"){
-                             
-                         }else{
-                             alert("验证码发送失败！")
-                         }
-                     }
-                })
-         }
-    }
+		$.validator.addMethod("isIdcard", function (value, element) {
+			//身份证正则表达式(15位)
+			var isIDCard1 = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+			//身份证正则表达式(18位)
+			return this.optional(element) || (isIDCard1.test(value));
+		}, "请输入正确的身份证号码");
+		$.validator.addMethod("isMobile", function (value, element) {
+			var chrnum = /^1[3|4|5|6|7|8][0-9]\d{8}$/;
+			return this.optional(element) || (chrnum.test(value));
+		}, "请输入正确的手机号码");
+
+		$.validator.addMethod("isBankCard", function () {
+			var ischeck = $("#ischeck").val();
+			if (ischeck == 0) { // ischeck为0的时候是选择银行卡
+				var cardnoS = $('#cardnoS').val();
+				if (cardnoS == undefined || cardnoS == "") {
+					return false;
+				} else {
+					return true;
+				}
+			} else { // ischeck为1的时候是填写银行卡
+				var cardNo = $('#cardNo').val();
+				var bankName = $('#bankName').val();
+				var dotName = $('#dotName').val();
+				if (cardNo == "" || bankName == "" || dotName == "") {
+					return false;
+				} else {
+					return true
+				}
+			}
+		}, "请输入或选择银行卡信息");
+
+		$.validator.addMethod("isUploadCardPic", function () {
+			var front = $("#frontpic").val();
+			var back = $("#backpic").val();
+			return !!front && !!back;
+		}, "请选择上传身份证正反面图片");
+
+		var attemp = 0,
+			flag = true;
+
+		// 表单验证
+		$('#frmaction').validate({
+			//debug:true,
+			onkeyup: false,
+			onfocusout: function (element) { // 失去焦点时验证
+				$(element).valid();
+			},
+			errorPlacement: function (error, element) { // 跟一个函数，可以自定义错误放到哪里。 error 是 validate生成的错误标签 , element是当前验证的input元素
+				var placeholder = element.parents('.input').next('.tips');
+				placeholder.find('span.reg-valid-success').remove();
+				placeholder.find('span.reg-valid-error').remove();
+				error.appendTo(placeholder);
+			},
+			submitHandler: function () { // 通过验证后运行的函数，里面要加上表单提交的函数，否则表单不会提交。
+				$('#frmaction').ajaxSubmit({ // form.js 提交表单
+					type: "post",
+					url: "/member/certaction",
+					success: function (data) {
+						var result = eval('(' + data + ')');
+						if (result.code == 0) {
+							location.reload()
+						} else {
+							alert(result.msg)
+						}
+					}
+				});
+			},
+			errorClass: 'reg-valid-error',
+			errorElement: 'span',
+			success: function (label) { // label 是当前生成的错误标签
+				label.html("").attr("class", "reg-valid-success"); // 手动置换className
+			},
+			rules: {
+				username: {
+					required: true,
+					maxlength: 20
+				},
+				idCard: {
+					required: true,
+					isIdcard: true
+				},
+				mobile: {
+					required: true,
+					isMobile: true,
+					remote: {
+						url: "/member/certvalid?optype=validmobile",
+						data: {
+							mobile: function () {
+								return $('#mobile').val();
+							}
+						}
+					}
+				},
+				mobilevaildcode: {
+					required: true,
+					remote: {
+						url: "/member/certvalid?optype=validmobilecode",
+						data: {
+							mobilevaildcode: function () {
+								return $('#mobilevaildcode').val();
+							},
+							mobile: function () {
+								return $('#mobile').val();
+							}
+						}
+					}
+				},
+				frontpic: {
+					isUploadCardPic:true
+				},
+				backpic: {
+					isUploadCardPic:true
+				},
+				cardNo: {
+					isBankCard: true
+				},
+				bankName: {
+					isBankCard: true
+				},
+				dotName: {
+					isBankCard: true
+				},
+				cardnoS: {
+					isBankCard: true
+				}
+			},
+			messages: {
+				username: {
+					required: '请输入姓名',
+					maxlength: jQuery.format("姓名不能超过{0}个字符")
+				},
+				idCard: {
+					required: '请输入身份证号码'
+				},
+				mobile: {
+					required: '请输入手机号',
+					remote: '该手机号码无效或已被认证！'
+				},
+				mobilevaildcode: {
+					required: '请输入短信验证码',
+					remote: '验证码错误或已失效！'
+				}
+			}
+		});
+
+		$('input').focus(function () {
+			if ($(this).is(":text")){ // type = text
+				$(this).addClass('reg-input-focus');
+			}
+			if (!$(this).hasClass('reg-valid-error') && $(this).parent().next('.tips').find('span.reg-valid-error').size() == 0){ // input没有reg-valid-error 和 tips 里面 没有reg-valid-error
+				$(this).parent().next('.tips').find('.reg-valid-tip').removeClass('tip-hidden').siblings().remove();
+			}
+		});
+
+		$('input').blur(function () {
+			$(this).removeClass('reg-input-focus').parent().next('.tips').find('.reg-valid-tip').addClass('tip-hidden');
+		});
+		/**
+		 * 表单验证 end
+		 */
+
+
+		$("#mobile").on("change",function(){
+			var _this = $(this);
+			if(!_this.val()){
+				$("#btnSendCode").removeClass("canClick");
+			}else{
+				$("#btnSendCode").addClass("canClick");
+			}
+		}).change();
+
+
+		/**
+		 * 银行信息填写 begin
+		 */
+		 var ischeck = $("#ischeck").val();
+		 $(".type-select a").on("click",function(){
+			var _this = $(this);
+			var _index = _this.index();
+			_this.addClass("active").siblings("a").removeClass("active");
+			$(".select-box").eq(_index).addClass("active").siblings(".select-box").removeClass("active");
+			$("#ischeck").val(_index);
+		 }).eq(ischeck).addClass("active");
+		 $(".select-box").eq(ischeck).addClass("active");
+
+         // 选择银行卡
+		 $(".card-item").on("click",function(){
+			var _this = $(this);
+			_this.addClass("active").siblings("a").removeClass("active");
+			$("#cardnoS").val(_this.html());
+		 });
+		 /**
+ 		 * 银行信息填写 end
+ 		 */
+
+
+
+
+		$("#edit").click(function () {
+			window.location.href = '/member/cert?optype=edit';
+		});
+
+		<%if(userEntity.getAuditStatus() <= 0 || optype.equals("edit")){ %>
+			getToken();
+
+			new AjaxUpload('#front', {
+				action: '/upload/up?type=type=project/team',
+				name: 'file',
+				autoSubmit: true,
+				responseType: "json",
+				onSubmit: function (file, extension) {
+					if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))) {
+						alert('只支持jpg、png、gif格式的图片！');
+						return false;
+					}
+					button = "frontpic";
+					var token = $("#token").val();
+					this.setData({'token': token});
+					$(".loader-float", top.document).addClass("active"); // loading效果出现
+				},
+				onComplete: function (file, r) {}
+			});
+			new AjaxUpload('#back', {
+				action: '/upload/up?type=type=project/team',
+				name: 'file',
+				autoSubmit: true,
+				responseType: "json",
+				onSubmit: function (file, extension) {
+					if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))) {
+						alert('只支持jpg、png、gif格式的图片！');
+						return false;
+					}
+					button = "backpic";
+					var token = $("#token").val();
+					this.setData({'token': token});
+					$(".loader-float", top.document).addClass("active"); // loading效果出现
+				},
+				onComplete: function (file, r) {}
+			});
+		<%}%>
+
+	});
+
+
+	function getToken() {
+		$.ajax({
+			type: "POST",
+			url: "/gettoken",
+			success: function (r) {
+				var result = eval('(' + r + ')');
+				var token = result.token;
+				$("#token").val(token)
+			}
+		});
+	}
+
+
+    // 上传图片完成时触发
+	function onAjaxUploadComplete(j) {
+		r = JSON.parse(j);
+		getToken();
+		if (r.url != "没有上传权限") {
+			var url = r.url;
+			Url = url;
+			if (button == "frontpic") {
+				$("#frontpic").val(url);
+				$("#front .img-wrap").html("<img src=" + url + ">");
+				$(".loader-float", top.document).removeClass("active"); // loading效果消失
+			} else if (button == "backpic") {
+				$("#backpic").val(url);
+				$("#back .img-wrap").html("<img src=" + url + ">");
+				$(".loader-float", top.document).removeClass("active"); // loading效果消失
+			}
+
+		} else {
+			alert(r.msg);
+		}
+	}
+
+	//timer处理函数
+	function SetRemainTime() {
+		if (curCount == 0) {
+			window.clearInterval(InterValObj); //停止计时器
+			$("#btnSendCode").attr("href", "javascript:sendMessage()").addClass("canClick");
+			$("#btnSendCode").html("重新发送短信验证码");
+			clickCount = clickCount + 1;
+		} else {
+			curCount--;
+			$("#btnSendCode").html("重新获取(" + curCount + ")");
+		}
+	}
+
+
+
+	function sendMessage() {
+		if(!$("#mobile").val()){
+			return false;
+		}
+
+
+
+		curCount = count;
+		//设置button效果，开始计时
+		$("#btnSendCode").attr("href", "javascript:void(0)").removeClass("canClick");
+		$("#btnSendCode").html("重新获取(" + curCount + ")");
+		InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+		(jQuery).ajax({
+			type: "POST", url: "/member/sendcode", //发送验证码
+			data: {
+				'mobile': $('#mobile').val() //传入参数
+			},
+			success: function (data) {
+				if (data == "true") {} else {
+					alert("验证码发送失败！")
+				}
+			}
+		})
+	}
 </script>
 
 
@@ -340,94 +383,128 @@
 
         <%if(userEntity.getAuditStatus() <= 0 || optype.equals("edit")){ %>
         <input name="token" id="token" type="hidden"></input>
-        
+
         <form  name="frmaction" id="frmaction">
-        <input name="ischeck" id="ischeck" type="hidden" value="0"></input>
+        <input name="ischeck" id="ischeck" type="hidden" value="<%=bankcardEntities != null && bankcardEntities.size()>0 ? "0":"1"%>"></input>
             <div class="main-input">
 
-                <!-- 姓名 -->
-                <div class="fmreg-item">
-                    <span class="text">姓名</span>
-                    <span class="item2">
-                        <input type="text" name="username" id="username" value="<%=FString.toString(userEntity.getUsername(),"")%>">
-                    </span>
-                    <span class="item3">
-                        <span class="reg-valid-tip tip-hidden">请输入姓名</span>
-                    </span>
-                </div>
 
                 <!-- 姓名 -->
-                <div class="fmreg-item">
-                    <span class="text">手机</span>
-                    <span class="item2">
-                        <input type="text" name="mobile" id="mobile" value="<%=FString.toString(userEntity.getMobile(),"")%>">
-                    </span>
-                    <span class="item3">
-                        <span class="reg-valid-tip tip-hidden">请输入手机号</span>
-                    </span>
+                <div class="input-wrap">
+                    <span class="text">姓名</span>
+                    <div class="input">
+                        <input type="text" name="username" id="username" value="<%=FString.toString(userEntity.getUsername(),"")%>">
+                    </div>
+                    <p class="tips">
+                        <span class="reg-valid-tip tip-hidden">请输入姓名</span>
+                    </p>
                 </div>
+
+
+
+				<!-- 姓名 -->
+                <div class="input-wrap">
+                    <span class="text">手机</span>
+                    <div class="input">
+                        <input type="text" name="mobile" id="mobile" value="<%=FString.toString(userEntity.getMobile(),"")%>">
+                    </div>
+                    <p class="tips">
+                        <span class="reg-valid-tip tip-hidden">请输入手机号</span>
+                    </p>
+                </div>
+
+
 
                 <!-- 身份证号 -->
-                <div class="fmreg-item">
+                <div class="input-wrap">
                     <span class="text">身份证号</span>
-                    <span class="item2">
+                    <div class="input">
                         <input type="text" name="idCard" id="idCard" value="<%=FString.toString(userEntity.getIdCard(),"")%>">
-                    </span>
-                    <span class="item3">
+                    </div>
+                    <p class="tips">
                         <span class="reg-valid-tip tip-hidden">根据法律规定投资人需要实名认证</span>
-                    </span>
+                    </p>
                 </div>
+
+
+
 
                 <!-- 上传身份证 -->
-                <div class="certcard">
-                    <div class="uploadcard" id="front">
-                        <p>请上传身份证正面</p>
-                        <p class="font-plus">+</p>
-                        <div class="img-wrap">
-                            <img src="<%=FString.toString(userEntity.getFrontpic(),"") %>">
-                        </div>
-                        <input type="hidden" name="frontpic" id="frontpic" value="<%=FString.toString(userEntity.getFrontpic(),"") %>"></input>
-                    </div>
-                    <div class="uploadcard" id="back">
-                        <p>请上传身份证反面</p>
-                        <p class="font-plus">+</p>
-                        <div class="img-wrap">
-                            <img src="<%=FString.toString(userEntity.getBackpic(),"") %>">
-                        </div>
-                        <input type="hidden" name="backpic" id="backpic" value="<%=FString.toString(userEntity.getBackpic(),"") %>"></input>
-                    </div>
+				<div class="input-wrap">
+					<span class="text">身份证正反面</span>
+					<div class="input">
+						<input type="text" class="hidden" name="frontpic" id="frontpic" value="<%=FString.toString(userEntity.getFrontpic(),"") %>"></input>
+						<input type="text" class="hidden" name="backpic" id="backpic" value="<%=FString.toString(userEntity.getBackpic(),"") %>"></input>
+						<div class="certcard">
+							<div class="uploadcard" id="front">
+								<p>请上传身份证正面</p>
+								<p class="font-plus">+</p>
+								<div class="img-wrap">
+									<img src="<%=FString.toString(userEntity.getFrontpic(),"") %>">
+								</div>
+							</div>
+							<div class="uploadcard" id="back">
+								<p>请上传身份证反面</p>
+								<p class="font-plus">+</p>
+								<div class="img-wrap">
+									<img src="<%=FString.toString(userEntity.getBackpic(),"") %>">
+								</div>
+							</div>
+						</div>
+					</div>
+					<p class="tips">
+					</p>
+				</div>
+
+
+
+                <div class="input-wrap">
+					<span class="text">银行卡信息</span>
+                	<div class="input wrap-right">
+						<div class="type-select">
+						<%if(bankcardEntities != null && bankcardEntities.size()>0){ %>
+							<a href="javascript:void(0)">选择已绑定银行卡</a>
+						<%} %>
+							<a href="javascript:void(0)">+ 添加绑定银行卡</a>
+						</div>
+						<%if(bankcardEntities != null && bankcardEntities.size()>0){ %>
+		                    <div class="select-box radio-card">
+								<input type="text" class="hidden" id="cardnoS" name="cardnoS" value="">
+								<div class="card-list">
+			                    <%for(BankcardEntity bankcardEntity:bankcardEntities){ %>
+									<a class="card-item" href="javascript:void(0)"><%=bankcardEntity.getCardNo() %> <%=bankcardEntity.getBankName() %></a>
+								<%} %>
+								</div>
+							</div>
+	                    <%}%>
+	                    <div class="select-box text-card">
+							<div class="inner-input">
+								<input type="text" name="cardNo" id="cardNo" value="" placeholder="银行卡号">
+							</div>
+							<div class="inner-input">
+								<input type="text" name="bankName" id="bankName" value="" placeholder="开户行">
+							</div>
+							<div class="inner-input">
+								<input type="text" name="dotName" id="dotName" value="" placeholder="开户行网点">
+							</div>
+						</div>
+
+                	</div>
+					<p class="tips">
+						<span class="reg-valid-tip tip-hidden">请选择银行卡</span>
+					</p>
                 </div>
 
-                
-                <div class="fmreg-item">
-                    <%if(bankcardEntities != null){ %>
-                    <span class="text">银行卡号</span>
-                    <span class="item2">
-                    <%for(BankcardEntity bankcardEntity:bankcardEntities){ %>
-                        <input name="cardnoS" type="radio" value="<%=bankcardEntity.getCardNo() %>" /><%=bankcardEntity.getCardNo() %> 
-                    <%} %>
-                    </span>
-                    <%}%>
-                    <span class="item2">
-                        <input type="text" name="cardNo" id="cardNo" value="" placeholder="银行卡号">
-                         <input type="text" name="bankName" id="bankName" value="" placeholder="开户行"> 
-                         <input type="text" name="dotName" id="dotName" value="" placeholder="开户行网点">
-                    </span>
-                    <span class="item3">
-                        <span class="reg-valid-tip tip-hidden">请选择银行卡</span>
-                    </span>
-                </div>
-
-                <!-- 身份证号 -->
-                <div class="fmreg-item">
+				<!-- 身份证号 -->
+                <div class="input-wrap">
                     <span class="text">验证码</span>
-                    <span class="item2">
+                    <div class="input code-input">
                         <input type="text" name="mobilevaildcode" id="mobilevaildcode" class="reg-input" placeholder="验证码"/>
-                        <a href="javascript:sendMessage()" class="btnSendCode" id="btnSendCode">获取验证码</a>
-                    </span>
-                    <span class="item3">
+						<a href="javascript:sendMessage()" class="btnSendCode" id="btnSendCode">获取验证码</a>
+                    </div>
+                    <p class="tips">
                         <span class="reg-valid-tip tip-hidden">请输入手机验证码</span>
-                    </span>
+                    </p>
                 </div>
 
                 <p class="submit-btn">
@@ -438,7 +515,14 @@
 
             </div>
         </form>
+
+
+
+
         <%}else{ %>
+
+
+			<!-- 这是显示编辑好的资料 -->
             <div class="main-input had-upload">
                 <div class="text-input">
                     <span>姓名</span>
@@ -472,27 +556,27 @@
                     </div>
                 </div>
 
-                <div class="text-input">
+				<div class="text-input">
                     <span>银行卡号</span>
                     <p>
                         <%=FString.toString(userEntity.getCardno(),"") %>
                     </p>
                 </div>
 
-                <div class="text-input">
+				<div class="text-input">
                     <span>审核状态</span>
                     <p>
                         <%if(userEntity.getAuditStatus() == 1){ %>
-                                待审核
+                        		待审核
                         <%}else if(userEntity.getAuditStatus() == 2){ %>
-                                审核通过
+                        		审核通过
                         <%} %>
-                        
+
                     </p>
-                </div>
+				</div>
 
                 <%if(userEntity.getAuditStatus() == 2){ %>
-                <p class="submit-btn">
+				<p class="submit-btn">
                     <button id="edit">资料更改</button>
                 </p>
                 <%} %>
@@ -504,3 +588,23 @@
 
 </html>
 
+
+
+<script type="text/javascript">
+    $(function () {
+        if ($(".timeout").size() > 0) {
+            var timer = 0;
+            var n = 10
+            var html = $(".timeout").html();
+            timer = setInterval(function () {
+                if (n < 0) {
+                    clearInterval(timer);
+                    $(".timeout")[0].click();
+                    return
+                }
+                $(".timeout").html(html + "，" + n + "秒后自动跳转");
+                n--;
+            }, 1000)
+        }
+    });
+</script>
