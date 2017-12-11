@@ -47,8 +47,9 @@ var more = new GetMore({
     cb: function() {
         var _this = this;
         $.ajax({
-            type: "post",
-            url: "/m/getnewsdata",
+            // type: "post",
+            type: "get",
+            url: "/m/data/newsListData.json",
             async: true,
             dataType: "json",
             data: { 'sortid': sortid, 'page': page },
