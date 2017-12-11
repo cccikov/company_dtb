@@ -1,99 +1,104 @@
 @import url("./common.less");
-.main {
-    padding: 40px 0 40+170px;
+// 旧代码 begin
+.main-old {
+    padding: 40px 0 @footerHeight+40px;
     .clearfix();
-    h4 {
-        color: #333333;
-        font-size: 20px;
-        // font-weight: 500;
-    }
     .step {
         .clearfix();
         padding: 0 0 0 5px;
         margin: 50px 0 40px;
+        background: url(../img/border2.png) top left 1px repeat-x;
         p {
             position: relative;
             box-sizing: border-box;
-            width: 33.333333333333%;
             float: left;
-            padding: 0 5px 0 0;
-            color: #d0d0d0;
-            font-size: 16px;
+            width: 33.333333333333%;
+            padding: 20px 0 0;
             text-align: center;
+            color: #b1b1b1;
             &:before {
                 content: "";
-                display: block;
-                border: 4px solid #d0d0d0;
-                margin: 0 0 15px;
-            }
-            span {
                 position: absolute;
-                top: -8px;
+                top: -18px;
                 left: 50%;
-                width: 26px;
-                line-height: 26px;
-                border-radius: 15px;
-                margin-left: -15px;
-                background: #d0d0d0;
-                color: #fff;
+                width: 34px;
+                height: 34px;
+                padding: 0 13px;
+                margin: 0 0 0 -30px;
+                background: #fff url(../img/step1.png) center no-repeat;
+            }
+            &.step1:before {
+                background-image: url(../img/step1.png);
+            }
+            &.step2:before {
+                background-image: url(../img/step2.png);
+            }
+            &.step3:before {
+                background-image: url(../img/step3.png);
             }
             &.active {
-                color: #66cc66;
-                &:before {
-                    border-color: #66cc66;
+                color: #ff6935;
+                &.step1:before {
+                    background-image: url(../img/step1active.png);
                 }
-                span {
-                    background-color: #66cc66;
+                &.step2:before {
+                    background-image: url(../img/step2active.png);
+                }
+                &.step3:before {
+                    background-image: url(../img/step3active.png);
                 }
             }
         }
     }
 }
 
-button{
+button {
     cursor: pointer;
-    opacity:1;
-    transition:opacity 0.2s;
-    &:focus{
-        outline:none;
+    opacity: 1;
+    transition: opacity 0.2s;
+    &:focus {
+        outline: none;
     }
-    &:active{
+    &:active {
         opacity: 0.6;
     }
 }
 
-.order-msg {
+.main-old .order-msg {
+    padding: 30px;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.2);
     table {
         width: 100%;
         border-collapse: collapse;
-        margin: 0 0 -1px;
-        background: #f0f0f0;
         td {
-            border: 1px solid #ccc;
-            font-size:16px;
-            padding:10px 18px;
-            strong{
-                font-family: "SimSun"; // 宋体
+            font-size: 14px;
+            font-weight: 700;
+            color: #2b2b2b;
+            padding: 10px 18px;
+            strong {
+                color: #979797;
+                font-weight: 500;
             }
         }
     }
 }
 
-.content {
-    padding: 25px 30px;
-    border: 1px solid #dfdfdf;
-    font-size: 15px;
-    color: #333;
+////////////
+// 第一步里面的 //
+////////////
+.main-old .content {
+    padding: 30px 0 0;
+    color: #2b2b2b;
     h5 {
-        margin: 0 0 40px;
-        color: #009ad2;
-        font-size: 19px;
-        font-weight: 500;
+        margin: 0 0 60px;
+        color: #2b2b2b;
+        font-size: 16px; // font-weight: 500;
+        font-family: "SimSun"; // 宋体;
     }
     label,
     .label {
         display: block;
-        margin: 20px 0;
+        margin: 25px 0;
         .clearfix();
         overflow: hidden;
         span {
@@ -102,6 +107,7 @@ button{
             width: 148px;
             margin: 0 24px 0 0;
             text-align: right;
+            font-size: 15px;
         }
         p {
             overflow: hidden;
@@ -126,9 +132,14 @@ button{
                 width: 192px;
                 height: 42px;
                 border-radius: 5px;
-                background: #d50000;
                 color: #fff;
                 font-size: 16px;
+                pointer-events: none;
+                background: #ccc;
+                &.active {
+                    pointer-events: auto;
+                    background: #ff6935;
+                }
             }
         }
         p.invest {
@@ -152,10 +163,18 @@ button{
                 font-size: 18px;
             }
         }
-    }
+    } // 注意
     .notice {
+        padding: 15px 0 0;
+        margin: 60px 0 0;
+        border-top: 1px solid #f0f0f0;
         span {
+            width: auto;
             line-height: 30px;
+            color: #2b2b2b;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: "SimSun"; // 宋体;
         }
         em {
             display: block;
@@ -166,25 +185,40 @@ button{
     }
 }
 
-.content {
+////////////
+// 第二步里面的 //
+////////////
+.main-old .content {
     &.submitted {
+        min-height: 400px;
         h5 {
             text-align: left;
         }
         text-align: center;
-        form {
+        div {
             position: relative;
-            margin: 70px 0 0;
+            margin: 150px 0 0;
             display: inline-block;
-            text-align: left;
+            text-align: center;
             &:before {
                 content: "";
                 position: absolute;
-                top: 0;
-                left: -59-20px;
-                width: 59px;
-                height: 46px;
-                background: url(../img/order01.png) center no-repeat;
+                top: -100px;
+                left: 50%;
+                width: 80px;
+                height: 80px;
+                margin: 0 0 0 -40px;
+                background: url(../img/bigright.png) center no-repeat;
+                background: url(../img/bigright.png) center/contain no-repeat;
+            }
+            &.error {
+                &:before {
+                    background: url(../img/bigerror.png) center no-repeat;
+                    background: url(../img/bigerror.png) center/contain no-repeat;
+                }
+                p {
+                    color: #d50000;
+                }
             }
             p {
                 margin: 0 0 10px 0;
@@ -197,61 +231,326 @@ button{
             }
             a {
                 display: block;
-                margin: 0 0 30px 0;
+                margin: 30px 0 15px 0;
                 color: #0099cc;
                 text-decoration: underline;
             }
-            button {
+            .button {
+                display: inline-block;
                 width: 192px;
                 height: 42px;
+                line-height: 42px;
                 border-radius: 5px;
-                margin: 0 0 100px 0;
-                background: #d50000;
+                background: #ff6935;
                 color: #fff;
                 font-size: 16px;
+                text-decoration: none;
             }
         }
     }
 }
 
-.content.upload {
+/////////
+// 第三步 //
+/////////
+.main-old .content.upload {
+    text-align: center;
     h5 {
+        margin-bottom: 50px;
         text-align: left;
     }
-    text-align: center;
-    form {
-        display: inline-block;
-        text-align: left;
-        font-size: 0;
-        span {
+    div {
+        &.part1 {
             display: inline-block;
-            width: 8em;
-            float: none;
-            margin: 0 5px 0 0;
-            font-size: 15px;
+            padding: 0 53px 0 0;
+            text-align: left;
+        }
+        &.part3 {
+            margin: 25px 0;
         }
         input {
             line-height: 32px;
-            width: 200px;
-            padding: 0 12px 0;
-            border: 1px solid #cccccc;
-            color: #333;
+            height: 32px;
+            padding: 0 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        i {
+            font-style: normal;
+            margin: 0 0 0 5px;
+            &.bold {
+                font-weight: 700;
+                font-size: 18px;
+                color: red;
+            }
+        }
+        #upload {
+            width: 56px;
+            line-height: 22px;
+            height: 22px;
+            border-radius: 5px;
+            border: none;
+            margin: 7px 0 0;
             text-align: center;
-            font-size: 15px;
-            text-align: left;
-            &[type="file"] {
-                border: none;
-                padding: 0;
+            background: #ccc;
+            color: #fff;
+            pointer-events: none !important;
+            font-size: 12px;
+            vertical-align: top;
+            &.active {
+                background: #3489d8;
+                color: #fff;
+                pointer-events: all !important;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            &:focus {
+                outline: none;
+            }
+            &:hover {
+                cursor: not-allowed !important;
             }
         }
     }
     button {
-        width: 192px;
-        height: 42px;
+        width: 100px;
+        height: 36px;
         border-radius: 5px;
-        margin: 0 0 50px 8*15+5px;
-        font-size: 15px;
-        background: #009ad2;
+        background: #ff6935;
         color: #fff;
+        font-size: 14px;
+    }
+    .upload-msg {
+        width: 60%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        font-size: 14px;
+        td {
+            padding: 3px 12px;
+            border-bottom: 1px solid #ddd;
+            img {
+                max-width: 200px;
+                max-height: 100px;
+                padding: 8px 0 5px;
+            }
+            a {
+                color: #CA4848;
+            }
+        }
+        th {
+            padding: 3px 12px;
+            border-bottom: 1px solid #ddd;
+            background: #eaeaea;
+            &:nth-of-type(1) {
+                width: 100px;
+            }
+        }
+    }
+}
+
+// 旧代码 end
+.contract {
+    div {
+        text-align: center;
+        p {
+            padding: 75px 0 0;
+            margin: 0 0 15px;
+            color: #333;
+            font-size: 20px;
+            &.success:before {
+                content: "";
+                display: inline-block;
+                margin: -3px 15px 0 0;
+                vertical-align: middle;
+                width: 59px;
+                height: 46px;
+                background: url(../img/order01.png) center no-repeat;
+            }
+            &.error {
+                margin: 0 0 120px;
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    margin: -3px 15px 0 0;
+                    vertical-align: middle;
+                    width: 59px;
+                    height: 46px;
+                    background: url(../img/order02.png) center no-repeat;
+                    background: url(../img/order02.png) center/46px no-repeat;
+                }
+            }
+            &.jump {
+                padding: 15px 0 15px;
+                font-size: 16px;
+                strong {
+                    color: #d50000;
+                    margin: 0 5px 0 0;
+                    font-size: 18px;
+                }
+                a {
+                    color: #009ad2;
+                    text-decoration: underline;
+                }
+            }
+        }
+        button {
+            width: 192px;
+            height: 42px;
+            border-radius: 5px;
+            margin: 0 0 100px 0;
+            background: #009ad2;
+            color: #fff;
+            font-size: 16px;
+        }
+    }
+}
+
+// 新代码
+html {
+    background: #f0f0f0;
+}
+
+input {
+    &:focus {
+        outline: none;
+    }
+}
+
+.main {
+    padding: 40px 0 @footerHeight+40px;
+}
+
+.main-content {
+    padding: 40px 100px;
+    background: #fff;
+    .step {
+        position: relative;
+        width: 800px;
+        margin: (24-6)/2px auto 0;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 6px;
+            background: #e5e5e5;
+            border-radius: 6px;
+        }
+        .clearfix();
+        span {
+            position: relative;
+            float: left;
+            width: 20%;
+            padding: 30px 0 0;
+            text-align: center;
+            color: #9a9a9a;
+            font-size: 14px;
+            line-height: 20px;
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                width: 100%;
+                height: 6px;
+                background: #e5e5e5;
+                border-radius: 6px;
+            }
+            &:after {
+                content: "1";
+                position: absolute;
+                top: -(24-6)/2px;
+                left: (800/5-24)/2px;
+                z-index: 3;
+                height: 24px;
+                line-height: 24px;
+                width: 24px;
+                border-radius: 24px;
+                text-align: center;
+                color: #fff;
+                background: #e5e5e5;
+                font-size: 12px;
+            }
+            &.step1:after {
+                content: "1";
+            }
+            &.step2:after {
+                content: "2";
+            }
+            &.step3:after {
+                content: "3";
+            }
+            &.step4:after {
+                content: "4";
+            }
+            &.step5:after {
+                content: "5";
+            }
+            &.pass {
+                // 过了的步骤
+                &:before {
+                    background: #92b5ed;
+                }
+                &:after {
+                    background: #92b5ed;
+                }
+            }
+            &.active {
+                // 当前步骤
+                &:before {
+                    background: #4385f5;
+                }
+                &:after {
+                    background: #4385f5;
+                }
+            }
+        }
+    }
+    .proj-msg {
+        border: 1px solid #ccc;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        .clearfix();
+        .msg1 {
+            position: relative;
+            float: left;
+            width: 188px;
+            height: 120px;
+            line-height: 120px;
+            i {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                height: 100%;
+                width: 100%;
+                background: url(../img/test/test03.png) center no-repeat;
+                background: url(../img/test/test03.png) center/cover no-repeat;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    height: 100%;
+                    width: 100%;
+                    background: rgb(0, 0, 0);
+                    background: rgba(0, 0, 0, 0.5);
+                }
+            }
+            p {
+                position: relative;
+                z-index: 10;
+                display: inline-block;
+                line-height: 1.5;
+                vertical-align: middle;
+                padding: 0 12px;
+                color: #fff;
+            }
+        }
     }
 }

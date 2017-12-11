@@ -1,5 +1,6 @@
 /* 代替base.css作为清除默认样式less */
 
+@charset "utf-8";
 // 清除默认样式
 * {
     margin: 0;
@@ -8,26 +9,33 @@
     border: 0;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 //超链接
 a {
     text-decoration: none;
     color: inherit;
 }
-ul,li{
-    list-style:none;
+
+ul,
+li {
+    list-style: none;
 }
+
 // hover效果
 .mouse-hover:hover {
     text-decoration: underline;
 }
+
 // 清除浮动
 .clearfix() {
     &:after {
         content: '';
         display: block;
-        clear: both
+        clear: both;
     }
+    *zoom: 1;
 }
+
 //超出隐藏
 .elli() {
     white-space: nowrap;
@@ -36,25 +44,30 @@ ul,li{
 }
 
 // 字体
-.SimSun(){
+.SimSun() {
     font-family: "SimSun"; // 宋体
 }
-.SimHei(){
+
+.SimHei() {
     font-family: "SimHei"; // 黑体
 }
-.Yahei(){
+
+.Yahei() {
     font-family: "Microsoft Yahei"; // 微软雅黑
 }
-.JhengHei(){
+
+.JhengHei() {
     font-family: "Microsoft JhengHei"; // 微软正黑体
 }
-.KaiTi(){
+
+.KaiTi() {
     font-family: "KaiTi"; // 楷体
 }
-.NSimSun(){
+
+.NSimSun() {
     font-family: "NSimSun"; // 新宋体
 }
-.FangSong(){
+
+.FangSong() {
     font-family: "FangSong"; // 仿宋
 }
-
