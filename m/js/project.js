@@ -21,11 +21,10 @@ var more = new GetMore({
     cb: function() {
         var _this = this;
         $.ajax({
-            type: "post",
-            url: "/m/getprojdata",
+            // type: "post",
+            url: "/m/data/projectListData.json",
             async: true,
             dataType: "json",
-            data: { 'qstatus': qstatus, 'page': page },
             success: function(r) {
                 var result = r;
                 if (!!result.pjInfoList && result.pjInfoList.length > 0) {
