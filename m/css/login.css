@@ -1,3 +1,4 @@
+@charset "utf-8";
 /* 代替base.css作为清除默认样式less */
 * {
   margin: 0;
@@ -75,6 +76,9 @@ input:focus {
 .error.active {
   opacity: 1;
 }
+.code .code-wrap {
+  *zoom: 1;
+}
 .code .code-wrap:after {
   content: '';
   display: block;
@@ -100,6 +104,7 @@ input:focus {
 }
 .remember {
   padding: 6px 0 6px;
+  *zoom: 1;
   font-size: 14px;
 }
 .remember:after {
@@ -120,6 +125,9 @@ input:focus {
   line-height: 32px;
   font-size: inherit;
   text-decoration: underline;
+}
+.action {
+  *zoom: 1;
 }
 .action:after {
   content: '';

@@ -1,3 +1,4 @@
+@charset "utf-8";
 /* 代替base.css作为清除默认样式less */
 * {
   margin: 0;

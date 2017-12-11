@@ -1,3 +1,4 @@
+@charset "utf-8";
 /* 代替base.css作为清除默认样式less */
 * {
   margin: 0;
@@ -102,6 +103,7 @@ a {
   padding: 12px;
   margin: 0 0 1px;
   background: #fff;
+  *zoom: 1;
 }
 .project-list.little .project-item:last-of-type {
   margin: 0 0 0px;
@@ -111,13 +113,22 @@ a {
   display: block;
   clear: both;
 }
+.project-list.little .project-item .project-img {
+  min-height: 150px;
+  border-radius: 5px;
+  background: #eee;
+}
 .project-list.little .project-item .project-img img {
   display: block;
+  width: 100%;
   border-radius: 5px;
 }
 .project-list.little .project-item .project-content {
   position: relative;
   margin: 11px 0 0;
+}
+.project-list.little .project-item .project-content .project-major {
+  *zoom: 1;
 }
 .project-list.little .project-item .project-content .project-major:after {
   content: '';
@@ -176,6 +187,7 @@ a {
 }
 .project-list.little .project-item .project-content .project-info {
   margin: 8px 45px 0 0;
+  *zoom: 1;
 }
 .project-list.little .project-item .project-content .project-info:after {
   content: '';
@@ -247,6 +259,7 @@ a {
   display: block;
   margin: 0 0 1px;
   background: #fff;
+  *zoom: 1;
 }
 .project-list.many .project-item:last-of-type {
   margin: 0 0 0px;
@@ -271,6 +284,9 @@ a {
 }
 .project-list.many .project-item .project-content {
   overflow: hidden;
+}
+.project-list.many .project-item .project-content .project-major {
+  *zoom: 1;
 }
 .project-list.many .project-item .project-content .project-major:after {
   content: '';
@@ -322,6 +338,7 @@ a {
   color: #ff9400;
 }
 .project-list.many .project-item .project-content .project-info {
+  *zoom: 1;
   text-align: center;
 }
 .project-list.many .project-item .project-content .project-info:after {
@@ -361,6 +378,7 @@ a {
   padding: 8px;
   margin: 0 0 1px;
   background: #fff;
+  *zoom: 1;
 }
 .news-list .news-item:last-of-type {
   margin: 0 0 0px;
@@ -482,6 +500,7 @@ body {
   background: url(../img/arrow.png) center / contain no-repeat;
 }
 .nav {
+  *zoom: 1;
   text-align: center;
 }
 .nav:after {
@@ -524,7 +543,7 @@ body {
   left: 0;
   width: 67px;
   height: 60px;
-  background: #ffffff url(../img/noticpic.png) left bottom / contain no-repeat;
+  background: #fff url(../img/noticpic.png) left bottom / contain no-repeat;
 }
 .notice a {
   display: block;

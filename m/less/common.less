@@ -1,7 +1,7 @@
 @import url("./reset.less");
 html,
 body {
-    line-height:1.4;
+    line-height: 1.4;
     font-size: 14px;
     color: #333;
 }
@@ -109,8 +109,13 @@ a {
         }
         .clearfix(); // 项目图片
         .project-img {
+            // 以下3行代码是为了没有图片的时候
+            min-height: 150px;
+            border-radius: 5px;
+            background: #eee;
             img {
                 display: block;
+                width: 100%;
                 border-radius: 5px;
             }
         } // 项目内容
@@ -374,7 +379,7 @@ a {
                 line-height: 24px;
                 .elli();
                 * {
-                    display:inline !important;
+                    display: inline !important;
                     padding: 0 !important;
                     margin: 0 !important;
                     font-size: 13px !important;
