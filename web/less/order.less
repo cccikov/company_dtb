@@ -486,27 +486,30 @@ input {
 	padding: 40px 0 @footerHeight+40px;
 }
 
-
-
 .main-content {
+	margin: 0 0 100px;
+	// asdasdasd
 	padding: 40px 0;
 	background: #fff;
 	color: #666;
-    &{
-        // 共用颜色font
-        .red-font {
-            color: #ff3b35;
-        }
 
-        .orange-font {
-            color: #ff8b35;
-        }
+	& {
+		// 共用颜色font
+		.red-font {
+			color: #ff3b35;
+		}
 
-        .big-font{
-            font-size: 24px;
-        }
-    }
+		.orange-font {
+			color: #ff8b35;
+		}
 
+		.big-font {
+			font-size: 24px;
+		}
+	}
+	// 认购步骤
+	// 认购步骤
+	// 认购步骤
 	.step {
 		position: relative;
 		width: 800px;
@@ -608,14 +611,13 @@ input {
 	}
 	// 项目信息
 	.proj-msg {
-        position: relative;
+		position: relative;
 		width: 998px;
 		border: 1px solid #ccc;
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
-        margin:40px auto 0;
+		margin: 40px auto 0;
 		.clearfix();
-
 		// 项目logo 标题
 		.msg1 {
 			position: relative;
@@ -661,30 +663,46 @@ input {
 		.msg2 {
 			float: left;
 			width: 998-320-188-150px;
-            padding:1px 0 0 150px;
-            .msg2-line1{
-                margin:25px 0 11px;
-                font-size: 14px;
-                .clearfix();
-                .left{
-                    float: left;
-                    width: 8em;
-                    text-align: center;
-                }
-                .right{
-                    float: right;
-                }
-            }
-            .percent{
-                overflow: hidden;
-                height:6px;
-                border-radius: 3px;
-                background: #bfbfbf;
-            }
-            .msg-line3{
-                margin:12px 0 0;
-                text-align: center;
-            }
+			padding: 1px 0 0 150px;
+
+			.msg2-line1 {
+				margin: 25px 0 11px;
+				font-size: 14px;
+				.clearfix();
+
+				.left {
+					float: left;
+					width: 8em;
+					text-align: center;
+				}
+
+				.right {
+					float: right;
+				}
+			}
+
+			.percent {
+				overflow: hidden;
+				height: 6px;
+				border-radius: 3px;
+				background: #bfbfbf;
+
+				.percent-color {
+					height: 100%;
+					max-width: 100%;
+					width: 50%;
+					background: #ff6235;
+					background: -webkit-linear-gradient(left, #ff8b35, #ff3935);
+					background: -o-linear-gradient(left, #ff8b35, #ff3935);
+					background: linear-gradient(to right, #ff8b35, #ff3935);
+					background: linear-gradient(90deg, #ff8b35, #ff3935);
+				}
+			}
+
+			.msg-line3 {
+				margin: 12px 0 0;
+				text-align: center;
+			}
 		}
 		// 起投
 		.msg3 {
@@ -704,139 +722,341 @@ input {
 				}
 			}
 		}
-        // 多少人投资了这个项目
-        .msg4{
-            position: absolute;
-            left: 0;
-            bottom: -24px;
-            line-height: 2;
-            font-size: 12px;
-        }
+		// 多少人投资了这个项目
+		.msg4 {
+			position: absolute;
+			left: 0;
+			bottom: -24px;
+			line-height: 2;
+			font-size: 12px;
+		}
+	}
+	// 投资
+	.investment {
+		width: 998px;
+		padding: 80px 0 60px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		margin: 60px auto 0;
+
+		p {
+			box-sizing: border-box;
+			width: 378px;
+			margin: 0 auto 25px;
+			font-size: 15px;
+
+			.label-span {
+				display: inline-block;
+				width: 5em;
+				padding: 0 28px 0 0;
+				text-align: right;
+			}
+
+			.tail {
+				margin: 0 0 0 5px;
+			}
+
+			.btn {
+				// 按钮 一般是提交按钮
+				display: inline-block;
+				line-height: 40px;
+				width: 100%;
+				border-radius: 5px;
+				text-align: center;
+				color: #fff;
+				background: #ccc;
+				pointer-events: none;
+
+				&.canClick {
+					pointer-events: all;
+					background: #ff8b35;
+
+					&:active {
+						opacity: 0.8;
+					}
+				}
+			}
+			// 特殊p 投资金额
+			&.investment-amount {
+				font-size: 0;
+				height: 40px;
+
+				* {
+					font-size: 15px;
+				}
+
+				.label-span {
+					line-height: 40px;
+				}
+
+				a {
+					// 加减按钮
+					display: inline-block;
+					width: 38px;
+					height: 38px;
+					line-height: 38px;
+					border: 1px solid #b4b4b4;
+					background: #e8e8e8;
+					text-align: center;
+					font-size: 18px;
+					vertical-align: top;
+				}
+
+				input {
+					// 金额input
+					width: 160px;
+					height: 38px;
+					line-height: 38px;
+					border: 1px solid #b4b4b4;
+					margin: 0 -1px;
+					font-size: 18px;
+					color: inherit;
+					text-align: center;
+					vertical-align: top;
+				}
+			}
+			// 特殊p 同意xxx
+			&.investment-read {
+				padding: 0 0 0 20px;
+				font-size: 12px;
+
+				input {
+					margin: -3px 5px 0;
+					vertical-align: middle;
+				}
+
+				a {
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+		// 特殊p
+	}
+	// 提示
+	.tips {
+		width: 998-80*2px;
+		padding: 0 80px 15px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		margin: 60px auto 0;
+
+		h5 {
+			line-height: 50px;
+			text-align: center;
+			font-size: 15px;
+			font-weight: 500;
+		}
+
+		ul {
+			.clearfix();
+
+			li {
+				box-sizing: border-box;
+				position: relative;
+				float: left;
+				width: 50%;
+				line-height: 1.5;
+				padding: 0 0 0 20px;
+				margin: 5px 0 10px;
+				font-size: 14px;
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 8px;
+					left: 5px;
+					width: 6px;
+					height: 6px;
+					border-radius: 3px;
+					background: #888;
+				}
+			}
+		}
+	}
+	// 上传凭证步骤
+	// 上传凭证步骤
+	// 上传凭证步骤
+	.upload-title {
+		margin: 30px 0 0;
+		text-align: center;
+		color: #333;
+		font-weight: 700;
 	}
 
-    // 投资
-    .investment{
-        width: 998px;
-        padding: 80px 0 60px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin:60px auto 0;
-        p{
-            box-sizing: border-box;
-            width: 378px;
-            margin: 0 auto 25px;
-            font-size: 15px;
-            .label-span{
-                display:inline-block;
-                width: 5em;
-                padding: 0 28px 0 0;
-                text-align: right;
-            }
-            .tail{
-                margin: 0 0 0 5px;
-            }
-            .btn{ // 按钮 一般是提交按钮
-                display: inline-block;
-                line-height: 40px;
-                width: 100%;
-                border-radius: 5px;
-                text-align: center;
-                color:#fff;
-                background: #ccc;
-                pointer-events: none;
-                &.canClick{
-                    pointer-events: all;
-                    background: #ff8b35;
-                    &:active{
-                        opacity: 0.8;
-                    }
-                }
-            }
-            // 特殊p 投资金额
-            &.investment-amount{
-                font-size: 0;
-                height:40px;
-                *{
-                    font-size: 15px ;
-                }
-                .label-span{
-                    line-height: 40px;
-                }
-                a{ // 加减按钮
-                    display: inline-block;
-                    width: 38px;
-                    height: 38px;
-                    line-height: 38px;
-                    border: 1px solid #b4b4b4;
-                    background: #e8e8e8;
-                    text-align: center;
-                    font-size: 22px;
-                    font-weight: 800;
-                    vertical-align: top;
-                }
-                input{ // 金额input
-                    width: 160px;
-                    height: 38px;
-                    line-height: 38px;
-                    border: 1px solid #b4b4b4;
-                    margin: 0 -1px;
-                    font-size: 18px;
-                    color:inherit;
-                    text-align: center;
-                    vertical-align: top;
-                }
-            }
-            // 特殊p 同意xxx
-            &.investment-read{
-                padding: 0 0 0 20px;
-                font-size: 12px;
-                input{
-                    margin:-3px 5px 0;
-                    vertical-align: middle;
-                }
-                a{
-                    &:hover{
-                        text-decoration: underline;
-                    }
-                }
-            }
+	table {
+		border-collapse: collapse;
+		margin: 0 auto;
+		text-align: center;
 
+		td,
+		th {
+			min-width: 110px;
+			line-height: 40px;
+			border: 1px solid #ccc;
+			font-size: 15px;
+			font-weight: 500;
 
-        }
-        // 特殊p
-    }
+			img {
+				display: block;
+				margin: 0 auto;
+				max-width: 200px;
+				max-height: 100px;
+			}
+		}
 
-    // 提示
-    .tips{
-        width: 998-80*2px;
-        padding: 0 80px 25px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin:60px auto 0;
-        h5{
-            line-height: 50px;
-            text-align: center;
-            font-size: 15px;
-            font-weight: 500;
-        }
-        ul{
-            .clearfix();
-            li{
-                float: left;
-                width: 50%;
-                line-height: 38px;
-                font-size: 14px;
-                &::before{
-                    content:"";
-                    display: inline-block;
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 3px;
-                    margin: -3px 8px 0;
-                    background: #888;
-                    vertical-align: middle;
-                }
-            }
-        }
-    }
+		&.proj-table {
+			width: 745px;
+			margin-top: 60px;
+
+			th {
+				background: #ddd;
+			}
+		}
+
+		&.bank-table {
+			width: 745px;
+			margin-top: 35px;
+		}
+
+		&.pic-table {
+			margin-top: 30px;
+			width: 670px;
+
+			th {
+				padding: 10px 0;
+				background: #ededed;
+			}
+
+			td {
+				padding: 10px 0 0;
+			}
+
+			td,
+			th {
+				line-height: 20px;
+				border: none;
+			}
+
+			.del {
+				font-size: 14px;
+				color: #e84e4e;
+
+				&:active {
+					opacity: 0.6;
+				}
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.upload-wrap {
+		width: 743px;
+		padding: 0 0 25px;
+		margin: 30px auto 0;
+		border: 1px solid #ccc;
+		text-align: center;
+
+		.input-wrap {
+			display: inline-block;
+			width: 300px;
+			padding: 0 100px;
+			margin: 24px 0 0;
+			font-size: 14px;
+			text-align: left;
+
+			.label-span {
+				display: inline-block;
+				width: 7em;
+				margin: 0 20px 0 0;
+				text-align: right;
+			}
+
+			.file-upload {
+				width: 70px;
+				line-height: 30px;
+				height: 30px;
+				font-size: 12px;
+				border-radius: 5px;
+				color: #fff;
+				background: #4285f5;
+
+				&.wechat-upload {
+					background: #2cad56;
+				}
+			}
+
+			.text-input {
+				width: 50px;
+				line-height: 28px;
+				height: 28px;
+				padding: 0 12px;
+				color: inherit;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				text-align: right;
+			}
+		}
+
+		.upload-tips {
+			margin: 24px 0 0;
+			font-size: 12px;
+			text-align: center;
+		}
+	}
+
+	.action {
+		margin-top: 30px;
+		text-align: center;
+
+		.btn {
+			display: inline-block;
+			line-height: 40px;
+			width: 350px;
+			border-radius: 5px;
+			text-align: center;
+			color: #fff;
+			background: #ff8b34;
+			pointer-events: none;
+		}
+	}
+	// 提交状态
+	.upload-status {
+		width: 500px;
+		margin: 100px auto 150px;
+		text-align: center;
+		&:before{
+			content:"";
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			margin: 0 0 30px;
+		}
+		&.success{
+			&:before{
+				background: url(../img/bigright.png) center no-repeat;
+				background: url(../img/bigright.png) center/cover no-repeat;
+			}
+		}
+		&.error{
+			&:before{
+				background: url(../img/bigerror.png) center no-repeat;
+				background: url(../img/bigerror.png) center/cover no-repeat;
+			}
+		}
+
+		p{
+			text-align: left;
+		}
+		a {
+			display: inline-block;
+			margin: 12px 0 0;
+			text-decoration: underline;
+			color: #4285f4;
+		}
+	}
 }

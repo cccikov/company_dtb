@@ -12,7 +12,10 @@
 	<div id="wrap">
 		<div class="main width-wrap">
 
-			<div class="main-content">
+
+			<!-- 项目预热状态 -->
+			<!-- 交保密金 -->
+			<div class="main-content" >
 
 				<!-- 步骤提示 -->
 				<p class="step">
@@ -47,47 +50,190 @@
 					<div class="msg3">
 						<p><span>起投金额</span><span class="orange-font">10万</span></p>
 					</div>
-                    <!-- 多少人投资了这个项目 -->
-                    <div class="msg4">
-                        <p><span class="orange-font">30</span>人正在投资这个项目，先支付保密金</p>
-                    </div>
+					<!-- 多少人投资了这个项目 -->
+					<div class="msg4">
+						<p><span class="orange-font">30</span>人正在投资这个项目，先支付保密金</p>
+					</div>
 				</div>
 
-                <!-- 投资 -->
-                <div class="investment">
-                    <p class="investment-amount">
-                        <span class="label-span">投资金额</span>
-                        <a href="javascript:void(0)">＋</a>
-                        <input type="text" value="10" readonly>
-                        <a href="javascript:void(0)">－</a>
-                        <span class="tail">万元</span>
-                    </p>
-                    <p>
-                        <span class="label-span">意向保密金</span>10万元 × 1% = <strong class="orange-font big-font">1000</strong>元
-                    </p>
-                    <p>
-                        <a class="btn" href="javascript:void(0)">确认提交</a>
-                    </p>
-                    <p class="investment-read">
-                        <label><input type="checkbox">同意 <a href="###">《风险揭示书》</a> <a href="###">《用户服务协议书》</a></label>
-                    </p>
-                </div>
+				<!-- 投资 -->
+				<div class="investment">
+					<p class="investment-amount">
+						<span class="label-span">投资金额</span>
+						<a href="javascript:void(0)">－</a>
+						<input type="text" value="10" readonly>
+						<a href="javascript:void(0)">＋</a>
+						<span class="tail">万元</span>
+					</p>
+					<p>
+						<span class="label-span">意向保密金</span>10万元 × 1% = <strong class="orange-font big-font">1000</strong>元
+					</p>
+					<p>
+						<a class="btn" href="javascript:void(0)">确认提交</a>
+					</p>
+					<p class="investment-read">
+						<label><input type="checkbox">同意 <a href="###">《风险揭示书》</a> <a href="###">《用户服务协议书》</a></label>
+					</p>
+				</div>
+
+				<!-- 提示 -->
+				<div class="tips">
+					<h5>保密金规则</h5>
+					<ul>
+						<li>保密金为项目起投额1%</li>
+						<li>支付完成后，方可在项目详情页查看核心资料</li>
+						<li>项目募集完成三个月内，保密金将退回所登记的银行卡</li>
+						<li>若泄露核心资料，则不予退还保密金，且平台保留追究法律责任的权利</li>
+					</ul>
+				</div>
+
+			</div>
 
 
-                <!-- 提示 -->
-                <div class="tips">
-                    <h5>保密金规则</h5>
-                    <ul>
-                        <li>越早支付完保证金，越先锁定有效投资名额</li>
-                        <li>项目筹集意向达到最低融资后，自动开启有效名额的剩余款</li>
-                        <li>开启剩余款后，冷静期将自动失效并且不能申请退款</li>
-                        <li>如放弃支付剩余款，保证金恕不退还，将由项目方收取</li>
-                        <li>通过Kr码认购，将没有申请退款的权利</li>
-                    </ul>
-                </div>
+
+
+
+
+
+
+
+
+			<div class="main-content">
+
+				<p class="upload-title">你已成功认投该项目 , 请及时打款并上传凭证</p>
+
+				<!-- 项目table -->
+				<table class="proj-table">
+					<tr>
+						<th>项目</th>
+						<th>意向人</th>
+						<th>意向金额</th>
+						<th>保密金占比</th>
+						<th>保密金</th>
+					</tr>
+					<tr>
+						<td>儿童智能手表</td>
+						<td>张三</td>
+						<td>10万</td>
+						<td>1%</td>
+						<td>1000元</td>
+					</tr>
+				</table>
+
+				<!-- 打款账户table -->
+				<table class="bank-table">
+					<tr>
+						<td>打款账户</td>
+						<td>中国建设银行</td>
+						<td>带投兵</td>
+						<td>440255511221445</td>
+					</tr>
+				</table>
+
+				<div class="upload-wrap">
+					<p class="input-wrap">
+						<span class="label-span">上传交易凭证</span>
+						<input class="file-upload" id="upload" type="button" value="本地上传">
+						<input class="file-upload wechat-upload" type="button" value="微信上传">
+					</p>
+					<p class="input-wrap">
+						<span class="label-span">付款金额</span>
+						<input class="text-input" type="text">
+						<span class="tail">万元</span>
+					</p>
+					<p class="upload-tips">
+						提示：若款项分多次转入，此处数字按每张凭证金额填写
+					</p>
+
+
+
+				</div>
+
+                <table class="pic-table">
+                    <tr>
+                        <th>金额</th>
+                        <th>凭证</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>1000元</td>
+                        <td>
+                            <a href="./img/test/test06.jpg" target="_blank">
+                                <img src="./img/test/test06.jpg">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="del" href="javascript:void(0)">删除</a>
+                        </td>
+                    </tr>
+					<tr>
+                        <td>1000元</td>
+                        <td>
+                            <a href="./img/test/test02.png" target="_blank">
+                                <img src="./img/test/test02.png">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="del" href="javascript:void(0)">删除</a>
+                        </td>
+                    </tr>
+                </table>
+
+                <p class="action">
+                    <a href="javascript:void(0)" class="btn">确认提交</a>
+                </p>
+
+
+				<!-- 提示 -->
+				<div class="tips">
+					<h5>保密金规则</h5>
+					<ul>
+						<li>保密金为项目起投额1%</li>
+						<li>支付完成后，方可在项目详情页查看核心资料</li>
+						<li>项目募集完成三个月内，保密金将退回所登记的银行卡</li>
+						<li>若泄露核心资料，则不予退还保密金，且平台保留追究法律责任的权利</li>
+					</ul>
+				</div>
+
 
 
 			</div>
+
+
+
+
+
+
+			<div class="main-content">
+				<p class="upload-title">提交凭证审核成功</p>
+				<div class="upload-status success">
+					<p>恭喜您，提交凭证审核成功，我们工作人员会尽快完成审核并通知您！请留意短信通知。如有疑问，请联系我们客服人员。</p>
+					<a href="###">点击查看订单，<span id="time">5</span>秒后自动跳转</a>
+				</div>
+				<!-- 提示 -->
+				<div class="tips">
+					<h5>保密金规则</h5>
+					<ul>
+						<li>保密金为项目起投额1%</li>
+						<li>支付完成后，方可在项目详情页查看核心资料</li>
+						<li>项目募集完成三个月内，保密金将退回所登记的银行卡</li>
+						<li>若泄露核心资料，则不予退还保密金，且平台保留追究法律责任的权利</li>
+					</ul>
+				</div>
+			</div>
+
+
+
+			<!-- 提示 -->
+			<!-- <div class="tips">
+                <h5>保密金规则</h5>
+                <ul>
+                    <li>保证金为投资额20%</li>
+                    <li>在支付保证金的同时，需缴纳投资额的1%作为认购费</li>
+                    <li>如放弃支付余款，则保证金与认购费不予退还</li>
+                    <li>保证金支付完成后，平台将指定余款支付日期</li>
+                </ul>
+            </div> -->
 
 		</div>
 	</div>

@@ -1129,6 +1129,7 @@ input:focus {
   padding: 40px 0 291px;
 }
 .main-content {
+  margin: 0 0 100px;
   padding: 40px 0;
   background: #fff;
   color: #666;
@@ -1307,6 +1308,16 @@ input:focus {
   border-radius: 3px;
   background: #bfbfbf;
 }
+.main-content .proj-msg .msg2 .percent .percent-color {
+  height: 100%;
+  max-width: 100%;
+  width: 50%;
+  background: #ff6235;
+  background: -webkit-linear-gradient(left, #ff8b35, #ff3935);
+  background: -o-linear-gradient(left, #ff8b35, #ff3935);
+  background: linear-gradient(to right, #ff8b35, #ff3935);
+  background: linear-gradient(90deg, #ff8b35, #ff3935);
+}
 .main-content .proj-msg .msg2 .msg-line3 {
   margin: 12px 0 0;
   text-align: center;
@@ -1377,7 +1388,7 @@ input:focus {
   height: 40px;
 }
 .main-content .investment p.investment-amount * {
-  font-size: 15px ;
+  font-size: 15px;
 }
 .main-content .investment p.investment-amount .label-span {
   line-height: 40px;
@@ -1390,8 +1401,7 @@ input:focus {
   border: 1px solid #b4b4b4;
   background: #e8e8e8;
   text-align: center;
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 18px;
   vertical-align: top;
 }
 .main-content .investment p.investment-amount input {
@@ -1418,7 +1428,7 @@ input:focus {
 }
 .main-content .tips {
   width: 838px;
-  padding: 0 80px 25px;
+  padding: 0 80px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 60px auto 0;
@@ -1438,18 +1448,176 @@ input:focus {
   clear: both;
 }
 .main-content .tips ul li {
+  box-sizing: border-box;
+  position: relative;
   float: left;
   width: 50%;
-  line-height: 38px;
+  line-height: 1.5;
+  padding: 0 0 0 20px;
+  margin: 5px 0 10px;
   font-size: 14px;
 }
 .main-content .tips ul li::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 5px;
   width: 6px;
   height: 6px;
   border-radius: 3px;
-  margin: -3px 8px 0;
   background: #888;
-  vertical-align: middle;
+}
+.main-content .upload-title {
+  margin: 30px 0 0;
+  text-align: center;
+  color: #333;
+  font-weight: 700;
+}
+.main-content table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+}
+.main-content table td,
+.main-content table th {
+  min-width: 110px;
+  line-height: 40px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-weight: 500;
+}
+.main-content table td img,
+.main-content table th img {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  max-height: 100px;
+}
+.main-content table.proj-table {
+  width: 745px;
+  margin-top: 60px;
+}
+.main-content table.proj-table th {
+  background: #ddd;
+}
+.main-content table.bank-table {
+  width: 745px;
+  margin-top: 35px;
+}
+.main-content table.pic-table {
+  margin-top: 30px;
+  width: 670px;
+}
+.main-content table.pic-table th {
+  padding: 10px 0;
+  background: #ededed;
+}
+.main-content table.pic-table td {
+  padding: 10px 0 0;
+}
+.main-content table.pic-table td,
+.main-content table.pic-table th {
+  line-height: 20px;
+  border: none;
+}
+.main-content table.pic-table .del {
+  font-size: 14px;
+  color: #e84e4e;
+}
+.main-content table.pic-table .del:active {
+  opacity: 0.6;
+}
+.main-content table.pic-table .del:hover {
+  text-decoration: underline;
+}
+.main-content .upload-wrap {
+  width: 743px;
+  padding: 0 0 25px;
+  margin: 30px auto 0;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.main-content .upload-wrap .input-wrap {
+  display: inline-block;
+  width: 300px;
+  padding: 0 100px;
+  margin: 24px 0 0;
+  font-size: 14px;
+  text-align: left;
+}
+.main-content .upload-wrap .input-wrap .label-span {
+  display: inline-block;
+  width: 7em;
+  margin: 0 20px 0 0;
+  text-align: right;
+}
+.main-content .upload-wrap .input-wrap .file-upload {
+  width: 70px;
+  line-height: 30px;
+  height: 30px;
+  font-size: 12px;
+  border-radius: 5px;
+  color: #fff;
+  background: #4285f5;
+}
+.main-content .upload-wrap .input-wrap .file-upload.wechat-upload {
+  background: #2cad56;
+}
+.main-content .upload-wrap .input-wrap .text-input {
+  width: 50px;
+  line-height: 28px;
+  height: 28px;
+  padding: 0 12px;
+  color: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: right;
+}
+.main-content .upload-wrap .upload-tips {
+  margin: 24px 0 0;
+  font-size: 12px;
+  text-align: center;
+}
+.main-content .action {
+  margin-top: 30px;
+  text-align: center;
+}
+.main-content .action .btn {
+  display: inline-block;
+  line-height: 40px;
+  width: 350px;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  background: #ff8b34;
+  pointer-events: none;
+}
+.main-content .upload-status {
+  width: 500px;
+  margin: 100px auto 150px;
+  text-align: center;
+}
+.main-content .upload-status:before {
+  content: "";
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 0 0 30px;
+}
+.main-content .upload-status.success:before {
+  background: url(../img/bigright.png) center no-repeat;
+  background: url(../img/bigright.png) center / cover no-repeat;
+}
+.main-content .upload-status.error:before {
+  background: url(../img/bigerror.png) center no-repeat;
+  background: url(../img/bigerror.png) center / cover no-repeat;
+}
+.main-content .upload-status p {
+  text-align: left;
+}
+.main-content .upload-status a {
+  display: inline-block;
+  margin: 12px 0 0;
+  text-decoration: underline;
+  color: #4285f4;
 }
