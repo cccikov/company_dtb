@@ -2,61 +2,95 @@
 <html lang="zh">
 
 <head>
-    <meta charset="UTF-8">
-    <title>下单</title>
-    <link rel="stylesheet" type="text/css" href="css/order.css">
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<meta charset="UTF-8">
+	<title>下单</title>
+	<link rel="stylesheet" type="text/css" href="css/order.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
-    <div id="wrap">
-        <div class="main width-wrap">
+	<div id="wrap">
+		<div class="main width-wrap">
 
-            <div class="main-content">
+			<div class="main-content">
 
-                <!-- 步骤提示 -->
-                <p class="step">
-                    <span class="step1 pass">支付保密金</span>
-                    <span class="step2 pass">签署协议</span>
-                    <span class="step3 active">支付保证金</span>
-                    <span class="step4">支付余款</span>
-                    <span class="step5">付款完成</span>
-                </p>
+				<!-- 步骤提示 -->
+				<p class="step">
+					<span class="step1 pass">支付保密金</span>
+					<span class="step2 pass">签署协议</span>
+					<span class="step3 active">支付保证金</span>
+					<span class="step4">支付余款</span>
+					<span class="step5">付款完成</span>
+				</p>
 
-                <!-- 项目信息 -->
-                <div class="proj-msg">
-                    <!-- 项目logo 标题 -->
-                    <div class="msg1">
-                        <i style="background-image:url(./img/test/test03.png)"></i>
-                        <p>儿童智能手表哈哈哈哈哈哈儿童智能手表哈哈哈哈哈哈</p>
+				<!-- 项目信息 -->
+				<div class="proj-msg">
+					<!-- 项目logo 标题 -->
+					<div class="msg1">
+						<i style="background-image:url(./img/test/test03.png)"></i>
+						<p>儿童智能手表哈哈哈哈哈哈儿童智能手表哈哈哈哈哈哈</p>
+					</div>
+					<!-- 项目状态 -->
+					<div class="msg2">
+						<div class="msg2-line1">
+							<span class="left red-font">预热中</span>
+							<span class="right">融资区间：10万~200万</span>
+						</div>
+						<div class="percent">
+							<div class="percent-color"></div>
+						</div>
+						<div class="msg-line3">
+							<span class="red-font">融资目标：3500万</span>
+						</div>
+					</div>
+					<!-- 起投 -->
+					<div class="msg3">
+						<p><span>起投金额</span><span class="orange-font">10万</span></p>
+					</div>
+                    <!-- 多少人投资了这个项目 -->
+                    <div class="msg4">
+                        <p><span class="orange-font">30</span>人正在投资这个项目，先支付保密金</p>
                     </div>
-                    <!-- 项目状态 -->
-                    <div class="msg2">
-                        <div class="msg2-line1">
-                            <span class="left red-font">预热中</span>
-                            <span class="right">融资区间：10万~200万</span>
-                        </div>
-                        <div class="percent">
-                            <div class="percent-color"></div>
-                        </div>
-                        <div class="msg-line3">
-                            <span class="red-font">融资目标：3500万</span>
-                        </div>
-                    </div>
-                    <!-- 起投 -->
-                    <div class="msg3">
-                        <p><span>起投金额</span><span class="orange-font">10万</span></p>
-                    </div>
+				</div>
+
+                <!-- 投资 -->
+                <div class="investment">
+                    <p class="investment-amount">
+                        <span class="label-span">投资金额</span>
+                        <a href="javascript:void(0)">＋</a>
+                        <input type="text" value="10" readonly>
+                        <a href="javascript:void(0)">－</a>
+                        <span class="tail">万元</span>
+                    </p>
+                    <p>
+                        <span class="label-span">意向保密金</span>10万元 × 1% = <strong class="orange-font big-font">1000</strong>元
+                    </p>
+                    <p>
+                        <a class="btn" href="javascript:void(0)">确认提交</a>
+                    </p>
+                    <p class="investment-read">
+                        <label><input type="checkbox">同意 <a href="###">《风险揭示书》</a> <a href="###">《用户服务协议书》</a></label>
+                    </p>
                 </div>
 
 
+                <!-- 提示 -->
+                <div class="tips">
+                    <h5>保密金规则</h5>
+                    <ul>
+                        <li>越早支付完保证金，越先锁定有效投资名额</li>
+                        <li>项目筹集意向达到最低融资后，自动开启有效名额的剩余款</li>
+                        <li>开启剩余款后，冷静期将自动失效并且不能申请退款</li>
+                        <li>如放弃支付剩余款，保证金恕不退还，将由项目方收取</li>
+                        <li>通过Kr码认购，将没有申请退款的权利</li>
+                    </ul>
+                </div>
 
 
+			</div>
 
-            </div>
-
-        </div>
-    </div>
+		</div>
+	</div>
 </body>
 
 </html>

@@ -725,7 +725,7 @@ body {
   *zoom: 1;
   padding: 0 0 0 5px;
   margin: 50px 0 40px;
-  background: url(../img/border2.png) top left 1px repeat-x;
+  background: url("../img/border2.png") top left 1px repeat-x;
 }
 .main-old .step:after {
   content: '';
@@ -750,28 +750,28 @@ body {
   height: 34px;
   padding: 0 13px;
   margin: 0 0 0 -30px;
-  background: #fff url(../img/step1.png) center no-repeat;
+  background: #fff url("../img/step1.png") center no-repeat;
 }
 .main-old .step p.step1:before {
-  background-image: url(../img/step1.png);
+  background-image: url("../img/step1.png");
 }
 .main-old .step p.step2:before {
-  background-image: url(../img/step2.png);
+  background-image: url("../img/step2.png");
 }
 .main-old .step p.step3:before {
-  background-image: url(../img/step3.png);
+  background-image: url("../img/step3.png");
 }
 .main-old .step p.active {
   color: #ff6935;
 }
 .main-old .step p.active.step1:before {
-  background-image: url(../img/step1active.png);
+  background-image: url("../img/step1active.png");
 }
 .main-old .step p.active.step2:before {
-  background-image: url(../img/step2active.png);
+  background-image: url("../img/step2active.png");
 }
 .main-old .step p.active.step3:before {
-  background-image: url(../img/step3active.png);
+  background-image: url("../img/step3active.png");
 }
 button {
   cursor: pointer;
@@ -786,7 +786,7 @@ button:active {
 }
 .main-old .order-msg {
   padding: 30px;
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 }
 .main-old .order-msg table {
   width: 100%;
@@ -812,21 +812,21 @@ button:active {
   font-size: 16px;
   font-family: "SimSun";
 }
-.main-old .content label,
-.main-old .content .label {
+.main-old .content .label,
+.main-old .content label {
   display: block;
   margin: 25px 0;
   *zoom: 1;
   overflow: hidden;
 }
-.main-old .content label:after,
-.main-old .content .label:after {
+.main-old .content .label:after,
+.main-old .content label:after {
   content: '';
   display: block;
   clear: both;
 }
-.main-old .content label span,
-.main-old .content .label span {
+.main-old .content .label span,
+.main-old .content label span {
   float: left;
   line-height: 34px;
   width: 148px;
@@ -834,35 +834,35 @@ button:active {
   text-align: right;
   font-size: 15px;
 }
-.main-old .content label p,
-.main-old .content .label p {
+.main-old .content .label p,
+.main-old .content label p {
   overflow: hidden;
   line-height: 34px;
   margin: 0 0 0 172px;
 }
-.main-old .content label p i,
-.main-old .content .label p i,
-.main-old .content label p em,
 .main-old .content .label p em,
-.main-old .content label p strong,
-.main-old .content .label p strong {
+.main-old .content label p em,
+.main-old .content .label p i,
+.main-old .content label p i,
+.main-old .content .label p strong,
+.main-old .content label p strong {
   font-style: normal;
 }
-.main-old .content label p i,
-.main-old .content .label p i {
+.main-old .content .label p i,
+.main-old .content label p i {
   margin: 0 0 0 5px;
 }
-.main-old .content label p strong,
-.main-old .content .label p strong {
+.main-old .content .label p strong,
+.main-old .content label p strong {
   color: #d50000;
   font-size: 20px;
 }
-.main-old .content label p a,
-.main-old .content .label p a {
+.main-old .content .label p a,
+.main-old .content label p a {
   color: #0099cc;
 }
-.main-old .content label p button,
-.main-old .content .label p button {
+.main-old .content .label p button,
+.main-old .content label p button {
   width: 192px;
   height: 42px;
   border-radius: 5px;
@@ -871,13 +871,13 @@ button:active {
   pointer-events: none;
   background: #ccc;
 }
-.main-old .content label p button.active,
-.main-old .content .label p button.active {
+.main-old .content .label p button.active,
+.main-old .content label p button.active {
   pointer-events: auto;
   background: #ff6935;
 }
-.main-old .content label p.invest a,
-.main-old .content .label p.invest a {
+.main-old .content .label p.invest a,
+.main-old .content label p.invest a {
   float: left;
   line-height: 32px;
   width: 32px;
@@ -885,8 +885,8 @@ button:active {
   text-align: center;
   color: inherit;
 }
-.main-old .content label p.invest input,
-.main-old .content .label p.invest input {
+.main-old .content .label p.invest input,
+.main-old .content label p.invest input {
   float: left;
   width: 114px;
   line-height: 32px;
@@ -937,18 +937,18 @@ button:active {
   width: 80px;
   height: 80px;
   margin: 0 0 0 -40px;
-  background: url(../img/bigright.png) center no-repeat;
-  background: url(../img/bigright.png) center / contain no-repeat;
+  background: url("../img/bigright.png") center no-repeat;
+  background: url("../img/bigright.png") center / contain no-repeat;
 }
 .main-old .content.submitted div.error:before {
-  background: url(../img/bigerror.png) center no-repeat;
-  background: url(../img/bigerror.png) center / contain no-repeat;
+  background: url("../img/bigerror.png") center no-repeat;
+  background: url("../img/bigerror.png") center / contain no-repeat;
 }
 .main-old .content.submitted div.error p {
   color: #d50000;
 }
 .main-old .content.submitted div p {
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   color: #333;
   font-size: 20px;
 }
@@ -958,7 +958,7 @@ button:active {
 }
 .main-old .content.submitted div a {
   display: block;
-  margin: 30px 0 15px 0;
+  margin: 30px 0 15px;
   color: #0099cc;
   text-decoration: underline;
 }
@@ -1082,7 +1082,7 @@ button:active {
   vertical-align: middle;
   width: 59px;
   height: 46px;
-  background: url(../img/order01.png) center no-repeat;
+  background: url("../img/order01.png") center no-repeat;
 }
 .contract div p.error {
   margin: 0 0 120px;
@@ -1094,11 +1094,11 @@ button:active {
   vertical-align: middle;
   width: 59px;
   height: 46px;
-  background: url(../img/order02.png) center no-repeat;
-  background: url(../img/order02.png) center / 46px no-repeat;
+  background: url("../img/order02.png") center no-repeat;
+  background: url("../img/order02.png") center / 46px no-repeat;
 }
 .contract div p.jump {
-  padding: 15px 0 15px;
+  padding: 15px 0;
   font-size: 16px;
 }
 .contract div p.jump strong {
@@ -1114,7 +1114,7 @@ button:active {
   width: 192px;
   height: 42px;
   border-radius: 5px;
-  margin: 0 0 100px 0;
+  margin: 0 0 100px;
   background: #009ad2;
   color: #fff;
   font-size: 16px;
@@ -1129,8 +1129,18 @@ input:focus {
   padding: 40px 0 291px;
 }
 .main-content {
-  padding: 40px 100px;
+  padding: 40px 0;
   background: #fff;
+  color: #666;
+}
+.main-content .red-font {
+  color: #ff3b35;
+}
+.main-content .orange-font {
+  color: #ff8b35;
+}
+.main-content .big-font {
+  font-size: 24px;
 }
 .main-content .step {
   position: relative;
@@ -1218,9 +1228,12 @@ input:focus {
   background: #4385f5;
 }
 .main-content .proj-msg {
+  position: relative;
+  width: 998px;
   border: 1px solid #ccc;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  margin: 40px auto 0;
   *zoom: 1;
 }
 .main-content .proj-msg:after {
@@ -1242,8 +1255,8 @@ input:focus {
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: url(../img/test/test03.png) center no-repeat;
-  background: url(../img/test/test03.png) center / cover no-repeat;
+  background: url("../img/test/test03.png") center no-repeat;
+  background: url("../img/test/test03.png") center / cover no-repeat;
 }
 .main-content .proj-msg .msg1 i:after {
   content: "";
@@ -1264,4 +1277,179 @@ input:focus {
   vertical-align: middle;
   padding: 0 12px;
   color: #fff;
+}
+.main-content .proj-msg .msg2 {
+  float: left;
+  width: 340px;
+  padding: 1px 0 0 150px;
+}
+.main-content .proj-msg .msg2 .msg2-line1 {
+  margin: 25px 0 11px;
+  font-size: 14px;
+  *zoom: 1;
+}
+.main-content .proj-msg .msg2 .msg2-line1:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-content .proj-msg .msg2 .msg2-line1 .left {
+  float: left;
+  width: 8em;
+  text-align: center;
+}
+.main-content .proj-msg .msg2 .msg2-line1 .right {
+  float: right;
+}
+.main-content .proj-msg .msg2 .percent {
+  overflow: hidden;
+  height: 6px;
+  border-radius: 3px;
+  background: #bfbfbf;
+}
+.main-content .proj-msg .msg2 .msg-line3 {
+  margin: 12px 0 0;
+  text-align: center;
+}
+.main-content .proj-msg .msg3 {
+  float: left;
+  height: 120px;
+  width: 320px;
+  text-align: center;
+  line-height: 120px;
+}
+.main-content .proj-msg .msg3 p {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 32px;
+}
+.main-content .proj-msg .msg3 p span {
+  display: block;
+}
+.main-content .proj-msg .msg4 {
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  line-height: 2;
+  font-size: 12px;
+}
+.main-content .investment {
+  width: 998px;
+  padding: 80px 0 60px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 60px auto 0;
+}
+.main-content .investment p {
+  box-sizing: border-box;
+  width: 378px;
+  margin: 0 auto 25px;
+  font-size: 15px;
+}
+.main-content .investment p .label-span {
+  display: inline-block;
+  width: 5em;
+  padding: 0 28px 0 0;
+  text-align: right;
+}
+.main-content .investment p .tail {
+  margin: 0 0 0 5px;
+}
+.main-content .investment p .btn {
+  display: inline-block;
+  line-height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  background: #ccc;
+  pointer-events: none;
+}
+.main-content .investment p .btn.canClick {
+  pointer-events: all;
+  background: #ff8b35;
+}
+.main-content .investment p .btn.canClick:active {
+  opacity: 0.8;
+}
+.main-content .investment p.investment-amount {
+  font-size: 0;
+  height: 40px;
+}
+.main-content .investment p.investment-amount * {
+  font-size: 15px ;
+}
+.main-content .investment p.investment-amount .label-span {
+  line-height: 40px;
+}
+.main-content .investment p.investment-amount a {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #b4b4b4;
+  background: #e8e8e8;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  vertical-align: top;
+}
+.main-content .investment p.investment-amount input {
+  width: 160px;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #b4b4b4;
+  margin: 0 -1px;
+  font-size: 18px;
+  color: inherit;
+  text-align: center;
+  vertical-align: top;
+}
+.main-content .investment p.investment-read {
+  padding: 0 0 0 20px;
+  font-size: 12px;
+}
+.main-content .investment p.investment-read input {
+  margin: -3px 5px 0;
+  vertical-align: middle;
+}
+.main-content .investment p.investment-read a:hover {
+  text-decoration: underline;
+}
+.main-content .tips {
+  width: 838px;
+  padding: 0 80px 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 60px auto 0;
+}
+.main-content .tips h5 {
+  line-height: 50px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+.main-content .tips ul {
+  *zoom: 1;
+}
+.main-content .tips ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-content .tips ul li {
+  float: left;
+  width: 50%;
+  line-height: 38px;
+  font-size: 14px;
+}
+.main-content .tips ul li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  margin: -3px 8px 0;
+  background: #888;
+  vertical-align: middle;
 }
