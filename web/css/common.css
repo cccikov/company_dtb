@@ -18,8 +18,8 @@ li {
 .mouse-hover:hover {
   text-decoration: underline;
 }
-body,
-html {
+html,
+body {
   font: 16px/1.5 "\5FAE\8F6F\96C5\9ED1";
 }
 html {
@@ -76,7 +76,7 @@ body {
   height: 18px;
   vertical-align: middle;
   margin: -3px 8px 0 0;
-  background: url("../img/nav_tel.png") center no-repeat;
+  background: url(../img/nav_tel.png) center no-repeat;
 }
 .nav .nav-line .nav-line-r {
   float: right;
@@ -95,7 +95,7 @@ body {
   line-height: 80px;
   min-height: 80px;
   background: #fff;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.2);
   *zoom: 1;
 }
 .nav .nav-main:after {
@@ -181,7 +181,7 @@ body {
 }
 .footer .footer-main {
   display: inline-block;
-  padding: 40px 0 20px;
+  padding: 20px 0 20px;
   text-align: left;
   font-size: 16px;
 }
@@ -367,7 +367,7 @@ body {
   text-align: center;
 }
 .pagelist span.ellipsis {
-  padding: 0 8px;
+  padding: 0px 8px;
 }
 .pagelist span.jumppoint {
   margin-left: 30px;
@@ -492,7 +492,7 @@ body {
 }
 .float .login-float ul li input:focus {
   outline: none;
-  box-shadow: 0 0 0 1px #a6c7ff;
+  box-shadow: 0px 0px 0px 1px #a6c7ff;
 }
 .float .login-float ul li .tips {
   position: absolute;
@@ -513,7 +513,7 @@ body {
   height: 16px;
   margin: -3px 5px 0 0;
   vertical-align: middle;
-  background: url("/statics/img/success.png") center no-repeat;
+  background: url(/statics/img/success.png) center no-repeat;
 }
 .float .login-float ul li .tips.error {
   color: #d9534f;
@@ -525,7 +525,7 @@ body {
   height: 16px;
   margin: -3px 5px 0 0;
   vertical-align: middle;
-  background: url("/statics/img/error.png") center no-repeat;
+  background: url(/statics/img/error.png) center no-repeat;
 }
 .float .login-float ul li.code-li {
   padding: 0;
@@ -542,8 +542,8 @@ body {
   overflow: auto;
   padding: 5px;
 }
-.float .login-float ul li.code-li .alink,
-.float .login-float ul li.code-li a {
+.float .login-float ul li.code-li a,
+.float .login-float ul li.code-li .alink {
   float: right;
   padding: 5px;
   line-height: 2.5;
@@ -584,23 +584,23 @@ body {
   border-radius: 5px;
   color: #009AD2;
 }
-.float .login-float ul li.readme-li label,
-.float .login-float ul li.remeber-li label {
+.float .login-float ul li.remeber-li label,
+.float .login-float ul li.readme-li label {
   margin: 0 25px 0 0;
 }
-.float .login-float ul li.readme-li label input,
-.float .login-float ul li.remeber-li label input {
+.float .login-float ul li.remeber-li label input,
+.float .login-float ul li.readme-li label input {
   width: auto;
   margin: -3px 5px 0;
   vertical-align: middle;
 }
-.float .login-float ul li.readme-li label input:focus,
-.float .login-float ul li.remeber-li label input:focus {
+.float .login-float ul li.remeber-li label input:focus,
+.float .login-float ul li.readme-li label input:focus {
   outline: none;
   box-shadow: none;
 }
-.float .login-float ul li.readme-li a,
-.float .login-float ul li.remeber-li a {
+.float .login-float ul li.remeber-li a,
+.float .login-float ul li.readme-li a {
   color: #0072c6;
 }
 .float .login-float ul li.readme-li a {

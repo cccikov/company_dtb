@@ -60,9 +60,11 @@
 				<div class="investment">
 					<p class="investment-amount">
 						<span class="label-span">投资金额</span>
-						<a href="javascript:void(0)">－</a>
+						<a href="javascript:void(0)">－10</a>
+                        <a href="javascript:void(0)">－</a>
 						<input type="text" value="10" readonly>
-						<a href="javascript:void(0)">＋</a>
+                        <a href="javascript:void(0)">＋</a>
+						<a href="javascript:void(0)">＋10</a>
 						<span class="tail">万元</span>
 					</p>
 					<p>
@@ -130,24 +132,31 @@
 					</tr>
 				</table>
 
-				<div class="upload-wrap">
-					<p class="input-wrap">
-						<span class="label-span">上传交易凭证</span>
-						<input class="file-upload" id="upload" type="button" value="本地上传">
-						<input class="file-upload wechat-upload" type="button" value="微信上传">
-					</p>
-					<p class="input-wrap">
-						<span class="label-span">付款金额</span>
-						<input class="text-input" type="text">
-						<span class="tail">万元</span>
-					</p>
-					<p class="upload-tips">
-						提示：若款项分多次转入，此处数字按每张凭证金额填写
-					</p>
+                <div class="upload-zhifubao">
+
+                    <div class="zhifubao-pay">
+                        <img src="img/zhifubao.png">
+                        <p>支付宝收款码</p>
+                    </div>
+
+                    <div class="upload-wrap">
+                        <p class="input-wrap">
+                            <span class="label-span">上传交易凭证</span>
+                            <input class="file-upload" id="upload" type="button" value="本地上传">
+                            <input class="file-upload wechat-upload" type="button" value="微信上传">
+                        </p>
+                        <p class="input-wrap">
+                            <span class="label-span">付款金额</span>
+                            <input class="text-input" type="text">
+                            <span class="tail">万元</span>
+                        </p>
+                        <!-- <p class="upload-tips">
+                            提示：若款项分多次转入，此处数字按每张凭证金额填写
+                        </p> -->
+                    </div>
+                </div>
 
 
-
-				</div>
 
                 <table class="pic-table">
                     <tr>

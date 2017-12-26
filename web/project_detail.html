@@ -3,159 +3,518 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>众筹项目</title>
+    <meta name="viewport" content="width=device-width">
+    <title>234</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/project_detail.css">
+    <!--[if lte IE 9]>
+        <style>
+            .blur{
+                background: #fff;
+                opacity: 0;
+                filter:alpha(opacity=0);
+            }
+        </style>
+    <![endif]-->
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/base.js"></script>
-    <script src="js/project_detail.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/prodetail.js"></script>
+    <script type="text/javascript">
+        var now = new Date();
+        now.setTime(1614190446490);
+        var arrDates = new Array(0);
+        var arrTimerLabels = new Array(0);
+        var login = false;
+
+        function islogin(cb) {
+            if (login) {
+                cb && cb();
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/order/check",
+                    success: function (r) {
+                        var result = eval('(' + r + ')');
+                        if (result.code == "0") {
+                            cb && cb();
+                            login = true;
+                        } else {
+                            location.href = result.URL
+                        }
+                    }
+                });
+            }
+        }
+
+        function contract() {
+            hideTips2();
+            hideTips3();
+            var projid = $("#contract").attr("pjid");
+            var orderid = $("#contract").attr("orderid");
+            $.ajax({
+                type: "POST",
+                url: "/contract/create",
+                data: {
+                    "projid": projid,
+                    "orderid": orderid
+                },
+                beforeSend: showTips(),
+                success: function (r) {
+                    var result = eval('(' + r + ')');
+                    if (result.code == "0") {
+                        setTimeout("javascript:location.href='" + result.sign_url + "'", 2000);
+                    } else {
+                        if (result.error == "1") {
+                            location.href = result.URL
+                        } else {
+                            alert("跳转合同签署界面失败，请刷新重新操作")
+                            hideTips();
+                            hideTips2();
+                            hideTips3();
+                        }
+                    }
+                }
+            });
+        }
+
+
+        function timerWork() {
+            now.setTime(now.getTime() + 1000);
+            for (var i = 0; i < arrTimerLabels.length; i++) {
+                var date3 = arrDates[i] - now.getTime();
+                arrTimerLabels[i].innerHTML = getLeaveDay(date3);
+            }
+        }
+
+        function registerDateTimer(oLabel, iPayDate) {
+            if (iPayDate - now.getTime() > 0) {
+                arrTimerLabels[arrTimerLabels.length] = oLabel;
+                arrDates[arrDates.length] = iPayDate;
+            } else {
+                oLabel.innerHTML = "<p class='error'><em>已超时</em></p>";
+            }
+        }
+
+        function getLeaveDay(date3) {
+            if (date3 < 0) {
+                return "<p class='error'><em>已超时</em></p>";
+            }
+            var days = Math.floor(date3 / (24 * 3600 * 1000));
+            //计算出小时数
+            var leave1 = date3 % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
+            var hours = Math.floor(leave1 / (3600 * 1000));
+            //计算相差分钟数
+            var leave2 = leave1 % (3600 * 1000); //计算小时数后剩余的毫秒数
+            var minutes = Math.floor(leave2 / (60 * 1000));
+            //计算相差秒数
+            var leave3 = leave2 % (60 * 1000); //计算分钟数后剩余的毫秒数
+            var seconds = Math.round(leave3 / 1000);
+            var s = "<p>" + (days > 0 ? ("<span>" + days + "</span>天") : "") + (hours > 0 ? ("<span>" + hours +
+                "</span>时") : "") + "<span>" + minutes + "</span>分<span>" + seconds + "</span>秒";
+            return s;
+        }
+
+        function startShowTimer() {
+            timerWork();
+            window.setInterval('timerWork()', 1000);
+        }
+    </script>
 </head>
 
-<body>
+<body onload="startShowTimer();">
     <div id="wrap">
+
+        <!-- 导航 begin -->
+
+
+
+
+
+        <!--[if lte IE 9]>
+    <style type="text/css">
+        .ie-tips{
+            line-height:24px;
+            padding: 0 12px;
+            background:#fffcde;
+            color:#545454;
+            font-size: 14px;
+        }
+        .ie-tips a{
+            color:blue;
+            text-decoration:underline;
+        }
+    </style>
+    <p class="ie-tips">！！！带投兵网站提醒：您的浏览器版本过低，为了您的安全着想，请升级您的浏览器，或者使用别的浏览器（推荐使用<a target="_blank" href="https://www.baidu.com/s?ie=UTF-8&wd=chrome">chrome浏览器</a>）</p>
+<![endif]-->
+
         <!-- 导航 begin -->
         <div class="nav">
             <div class="nav-line">
                 <div class="width-wrap">
                     <p class="nav-line-l">
-                        <span>客服热线：400-157-8880</span>
-                        <span>工作时间：工作日 9:00 ~ 18:00</span>
-                        <span>微信公众号：带投兵</span>
-                        <a href="javascript:void(0)">在线客服</a>
+                        <span> 欢迎您来到带投兵，投资有风险，选择需谨慎！</span>
                     </p>
-                    <p class="nav-line-r">
-                        <a class="" href="login.html">登录</a>
-                        <a class="" href="javascript:void(0)">注册</a>
-                        <a class="" href="javascript:void(0)">新手指南</a>
-                    </p>
+                    <!-- <p class="nav-line-r">
+                <a class="" href="javascript:void(0)">新手指南</a>
+            </p> -->
                 </div>
-                <!-- width-wrap end -->
             </div>
             <!-- nav-line end -->
+
+
             <div class="nav-main">
                 <div class="width-wrap">
                     <div class="top-img">
-                        <img src="img/logo.png">
-                        <img src="img/index00.png">
+                        <a href="/">
+                            <img src="img/logo.png">
+                        </a>
+                        <!-- <img src="/statics/img/index00.png"> -->
                     </div>
                     <div class="top-link">
-                        <a href="###">首页</a>
-                        <a class="active" href="###">众筹项目</a>
-                        <a href="###">发起项目</a>
-                        <a href="###">新手指南</a>
-                        <a href="###">关于我们</a>
+                        <a href="/">首页</a>
+                        <a href="/project/projpage/all/1" class="active">募集项目</a>
+                        <!-- <a href="###">发起项目</a> -->
+                        <a target="_blank" href="/guide.html">新手指南</a>
+                        <a target="_blank" href="/about.html">关于我们</a>
                     </div>
-                    <!-- top-link end -->
+                    <div class="top-login">
+
+                        <a class="" href="/member/index">刘嘉佳 | 个人中心</a>
+                        <!-- <a class="" href="/member/index">个人中心</a> -->
+                        <a class="" href="/logout">退出</a>
+
+                    </div>
                 </div>
                 <!-- width-wrap end -->
             </div>
             <!-- nav-main end -->
-            <!-- 面包屑 -->
-            <div class="breadcrumb">
-                <ul class="width-wrap">
-                    <li>
-                        <a href="index.htlm">首页</a>
-                    </li>
-                    <li>
-                        <a href="project.html">众筹项目</a>
-                    </li>
-                    <li class="active">
-                        <a href="###">项目详情内容</a>
-                    </li>
-                </ul>
-            </div>
+
+
         </div>
         <!-- 导航 end -->
-        <!-- main -->
+        <!--动态包含-->
+        <!-- 导航 end -->
+
+        <!-- 主要内容 begin -->
         <div class="main">
             <div class="main-content">
+                <input type="hidden" name="projid" id="projid" value="79">
+                <!-- 左边内容 -->
+                <!-- 左边内容 -->
                 <div class="main-left">
-                    <img src="img/test/test07.jpg">
-                    <div>
-                        <h5>项目简介</h5>
-                        <p>聚能还，一家为开发商解决房屋库存，帮消费者无偿还月供，解决购房资金压力的创新型地产金融平台。聚能还，一家为开发商解决房屋库存，帮消费者无偿还月供，解决购房资金压力的创新型地产金融平台。聚能还，一家为开发商解决房屋库存，帮消费者无偿还月供，解决购房资金压力的创新型地产金融平台。聚能还，一家为开发。</p>
+                    <div class="prologo">
+                        <img src="/upload/project/79/fd90e79f-fe3e-423a-898b-a99bdd8a8365_ECbzLou9.jpg">
+                    </div>
+                    <div class="section">
+                        <h4 class="heading">项目简介</h4>
+                        <p>234</p>
+                    </div>
+
+
+
+                    <!-- 项目介绍 -->
+
+
+                    <!-- 团队成员 -->
+
+
+
+
+                    <!-- 风险提示 -->
+                    <div class="section tips">
+                        <h4 class="heading">风险提示</h4>
+                        <p>带投兵平台不对任何股权投资项目的盈利、亏损作承诺、担保或保证，不对您的投资损失承担任何责任。</p>
+                        <h5>主要风险</h5>
+                        <p>1、投资失败风险：由于各种原因致使您最终未能成功投资目标企业而产生的投资款被退回且未获得任何收益的风险。在此期间，您也可能丧失了其他潜在的投资机会。</p>
+                        <p>2、市场风险：目标企业的市值会因经济因素、政治因素、投资心理和交易制度等因素的影响而产生波动，从而导致您的收益水平发生变化，并可能引发亏损的风险。</p>
+                        <p>3、未聘请专业人士的风险：您可能并未聘请专业人士为您的投资提供法律、财务、投资方面的建议，这可能会影响您投资判断的准确性与专业性。</p>
+                        <p>4、其他风险：宏观经济风险、政策性风险、流通性风险、目标企业经营风险、未全面了解目标企业的风险、对目标企业控制权的风险、技术风险、不可抗力风险、其他风险。</p>
+                    </div>
+
+                    <!-- 本轮投资意向 -->
+                    <div class="section">
+                        <h4 class="heading">本轮投资意向</h4>
+                        <ul style="height:5000px" class="investor-list">
+
+
+
+                        </ul>
                     </div>
                 </div>
+                <!-- 左边内容 end -->
+
+
+                <!-- 右边内容 -->
                 <!-- 右边内容 -->
                 <div class="main-right">
+
                     <!-- 项目融资信息 , 进度 , 剩余时间 , 投资按钮 -->
                     <div class="info">
-                        <h5>非遗大师金全富重铸经典宣炉非遗大师金全富重铸经典宣炉非遗大师金全富重铸经典宣炉非遗大师金全富重铸经典宣炉</h5>
+                        <h5>234</h5>
                         <!-- 进度条 -->
-                        <div class="percent">
-                            <div class="percent-color" style="width:50%"></div>
-                        </div>
+
                         <!-- 项目融资信息 -->
                         <div class="info-msg">
                             <p>
-                                <span>计划筹资：</span><strong>1000万</strong>
+                                <span>目标：</span>
+                                <strong>100万</strong>
                             </p>
                             <p>
-                                <span>出让股份：</span><strong>10.0%</strong>
+                                <span>起投：</span>
+                                <strong>10万</strong>
                             </p>
-                            <p>
-                                <span>已募集总额：</span><strong>1000万</strong>
-                            </p>
-                            <p>
-                                <span>筹资完成度：</span><strong>100%</strong>
-                            </p>
+
+
                         </div>
+
+
+
                         <!-- 剩余时间 -->
-                        <div class="remain">
+                        <div class="remain" id="lblDates_79">
+
+
                             <p>
-                                <span>60</span>天
-                                <span>21</span>时
-                                <span>15</span>分
-                                <span>20</span>秒
+                                <span>--</span>天
+                                <span>--</span>时
+                                <span>--</span>分
+                                <span>--</span>秒
+
+
                             </p>
                         </div>
                         <!-- 报名按钮 -->
                         <div class="action">
-                            <a class="btn" href="javascript:void(0)">我要报名</a>
+
+
+                            <a class="btn" href="javascript:void(0)">已报名</a>
+
+
                         </div>
+
                         <!-- 收藏按钮 -->
-                        <div class="star">
-                            <a href="javascript:void(0)">点击收藏该项目</a>
+                        <div class="star part">
+                            <a href="javascript:void(0)" id="bookmark"></a>
                         </div>
                     </div>
+
                     <!-- 流程 , 下载融资计划书 -->
-                    <div class="step">
-                        <h6>项目筹资流程</h6>
+                    <div class="step section">
+                        <h6 class="heading">项目筹资流程</h6>
                         <!-- 流程 -->
                         <div class="process-step">
                             <span class="step1 active">预热</span>
-                            <span class="step2">募集</span>
-                            <span class="step3">出资</span>
-                            <span class="step4">交割</span>
+                            <span class="step2 ">募集</span>
+                            <span class="step3 ">出资</span>
+                            <span class="step4 ">交割</span>
                         </div>
                         <!-- 融资计划书 -->
                         <div class="plan">
                             <a href="###" download>下载融资计划书</a>
                         </div>
-                    </div>
-                    <!-- 通知公告 -->
-                    <div class="notice">
-                        <h5>通知公告</h5>
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <!-- 下载项目核心内容 -->
+                        <div class="keyContent">
+                            <a href="###">项目核心内容(1)</a>
+                            <a href="###">项目核心内容(1)</a>
+                            <a href="###">项目核心内容(1)</a>
+                            <a href="###">项目核心内容(1)</a>
+                            <a href="###">项目核心内容(1)</a>
                         </div>
+                    </div>
+
+
+                    <!-- 通知公告 -->
+                    <div class="notice section">
+                        <h5 class="heading">通知公告</h5>
+                        <a title="爱就是打开速度">
+                            <div class="notice-title">
+                                <span>
+                                    2017-06-10
+                                </span>
+                                <p>
+                                    爱就是打开速度
+                                </p>
+                            </div>
+                            <div class="notice-content">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque voluptatum est quasi iusto cumque suscipit distinctio sequi
+                                aspernatur nesciunt maxime asperiores, illo esse? Eaque est voluptas sequi molestiae architecto
+                                hic.
+                            </div>
+                        </a>
+                        <a title="爱就是打开速度">
+                            <div class="notice-title">
+                                <span>
+                                    2017-06-10
+                                </span>
+                                <p>
+                                    爱就是打开速度
+                                </p>
+                            </div>
+                            <div class="notice-content">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque voluptatum est quasi iusto cumque suscipit distinctio sequi
+                                aspernatur nesciunt maxime asperiores, illo esse? Eaque est voluptas sequi molestiae architecto
+                                hic.
+                            </div>
+                        </a>
+                        <a title="爱就是打开速度">
+                            <div class="notice-title">
+                                <span>
+                                    2017-06-10
+                                </span>
+                                <p>
+                                    爱就是打开速度
+                                </p>
+                            </div>
+                            <div class="notice-content">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque voluptatum est quasi iusto cumque suscipit distinctio sequi
+                                aspernatur nesciunt maxime asperiores, illo esse? Eaque est voluptas sequi molestiae architecto
+                                hic.
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- 右边内容 end -->
+            </div>
+        </div>
+        <!-- 主要内容 end -->
+
+        <!-- 页面底部 begin -->
+
+
+
+        <!-- 页面底部 begin -->
+        <div class="footer">
+            <div class="footer-main">
+                <div class="footer-left">
+                    <img src="/statics/img/bottom-logo.png">
+                </div>
+                <div class="footer-middle">
+                    <a class="about" target="_blank" href="/about.html">关于我们</a>
+                    <a class="new" target="_blank" href="/guide.html">新手指南</a>
+                    <a class="question" href="javascript:void(0)">常见问题</a>
+                </div>
+                <div class="footer-right">
+                    <p>
+                        <img src="/statics/img/gongzhonghao.png" alt="公众号二维码">官方公众号
+                    </p>
+                    <p>
+                        <img src="/statics/img/kefu.png" alt="公众号二维码">在线客服
+                    </p>
+                </div>
+                <div class="footer-bottom">
+                    <p>客服电话：400-1116-199</p>
+                    <p>工作时间：周一到周五 9:00-19:00</p>
+                    <p>客服邮箱：kf@dtb.cn</p>
+                </div>
+            </div>
+            <img style="position:absolute;bottom:0px;right:15px;opacity:0.05" src="/statics/img/fdd.png">
+            <p class="right">版权所有©Copyright 2017 带投兵 -
+                <a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">粤ICP备17129433号</a>
+            </p>
+        </div>
+        <!-- 页面底部 end -->
+
+
+
+
+
+
+        <!-- 浮窗 -->
+        <!-- js 调用showLogin(true) 出现弹窗 ;  调用showLogin(false) 隐藏弹窗 -->
+        <div class="float">
+            <div class="mask">
+            </div>
+            <div class="login-float">
+                <h4>会员登录</h4>
+                <ul>
+                    <li class="error-li" v-if="error">
+                        <p>
+                            <i class="fa fa-exclamation-triangle"></i>{{errorMsg}}</p>
+                    </li>
+                    <li>
+                        <input type="text" class="form-control" v-model="tradername" placeholder="账号">
+                    </li>
+                    <li>
+                        <input type="password" class="form-control" v-model="password" placeholder="密码">
+                    </li>
+                    <li class="code-li">
+                        <span class="alink" @click="refreshCode">点击刷新</span>
+                        <p>
+                            <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
+                        </p>
+                        <label>
+                            <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
+                        </label>
+                    </li>
+                    <!--
+            <li class="remeber-li">
+                <label>
+                    <input type="checkbox" name="">记住用户名
+                </label>
+                <a href="javascript:void(0)">忘记密码?</a>
+            </li>
+             -->
+                    <li>
+                        <button>登录</button>
+                    </li>
+                    <li class="register-li">没有账户?
+                        <a href="/registerpage">免费注册</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="loader-float">
+                <div class="loader">
+                    <div class="loader-inner ball-spin-fade-loader">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 页面底部 begin -->
-        <div class="footer">
-            <p>带投兵众筹人工服务热线</p>
-            <p>400-123-4567 (工作日9:00-18:00)</p>
-            <p>
-                <span>提交项目:opm@mr-zc.com</span>
-                <span>其他合作:coop@mr-zc.com</span>
-                <span>加入我们:hr@mr-zc.com</span>
-                <span>客服邮箱:service@mr-zc.com</span>
-            </p>
-            <p>版权所有&copy;Copyright 2017 带投兵众筹 - 粤ICP备1601234567号-1</p>
-        </div>
+        <!--动态包含-->
         <!-- 页面底部 end -->
+
+        <!-- showTips() 显示 ; hideTips() 隐藏 -->
+        <div class="float">
+            <div class="tips-float">
+                正跳转到合同签署界面......
+            </div>
+            <div class="tips2-float">
+                <h5>提示</h5>
+                <p>此项目还有部分核心内容需要签署【保密协议】后查看</p>
+                <button onclick="contract();">确定</button>
+            </div>
+            <div class="tips3-float">
+                <a class="close" onclick="hideTips3();" href="javascript:void(0)"></a>
+                <h5>尊敬的投资人</h5>
+                <p class="p1">为了让您在进行互联网非公开股权投资前，尽可能多地了解互联网非公开股权投资的风险，带投兵（深圳）网络科技股份有限公司在此郑重提醒，请您务必仔细阅读并理解本《风险提示书》，谨慎评估风险后，再决定是否继续进行互联网非公开股权投资。</p>
+                <p class="p2">
+                    <a target="_blank" href="/risks.html">【风险提示书】</a>
+                </p>
+                <p class="p3">
+                    同时，为保证您投资后的合伙权益，请知悉如下合同
+                </p>
+                <p class="p4">
+                    <a target="_blank" href="/partnership.html">【合伙协议】</a>
+                    <a target="_blank" href="/partner.html">【合伙人协议】</a>
+                    <a target="_blank" href="/transferOfRights.html">【合伙人转让权益协议】</a>
+                </p>
+                <p class="p5">
+                    <button onclick="contract();">已阅读，同意</button>
+                </p>
+            </div>
+        </div>
     </div>
+
+
+
 </body>
 
 </html>

@@ -29,7 +29,7 @@ html {
 
 // 主要
 .main {
-    padding: 25px 0 25+170px;
+    padding: 55px 0 @footerHeight+25px;
     .main-wrap {
         background: #fff;
         .main-middle {
@@ -37,18 +37,18 @@ html {
             padding: 30px 0;
             margin: 0 auto;
             .login_register();
-            h4{
+            h4 {
                 text-align: left;
-                padding-left:5px;
-                padding-right:5px;
+                padding-left: 5px;
+                padding-right: 5px;
                 .clearfix();
-                span{
+                span {
                     float: right;
-                    font-size:14px;
+                    font-size: 14px;
                     font-weight: 500;
-                    margin:3px 0 0;
-                    a{
-                        color:#ff6600;
+                    margin: 3px 0 0;
+                    a {
+                        color: #ff6600;
                     }
                 }
             }
@@ -56,4 +56,188 @@ html {
     }
 }
 
-
+.new-main-middle {
+    width: 500px;
+    padding: 30px 0;
+    margin: 0 auto;
+    h4 {
+        padding: 0 5px 8px;
+        border-bottom: 1px solid #d5d5d5;
+        margin: 0 -5px 0px;
+        font-size: 18px;
+        color: #333;
+        .clearfix();
+        span {
+            float: right;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 3px 0 0;
+            a {
+                color: #ff6600;
+            }
+        }
+    }
+    .fmreg-item {
+        position: relative;
+        margin: 20px 0;
+        font-size: 14px;
+        color: #666;
+        .text {
+            position: absolute;
+            top: 15px;
+            left: -120px;
+            width: 120px;
+            line-height: 2.5;
+            text-align: right;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .item2 {
+            display: block;
+            input {
+                box-sizing: border-box;
+                width: 100%;
+                line-height: 2.5;
+                font-size: inherit;
+                padding: 0 15px;
+                border: 1px solid #e4e4e4;
+                border-radius: 5px;
+                &:focus {
+                    outline: none;
+                    box-shadow: 0px 0px 0px 1px #a6c7ff;
+                }
+            }
+        }
+        .item3 {
+            display: block;
+            position: relative;
+            top: 5px;
+            left: 5px;
+            line-height: 1.2;
+            color: #979797;
+            font-family: "SimSun";
+            .reg-valid-tip {
+                display: block;
+                &.tip-hidden {
+                    display: none;
+                }
+            }
+            .reg-valid-valid {
+                display: block; // color: #5cb85c;
+                // &:before {
+                //     content: "";
+                //     display: inline-block;
+                //     width: 16px;
+                //     height: 16px;
+                //     margin: -3px 5px 0 0;
+                //     vertical-align: middle;
+                //     background: url(/statics/img/success.png) center no-repeat;
+                // }
+            }
+            .reg-valid-error {
+                display: block;
+                color: #d9534f;
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    margin: -3px 5px 0 0;
+                    vertical-align: middle;
+                    background: url(/statics/img/error.png) center no-repeat;
+                }
+            }
+        }
+    }
+    .fmreg-item.code {
+        .item2 {
+            input {
+                box-sizing: border-box;
+                float: left;
+                width: 250px;
+            }
+            img {
+                float: left;
+                display: block;
+                height: 35px;
+                margin: 0 5px;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+            }
+            .alink {
+                float: left;
+                width: 96px;
+                line-height: 2.5;
+                color: #0099cc;
+                text-decoration: underline;
+                cursor: pointer;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+            }
+            .clearfix();
+        }
+    }
+    .fmreg-item.message {
+        .item2 {
+            .clearfix();
+            input {
+                float: left;
+                width: 335px;
+            }
+            a.btnSendCode {
+                float: right;
+                width: 158px;
+                text-align: center;
+                height: 2.5em;
+                line-height: 35px;
+                border: 1px solid #8ad1ea;
+                border-radius: 5px;
+                color: @mainColorBlue;
+            }
+        }
+    }
+    .fmreg-item.readme {
+        .text {
+            display: none;
+        }
+        .item2 {
+            input {
+                width: auto;
+                margin: -3px 5px 0;
+                vertical-align: middle;
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+            a {
+                color: #ec5f00;
+            }
+        }
+    }
+    .fmreg-item.submit {
+        button {
+            width: 100%;
+            line-height: 3;
+            border: 1px solid #007ead;
+            border-radius: 5px;
+            pointer-events: auto;
+            background: @mainColorBlue;
+            cursor: pointer;
+            text-align: center;
+            color: #fff;
+            &:active {
+                opacity: 0.8;
+            }
+            &:focus {
+                outline: none;
+            }
+            &.cannotClick {
+                border-color: #ccc;
+                background: #ccc;
+                pointer-events: none;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

@@ -18,8 +18,8 @@ li {
 .mouse-hover:hover {
   text-decoration: underline;
 }
-body,
-html {
+html,
+body {
   font: 16px/1.5 "\5FAE\8F6F\96C5\9ED1";
 }
 html {
@@ -76,7 +76,7 @@ body {
   height: 18px;
   vertical-align: middle;
   margin: -3px 8px 0 0;
-  background: url("../img/nav_tel.png") center no-repeat;
+  background: url(../img/nav_tel.png) center no-repeat;
 }
 .nav .nav-line .nav-line-r {
   float: right;
@@ -95,7 +95,7 @@ body {
   line-height: 80px;
   min-height: 80px;
   background: #fff;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.2);
   *zoom: 1;
 }
 .nav .nav-main:after {
@@ -181,7 +181,7 @@ body {
 }
 .footer .footer-main {
   display: inline-block;
-  padding: 40px 0 20px;
+  padding: 20px 0 20px;
   text-align: left;
   font-size: 16px;
 }
@@ -367,7 +367,7 @@ body {
   text-align: center;
 }
 .pagelist span.ellipsis {
-  padding: 0 8px;
+  padding: 0px 8px;
 }
 .pagelist span.jumppoint {
   margin-left: 30px;
@@ -492,7 +492,7 @@ body {
 }
 .float .login-float ul li input:focus {
   outline: none;
-  box-shadow: 0 0 0 1px #a6c7ff;
+  box-shadow: 0px 0px 0px 1px #a6c7ff;
 }
 .float .login-float ul li .tips {
   position: absolute;
@@ -513,7 +513,7 @@ body {
   height: 16px;
   margin: -3px 5px 0 0;
   vertical-align: middle;
-  background: url("/statics/img/success.png") center no-repeat;
+  background: url(/statics/img/success.png) center no-repeat;
 }
 .float .login-float ul li .tips.error {
   color: #d9534f;
@@ -525,7 +525,7 @@ body {
   height: 16px;
   margin: -3px 5px 0 0;
   vertical-align: middle;
-  background: url("/statics/img/error.png") center no-repeat;
+  background: url(/statics/img/error.png) center no-repeat;
 }
 .float .login-float ul li.code-li {
   padding: 0;
@@ -542,8 +542,8 @@ body {
   overflow: auto;
   padding: 5px;
 }
-.float .login-float ul li.code-li .alink,
-.float .login-float ul li.code-li a {
+.float .login-float ul li.code-li a,
+.float .login-float ul li.code-li .alink {
   float: right;
   padding: 5px;
   line-height: 2.5;
@@ -584,23 +584,23 @@ body {
   border-radius: 5px;
   color: #009AD2;
 }
-.float .login-float ul li.readme-li label,
-.float .login-float ul li.remeber-li label {
+.float .login-float ul li.remeber-li label,
+.float .login-float ul li.readme-li label {
   margin: 0 25px 0 0;
 }
-.float .login-float ul li.readme-li label input,
-.float .login-float ul li.remeber-li label input {
+.float .login-float ul li.remeber-li label input,
+.float .login-float ul li.readme-li label input {
   width: auto;
   margin: -3px 5px 0;
   vertical-align: middle;
 }
-.float .login-float ul li.readme-li label input:focus,
-.float .login-float ul li.remeber-li label input:focus {
+.float .login-float ul li.remeber-li label input:focus,
+.float .login-float ul li.readme-li label input:focus {
   outline: none;
   box-shadow: none;
 }
-.float .login-float ul li.readme-li a,
-.float .login-float ul li.remeber-li a {
+.float .login-float ul li.remeber-li a,
+.float .login-float ul li.readme-li a {
   color: #0072c6;
 }
 .float .login-float ul li.readme-li a {
@@ -765,67 +765,6 @@ body {
   -webkit-animation: ball-spin-fade-loader 1s 0.84s infinite linear;
   animation: ball-spin-fade-loader 1s 0.84s infinite linear;
 }
-.main-old {
-  padding: 40px 0 291px;
-  *zoom: 1;
-}
-.main-old:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main-old .step {
-  *zoom: 1;
-  padding: 0 0 0 5px;
-  margin: 50px 0 40px;
-  background: url("../img/border2.png") top left 1px repeat-x;
-}
-.main-old .step:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main-old .step p {
-  position: relative;
-  box-sizing: border-box;
-  float: left;
-  width: 33.333333333333%;
-  padding: 20px 0 0;
-  text-align: center;
-  color: #b1b1b1;
-}
-.main-old .step p:before {
-  content: "";
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  width: 34px;
-  height: 34px;
-  padding: 0 13px;
-  margin: 0 0 0 -30px;
-  background: #fff url("../img/step1.png") center no-repeat;
-}
-.main-old .step p.step1:before {
-  background-image: url("../img/step1.png");
-}
-.main-old .step p.step2:before {
-  background-image: url("../img/step2.png");
-}
-.main-old .step p.step3:before {
-  background-image: url("../img/step3.png");
-}
-.main-old .step p.active {
-  color: #ff6935;
-}
-.main-old .step p.active.step1:before {
-  background-image: url("../img/step1active.png");
-}
-.main-old .step p.active.step2:before {
-  background-image: url("../img/step2active.png");
-}
-.main-old .step p.active.step3:before {
-  background-image: url("../img/step3active.png");
-}
 button {
   cursor: pointer;
   opacity: 1;
@@ -836,288 +775,6 @@ button:focus {
 }
 button:active {
   opacity: 0.6;
-}
-.main-old .order-msg {
-  padding: 30px;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-}
-.main-old .order-msg table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.main-old .order-msg table td {
-  font-size: 14px;
-  font-weight: 700;
-  color: #2b2b2b;
-  padding: 10px 18px;
-}
-.main-old .order-msg table td strong {
-  color: #979797;
-  font-weight: 500;
-}
-.main-old .content {
-  padding: 30px 0 0;
-  color: #2b2b2b;
-}
-.main-old .content h5 {
-  margin: 0 0 60px;
-  color: #2b2b2b;
-  font-size: 16px;
-  font-family: "SimSun";
-}
-.main-old .content .label,
-.main-old .content label {
-  display: block;
-  margin: 25px 0;
-  *zoom: 1;
-  overflow: hidden;
-}
-.main-old .content .label:after,
-.main-old .content label:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.main-old .content .label span,
-.main-old .content label span {
-  float: left;
-  line-height: 34px;
-  width: 148px;
-  margin: 0 24px 0 0;
-  text-align: right;
-  font-size: 15px;
-}
-.main-old .content .label p,
-.main-old .content label p {
-  overflow: hidden;
-  line-height: 34px;
-  margin: 0 0 0 172px;
-}
-.main-old .content .label p em,
-.main-old .content label p em,
-.main-old .content .label p i,
-.main-old .content label p i,
-.main-old .content .label p strong,
-.main-old .content label p strong {
-  font-style: normal;
-}
-.main-old .content .label p i,
-.main-old .content label p i {
-  margin: 0 0 0 5px;
-}
-.main-old .content .label p strong,
-.main-old .content label p strong {
-  color: #d50000;
-  font-size: 20px;
-}
-.main-old .content .label p a,
-.main-old .content label p a {
-  color: #0099cc;
-}
-.main-old .content .label p button,
-.main-old .content label p button {
-  width: 192px;
-  height: 42px;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  pointer-events: none;
-  background: #ccc;
-}
-.main-old .content .label p button.active,
-.main-old .content label p button.active {
-  pointer-events: auto;
-  background: #ff6935;
-}
-.main-old .content .label p.invest a,
-.main-old .content label p.invest a {
-  float: left;
-  line-height: 32px;
-  width: 32px;
-  border: 1px solid #ccc;
-  text-align: center;
-  color: inherit;
-}
-.main-old .content .label p.invest input,
-.main-old .content label p.invest input {
-  float: left;
-  width: 114px;
-  line-height: 32px;
-  border: 1px solid #cccccc;
-  border-left: none;
-  border-right: none;
-  color: #333;
-  text-align: center;
-  font-size: 18px;
-}
-.main-old .content .notice {
-  padding: 15px 0 0;
-  margin: 60px 0 0;
-  border-top: 1px solid #f0f0f0;
-}
-.main-old .content .notice span {
-  width: auto;
-  line-height: 30px;
-  color: #2b2b2b;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: "SimSun";
-}
-.main-old .content .notice em {
-  display: block;
-  line-height: 30px;
-  color: #a4a4a4;
-  font-size: 14px;
-}
-.main-old .content.submitted {
-  min-height: 400px;
-  text-align: center;
-}
-.main-old .content.submitted h5 {
-  text-align: left;
-}
-.main-old .content.submitted div {
-  position: relative;
-  margin: 150px 0 0;
-  display: inline-block;
-  text-align: center;
-}
-.main-old .content.submitted div:before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  margin: 0 0 0 -40px;
-  background: url("../img/bigright.png") center no-repeat;
-  background: url("../img/bigright.png") center / contain no-repeat;
-}
-.main-old .content.submitted div.error:before {
-  background: url("../img/bigerror.png") center no-repeat;
-  background: url("../img/bigerror.png") center / contain no-repeat;
-}
-.main-old .content.submitted div.error p {
-  color: #d50000;
-}
-.main-old .content.submitted div p {
-  margin: 0 0 10px;
-  color: #333;
-  font-size: 20px;
-}
-.main-old .content.submitted div p strong {
-  color: #ff6600;
-  font-weight: 500;
-}
-.main-old .content.submitted div a {
-  display: block;
-  margin: 30px 0 15px;
-  color: #0099cc;
-  text-decoration: underline;
-}
-.main-old .content.submitted div .button {
-  display: inline-block;
-  width: 192px;
-  height: 42px;
-  line-height: 42px;
-  border-radius: 5px;
-  background: #ff6935;
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-}
-.main-old .content.upload {
-  text-align: center;
-}
-.main-old .content.upload h5 {
-  margin-bottom: 50px;
-  text-align: left;
-}
-.main-old .content.upload div.part1 {
-  display: inline-block;
-  padding: 0 53px 0 0;
-  text-align: left;
-}
-.main-old .content.upload div.part3 {
-  margin: 25px 0;
-}
-.main-old .content.upload div input {
-  line-height: 32px;
-  height: 32px;
-  padding: 0 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.main-old .content.upload div i {
-  font-style: normal;
-  margin: 0 0 0 5px;
-}
-.main-old .content.upload div i.bold {
-  font-weight: 700;
-  font-size: 18px;
-  color: red;
-}
-.main-old .content.upload div #upload {
-  width: 56px;
-  line-height: 22px;
-  height: 22px;
-  border-radius: 5px;
-  border: none;
-  margin: 7px 0 0;
-  text-align: center;
-  background: #ccc;
-  color: #fff;
-  pointer-events: none !important;
-  font-size: 12px;
-  vertical-align: top;
-}
-.main-old .content.upload div #upload.active {
-  background: #3489d8;
-  color: #fff;
-  pointer-events: all !important;
-}
-.main-old .content.upload div #upload.active:hover {
-  cursor: pointer;
-}
-.main-old .content.upload div #upload:focus {
-  outline: none;
-}
-.main-old .content.upload div #upload:hover {
-  cursor: not-allowed !important;
-}
-.main-old .content.upload button {
-  width: 100px;
-  height: 36px;
-  border-radius: 5px;
-  background: #ff6935;
-  color: #fff;
-  font-size: 14px;
-}
-.main-old .content.upload .upload-msg {
-  width: 60%;
-  border-collapse: collapse;
-  margin: 0 auto;
-  font-size: 14px;
-}
-.main-old .content.upload .upload-msg td {
-  padding: 3px 12px;
-  border-bottom: 1px solid #ddd;
-}
-.main-old .content.upload .upload-msg td img {
-  max-width: 200px;
-  max-height: 100px;
-  padding: 8px 0 5px;
-}
-.main-old .content.upload .upload-msg td a {
-  color: #CA4848;
-}
-.main-old .content.upload .upload-msg th {
-  padding: 3px 12px;
-  border-bottom: 1px solid #ddd;
-  background: #eaeaea;
-}
-.main-old .content.upload .upload-msg th:nth-of-type(1) {
-  width: 100px;
 }
 .contract div {
   text-align: center;
@@ -1179,10 +836,9 @@ input:focus {
   outline: none;
 }
 .main {
-  padding: 40px 0 291px;
+  padding: 40px 0 321px;
 }
 .main-content {
-  margin: 0 0 100px;
   padding: 40px 0;
   background: #fff;
   color: #666;
@@ -1373,6 +1029,7 @@ input:focus {
 }
 .main-content .proj-msg .msg2 .msg-line3 {
   margin: 12px 0 0;
+  font-size: 12px;
   text-align: center;
 }
 .main-content .proj-msg .msg3 {
@@ -1392,10 +1049,10 @@ input:focus {
 }
 .main-content .proj-msg .msg4 {
   position: absolute;
-  left: 0;
+  left: 12px;
   bottom: -24px;
-  line-height: 2;
-  font-size: 12px;
+  line-height: 24px;
+  font-size: 14px;
 }
 .main-content .investment {
   width: 998px;
@@ -1586,6 +1243,42 @@ input:focus {
 .main-content table.pic-table .del:hover {
   text-decoration: underline;
 }
+.main-content .upload-zhifubao {
+  width: 743px;
+  margin: 30px auto 0;
+  *zoom: 1;
+}
+.main-content .upload-zhifubao:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-content .upload-zhifubao .zhifubao-pay {
+  position: relative;
+  float: left;
+  width: 359px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.main-content .upload-zhifubao .zhifubao-pay p {
+  margin: -5px 0 5px;
+  color: #3486dc;
+}
+.main-content .upload-zhifubao .zhifubao-pay a.no-zhifubao {
+  position: absolute;
+  bottom: -20px;
+  right: 5px;
+  line-height: 20px;
+  color: #999;
+  font-size: 12px;
+}
+.main-content .upload-zhifubao .upload-wrap {
+  float: right;
+  margin-top: 0;
+  width: 350px;
+  height: 114px;
+  padding-top: 10px;
+}
 .main-content .upload-wrap {
   width: 743px;
   padding: 0 0 25px;
@@ -1594,18 +1287,20 @@ input:focus {
   text-align: center;
 }
 .main-content .upload-wrap .input-wrap {
-  display: inline-block;
   width: 300px;
-  padding: 0 100px;
-  margin: 24px 0 0;
+  margin: 24px auto 0;
   font-size: 14px;
   text-align: left;
 }
 .main-content .upload-wrap .input-wrap .label-span {
   display: inline-block;
-  width: 7em;
+  width: 9em;
   margin: 0 20px 0 0;
   text-align: right;
+}
+.main-content .upload-wrap .input-wrap #cert {
+  position: absolute;
+  z-index: -100;
 }
 .main-content .upload-wrap .input-wrap .file-upload {
   width: 70px;
@@ -1614,7 +1309,13 @@ input:focus {
   font-size: 12px;
   border-radius: 5px;
   color: #fff;
+  background: #ccc;
+  pointer-events: none;
+}
+.main-content .upload-wrap .input-wrap .file-upload.active {
   background: #4285f5;
+  pointer-events: all;
+  cursor: pointer;
 }
 .main-content .upload-wrap .input-wrap .file-upload.wechat-upload {
   background: #2cad56;
@@ -1649,7 +1350,7 @@ input:focus {
 }
 .main-content .upload-status {
   width: 500px;
-  margin: 100px auto 150px;
+  margin: 100px auto 120px;
   text-align: center;
 }
 .main-content .upload-status:before {
@@ -1660,15 +1361,12 @@ input:focus {
   margin: 0 0 30px;
 }
 .main-content .upload-status.success:before {
-  background: url(../img/bigright.png) center no-repeat;
-  background: url(../img/bigright.png) center / cover no-repeat;
+  background: url("../img/bigright.png") center no-repeat;
+  background: url("../img/bigright.png") center / cover no-repeat;
 }
 .main-content .upload-status.error:before {
-  background: url(../img/bigerror.png) center no-repeat;
-  background: url(../img/bigerror.png) center / cover no-repeat;
-}
-.main-content .upload-status p {
-  text-align: left;
+  background: url("../img/bigerror.png") center no-repeat;
+  background: url("../img/bigerror.png") center / cover no-repeat;
 }
 .main-content .upload-status a {
   display: inline-block;
