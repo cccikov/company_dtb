@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <link rel="stylesheet" href="/m/css/register.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <div class="top">
+            注册/绑定
+        </div>
+        <div class="main">
+            <div class="tabs-nav">
+                <a class="no-animation" :class="{active:tab == 1}" href="javascript:void(0)" @click="changeTab(1)">注册</a>
+                <a class="no-animation" :class="{active:tab == 2}" href="javascript:void(0)" @click="changeTab(2)">绑定</a>
+            </div>
+            <div class="tabs-box">
+                <div class="box" :class="{active:tab == 1}">
+                    <form>
+                        <div class="input-box">
+                            <span class="input-label">用户名：</span>
+                            <p class="input-wrap">
+                                <input type="text" name="">
+                            </p>
+                        </div>
+                        <div class="input-box">
+                            <span class="input-label">密码：</span>
+                            <p class="input-wrap">
+                                <input type="password" name="">
+                            </p>
+                        </div>
+                        <div class="input-box">
+                            <span class="input-label">确认密码：</span>
+                            <p class="input-wrap">
+                                <input type="password" name="">
+                            </p>
+                        </div>
+                        <div class="input-box">
+                            <span class="input-label">手机号码：</span>
+                            <p class="input-wrap">
+                                <input type="tel" name="">
+                            </p>
+                        </div>
+                        <div class="input-box input-box-code">
+                            <span class="input-label">验证码：</span>
+                            <p class="input-wrap">
+                                <input type="tel" name="">
+                            </p>
+                            <a class="code" href="javascript:void(0)">获取验证码</a>
+                        </div>
+                        <div class="input-box input-box-read">
+                            <label>
+                                <input type="checkbox" name=""> 我已阅读并且同意
+                            </label>
+                            <a href="###">《用户注册服务协议》</a>
+                        </div>
+                        <button class="submit alink">注册</button>
+                    </form>
+                </div>
+                <div class="box" :class="{active:tab == 2}">
+                    <form>
+                        <div class="input-box">
+                            <span class="input-label">手机号码：</span>
+                            <p class="input-wrap">
+                                <input type="tel" name="">
+                            </p>
+                        </div>
+                        <div class="input-box input-box-code">
+                            <span class="input-label">验证码：</span>
+                            <p class="input-wrap">
+                                <input type="tel" name="">
+                            </p>
+                            <a class="code" href="javascript:void(0)">获取验证码</a>
+                        </div>
+                        <div class="input-box input-box-read">
+                            <label>
+                                <input type="checkbox" name=""> 我已阅读并且同意
+                            </label>
+                            <a href="###">《用户注册服务协议》</a>
+                        </div>
+                        <button class="submit alink">注册</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/m/js/register.js"></script>
+</body>
+
+</html>

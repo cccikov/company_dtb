@@ -1,0 +1,114 @@
+@import url("./common.less");
+html {
+    background: #f0eff4;
+}
+
+.top {
+    line-height: 2.5;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #ff8b35, #fd5e23);
+    background: -o-linear-gradient(left, #ff8b35, #fd5e23);
+    background: linear-gradient(to right, #ff8b35, #fd5e23);
+}
+
+.main {
+    color: #666;
+    padding:0 0 40px;
+    .tabs-nav {
+        padding: 10px 20px 0;
+        .clearfix();
+        a {
+            float: left;
+            width: 50%;
+            text-align: center;
+            font-size: 18px;
+            line-height: 40px;
+            color: #555;
+            border-bottom: 2px solid #999;
+            &.active{
+                color:#ff8b35;
+                border-color: #ff8b35;
+            }
+        }
+    }
+    .tabs-box {
+        .box {
+            display: none;
+            padding: 0 20px;
+            &.active {
+                display: block;
+            }
+            .input-box {
+                margin: 20px 0;
+                border-bottom: 1px solid #999;
+                .clearfix();
+                .input-label {
+                    float: left;
+                    position: relative;
+                    top: -1px;
+                    line-height: 30px;
+                    font-size: 16px;
+                }
+                .input-wrap {
+                    overflow: hidden;
+                    input {
+                        line-height: 30px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        padding: 0 12px;
+                        background: none;
+                        color: inherit;
+                        font-size: 16px;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+                &.input-box-code {
+                    position: relative;
+                    margin-right: 100px;
+                    .code {
+                        position: absolute;
+                        top: 0;
+                        right: -100px;
+                        width: 85px;
+                        line-height: 30px;
+                        border: 1px solid #ff8b35;
+                        border-radius: 5px;
+                        text-align: center;
+                        color: #ff8b35;
+                    }
+                }
+                &.input-box-read {
+                    border: none;
+                    input {
+                        vertical-align: middle;
+                        margin: -3px 0 0;
+                    }
+                    a {
+                        color: #ff8b35;
+                    }
+                }
+            }
+            .submit {
+                width: 100%;
+                line-height: 32px;
+                font-size: 16px;
+                color: #fff;
+                border-radius: 5px;
+                // background: #ddd;
+                // pointer-events: none;
+                &:focus {
+                    outline: none;
+                }
+                &.active {
+                    background: #ff8b35;
+                    pointer-events: all;
+                }
+                background: #ff8b35;
+            }
+        }
+    }
+}
