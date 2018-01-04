@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>注册</title>
+    <title>注册/绑定</title>
     <link rel="stylesheet" href="/m/css/register.css">
     <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/vue-cc-validate.js"></script>
     <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/m/js/base.js"></script>
 </head>
@@ -23,72 +24,90 @@
                 <a class="no-animation" :class="{active:tab == 2}" href="javascript:void(0)" @click="changeTab(2)">绑定</a>
             </div>
             <div class="tabs-box">
-                <div class="box" :class="{active:tab == 1}">
-                    <form>
-                        <div class="input-box">
-                            <span class="input-label">用户名：</span>
-                            <p class="input-wrap">
-                                <input type="text" name="">
-                            </p>
-                        </div>
-                        <div class="input-box">
-                            <span class="input-label">密码：</span>
-                            <p class="input-wrap">
-                                <input type="password" name="">
-                            </p>
-                        </div>
-                        <div class="input-box">
-                            <span class="input-label">确认密码：</span>
-                            <p class="input-wrap">
-                                <input type="password" name="">
-                            </p>
-                        </div>
-                        <div class="input-box">
-                            <span class="input-label">手机号码：</span>
-                            <p class="input-wrap">
-                                <input type="tel" name="">
-                            </p>
-                        </div>
-                        <div class="input-box input-box-code">
-                            <span class="input-label">验证码：</span>
-                            <p class="input-wrap">
-                                <input type="tel" name="">
-                            </p>
-                            <a class="code" href="javascript:void(0)">获取验证码</a>
-                        </div>
-                        <div class="input-box input-box-read">
-                            <label>
-                                <input type="checkbox" name=""> 我已阅读并且同意
-                            </label>
-                            <a href="###">《用户注册服务协议》</a>
-                        </div>
-                        <button class="submit alink">注册</button>
-                    </form>
+
+                <!-- 注册 -->
+                <div class="box" v-if="tab == 1" :class="{active:tab == 1}">
+
+                    <div class="input-box">
+                        <span class="input-label">用户名：</span>
+                        <p class="input-wrap">
+                            <input type="text" v-validata="'required|isTradername'" v-model="tbUserEntity.tradername" name="tradername" placeholder="以字母为首的6-20个字符">
+                        </p>
+                    </div>
+                    <p class="error" v-show="error('tradername')"> 请输入以字母为首的6-20个字符的用户名</p>
+
+                    <div class="input-box">
+                        <span class="input-label">密码：</span>
+                        <p class="input-wrap">
+                            <input type="password" v-validata="'required|isPassword'" v-model="tbUserEntity.password" name="password" placeholder="由6-21字母和数字组成，不能是纯数字或纯英文">
+                        </p>
+                    </div>
+                    <p class="error" v-show="error('password')"> 6-21字母和数字组成 , 不是纯数字或纯英文</p>
+
+                    <div class="input-box">
+                        <span class="input-label">确认密码：</span>
+                        <p class="input-wrap">
+                            <input type="password" v-validata="'required'" v-model="tbUserEntity.password2" name="password2" placeholder="确认密码">
+                        </p>
+                    </div>
+                    <p class="error" v-show="(error('password2')==0 && tbUserEntity.password2 != tbUserEntity.password) || error('password2')"> 请输入相同的确认密码</p>
+
+                    <div class="input-box">
+                        <span class="input-label">手机号码：</span>
+                        <p class="input-wrap">
+                            <input type="tel" v-validata="'required|isMobile'" v-model="tbUserEntity.mobile" name="mobile" placeholder="请输入手机号码">
+                        </p>
+                    </div>
+                    <p class="error" v-show="error('mobile')"> 请输入正确的手机号码</p>
+
+                    <div class="input-box input-box-code">
+                        <span class="input-label">验证码：</span>
+                        <p class="input-wrap">
+                            <input type="text" v-validata="'required|code'" v-model="tbUserEntity.validcode" name="validcode">
+                        </p>
+                        <a class="code" href="javascript:sendMessage()">获取验证码</a>
+                    </div>
+                    <p class="error" v-show="error('validcode')"> 请输入正确的验证码</p>
+
+                    <div class="input-box input-box-read">
+                        <label>
+                            <input type="checkbox" v-validata="'required'" name="readed"> 我已阅读并且同意
+                        </label>
+                        <a href="###">《用户注册服务协议》</a>
+                    </div>
+
+                    <button class="submit alink" :class="{active:group('readed|validcode|mobile|password2|password|tradername')}" @click='bind()'>注册并绑定</button>
                 </div>
-                <div class="box" :class="{active:tab == 2}">
-                    <form>
-                        <div class="input-box">
-                            <span class="input-label">手机号码：</span>
-                            <p class="input-wrap">
-                                <input type="tel" name="">
-                            </p>
-                        </div>
-                        <div class="input-box input-box-code">
-                            <span class="input-label">验证码：</span>
-                            <p class="input-wrap">
-                                <input type="tel" name="">
-                            </p>
-                            <a class="code" href="javascript:void(0)">获取验证码</a>
-                        </div>
-                        <div class="input-box input-box-read">
-                            <label>
-                                <input type="checkbox" name=""> 我已阅读并且同意
-                            </label>
-                            <a href="###">《用户注册服务协议》</a>
-                        </div>
-                        <button class="submit alink">注册</button>
-                    </form>
+
+                <!-- 绑定 -->
+                <div class="box" v-if="tab == 2" :class="{active:tab == 2}">
+
+                    <div class="input-box">
+                        <span class="input-label">手机号码：</span>
+                        <p class="input-wrap">
+                            <input type="tel" v-validata="'required|isMobile'" v-model="tbUserEntity2.mobile" name="mobile" placeholder="请输入手机号码">
+                        </p>
+                    </div>
+                    <p class="error" v-show="error('mobile')"> 请输入正确的手机号码</p>
+
+                    <div class="input-box input-box-code">
+                        <span class="input-label">验证码：</span>
+                        <p class="input-wrap">
+                            <input type="tel" v-validata="'required|code'" v-model="tbUserEntity2.validcode" name="validcode">
+                        </p>
+                        <a class="code" href="javascript:sendMessage()">获取验证码</a>
+                    </div>
+                    <p class="error" v-show="error('validcode')"> 请输入正确的验证码</p>
+
+                    <div class="input-box input-box-read">
+                        <label>
+                            <input type="checkbox" v-validata="'required'" name="readed"> 我已阅读并且同意
+                        </label>
+                        <a href="###">《用户注册服务协议》</a>
+                    </div>
+                    <button class="submit alink" :class="{active:group('readed|validcode|mobile')}" @click='bind()'>绑定</button>
                 </div>
+
             </div>
         </div>
     </div>

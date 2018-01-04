@@ -540,7 +540,8 @@ html {
   font-size: 16px;
   color: #fff;
   border-radius: 5px;
-  background: #ff8b35;
+  background: #ddd;
+  pointer-events: none;
 }
 .main .tabs-box .box .submit:focus {
   outline: none;
@@ -548,4 +549,30 @@ html {
 .main .tabs-box .box .submit.active {
   background: #ff8b35;
   pointer-events: all;
+}
+.error {
+  color: #f19898;
+  font-size: 12px;
+  line-height: 15px;
+  margin: -15px 0 -20px;
+}
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ccc;
+  font-size: inherit;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+  font-size: inherit;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+  font-size: inherit;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ccc;
+  font-size: inherit;
 }
