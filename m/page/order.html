@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>我要报名</title>
+    <title>订单</title>
     <link rel="stylesheet" href="/m/css/order.css">
     <script type="text/javascript" src="/m/js/vue.min.js"></script>
     <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
@@ -13,9 +13,7 @@
 </head>
 
 <body>
-    <!-- v-cloak -->
-    <div id="wrap" >
-
+    <div id="wrap" v-cloak>
 
         <!-- 内容 begin -->
         <div class="container">
@@ -23,98 +21,63 @@
             <!-- 顶部title -->
             <div class="top">
                 <a class="back no-animation" href="javascript:history.go(-1)"></a>
-                <h2>我要报名</h2>
-                <a class="star" href="javascript:void(0)"></a>
+                <h2>确认订单</h2>
             </div>
 
             <div class="main">
-                <img :src="pjInfo.pjDocumentEntities.LOGO.pic">
-                <!-- 基本信息 msg begin -->
-                <div class="msg">
-                    <div class="row">
-                        <p class="cell colspan">
-                            <span>项目名称：</span> {{pjInfo.name}}
-                        </p>
-                    </div>
-
-                    <div class="row">
-                        <p class="cell colspan">
-                            <span>融资方案：</span> {{changeMillion(pjInfo.pjFinacingEntity.amount)}}，出让{{pjInfo.pjFinacingEntity.sellrate}}%股份
-                        </p>
-                    </div>
-
-                    <div class="row" v-if="pjInfo.pjenddate != pjInfo.pjbegindate">
-                        <p class="cell colspan">
-                            <span>剩余募集时间：</span>{{pjInfo.daysBetween}}天
-                        </p>
-                    </div>
-                    
-                    <div class="row">
-                        <p class="cell colspan">
-                            <span>打款银行：</span>{{platform_bankname}}
-                        </p>
-                    </div>
-                    
-                    <div class="row">
-                        <p class="cell colspan">
-                            <span>打款户名：</span>{{platform_accname}}
-                        </p>
-                    </div>
-                    
-                    <div class="row">
-                        <p class="cell colspan">
-                            <span>打款账户：</span>{{platform_accno}}
-                        </p>
-                    </div>
-                    
-                    
+                <!-- 项目简介 -->
+                <div class="pj-title">
+                    <i></i>
+                    <span>智驾科技-Maxieye</span>
                 </div>
-                <!-- msg end -->
 
-                <!-- 步骤 step start -->
-                <div class="step">
-                    <span :class="{active:step==1}">填写意向投资金额</span>
-                    <span :class="{active:step==2}">提交订单</span>
-                    <span :class="{active:step==3}">上传保密金凭证</span>
-                </div>
-                <!-- step end -->
-
-                <!-- 意向投资金额 -->
-                <div class="amount">
-                    <span>意向投资金额</span>
-                    <p>
-                        <a href="javascript:void(0)" @click="remove">-</a>
-                        <input type="text" readonly v-model="amount">
-                        <a href="javascript:void(0)" @click="add">+</a>
-                        <em>万元</em>
-                    </p>
+                <!-- 投资金额 -->
+                <div class="investment">
+                    <div>
+                        <span class="left">投资金额</span>
+                        <p class="right">
+                            <a href="javascript:void(0)">+</a>
+                            <input type="" name="">
+                            <a href="javascript:void(0)">+</a>
+                            <span class="unit">元</span>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">认购费</span>
+                        <p class="right">
+                            12×1% = 0.12万
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">意向保证金</span>
+                        <p class="right">
+                            12×20% = 2.4万
+                        </p>
+                    </div>
                 </div>
 
                 <!-- 提示 -->
                 <div class="tips">
-                    <h6>风险提示</h6>
-                    <p>请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：</p>
-                    <p>1、风险提示条款和特别提示条款；</p>
-                    <p>2、与您约定法律适用和管辖的条款；</p>
-                    <p>3、其他以粗体标识的重要条款。</p>
-                    <p>如您不同意相关协议、公告、规则、操作流程和项目页面承诺，您有权选择不支持；一旦选择支持，即视为您已确知并完全同意相关协议。</p>
+                    <h5>保密金规则</h5>
+                    <ul>
+                        <li>保密金为项目起投额1%</li>
+                        <li>支付完成后，方可在项目详情页查看核心资料</li>
+                        <li>项目募集完成三个月内，保密金将原路退回到支付宝</li>
+                        <li>若泄露核心资料，则不予退还保密金，且平台保留追究法律责任的权利</li>
+                    </ul>
                 </div>
             </div>
             <!-- main end -->
 
+            <div class="bottom">
+                <p class="left">需支付：<strong>¥ 1200</strong></p>
+                <p class="right">
+                    <a href="javascript:void(0)">提交订单</a>
+                </p>
+            </div>
+
         </div>
         <!-- 内容 end -->
-
-        <div class="bottom1">
-            <label>
-                <input type="checkbox"  v-model="checked" name="">我已阅读并同意带投兵众筹的
-            </label>
-            <a href="###">《保密金协议》</a>
-        </div>
-        <div class="bottom2">
-            <p>应付保密金：<strong>￥{{secrecy_amount}}</strong></p>
-            <a :class="{active:checked}" href="###">提交订单</a>
-        </div>
 
     </div>
 
