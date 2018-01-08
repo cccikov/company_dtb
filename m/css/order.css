@@ -482,10 +482,12 @@ body {
   padding: 6px 2.5%;
   margin: 0 0 12px;
   background: #fff;
+  font-size: 16px;
 }
 #wrap .investment > div {
+  line-height: 30px;
+  margin: 10px 0;
   *zoom: 1;
-  line-height: 24px;
 }
 #wrap .investment > div:after {
   content: '';
@@ -497,6 +499,37 @@ body {
 }
 #wrap .investment > div .right {
   float: right;
+  color: #666;
+}
+#wrap .investment > div .right strong {
+  font-weight: 500;
+  color: #ff8b35;
+  font-size: 17px;
+}
+#wrap .investment > div .right.input-invest {
+  font-size: 0;
+}
+#wrap .investment > div .right.input-invest a {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ccc;
+  margin: 0 -1px;
+  background: #e8e8e8;
+  color: #aeaeae;
+  font-size: 16px;
+  vertical-align: top;
+  text-align: center;
+}
+#wrap .investment > div .right.input-invest input {
+  width: 60px;
+  line-height: 28px;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  color: inherit;
+  font-size: 14px;
+  text-align: right;
+  vertical-align: top;
 }
 #wrap .tips {
   background: #fff;
@@ -505,7 +538,7 @@ body {
 }
 #wrap .tips h5 {
   color: #333;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
 }
 #wrap .tips h5:before {
@@ -513,7 +546,7 @@ body {
   display: inline-block;
   width: 4px;
   height: 15px;
-  margin: -3px 8px 0 0;
+  margin: -3px 7px 0 5px;
   vertical-align: middle;
   background: -webkit-linear-gradient(#ff8b35, #fd5e23);
   background: -o-linear-gradient(#ff8b35, #fd5e23);
@@ -534,4 +567,43 @@ body {
   height: 4px;
   border-radius: 3px;
   background: #828282;
+}
+#wrap .bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+}
+#wrap .bottom .left {
+  float: left;
+  line-height: 60px;
+  padding: 0 20px;
+  font-size: 16px;
+}
+#wrap .bottom .left strong {
+  display: inline-block;
+  font-weight: 500;
+  color: #ff8b35;
+  font-size: 18px;
+  vertical-align: middle;
+  margin: -3px 0 0;
+}
+#wrap .bottom .right {
+  float: right;
+  line-height: 60px;
+}
+#wrap .bottom .right a {
+  display: inline-block;
+  line-height: 40px;
+  vertical-align: top;
+  padding: 0 20px;
+  border-radius: 40px;
+  margin: 10px 20px 0 0;
+  font-size: 16px;
+  color: #fff;
+  background: #ff8b35;
+  background: linear-gradient(180deg, #ff8a35, #ff7f35, #ff7435);
 }
