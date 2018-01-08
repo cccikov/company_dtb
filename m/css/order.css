@@ -528,8 +528,15 @@ body {
   border: 1px solid #ccc;
   color: inherit;
   font-size: 14px;
-  text-align: right;
+  text-align: center;
   vertical-align: top;
+}
+#wrap .investment > div .right.input-invest input:focus {
+  outline: none;
+}
+#wrap .investment > div .right.input-invest .unit {
+  font-size: 16px;
+  margin: 0 0 0 8px;
 }
 #wrap .tips {
   background: #fff;
@@ -604,6 +611,13 @@ body {
   margin: 10px 20px 0 0;
   font-size: 16px;
   color: #fff;
+  pointer-events: none;
+  background: #ccc;
+}
+#wrap .bottom .right a.active {
+  pointer-events: all;
   background: #ff8b35;
-  background: linear-gradient(180deg, #ff8a35, #ff7f35, #ff7435);
+  background: -webkit-linear-gradient(#ff8a35, #ff7f35, #ff7435);
+  background: -o-linear-gradient(#ff8a35, #ff7f35, #ff7435);
+  background: linear-gradient(#ff8a35, #ff7f35, #ff7435);
 }

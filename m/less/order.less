@@ -63,9 +63,9 @@ body {
             .right {
                 float: right;
                 color: #666;
-                strong{
+                strong {
                     font-weight: 500;
-                    color:#ff8b35;
+                    color: #ff8b35;
                     font-size: 17px;
                 }
                 &.input-invest {
@@ -89,8 +89,15 @@ body {
                         border: 1px solid #ccc;
                         color: inherit;
                         font-size: 14px;
-                        text-align: right;
+                        text-align: center;
                         vertical-align: top;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    .unit{
+                        font-size: 16px;
+                        margin: 0 0 0 8px;
                     }
                 }
             }
@@ -167,8 +174,15 @@ body {
                 margin: 10px 20px 0 0;
                 font-size: 16px;
                 color: #fff;
-                background: #ff8b35;
-                background: linear-gradient(180deg, #ff8a35, #ff7f35, #ff7435);
+                pointer-events: none;
+                background: #ccc;
+                &.active{
+                    pointer-events:all;
+                    background: #ff8b35;
+                    background: -webkit-linear-gradient(#ff8a35, #ff7f35, #ff7435);
+                    background: -o-linear-gradient(#ff8a35, #ff7f35, #ff7435);
+                    background: linear-gradient(#ff8a35, #ff7f35, #ff7435);
+                }
             }
         }
     }

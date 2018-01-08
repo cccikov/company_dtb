@@ -36,22 +36,22 @@
                     <div>
                         <span class="left">投资金额</span>
                         <p class="right input-invest">
-                            <a class="no-animation" href="javascript:void(0)">+</a>
-                            <input type="number" name="">
-                            <a class="no-animation" href="javascript:void(0)">-</a>
-                            <span class="unit">元</span>
+                            <a class="no-animation" @click="add" href="javascript:void(0)">+</a>
+                            <input type="number" @input="inputing" v-model="inputValue">
+                            <a class="no-animation" @click="minus" href="javascript:void(0)">-</a>
+                            <span class="unit">万元</span>
                         </p>
                     </div>
                     <div>
                         <span class="left">认购费</span>
                         <p class="right">
-                            12×1% = <strong>0.12万元</strong>
+                            {{amount}}×1% = <strong> {{offerToBuy}}</strong>
                         </p>
                     </div>
                     <div>
                         <span class="left">意向保证金</span>
                         <p class="right">
-                            12×20% = <strong>2.4万元</strong>
+                            {{amount}}×20% = <strong>{{deposit}}</strong>
                         </p>
                     </div>
                 </div>
@@ -70,9 +70,9 @@
             <!-- main end -->
 
             <div class="bottom">
-                <p class="left">需支付：<strong>¥ 1200</strong></p>
+                <p class="left">需支付：<strong>￥{{sum}}</strong></p>
                 <p class="right">
-                    <a href="javascript:void(0)">提交订单</a>
+                    <a :class="{active:canclick}" href="javascript:void(0)">提交订单</a>
                 </p>
             </div>
 
