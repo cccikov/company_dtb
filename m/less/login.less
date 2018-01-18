@@ -1,24 +1,11 @@
-@import url("./reset.less");
+@import url("./common.less");
 html {
     height: 100%;
 }
 
 body {
     position: relative;
-    min-height: 100%;
-    background: url(../img/bg.jpg) top/100% no-repeat;
-}
-
-#wrap {
-    padding: 0 0 50px;
-    color: #e3e3e3;
-}
-
-h1 {
-    padding: 0 0 10px;
-    font-size: 20px;
-    text-align: center;
-    color: #fff;
+    background: #e6e6e6;
 }
 
 input {
@@ -27,11 +14,13 @@ input {
     }
 }
 
+// input label
 .name {
     line-height: 32px;
     font-size: 14px;
 }
 
+// input 输入框
 .input {
     input {
         box-sizing: border-box;
@@ -39,16 +28,27 @@ input {
         line-height: 32px;
         padding: 0 12px;
         border-radius: 5px;
-        background: rgba(255, 255, 255, 0.3);
-        color: #fff;
-        box-shadow: -1px -1px 3px 1px rgba(0, 0, 0, 0.3);
+        background: #e6e6e6;
+        color: #666;
     }
 }
 
-.login-box {
-    width: 72%;
-    padding: 20% 0;
-    margin: 0 auto 0;
+.container {
+    padding: 0;
+    background: #fff;
+    .login-box {
+        padding: 20px 0 30px;
+        width: 280px;
+        margin: 0 auto;
+        .img-wrap {
+            padding: 0 0 20px;
+            text-align: center;
+            img {
+                display: inline-block;
+                width: 135px;
+            }
+        }
+    }
 }
 
 .error {
@@ -78,15 +78,13 @@ input {
             margin: 0 0 0 12px;
             img {
                 display: block;
-                border-radius:5px;
+                border-radius: 5px;
                 max-height: 32px;
-                box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
             }
         }
         .input {
             overflow: hidden;
             border-radius: 5px;
-            box-shadow: -1px -1px 3px 1px rgba(0, 0, 0, 0.3);
             input {
                 box-shadow: none;
             }
@@ -103,7 +101,6 @@ input {
         input {
             margin: -3px 0 0;
             vertical-align: middle;
-            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
         }
     }
     a {
@@ -124,7 +121,6 @@ input {
         border-radius: 7px;
         color: #fff;
         font-size: 14px;
-        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
         &:nth-of-type(1) {
             background: #ff8000;
             margin: 0 10% 0 0;
@@ -143,4 +139,24 @@ input {
     line-height: 50px;
     text-align: center;
     font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #979797;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #979797;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #979797;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #979797;
 }

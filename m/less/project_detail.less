@@ -4,46 +4,6 @@ body {
     background: #e6e6e6;
 }
 
-.top {
-    position: relative;
-    line-height: 40px;
-    background: #ff6600;
-    color: #fff;
-    text-align: center;
-    h2 {
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .back {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 20px;
-        height: 20px;
-        padding: 10px;
-        background: url(../img/arrow.png) center/21px no-repeat;
-        transform: rotate(180deg);
-    }
-    .star {
-        position: absolute;
-        top: 7px;
-        right: 12px;
-        line-height: 20px;
-        padding: 3px 8px 3px 25px;
-        border-radius: 5px;
-        background: #ffb380 url(../img/star-empty.png) left 5px center/18px no-repeat;
-        &:after {
-            content: "收藏"
-        }
-        &.active {
-            background-image: url(../img/star-full.png);
-            &:after {
-                content: "已收藏"
-            }
-        }
-    }
-}
-
 .project-item {
     pointer-events: none;
 }
