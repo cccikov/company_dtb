@@ -474,16 +474,16 @@ a {
   font-size: 10px;
   color: #999;
 }
-html,
-body {
-  background: #e6e6e6;
+body,
+html {
+  background: #f0eff4;
 }
 /* 共用部分 */
 .section {
-  background: #fff;
   margin: 0 0 10px;
 }
-.title {
+.section .title {
+  background: #fff;
   line-height: 38px;
   padding: 2px 0 0;
   border-bottom: 1px solid #e6e6e6;
@@ -491,21 +491,31 @@ body {
   font-weight: 700;
   color: #333333;
 }
-.title:before {
+.section .title:before {
   content: "";
   display: inline-block;
   width: 7px;
   height: 16px;
   margin: -3px 10px 0;
   vertical-align: middle;
-  background: url(../img/listicon.png) center / contain no-repeat;
+  background: url("../img/listicon.png") center / contain no-repeat;
 }
-.more {
+.section .more {
   display: block;
   line-height: 30px;
   font-size: 12px;
   text-align: center;
   color: #999999;
+  background: #fff;
+}
+.section .section-title-pj {
+  text-align: center;
+}
+.section .section-title-pj img {
+  display: inline-block;
+  height: 40px;
+  padding: 0 19px 0 0;
+  margin: 10px 0 -5px;
 }
 .login {
   position: relative;
@@ -521,7 +531,7 @@ body {
   left: 24px;
   width: 50px;
   height: 50px;
-  background: url(../img/userpic.png) center / cover no-repeat;
+  background: url("../img/userpic.png") center / cover no-repeat;
 }
 .login a {
   position: relative;
@@ -539,9 +549,10 @@ body {
   content: "";
   width: 16px;
   height: 16px;
-  background: url(../img/arrow.png) center / contain no-repeat;
+  background: url("../img/arrow.png") center / contain no-repeat;
 }
 .nav {
+  background: #fff;
   *zoom: 1;
   text-align: center;
 }
@@ -563,53 +574,104 @@ body {
   width: 100%;
   height: 24px;
   margin: 10px 0 6px;
-  background: url(../img/index01.png) center / contain no-repeat;
+  background: url("../img/index01.png") center / contain no-repeat;
 }
 .nav a:nth-of-type(1):before {
-  background-image: url(../img/index01.png);
+  background-image: url("../img/index01.png");
 }
 .nav a:nth-of-type(2):before {
-  background-image: url(../img/index02.png);
+  background-image: url("../img/index02.png");
 }
 .nav a:nth-of-type(3):before {
-  background-image: url(../img/index03.png);
+  background-image: url("../img/index03.png");
 }
-.notice {
-  position: relative;
-  padding: 6px 6px 6px 68px;
-}
-.notice:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 67px;
-  height: 60px;
-  background: #fff url(../img/noticpic.png) left bottom / contain no-repeat;
-}
-.notice a {
-  display: block;
-  line-height: 21px;
-  color: #3d3d3d;
-  font-size: 13px;
-  line-height: 24px;
+.fadada {
+  line-height: 3;
+  padding: 0 12px;
+  font-size: 12px;
+  color: #666;
+  background: #fff;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.notice a:before {
+.fadada span {
+  color: #ff8b35;
+}
+.fadada:before {
   content: "";
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 14px;
+  height: 14px;
+  margin: -3px 5px 0 0;
+  background: url("/m/img/tips.jpg") center / contain no-repeat;
   vertical-align: middle;
-  background: url(../img/notice.png) center / contain no-repeat;
-  margin: -3px 5px 0;
 }
-.pre-project {
+.carouse-swiper {
+  padding: 0 12px;
+}
+.carouse-swiper .swiper-slide {
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+.carouse-swiper .swiper-slide img {
+  border-radius: 12px;
+  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.pj-list {
+  position: relative;
+  z-index: 1;
+}
+.pj-list .pj-item {
   display: block;
-  padding: 12px;
+  margin: 0 0 1px;
+  background: #fff;
+  *zoom: 1;
 }
-.pre-project img {
-  border-radius: 5px;
+.pj-list .pj-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.pj-list .pj-item i {
+  float: left;
+  width: 60px;
+  height: 55px;
+  margin: 12px;
+  background: #f00;
+}
+.pj-list .pj-item .pj-content {
+  overflow: hidden;
+  padding: 4px 0 0;
+  margin: 0 12px 0 0;
+  color: #333;
+}
+.pj-list .pj-item .pj-content .pj-title {
+  line-height: 25px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.pj-list .pj-item .pj-content .pj-lead {
+  line-height: 20px;
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.pj-list .pj-item .pj-content .pj-money {
+  *zoom: 1;
+  line-height: 25px;
+  font-size: 13px;
+}
+.pj-list .pj-item .pj-content .pj-money:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.pj-list .pj-item .pj-content .pj-money span:nth-of-type(1) {
+  float: left;
+}
+.pj-list .pj-item .pj-content .pj-money span:nth-of-type(2) {
+  float: right;
 }

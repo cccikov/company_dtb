@@ -44,7 +44,7 @@ var vm = new Vue({
             $.get("/m/data/indexData.json", function (r) {
                 r = JSON.stringify(r);
 
-             
+
 
                 var result = JSON.parse(r);
                 vm.carouselListData = result.CarouselList;
@@ -58,28 +58,13 @@ var vm = new Vue({
     mounted: function () {
         var _this = this;
         Vue.nextTick(function () { // Vue初始化完成
-
-            var notice_swiper = new Swiper('.notice-swiper', { // 资讯swiper
-                autoplay: 2000,
-                direction: 'vertical',
-                height: 48, //你的slide高度
-                observer: true, //修改swiper自己或子元素时，自动初始化swiper
-                observeParents: false, //修改swiper的父元素时，自动初始化swiper
-                onSlideChangeEnd: function (swiper) {　　　
-                    swiper.update();　　　
-                    notice_swiper.startAutoplay();　　
-                    // notice_swiper.reLoop();
-                }
-            });
-
             var carouse_swiper = new Swiper('.carouse-swiper', { // 资讯swiper
                 autoplay: 2000,
+                spaceBetween:12,
                 observer: true, //修改swiper自己或子元素时，自动初始化swiper
                 observeParents: false, //修改swiper的父元素时，自动初始化swiper
                 onSlideChangeEnd: function (swiper) {　　　
                     swiper.update();　　　
-                    notice_swiper.startAutoplay();　　
-                    // notice_swiper.reLoop();
                 }
             });
 

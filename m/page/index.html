@@ -35,42 +35,96 @@
                 </div>
             </div>
 
-            <!-- 通知公告 -->
-            <div class="section notice">
-                <div class="swiper-container notice-swiper" style="height:48px">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for='smallArr in noticeComputedData'>
-                            <a href="javascript:void(0)"  v-for='val in smallArr' :key='val.id'>{{val.title}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--法大大 提示 -->
+            <p class="fadada">
+                <span>温馨提示：</span>本平台特聘广东十大律所「星辰律师事务所」为您提供法律保障，并由国内知名电子合同签署平台「法大大」为您提供证据保全服务
+            </p>
 
-            <!-- 预热项目 -->
-            <div class="section">
-                <div class="title">预热项目</div>
-                <div class="swiper-container carouse-swiper">
-                    <div class="swiper-wrapper">
-                        <a class="swiper-slide" v-for='val in carouselListData' :key='val.id' class="pre-project no-animation" onclick="listAnimation(window.event)" :href="'project_detail.html?id='+val.id">
-                            <img v-if="val.pjDocumentEntities.YR" :src="val.pjDocumentEntities.YR[0].pic">
-                        </a>
-                    </div>
+            <!-- 预热项目(轮播) -->
+            <div class="swiper-container carouse-swiper">
+                <div class="swiper-wrapper">
+                    <a class="swiper-slide" v-for='val in carouselListData' :key='val.id' class="pre-project no-animation" onclick="listAnimation(window.event)" :href="'project_detail.html?id='+val.id">
+                        <img v-if="val.pjDocumentEntities.YR" :src="val.pjDocumentEntities.YR[0].pic">
+                    </a>
                 </div>
             </div>
 
             <!-- 众筹项目 -->
             <div class="section">
-                <h5 class="title">众筹项目</h5>
-                <tpl-project-list :data="projectListData"></tpl-project-list>
+                <h4 class="section-title-pj">
+                    <img src="/m/img/index_bg1.png">
+                </h4>
+                <div class="pj-list">
+                    <a class="pj-item" href="###">
+                        <i></i>
+                        <div class="pj-content">
+                            <h5 class="pj-title">疯狂运动</h5>
+                            <p class="pj-lead">
+                                健身行业便利店，知名投资机构入局单店单月可实现盈利
+                            </p>
+                            <p class="pj-money">
+                                <span>目标：1065万</span>
+                                <span>已募集总额：1065万</span>
+                            </p>
+                        </div>
+                    </a>
+                    <a class="pj-item" href="###">
+                        <i></i>
+                        <div class="pj-content">
+                            <h5 class="pj-title">疯狂运动</h5>
+                            <p class="pj-lead">
+                                健身行业便利店，知名投资机构入局单店单月可实现盈利
+                            </p>
+                            <p class="pj-money">
+                                <span>目标：1065万</span>
+                                <span>已募集总额：1065万</span>
+                            </p>
+                        </div>
+                    </a>
+                    <a class="pj-item" href="###">
+                        <i></i>
+                        <div class="pj-content">
+                            <h5 class="pj-title">疯狂运动</h5>
+                            <p class="pj-lead">
+                                健身行业便利店，知名投资机构入局单店单月可实现盈利
+                            </p>
+                            <p class="pj-money">
+                                <span>目标：1065万</span>
+                                <span>已募集总额：1065万</span>
+                            </p>
+                        </div>
+                    </a>
+                    <a class="pj-item" href="###">
+                        <i></i>
+                        <div class="pj-content">
+                            <h5 class="pj-title">疯狂运动</h5>
+                            <p class="pj-lead">
+                                健身行业便利店，知名投资机构入局单店单月可实现盈利
+                            </p>
+                            <p class="pj-money">
+                                <span>目标：1065万</span>
+                                <span>已募集：1065万</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
                 <a class="more" href="project.html">查看更多众筹项目</a>
             </div>
 
+
+            <!-- 众筹项目 -->
+            <!-- <div class="section">
+                <h5 class="title">众筹项目</h5>
+                <tpl-project-list :data="projectListData"></tpl-project-list>
+                <a class="more" href="project.html?qstatus=100">查看更多众筹项目</a>
+            </div> -->
+
             <!-- 完成项目 -->
-            <div class="section">
+            <!-- <div class="section">
                 <h5 class="title">完成项目</h5>
                 <tpl-project-list :data="finishProjectListData"></tpl-project-list>
                 <a class="more" href="project.html?qstatus=100">查看更多众筹项目</a>
-            </div>
+            </div> -->
 
             <!-- 新闻资讯 -->
             <div class="section">
