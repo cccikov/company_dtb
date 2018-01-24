@@ -75,6 +75,7 @@ a {
 }
 .top-nav .star:after {
   content: "收藏";
+  font-size: 13px;
 }
 .top-nav .star.active {
   background-image: url(../img/star-full.png);

@@ -1,3 +1,4 @@
+var carouse_swiper;
 var vm = new Vue({
     el: "#wrap",
     data: {
@@ -55,19 +56,26 @@ var vm = new Vue({
             });
         }
     },
-    mounted: function () {
-        var _this = this;
-        Vue.nextTick(function () { // Vue初始化完成
-            var carouse_swiper = new Swiper('.carouse-swiper', { // 资讯swiper
+    mounted: function() {
+        this.$nextTick(function() {
+            carouse_swiper = new Swiper('.carouse-swiper', { // 资讯swiper
                 autoplay: 2000,
-                spaceBetween:12,
+                spaceBetween: 12,
                 observer: true, //修改swiper自己或子元素时，自动初始化swiper
                 observeParents: false, //修改swiper的父元素时，自动初始化swiper
-                onSlideChangeEnd: function (swiper) {　　　
-                    swiper.update();　　　
-                }
             });
-
+        })
+    },
+    updated: function() {
+        var _this = this;
+        var carouse_h = (window.innerWidth - 24) / 3.84;
+        Vue.nextTick(function() { // Vue初始化完成
+            carouse_swiper.update();
+            for (var i = 0, len = carouse_swiper.slides.length; i < len; i++) {
+                var img = carouse_swiper.slides[i].getElementsByTagName("img")[0];
+                img.style.width = "100%";
+                img.style.height = carouse_swiper.width / 3.84+"px";
+            }
         });
     },
 });

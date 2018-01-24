@@ -19,9 +19,9 @@
         <div class="container">
 
             <!-- 顶部title -->
-            <div class="top">
+            <div class="top-nav">
                 <a class="back no-animation" href="javascript:history.go(-1)"></a>
-                <h2>确认订单</h2>
+                <h2>订单</h2>
             </div>
 
             <div class="main">
@@ -45,32 +45,52 @@
                     <div>
                         <span class="left">认购费</span>
                         <p class="right">
-                            {{amount}}×1% = <strong> {{offerToBuy}}</strong>
+                            {{amount}}×1% =
+                            <strong> {{offerToBuy}}</strong>
                         </p>
                     </div>
                     <div>
                         <span class="left">意向保证金</span>
                         <p class="right">
-                            {{amount}}×20% = <strong>{{deposit}}</strong>
+                            {{amount}}×20% =
+                            <strong>{{deposit}}</strong>
                         </p>
                     </div>
                 </div>
 
                 <!-- 提示 -->
                 <div class="tips">
+                    <!-- 保密金规则 -->
                     <h5>保密金规则</h5>
                     <ul>
                         <li>保密金为项目起投额1%</li>
                         <li>支付完成后，方可在项目详情页查看核心资料</li>
-                        <li>项目募集完成三个月内，保密金将原路退回到支付宝</li>
+                        <li>项目募集完成三个月内，保密金将退回所登记的银行卡</li>
                         <li>若泄露核心资料，则不予退还保密金，且平台保留追究法律责任的权利</li>
+                    </ul>
+                    <!-- 保证金规则 -->
+                    <h5>保证金规则</h5>
+                    <ul>
+                        <li>保证金为投资额20%</li>
+                        <li>在支付保证金的同时，需缴纳投资额的1%作为认购费</li>
+                        <li>如放弃支付余款，则保证金与认购费不予退还</li>
+                        <li>保证金支付完成后，平台将指定余款支付日期</li>
+                    </ul>
+                    <!-- 余款规则 -->
+                    <h5>余款规则</h5>
+                    <ul>
+                        <li>余款为投资额80%</li>
+                        <li>需在平台通知后于指定日期前一次性付清</li>
+                        <li>逾期放弃支付，视为违约，保证金与认购费不予退还</li>
                     </ul>
                 </div>
             </div>
             <!-- main end -->
 
             <div class="bottom">
-                <p class="left">需支付：<strong>￥{{sum}}</strong></p>
+                <p class="left">需支付：
+                    <strong>￥{{sum}}</strong>
+                </p>
                 <p class="right">
                     <a :class="{active:canclick}" href="javascript:void(0)">提交订单</a>
                 </p>
