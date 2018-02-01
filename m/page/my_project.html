@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/my_project.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+            <!-- 顶部title -->
+            <div class="top-nav">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>我的项目</h2>
+            </div>
+            <!-- 导航 -->
+            <div class="nav swiper-container">
+                <div class="swiper-wrapper">
+                    <a class="swiper-slide" href="my_project.html" qstatus="all">所有</a>
+                    <a class="swiper-slide" href="my_project.html?qstatus=20" qstatus="20">预热中</a>
+                    <a class="swiper-slide" href="my_project.html?qstatus=30" qstatus="30">募集中</a>
+                    <a class="swiper-slide" href="my_project.html?qstatus=40" qstatus="40">出资中</a>
+                    <a class="swiper-slide" href="my_project.html?qstatus=50" qstatus="50">交割中</a>
+                    <a class="swiper-slide" href="my_project.html?qstatus=100" qstatus="100">成功</a>
+                </div>
+            </div>
+            <ul class="order-list">
+                <li>
+                    <div class="order-num">
+                        <span>订单编号：123456</span>
+                        <span>2018-01-15</span>
+                    </div>
+                    <a class="order-detail">
+                        <i></i>
+                        <div class="detail-right">
+                            <!-- 项目标题 状态 时间 -->
+                            <div class="detail-title">
+                                <div class="title-right">
+                                    <span class="order-status">预热</span>
+                                    <span class="order-time">100天</span>
+                                </div>
+                                <div class="title-left">智慧驾驶科技智慧驾驶科技智慧驾驶科技智慧驾驶科技-Maxieye</div>
+                            </div>
+                            <!-- 金额 -->
+                            <div class="detail-amount">
+                                <span>投资金：1200000</span>
+                                <span>保证金：1200000</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 内容 end -->
+    </div>
+    <script type="text/javascript" src="/m/js/my_project.js"></script>
+</body>
+
+</html>
