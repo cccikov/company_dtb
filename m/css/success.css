@@ -497,132 +497,58 @@ a {
 }
 html,
 body {
-  background: #e6e6e6;
+  background: #f0eff4;
 }
-/* 共用部分 */
-.section {
-  background: #fff;
-  margin: 0 0 16px;
-}
-.login {
-  position: relative;
-  height: 98px;
-  background: -webkit-linear-gradient(left, #ff9900, #ff6600);
-  background: -o-linear-gradient(left, #ff9900, #ff6600);
-  background: linear-gradient(to right, #ff9900, #ff6600);
+.status {
+  padding: 5%;
   color: #fff;
-}
-.login i {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  width: 50px;
-  height: 50px;
-  background: url(../img/userpic.png) center / cover no-repeat;
-}
-.login a {
-  position: relative;
-  top: 32px;
-  display: block;
-  padding: 0 50px 0 86px;
-  line-height: 2em;
-  font-size: 16px;
-  font-weight: 800;
-}
-.login a:after {
-  position: absolute;
-  top: 8px;
-  right: 30px;
-  content: "";
-  width: 16px;
-  height: 16px;
-  background: url(../img/arrow.png) center / contain no-repeat;
-}
-.nav {
   *zoom: 1;
-  text-align: center;
 }
-.nav:after {
+.status:after {
   content: '';
   display: block;
   clear: both;
 }
-.nav a {
+.status .icon {
   float: left;
-  width: 33.33333333333%;
-  padding: 0 0 6px;
-  color: #585858;
+  width: 60px;
+  height: 60px;
+}
+.status .text {
+  overflow: hidden;
+  padding: 0 0 0 5%;
+}
+.status .text .p1 {
+  line-height: 38px;
+  font-size: 18px;
+}
+.status .text .p2 {
   font-size: 14px;
+  line-height: 1.5;
 }
-.nav a:before {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 24px;
-  margin: 10px 0 6px;
-  background: url(../img/index01.png) center / contain no-repeat;
+.status.success {
+  background: #ff8b35;
 }
-.nav a:nth-of-type(1):before {
-  background-image: url(../img/me1.png);
+.status.success .icon {
+  background: url(../img/order_success.png) center / contain no-repeat;
 }
-.nav a:nth-of-type(2):before {
-  background-image: url(../img/me2.png);
+.status.error {
+  background: #3d8ce9;
 }
-.nav a:nth-of-type(3):before {
-  background-image: url(../img/me3.png);
+.status.error .icon {
+  background: url(../img/order_error.png) center / contain no-repeat;
 }
-.list {
-  background: #e6e6e6;
-}
-.list a {
+.alink {
   display: block;
-  line-height: 3;
-  padding: 0 26px;
-  margin: 0 0 1px;
-  background: #fff;
-  font-size: 16px;
-}
-.list a:last-of-type {
-  margin: 0;
-}
-.list a:before {
-  content: "";
-  display: inline-block;
-  height: 16px;
-  width: 28px;
-  margin: -3px 0 0;
-  vertical-align: middle;
-  background: url(../img/me4.png) left center / contain no-repeat;
-}
-.list1 a:nth-of-type(1):before {
-  background-image: url(../img/me4.png);
-}
-.list1 a:nth-of-type(2):before {
-  background-image: url(../img/me9.png);
-}
-.list1 a:nth-of-type(3):before {
-  background-image: url(../img/me10.png);
-}
-.list2 a:nth-of-type(1):before {
-  background-image: url(../img/me6.png);
-}
-.list2 a:nth-of-type(2):before {
-  background-image: url(../img/me7.png);
-}
-.list2 a:nth-of-type(3):before {
-  background-image: url(../img/me8.png);
-}
-.service {
+  width: 280px;
+  line-height: 40px;
+  border: 1px solid #d2d2d2;
+  margin: 40px auto 0;
+  background: #eeeeee;
   text-align: center;
+  color: #333;
 }
-.service p {
-  line-height: 48px;
-  color: #ff6600;
-}
-.service p a {
-  text-decoration: underline;
-}
-.service p:nth-of-type(2) {
-  background: #e6e6e6;
+.tips {
   color: #999;
+  padding: 12px 5%;
 }

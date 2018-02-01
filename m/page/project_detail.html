@@ -123,6 +123,46 @@
         <a class="footer" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 40 && projectListData.userOrder && projectListData.userOrder.status === 20">我要出资</a>
     </div>
 
+    <!-- 浮窗系列 -->
+    <div class="float">
+        <div class="mask active black-mask"></div>
+        <div class="contract-tips-float">
+            正跳转到合同签署界面......
+        </div>
+        <div class="document-tips-float">
+            <a class="close" onclick="hideTips2();" href="javascript:void(0)"></a>
+            <h5>提示</h5>
+            <div class="box box1">
+                <p>此项目还有部分核心内容，需要签署<strong>【保密协议】</strong>并交纳保密金（起投金额的1%）后方可查看，项目募集完成后保密金原路退回，亦可直接报名。</p>
+                <button onclick="contract('B');">查看资料</button>
+                <button style="background: #ff8f35;margin:0 0 0 30px;" onclick="hideTips2();">不看资料</button>
+            </div>
+            <div class="box box2">
+                <p>保密金已经提交，我们工作人员正在审核中，请注意查看短信通知，如有疑问，请及时联系我们工作人员。</p>
+                <button onclick="hideTips2();">确认</button>
+            </div>
+        </div>
+        <div class="risk-tips-float">
+            <a class="close" onclick="hideTips3();" href="javascript:void(0)"></a>
+            <h5>尊敬的投资人</h5>
+            <p class="p1">为了让您在进行互联网非公开股权投资前，尽可能多地了解互联网非公开股权投资的风险，带投兵（深圳）网络科技股份有限公司在此郑重提醒，请您务必仔细阅读并理解本《风险提示书》，谨慎评估风险后，再决定是否继续进行互联网非公开股权投资。</p>
+            <p class="p2">
+                <a target="_blank" href="/risks.html">【风险提示书】</a>
+            </p>
+            <p class="p3">
+                同时，为保证您投资后的合伙权益，请知悉如下合同
+            </p>
+            <p class="p4">
+                <a target="_blank" href="/partnership.html">【合伙协议】</a>
+                <a target="_blank" href="/partner.html">【合伙人协议】</a>
+                <a target="_blank" href="/transferOfRights.html">【合伙人转让权益协议】</a>
+            </p>
+            <p class="p5">
+                <button onclick="contract('T');">已阅读，同意</button>
+            </p>
+        </div>
+    </div>
+
     <script src="/m/js/tpl_project_list.js"></script>
     <script type="text/javascript" src="/m/js/project_detail.js"></script>
 </body>

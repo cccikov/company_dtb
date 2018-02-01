@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单</title>
+    <link rel="stylesheet" href="/m/css/success.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <template v-if="status == 'success'">
+                <div class="status success">
+                    <div class="icon"></div>
+                    <div class="text">
+                        <p class="p1">下单成功</p>
+                        <p class="p2">等待您的付款</p>
+                    </div>
+                </div>
+                <a href="###" class="alink timeout">上传凭证</a>
+            </template>
+            <template v-else>
+                <div class="status error">
+                    <div class="icon"></div>
+                    <div class="text">
+                        <p class="p1">付款/下单失败</p>
+                        <p class="p2">请重试</p>
+                    </div>
+                </div>
+                <p class="tips">失败原因：网络出现故障！</p>
+                <a href="###" class="alink">重新下单</a>
+            </template>
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+    <script type="text/javascript" src="/m/js/success.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 var carouse_swiper;
 var vm = new Vue({
-    el: "#wrap",
+    // el: "#wrap",
     data: {
         //轮播
         carouselListData: [],
@@ -19,15 +19,15 @@ var vm = new Vue({
 
     },
     computed: {
-        page: function () {
+        page: function() {
             return navActive();
         },
-        noticeComputedData: function () {
+        noticeComputedData: function() {
             var _this = this;
             var originArr = _this.noticeData;
             var newArr = [];
             var smallArr = [];
-            originArr.forEach(function (val, index) {
+            originArr.forEach(function(val, index) {
                 smallArr.push(val);
                 if (index % 2 != 0) {
                     newArr.push(smallArr);
@@ -41,18 +41,19 @@ var vm = new Vue({
         }
     },
     methods: {
-        getdata: function () {
-            $.get("/m/data/indexData.json", function (r) {
+        getdata: function() {
+            $.get("/m/data/indexData.json", function(r) {
                 r = JSON.stringify(r);
-
-
-
                 var result = JSON.parse(r);
                 vm.carouselListData = result.CarouselList;
                 vm.projectListData = result.ProjectList;
                 vm.finishProjectListData = result.CompleteList;
                 vm.newsData = result.newsEntities;
                 vm.noticeData = result.noticeEntities;
+                if (!vm.$el) {
+                    vm.$mount("#wrap");
+                };
+
             });
         }
     },
@@ -74,7 +75,7 @@ var vm = new Vue({
             for (var i = 0, len = carouse_swiper.slides.length; i < len; i++) {
                 var img = carouse_swiper.slides[i].getElementsByTagName("img")[0];
                 img.style.width = "100%";
-                img.style.height = carouse_swiper.width / 3.84+"px";
+                img.style.height = carouse_swiper.width / 3.84 + "px";
             }
         });
     },
