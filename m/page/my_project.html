@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>手机端</title>
+    <title>手机端-我的项目</title>
     <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
     <link rel="stylesheet" href="/m/css/my_project.css">
     <script type="text/javascript" src="/m/js/vue.min.js"></script>
@@ -35,18 +35,20 @@
                 </div>
             </div>
             <ul class="order-list">
-                <li>
+                <li v-for="item in [1,2,3]">
+                    <!-- 第一行 -->
                     <div class="order-num">
                         <span>订单编号：123456</span>
                         <span>2018-01-15</span>
                     </div>
-                    <a class="order-detail">
-                        <i></i>
+                    <!-- 第二行 -->
+                    <a href="###" class="order-detail">
+                        <i style="background-image: url('/m//img/logo.png');"></i>
                         <div class="detail-right">
                             <!-- 项目标题 状态 时间 -->
                             <div class="detail-title">
                                 <div class="title-right">
-                                    <span class="order-status">预热</span>
+                                    <span class="order-step">预热</span>
                                     <span class="order-time">100天</span>
                                 </div>
                                 <div class="title-left">智慧驾驶科技智慧驾驶科技智慧驾驶科技智慧驾驶科技-Maxieye</div>
@@ -58,6 +60,11 @@
                             </div>
                         </div>
                     </a>
+                    <!-- 第三行 -->
+                    <div class="order-status">
+                        <a href="###" class="status-left">待签投资合同</a>
+                        <span class="status-right">逾期未付款</span>
+                    </div>
                 </li>
             </ul>
         </div>

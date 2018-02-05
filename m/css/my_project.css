@@ -523,7 +523,6 @@ html {
 }
 .order-list li {
   margin: 10px 0;
-  background: #fff;
 }
 .order-list li .order-num {
   line-height: 30px;
@@ -531,6 +530,7 @@ html {
   border-bottom: 1px solid #ccc;
   font-size: 14px;
   color: #aaa;
+  background: #fff;
   *zoom: 1;
 }
 .order-list li .order-num:after {
@@ -547,6 +547,7 @@ html {
 .order-list li a.order-detail {
   display: block;
   padding: 12px 12px;
+  background: #fff;
   *zoom: 1;
 }
 .order-list li a.order-detail:after {
@@ -558,7 +559,7 @@ html {
   float: left;
   width: 50px;
   height: 50px;
-  background: #f00;
+  background: url(../img/logo.png) center / contain no-repeat;
 }
 .order-list li a.order-detail .detail-right {
   padding: 0 0 0 12px;
@@ -576,6 +577,24 @@ html {
 .order-list li a.order-detail .detail-right .detail-title .title-right {
   float: right;
 }
+.order-list li a.order-detail .detail-right .detail-title .title-right span {
+  font-size: 10px;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin: -3px 0 0;
+  vertical-align: middle;
+}
+.order-list li a.order-detail .detail-right .detail-title .title-right span.order-step {
+  color: #fff;
+  border: 1px solid #ff322f;
+  background: #ff322f;
+}
+.order-list li a.order-detail .detail-right .detail-title .title-right span.order-time {
+  color: #999;
+  border: 1px solid #999;
+}
 .order-list li a.order-detail .detail-right .detail-title .title-left {
   font-weight: 700;
   white-space: nowrap;
@@ -591,4 +610,28 @@ html {
 }
 .order-list li a.order-detail .detail-right .detail-amount span:nth-of-type(2) {
   float: right;
+}
+.order-list li .order-status {
+  line-height: 30px;
+  padding: 0 12px;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  *zoom: 1;
+}
+.order-list li .order-status:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.order-list li .order-status a {
+  display: inline-block;
+  text-decoration: underline;
+}
+.order-list li .order-status :nth-child(1) {
+  float: left;
+  color: #3d8ce9;
+}
+.order-list li .order-status :nth-child(2) {
+  float: right;
+  color: #ff110c;
 }

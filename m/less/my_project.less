@@ -28,13 +28,13 @@ html {
     color: #333;
     li {
         margin: 10px 0;
-        background: #fff;
         .order-num {
             line-height: 30px;
             padding: 0 12px;
             border-bottom: 1px solid #ccc;
             font-size: 14px;
             color: #aaa;
+            background: #fff;
             .clearfix();
             span:nth-of-type(1) {
                 float: left;
@@ -46,12 +46,13 @@ html {
         a.order-detail {
             display: block;
             padding: 12px 12px;
+            background: #fff;
             .clearfix();
             i {
                 float: left;
                 width: 50px;
                 height: 50px;
-                background: #f00;
+                background: url(../img/logo.png) center/contain no-repeat;
             }
             .detail-right {
                 padding: 0 0 0 12px;
@@ -61,6 +62,24 @@ html {
                     .clearfix();
                     .title-right {
                         float: right;
+                        span {
+                            font-size: 10px;
+                            display: inline-block;
+                            line-height: 20px;
+                            padding: 0 5px;
+                            border-radius: 5px;
+                            margin: -3px 0 0;
+                            vertical-align: middle;
+                            &.order-step {
+                                color: #fff;
+                                border: 1px solid #ff322f;
+                                background: #ff322f;
+                            }
+                            &.order-time {
+                                color: #999;
+                                border: 1px solid #999;
+                            }
+                        }
                     }
                     .title-left {
                         font-weight: 700;
@@ -78,6 +97,25 @@ html {
                         float: right;
                     }
                 }
+            }
+        }
+        .order-status {
+            line-height: 30px;
+            padding: 0 12px;
+            border-top: 1px solid #ccc;
+            background: #fff;
+            .clearfix();
+            a {
+                display: inline-block;
+                text-decoration: underline;
+            }
+            :nth-child(1) {
+                float: left;
+                color: #3d8ce9;
+            }
+            :nth-child(2) {
+                float: right;
+                color: #ff110c;
             }
         }
     }
