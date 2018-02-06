@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端-订单详情</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/my_project_detail.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+            <!-- 顶部title -->
+            <div class="top-nav">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>订单详情</h2>
+            </div>
+            <!-- 顶 -->
+            <div class="top">
+                <!-- 第一行 -->
+                <div class="order-num">
+                    <span>订单编号：123456</span>
+                    <span>2018-01-15</span>
+                </div>
+                <!-- 第二行 -->
+                <a href="my_project_detail.html" class="pj-detail">
+                    <i style="background-image: url('/m//img/logo.png');"></i>
+                    <div class="pj-detail-right">
+                        <!-- 项目标题 状态 时间 -->
+                        <div class="pj-detail-title">
+                            <div class="pj-detail-title-right">
+                                <span class="pj-step">预热</span>
+                                <span class="pj-time">100天</span>
+                            </div>
+                            <div class="pj-detail-title-left">智慧驾驶科技智慧驾驶科技智慧驾驶科技智慧驾驶科技-Maxieye</div>
+                        </div>
+                        <!-- 金额 -->
+                        <div class="pj-detail-detail-amount">
+                            <span>投资金：1200000</span>
+                            <span>保证金：1200000</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- 中 -->
+            <div class="section middle">
+                <div class="title">订单详情</div>
+                <ul class="order-detail">
+                    <li>意向投资金额：<span class="orange-font">100万</span></li>
+                    <li>订单状态：<span class="blue-font">代付保证金</span></li>
+                    <li>保证金：<span class="orange-font">100万</span></li>
+                    <li>实际投资金额：<span class="orange-font">100万</span></li>
+                    <li class="whole-line">打款账号：<span class="orange-font">1234 1234 1234 123</span></li>
+                </ul>
+            </div>
+            <div class="section bottom">
+                <div class="title">交易凭证</div>
+                <div class="imgs">
+                    <a href="###" v-for="item in [1,2]">
+                        <img src="../img/test/test01.jpg">
+                        <p>￥ 10,000</p>
+                        <span class="del"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 内容 end -->
+    </div>
+    <script type="text/javascript" src="/m/js/my_project_detail.js"></script>
+</body>
+
+</html>

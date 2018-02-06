@@ -544,40 +544,40 @@ html {
 .order-list li .order-num span:nth-of-type(2) {
   float: right;
 }
-.order-list li a.order-detail {
+.order-list li a.pj-detail {
   display: block;
   padding: 12px 12px;
   background: #fff;
   *zoom: 1;
 }
-.order-list li a.order-detail:after {
+.order-list li a.pj-detail:after {
   content: '';
   display: block;
   clear: both;
 }
-.order-list li a.order-detail i {
+.order-list li a.pj-detail i {
   float: left;
   width: 50px;
   height: 50px;
   background: url(../img/logo.png) center / contain no-repeat;
 }
-.order-list li a.order-detail .detail-right {
+.order-list li a.pj-detail .pj-detail-right {
   padding: 0 0 0 12px;
   overflow: hidden;
 }
-.order-list li a.order-detail .detail-right .detail-title {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title {
   line-height: 25px;
   *zoom: 1;
 }
-.order-list li a.order-detail .detail-right .detail-title:after {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title:after {
   content: '';
   display: block;
   clear: both;
 }
-.order-list li a.order-detail .detail-right .detail-title .title-right {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title .pj-detail-title-right {
   float: right;
 }
-.order-list li a.order-detail .detail-right .detail-title .title-right span {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title .pj-detail-title-right span {
   font-size: 10px;
   display: inline-block;
   line-height: 20px;
@@ -586,29 +586,29 @@ html {
   margin: -3px 0 0;
   vertical-align: middle;
 }
-.order-list li a.order-detail .detail-right .detail-title .title-right span.order-step {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title .pj-detail-title-right span.pj-step {
   color: #fff;
   border: 1px solid #ff322f;
   background: #ff322f;
 }
-.order-list li a.order-detail .detail-right .detail-title .title-right span.order-time {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title .pj-detail-title-right span.pj-time {
   color: #999;
   border: 1px solid #999;
 }
-.order-list li a.order-detail .detail-right .detail-title .title-left {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-title .pj-detail-title-left {
   font-weight: 700;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.order-list li a.order-detail .detail-right .detail-amount {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-detail-amount {
   line-height: 25px;
   color: #666;
 }
-.order-list li a.order-detail .detail-right .detail-amount span:nth-of-type(1) {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-detail-amount span:nth-of-type(1) {
   float: left;
 }
-.order-list li a.order-detail .detail-right .detail-amount span:nth-of-type(2) {
+.order-list li a.pj-detail .pj-detail-right .pj-detail-detail-amount span:nth-of-type(2) {
   float: right;
 }
 .order-list li .order-status {
