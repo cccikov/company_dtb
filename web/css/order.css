@@ -145,6 +145,14 @@ body {
   float: right;
   padding: 24px 0;
 }
+.nav .nav-main .top-login .logged,
+.nav .nav-main .top-login .logging {
+  display: none;
+}
+.nav .nav-main .top-login .logged.active,
+.nav .nav-main .top-login .logging.active {
+  display: block;
+}
 .nav .nav-main .top-login a {
   float: left;
   line-height: 32px;
@@ -452,7 +460,7 @@ body {
 }
 .float .mask.white-mask {
   background: #fff;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .float .login-float {
   display: none;
@@ -1347,6 +1355,12 @@ input:focus {
   text-align: center;
   color: #fff;
   background: #ff8b34;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.main-content .action .btn.canClick {
+  opacity: 1;
+  pointer-events: all;
 }
 .main-content .upload-status {
   width: 500px;
@@ -1373,4 +1387,72 @@ input:focus {
   margin: 12px 0 0;
   text-decoration: underline;
   color: #4285f4;
+}
+.float .sure-float {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  width: 400px;
+  padding: 1px 40px 40px;
+  border-radius: 8px;
+  margin: -125.5px 0 0 -240px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+}
+.float .sure-float.active {
+  display: block;
+}
+.float .sure-float h5 {
+  margin: 30px 0 20px;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.float .sure-float p {
+  margin: 15px 0 0;
+  color: #666;
+  font-size: 16px;
+  text-align: left;
+}
+.float .sure-float p.center {
+  text-align: center;
+}
+.float .sure-float p.center strong {
+  color: #ff8f35;
+  font-size: 22px;
+}
+.float .sure-float button {
+  width: 86px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 5px;
+  margin: 25px 0 0;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.float .sure-float button.sure {
+  cursor: default;
+  pointer-events: none;
+  background: #b2d4f7;
+}
+.float .sure-float button.sure.canClick {
+  cursor: pointer;
+  pointer-events: all;
+  background: #3286dc;
+}
+.float .sure-float button.cancal {
+  background: #ff8f35;
+  margin: 0 0 0 30px;
+}
+.float .sure-float .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  background: url(../img/close.png) center no-repeat;
 }

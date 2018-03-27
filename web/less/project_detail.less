@@ -14,6 +14,11 @@ html {
     margin: 0 auto;
 }
 
+.main video {
+    width: 100%;
+    cursor: pointer;
+}
+
 .main .section {
     padding: 15px 20px;
     background: #fff;
@@ -344,7 +349,8 @@ html {
                 }
             }
             .keyContent {
-                margin: 15px 25px 0px;
+                display: inline-block;
+                margin: 0px 25px 0px;
                 .clearfix();
                 a {
                     box-sizing: border-box;
@@ -356,7 +362,7 @@ html {
                     background: #ff8b34;
                     font-size: 14px;
                     color: #fff;
-                    &:hover{
+                    &:hover {
                         opacity: 0.7;
                     }
                 }
@@ -409,6 +415,42 @@ html {
                     }
                 }
             }
+        }
+    }
+}
+
+.video-wrap {
+    position: relative;
+    &:after {
+        pointer-events: none;
+        display: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        opacity: 0.2;
+        transform: scale(0.4);
+        transition: transform linear 0.3s, opacity linear 0.3s;
+    }
+    &.play {
+        &:after {
+            display: block;
+            background: url(../img/play.png) center no-repeat;
+        }
+    }
+    &.pause {
+        &:after {
+            display: block;
+            background: url(../img/pause.png) center no-repeat;
+        }
+    }
+    &.show {
+        &:after {
+            opacity: 1;
+            transform: scale(1);
         }
     }
 }
@@ -468,9 +510,9 @@ html {
     line-height: 100px;
     margin: -50px 0 0 -250px;
     font-size: 30px;
-    color: #666;
+    color: #fff;
     text-align: center;
-    text-shadow: 2px 2px 0 rgba(117, 117, 117, 0.51);
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
     &.active {
         display: block;
     }
@@ -478,55 +520,62 @@ html {
 
 // 提示浮窗2
 .tips2-float {
-    &.active {
-        display: block;
-    }
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     z-index: 1000;
-    width: 342px;
-    height: 159px;
-    padding: 1px 0;
+    width: 400px;
+    padding: 1px 40px 40px;
     border-radius: 8px;
-    margin: -160/2px 0 0 -342/2px;
+    margin: -(250+1)/2px 0 0 (-400-40*2)/2px;
     text-align: center;
     background: #fff;
-    box-shadow: 0 0 12px 0 rgba(0,
-    0,
-    0,
-    0.2);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    &.active {
+        display: block;
+    }
     h5 {
-        margin: 20px 0 0;
+        margin: 30px 0 0;
         color: #333;
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 18px;
         line-height: 1.5;
     }
     p {
         margin: 15px 0 0;
         color: #666;
-        font-size: 12px;
+        font-size: 16px;
+        text-align: left;
     }
     button {
         width: 86px;
-        height: 26px;
-        line-height: 26px;
+        height: 36px;
+        line-height: 36px;
         border-radius: 5px;
         margin: 28px 0 0;
         background: #3286dc;
         color: #fff;
-        font-size: 14px;
+        font-size: 15px;
         cursor: pointer;
+    }
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 16px;
+        height: 16px;
+        background: url(../img/close.png) center no-repeat;
+    }
+    .box {
+        display: none;
+        &.active {
+            display: block;
+        }
     }
 }
 
 // 提示浮窗3
 .tips3-float {
-    &.active {
-        display: block;
-    }
     display: none;
     position: fixed;
     top: 50%;
@@ -539,10 +588,10 @@ html {
     margin: -473/2px 0 0 -715/2-104px;
     text-align: center;
     background: #fff;
-    box-shadow: 0 0 12px 0 rgba(0,
-    0,
-    0,
-    0.2);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    &.active {
+        display: block;
+    }
     .close {
         position: absolute;
         top: 10px;
@@ -618,5 +667,27 @@ html {
                 opacity: 0.8;
             }
         }
+    }
+}
+
+#top {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    z-index: 99;
+    width: 26-12px; // height: 58px;
+    line-height: 15px;
+    padding: 22px 6px 9px 7px;
+    border-radius: 5px;
+    margin-left: 620px;
+    background: #e34010 center 7px url(../img/totop.png) no-repeat;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+}
+
+@media screen and (max-width: 1280px) {
+    #top {
+        margin-left: 603px;
     }
 }

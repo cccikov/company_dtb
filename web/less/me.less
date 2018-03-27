@@ -322,3 +322,58 @@ iframe {
         display: block;
     }
 }
+
+
+// 提示浮窗2
+.tips2-float {
+    &.active {
+        display: block;
+    }
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    width: 400px;
+    padding: 1px 40px 40px;
+    border-radius: 8px;
+    margin: -(250+1)/2px 0 0 (-400-40*2)/2px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 12px 0 rgba(0,
+    0,
+    0,
+    0.2);
+    h5 {
+        margin: 30px 0 0;
+        color: #333;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    p {
+        margin: 15px 0 0;
+        color: #666;
+        font-size: 16px;
+        text-align: left;
+    }
+    button {
+        width: 86px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 5px;
+        margin: 28px 0 0;
+        background: #3286dc;
+        background: #ff8f35;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 16px;
+        height: 16px;
+        background: url(../img/close.png) center no-repeat;
+    }
+}

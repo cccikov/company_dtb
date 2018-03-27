@@ -145,6 +145,14 @@ body {
   float: right;
   padding: 24px 0;
 }
+.nav .nav-main .top-login .logged,
+.nav .nav-main .top-login .logging {
+  display: none;
+}
+.nav .nav-main .top-login .logged.active,
+.nav .nav-main .top-login .logging.active {
+  display: block;
+}
 .nav .nav-main .top-login a {
   float: left;
   line-height: 32px;
@@ -452,7 +460,7 @@ body {
 }
 .float .mask.white-mask {
   background: #fff;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .float .login-float {
   display: none;
@@ -1064,4 +1072,53 @@ iframe#ifr {
 }
 .tips-float.active {
   display: block;
+}
+.tips2-float {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  width: 400px;
+  padding: 1px 40px 40px;
+  border-radius: 8px;
+  margin: -125.5px 0 0 -240px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+}
+.tips2-float.active {
+  display: block;
+}
+.tips2-float h5 {
+  margin: 30px 0 0;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.tips2-float p {
+  margin: 15px 0 0;
+  color: #666;
+  font-size: 16px;
+  text-align: left;
+}
+.tips2-float button {
+  width: 86px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 5px;
+  margin: 28px 0 0;
+  background: #3286dc;
+  background: #ff8f35;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.tips2-float .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  background: url(../img/close.png) center no-repeat;
 }

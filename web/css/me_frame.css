@@ -145,6 +145,14 @@ body {
   float: right;
   padding: 24px 0;
 }
+.nav .nav-main .top-login .logged,
+.nav .nav-main .top-login .logging {
+  display: none;
+}
+.nav .nav-main .top-login .logged.active,
+.nav .nav-main .top-login .logging.active {
+  display: block;
+}
 .nav .nav-main .top-login a {
   float: left;
   line-height: 32px;
@@ -452,7 +460,7 @@ body {
 }
 .float .mask.white-mask {
   background: #fff;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .float .login-float {
   display: none;
@@ -1046,36 +1054,48 @@ body {
 }
 .me-project-detail .info .side {
   float: right;
-  width: 200px;
+  width: 320px;
+  font-size: 18px;
 }
 .me-project-detail .info .side p {
   line-height: 66px;
+  padding: 0 90px 0 0;
   font-weight: 700;
   color: #2b2b2b;
+  text-align: right;
 }
 .me-project-detail .info .side p span {
   color: #b7b7b7;
   font-weight: 500;
 }
+.me-project-detail .info .side p:first-of-type {
+  border-bottom: 1px dashed #ccc;
+}
 .me-project-detail .info .middle {
   overflow: hidden;
+  font-size: 18px;
 }
 .me-project-detail .info .middle a {
   display: block;
-  font-weight: 700;
   line-height: 66px;
-  font-size: 16px;
+  padding: 0 12px 0 40px;
+  font-weight: 700;
+  font-size: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  border-bottom: 1px dashed #ccc;
+  border-right: 1px dashed #ccc;
 }
 .me-project-detail .info .middle a:hover {
   text-decoration: underline;
 }
 .me-project-detail .info .middle p {
   line-height: 66px;
+  padding: 0 12px 0 40px;
   font-weight: 700;
-  color: #2b2b2b;
+  color: #ff6935;
+  border-right: 1px dashed #ccc;
 }
 .me-project-detail .info .middle p span {
   color: #b7b7b7;

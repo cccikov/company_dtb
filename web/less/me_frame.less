@@ -361,7 +361,7 @@ body {
 }
 
 /////////
-// 我的 - 项目详情 //
+// 我的 - 交易详情 //
 /////////
 .me-project-detail {
     h5 {
@@ -387,37 +387,49 @@ body {
         }
         .side {
             float: right;
-            width: 200px;
+            width: 320px;
+            font-size: 18px;
             p {
                 line-height: 132/2px;
+                padding: 0 90px 0 0;
                 font-weight: 700;
                 color: #2b2b2b;
+                text-align: right;
                 span {
                     color: #b7b7b7;
                     font-weight: 500;
+                }
+                &:first-of-type{
+                    border-bottom: 1px dashed #ccc;
                 }
             }
         }
         .middle {
             overflow: hidden;
+            font-size: 18px;
             a {
                 display: block;
-                font-weight: 700;
                 line-height: 132/2px;
-                font-size: 16px;
+                padding: 0 12px 0 40px;
+                font-weight: 700;
+                font-size: 20px;
                 .elli();
                 &:hover {
                     text-decoration: underline;
                 }
+                border-bottom: 1px dashed #ccc;
+                border-right: 1px dashed #ccc;
             }
             p {
                 line-height: 132/2px;
+                padding: 0 12px 0 40px;
                 font-weight: 700;
-                color: #2b2b2b;
+                color: #ff6935;
                 span {
                     color: #b7b7b7;
                     font-weight: 500;
                 }
+                border-right: 1px dashed #ccc;
             }
         }
     }
@@ -667,7 +679,7 @@ body {
         letter-spacing: 2px;
         color: #666;
     }
-    .block{
+    .block {
         display: block;
     }
     .input {
@@ -683,10 +695,10 @@ body {
             &:focus {
                 outline: none;
             }
-            &[type="radio"]{
+            &[type="radio"] {
                 width: auto;
             }
-            &.hidden{
+            &.hidden {
                 position: absolute;
                 z-index: -1;
             }
@@ -732,13 +744,11 @@ body {
                 background: url(/statics/img/error.png) center no-repeat;
             }
         }
-    }
-
-    // 选择银行卡(特殊一点的 .input)
-    .wrap-right{
-        .type-select{
+    } // 选择银行卡(特殊一点的 .input)
+    .wrap-right {
+        .type-select {
             .clearfix();
-            a{
+            a {
                 float: left;
                 width: 199px;
                 margin: 0 0 0 12px;
@@ -747,84 +757,78 @@ body {
                 text-align: center;
                 letter-spacing: 2px;
                 color: #666;
-                &.active{
-                    color:#ff9327;
-                    border-color:#ff9327;
+                &.active {
+                    color: #ff9327;
+                    border-color: #ff9327;
                 }
             }
         }
-        .select-box{
-            display:none;
-            &.active{
-                display:block;
+        .select-box {
+            display: none;
+            &.active {
+                display: block;
             }
-        }
-
-        // 选择银行卡信息
-        .radio-card{
-            .card-list{
+        } // 选择银行卡信息
+        .radio-card {
+            .card-list {
                 margin: 0 0 0 12px;
-                .card-item{
+                .card-item {
                     display: block;
                     line-height: 38px;
-                    height:38px;
+                    height: 38px;
                     border: 1px solid #ccc;
                     margin: 10px 0 0;
                     text-align: center;
                     color: #666;
-                    &.active{
-                        color:#ff9327;
-                        border-color:#ff9327;
+                    &.active {
+                        color: #ff9327;
+                        border-color: #ff9327;
                     }
                 }
             }
-        }
-
-        // 手动输入银行卡信息
-        .text-card{
+        } // 手动输入银行卡信息
+        .text-card {
             margin: 0 0 0 12px;
-            .inner-input{
+            .inner-input {
                 margin: 10px 0 0;
-                input{
-                    width:400-12px; // 里面的input短一点
+                input {
+                    width: 400-12px; // 里面的input短一点
                 }
             }
         }
+    } // 选择银行卡 end
+    .code-input {
+        input {
+            width: 400-150px;
+        }
+        #btnSendCode {
+            float: right;
+            width: 151px;
+            line-height: 38px;
+            border: 1px solid #ccc;
+            margin: 0 0 0 -1px;
+            text-align: center;
+            letter-spacing: 2px;
+            color: #666;
+            background: #eee;
+            text-align: center;
+            cursor: pointer;
+            pointer-events: none;
+            &.canClick {
+                pointer-events: all;
+                background: #fff;
+                &:active {
+                    opacity: 1;
+                }
+            }
+            &:focus {
+                outline: none;
+            }
+            &:active {
+                opacity: 0.6;
+            }
+        }
     }
-     // 选择银行卡 end
-
-     .code-input{
-         input{
-            width:400-150px;
-         }
-         #btnSendCode{
-             float: right;
-             width: 151px;
-             line-height: 38px;
-             border: 1px solid #ccc;
-             margin: 0 0 0 -1px;
-             text-align: center;
-             letter-spacing: 2px;
-             color: #666;
-             background: #eee;
-             text-align: center;
-             cursor: pointer;
-             pointer-events: none;
-             &.canClick{
-                 pointer-events: all;
-                 background: #fff;
-                 &:active {
-                     opacity: 1;
-                 }
-             }
-             &:focus {
-                 outline: none;
-             }
-             &:active {
-                 opacity: 0.6;
-             }
-         }
-     }
 }
 
 // 上传身份正反面
@@ -857,7 +861,7 @@ body {
             text-align: center;
             cursor: pointer;
             img {
-                display:inline-block;
+                display: inline-block;
                 margin: -3px 0 0;
                 vertical-align: middle;
                 max-width: 100%;
@@ -873,7 +877,6 @@ body {
         }
     }
 }
-
 
 .show-img {
     position: relative;
@@ -899,7 +902,6 @@ body {
         max-height: 100px;
     }
 }
-
 
 ///////
 //合同 //

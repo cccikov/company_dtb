@@ -113,7 +113,7 @@ body {
         a {
             float: right;
             line-height: 27px;
-            color: #ff8935;
+            color: #ff5307;
             font-weight: 500;
         }
     }
@@ -212,10 +212,12 @@ body {
                             line-height: 22px;
                             padding: 19px 27px;
                             text-align: center;
+                            font-size:0;
                             .clearfix();
                             span {
+                                display:inline-block;
+                                vertical-align:top;
                                 box-sizing: border-box;
-                                float: left;
                                 width: 50%;
                                 color: #9e9e9e;
                                 font-size: 12px;
@@ -225,8 +227,8 @@ body {
                                     font-size: 14px;
                                     font-weight: 700;
                                 }
-                                &:nth-of-type(1) {
-                                    border-right: 1px solid #f0f0f0;
+                                &:nth-of-type(2) {
+                                    border-left: 1px solid #f0f0f0;
                                 }
                             }
                         }
@@ -272,6 +274,9 @@ body {
                 }
             }
             &.yr-project {
+                .yr-hidden{
+                    display:none !important;
+                }
                 a .project-content .part2 .project-percent {
                     .percent {
                         width: 100% !important;
@@ -289,7 +294,8 @@ body {
                 }
                 h5:after {
                     content: "预热中";
-                    color: #ff3935;
+                    color: #fff;
+                    background: #ff3935;
                     border-color: #ff3935;
                 }
             }
@@ -367,7 +373,7 @@ body {
         a {
             float: right;
             line-height: 24px;
-            color: #ff8935;
+            color: #ff5307;
         }
     }
     .content {

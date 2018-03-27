@@ -145,6 +145,14 @@ body {
   float: right;
   padding: 24px 0;
 }
+.nav .nav-main .top-login .logged,
+.nav .nav-main .top-login .logging {
+  display: none;
+}
+.nav .nav-main .top-login .logged.active,
+.nav .nav-main .top-login .logging.active {
+  display: block;
+}
 .nav .nav-main .top-login a {
   float: left;
   line-height: 32px;
@@ -452,7 +460,7 @@ body {
 }
 .float .mask.white-mask {
   background: #fff;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .float .login-float {
   display: none;

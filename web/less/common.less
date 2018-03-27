@@ -114,6 +114,13 @@ body {
         .top-login {
             float: right;
             padding: 24px 0;
+            .logged,
+            .logging {
+                display: none;
+                &.active{
+                    display: block;
+                }
+            }
             a {
                 float: left;
                 line-height: 32px;
@@ -434,7 +441,7 @@ body {
         }
         &.white-mask {
             background: #fff;
-            opacity: 0.5;
+            opacity: 0.3;
         }
     }
     .login-float {
