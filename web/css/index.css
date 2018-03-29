@@ -804,6 +804,19 @@ h5.heading:before {
   vertical-align: middle;
   border-bottom: 1px solid #666;
 }
+.more {
+  padding: 50px 0 42px;
+  text-align: center;
+}
+.more a {
+  display: inline-block;
+  width: 120px;
+  line-height: 42px;
+  border: 1px solid #7d7d7d;
+  border-radius: 5px;
+  color: #7d7d7d;
+  font-size: 16px;
+}
 .swiper-container .swiper-slide {
   position: relative;
 }
@@ -911,15 +924,234 @@ h5.heading:before {
   font-size: 19px;
 }
 .hot {
-  height: 840px;
+  min-height: 840px;
   background: url(../img/home_hot.png) center no-repeat;
+  text-align: center;
+}
+.hot ul {
+  display: inline-block;
+}
+.hot ul li {
+  float: left;
+  margin: 0 5px;
+  background: #fff;
+}
+.hot ul li a {
+  display: block;
+  width: 293px;
+  border: 1px solid #d2d2d2;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0);
+  transition: all linear 0.3s;
+}
+.hot ul li a:hover {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+.hot ul li a i {
+  display: block;
+  height: 334px;
+  background: url(../img/test/test09.png);
+}
+.hot ul li a .project-content .project-title {
+  display: inline-block;
+  padding: 15px 12px 12px;
+}
+.hot ul li a .project-content .project-title span {
+  display: block;
+  line-height: 24px;
+  font-size: 14px;
+  color: #2b2b2b;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.hot ul li a .project-content .project-title em {
+  float: right;
+  line-height: 22px;
+  padding: 0 5px;
+  border: 1px solid #ff3935;
+  border-radius: 5px;
+  font-size: 14px;
+  font-style: normal;
+  color: #ff3935;
+}
+.hot ul li a .project-content .project-detail {
+  *zoom: 1;
+}
+.hot ul li a .project-content .project-detail:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.hot ul li a .project-content .project-detail .progress {
+  position: relative;
+  float: left;
+  height: 100px;
+  width: 140px;
+}
+.hot ul li a .project-content .project-detail .progress .progress-num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 76px;
+  color: #666;
+}
+.hot ul li a .project-content .project-detail .projec-major {
+  overflow: hidden;
+  line-height: 25px;
+  color: #666;
+  font-size: 13px;
+  text-align: left;
+}
+.hot ul li a .project-content .project-detail .projec-major span {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+  margin: -3px 0 0;
+  width: 5em;
 }
 .accomplished {
   background: #fff;
+  text-align: center;
+}
+.accomplished ul {
+  width: 1200px;
+  margin: 0 auto;
+  *zoom: 1;
+}
+.accomplished ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.accomplished ul li {
+  float: left;
+}
+.accomplished ul li.proj1 {
+  float: left;
+  width: 595px;
+  height: 238px;
+  line-height: 238px;
+  margin: 0 10px 10px 0;
+}
+.accomplished ul li.proj2 {
+  float: right;
+  width: 595px;
+  height: 486px;
+  line-height: 486px;
+  margin: 0 0 10px 0;
+}
+.accomplished ul li.proj3 {
+  float: left;
+  width: 293px;
+  height: 238px;
+  line-height: 238px;
+  margin: 0 9px 10px 0;
+}
+.accomplished ul li.proj4 {
+  float: left;
+  width: 293px;
+  height: 238px;
+  line-height: 238px;
+  margin: 0 10px 10px 0;
+}
+.accomplished ul li.proj5 {
+  float: none;
+  width: 1200px;
+  height: 330px;
+  line-height: 330px;
+  clear: both;
+}
+.accomplished ul li a {
+  display: block;
+  height: 100%;
+  background: url(../img/test/test09.png) center no-repeat;
+  background: url(../img/test/test09.png) center / cover no-repeat;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: box-shadow linear 0.2s;
+}
+.accomplished ul li a:hover {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+}
+.accomplished ul li a:hover .proj-info {
+  transform: translate3d(0, 0, 0);
+}
+.accomplished ul li a .proj-info {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transition: transform cubic-bezier(0.1, 0.85, 0.23, 0.95) 1.2s;
+  transform: translate3d(0, 100%, 0);
+}
+.accomplished ul li a .proj-info .box {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -3px 0 0;
+}
+.accomplished ul li a .proj-info .box h6 {
+  line-height: 76px;
+  font-weight: normal;
+  font-size: 36px;
+}
+.accomplished ul li a .proj-info .box p {
+  padding: 0 40px;
+  font-size: 17px;
+  line-height: 32px;
 }
 .famous {
-  height: 670px;
+  min-height: 670px;
   background: url(../img/home_famous.png) center no-repeat;
+  text-align: center;
+}
+.famous ul {
+  display: inline-block;
+}
+.famous ul li {
+  float: left;
+  margin: 0 5px;
+}
+.famous ul li a {
+  display: block;
+  width: 295px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0);
+  transition: all linear 0.3s;
+}
+.famous ul li a:hover {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+}
+.famous ul li a i {
+  display: block;
+  height: 242px;
+  background: url(../img/test/test09.png) center top no-repeat;
+  background: url(../img/test/test09.png) center top / cover no-repeat;
+}
+.famous ul li a .famous-content {
+  background: #fff;
+  min-height: 150px;
+}
+.famous ul li a .famous-content .name {
+  padding: 17px 0 11px;
+  line-height: 2;
+  color: #333;
+  font-size: 17px;
+}
+.famous ul li a .famous-content .name:before,
+.famous ul li a .famous-content .name:after {
+  content: "";
+  display: inline-block;
+  width: 42px;
+  border-top: 1px solid #bebebe;
+  vertical-align: middle;
+  margin: -3px 12px 0;
+}
+.famous ul li a .famous-content .intro {
+  font-size: 15px;
+  line-height: 22px;
+  color: #666;
 }
 .big-wrap {
   padding: 0 0 38px;
@@ -1029,6 +1261,34 @@ h5.heading:before {
 }
 .partners {
   background: #f6f6f6;
+  text-align: center;
+  padding: 0 0 70px;
+}
+.partners ul {
+  display: block;
+  width: 1224px;
+  margin: -10px auto 0;
+  *zoom: 1;
+}
+.partners ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.partners ul li {
+  float: left;
+  width: 378px;
+  line-height: 142px;
+  height: 142px;
+  border: 1px solid #dcdcdc;
+  margin: 10px 14px;
+  background: #fff;
+  overflow: hidden;
+}
+.partners ul li img {
+  max-width: 100%;
+  vertical-align: middle;
+  margin: -3px 0 0;
 }
 ::-webkit-input-placeholder {
   /* WebKit browsers */

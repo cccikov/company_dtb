@@ -8,28 +8,30 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="plugins/swiper/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="js/circle-progress.min.js"></script>
     <script src="js/base.js"></script>
     <script type="text/javascript" src='js/index.js'></script>
+    <script type="text/javascript" src="https://cccikov.github.io/cccgit/test/js/vue.js"></script>
 </head>
 
 <body>
+    <!--[if lte IE 9]>
+        <style type="text/css">
+            .ie-tips{
+                line-height:24px;
+                padding: 0 12px;
+                background:#fffcde;
+                color:#545454;
+                font-size: 14px;
+            }
+            .ie-tips a{
+                color:blue;
+                text-decoration:underline;
+            }
+        </style>
+        <p class="ie-tips">！！！带投兵网站提醒：您的浏览器版本过低，为了您的安全着想，请升级您的浏览器，或者使用别的浏览器（推荐使用<a target="_blank" href="https://www.baidu.com/s?ie=UTF-8&wd=chrome">chrome浏览器</a>）</p>
+    <![endif]-->
     <div id="wrap">
-        <!--[if lte IE 9]>
-            <style type="text/css">
-                .ie-tips{
-                    line-height:24px;
-                    padding: 0 12px;
-                    background:#fffcde;
-                    color:#545454;
-                    font-size: 14px;
-                }
-                .ie-tips a{
-                    color:blue;
-                    text-decoration:underline;
-                }
-            </style>
-            <p class="ie-tips">！！！带投兵网站提醒：您的浏览器版本过低，为了您的安全着想，请升级您的浏览器，或者使用别的浏览器（推荐使用<a target="_blank" href="https://www.baidu.com/s?ie=UTF-8&wd=chrome">chrome浏览器</a>）</p>
-        <![endif]-->
 
         <!-- 导航 begin -->
         <div class="nav">
@@ -140,6 +142,46 @@
             <div class="hot">
                 <h4 class="heading">HOT PROJECTS</h4>
                 <h5 class="heading">热门项目</h5>
+
+                <ul>
+                    <li v-for="val in [1,2,3,4]">
+                        <a href="###">
+
+                            <!-- 项目图片 -->
+                            <i></i>
+
+                            <div class="project-content">
+                                <p class="project-title">
+                                    <em>募集中</em>
+                                    <span>考拉FM（1期）</span>
+                                </p>
+                                <div class="project-detail">
+                                    <!-- 进度条 -->
+                                    <div class="progress">
+                                        <div class="progress-canvas" data-value="0.9"></div>
+                                        <span class="progress-num">90%</span>
+                                    </div>
+                                    <div class="projec-major">
+                                        <p>
+                                            <span>目标：</span>1000万
+                                        </p>
+                                        <p>
+                                            <span>起投：</span>60万
+                                        </p>
+                                        <p>
+                                            <span>募集总额：</span>1000万
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="more">
+                    <a href="###">查看更多</a>
+                </div>
+
             </div>
             <!-- 主要_热门项目 end -->
 
@@ -150,6 +192,28 @@
             <div class="accomplished">
                 <h4 class="heading">ACCOMPLISHED PROJECTS</h4>
                 <h5 class="heading">成功项目</h5>
+
+                <ul>
+                    <li :class="'proj'+val" v-for="val in [1,2,3,4,5]">
+                        <a href="###">
+                            <div class="proj-info">
+
+                                <!-- <div style="display:inline-block;line-height: 2;vertical-align: middle;">
+                                    <p>Lorem ipsum dolor sit.</p>
+                                    <p>Lorem ipsum dolor sit.</p>
+                                </div> -->
+                                <div class="box">
+                                    <h6>浩图只能</h6>
+                                    <p>萌爆全城、最受泛90后俊男靓女喜爱的港式小吃餐饮品牌， 加盟店遍布全国，估值极低，升值潜力巨大。</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="more">
+                    <a href="###">查看更多</a>
+                </div>
             </div>
             <!-- 主要_成功项目 end -->
 
@@ -160,6 +224,46 @@
             <div class="famous">
                 <h4 class="heading">FAMOUS INVESTORS</h4>
                 <h5 class="heading">明星投资人</h5>
+
+                <ul>
+                    <li>
+                        <a href="###">
+                            <i style="background-image: url(./img/famous1.jpg);background-position: center top -48px"></i>
+                            <div class="famous-content">
+                                <p class="name">李斌</p>
+                                <p class="intro">出行教父，蔚来汽车董事长<br>摩拜天使投资人<br>参与「考拉FM」</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="###">
+                            <i style="background-image: url(./img/famous2.jpg)"></i>
+                            <div class="famous-content">
+                                <p class="name">吴世春</p>
+                                <p class="intro">梅花天使创投创始合伙人<br>趣店天使投资人<br>参与「蜂狂运动」</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="###">
+                            <i style="background-image: url(./img/famous3.jpg)"></i>
+                            <div class="famous-content">
+                                <p class="name">李斌</p>
+                                <p class="intro">松禾资本董事长<br>柔宇科技天使投资人<br>参与「皓图智能」</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="###">
+                            <i style="background-image: url(./img/famous4.jpg)"></i>
+                            <div class="famous-content">
+                                <p class="name">李斌</p>
+                                <p class="intro">亚洲偶像盛典<br>"最具人气女演员"<br>参与「康堤股份」</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
             </div>
             <!-- 主要_明星投资人 end -->
 
@@ -251,6 +355,37 @@
             <div class="partners">
                 <h4 class="heading">PARTNERS</h4>
                 <h5 class="heading">合作伙伴</h5>
+
+                <ul>
+                    <li>
+                        <img src="./img/partners1.png">
+                    </li>
+                    <li>
+                        <img src="./img/partners2.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners3.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners4.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners5.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners6.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners7.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners8.png" alt="">
+                    </li>
+                    <li>
+                        <img src="./img/partners9.png" alt="">
+                    </li>
+                </ul>
+
             </div>
             <!-- 主要_合作伙伴 end -->
 
@@ -296,6 +431,31 @@
     <div class="test" style="text-align: center;overflow: hidden;width:100%">
         <img src="./img/新首页20180327.png" width="1920">;
     </div>
+
+    <script type="text/javascript">
+        new Vue({
+            "el":"#wrap",
+            mounted: function () {
+                this.$nextTick(function () {
+                    onload();
+                });
+            }
+        });
+
+        function onload(){
+            $(".progress-canvas").circleProgress({
+                size:76,
+                startAngle: -Math.PI / 2,
+                thickness:5,
+                fill: {
+                    gradient: ["#ff8a35", "#ff3b35"],
+                },
+            })
+        }
+
+
+
+    </script>
 </body>
 
 </html>

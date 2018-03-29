@@ -6,12 +6,6 @@ function baseFontSize() {
     return rootfontsize;
 }
 
-function htmlFull() {
-    var screenH = window.innerHeight;
-    var body = document.body;
-    body.style.minHeight = screenH + "px";
-}
-
 // tab 切换
 function Tab(obj) {
     var _this = this;
@@ -107,9 +101,3 @@ function scrollPosi(posi, cb1, cb2) {
         }
     }
 }
-
-$(function () {
-    $(window).on("resize", function () {
-        htmlFull();
-    }).resize();
-});

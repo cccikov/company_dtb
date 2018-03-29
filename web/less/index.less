@@ -35,6 +35,20 @@ h5.heading {
     }
 }
 
+.more {
+    padding: 50px 0 42px;
+    text-align: center;
+    a {
+        display: inline-block;
+        width: 120px;
+        line-height: 42px;
+        border: 1px solid #7d7d7d;
+        border-radius: 5px;
+        color: #7d7d7d;
+        font-size: 16px;
+    }
+}
+
 .swiper-container {
     .swiper-slide {
         position: relative;
@@ -151,17 +165,228 @@ h5.heading {
 }
 
 .hot {
-    height: 840px;
+    min-height: 840px;
     background: url(../img/home_hot.png) center no-repeat;
+    text-align: center;
+
+    ul {
+        display: inline-block;
+        li {
+            float: left;
+            margin: 0 5px;
+            background: #fff;
+            a {
+                display: block;
+                width: 293px;
+                border: 1px solid #d2d2d2;
+                box-shadow: 0px 0px 12px rgba(0, 0, 0, 0);
+                transition: all linear 0.3s;
+                &:hover {
+                    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+                    border-color: rgba(0, 0, 0, 0.3);
+                }
+                i {
+                    display: block;
+                    height: 334px;
+                    background: url(../img/test/test09.png);
+                }
+                .project-content {
+                    .project-title {
+                        display: inline-block;
+                        padding: 15px 12px 15-3px;
+                        span {
+                            display: block;
+                            line-height: 24px;
+                            font-size: 14px;
+                            color: #2b2b2b;
+                            .elli();
+                        }
+                        em {
+                            float: right;
+                            line-height: 22px;
+                            padding: 0 5px;
+                            border: 1px solid #ff3935;
+                            border-radius: 5px;
+                            font-size: 14px;
+                            font-style: normal;
+                            color: #ff3935;
+                        }
+                    }
+                    .project-detail {
+                        .clearfix();
+                        .progress {
+                            position: relative;
+                            float: left;
+                            height: 100px;
+                            width: 140px;
+                            .progress-num {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                line-height: 76px;
+                                color: #666;
+                            }
+                        }
+                        .projec-major {
+                            overflow: hidden;
+                            line-height: 25px;
+                            color: #666;
+                            font-size: 13px;
+                            text-align: left;
+                            span {
+                                display: inline-block;
+                                vertical-align: middle;
+                                text-align: right;
+                                margin: -3px 0 0;
+                                width: 5em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .accomplished {
     background: #fff;
+    text-align: center;
+    ul {
+        width: 1200px;
+        margin: 0 auto;
+        .clearfix();
+        li {
+            float: left;
+            &.proj1 {
+                float: left;
+                width: 595px;
+                height: 238px;
+                line-height: 238px;
+                margin: 0 10px 10px 0;
+            }
+            &.proj2 {
+                float: right;
+                width: 595px;
+                height: 486px;
+                line-height: 486px;
+                margin: 0 0 10px 0;
+            }
+            &.proj3 {
+                float: left;
+                width: 293px;
+                height: 238px;
+                line-height: 238px;
+                margin: 0 9px 10px 0;
+            }
+            &.proj4 {
+                float: left;
+                width: 293px;
+                height: 238px;
+                line-height: 238px;
+                margin: 0 10px 10px 0;
+            }
+            &.proj5 {
+                float: none;
+                width: 1200px;
+                height: 330px;
+                line-height: 330px;
+                clear: both;
+            }
+            a {
+                display: block;
+                height: 100%;
+                background: url(../img/test/test09.png) center no-repeat;
+                background: url(../img/test/test09.png) center/cover no-repeat;
+                overflow: hidden;
+                box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+                transition: box-shadow linear 0.2s;
+                &:hover {
+                    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+                    .proj-info {
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+                .proj-info {
+                    height: 100%;
+                    width: 100%;
+                    text-align: center;
+                    background: rgba(0, 0, 0, 0.6);
+                    color: #fff;
+                    transition: transform cubic-bezier(0.1, 0.85, 0.23, 0.95) 1.2s;
+                    transform: translate3d(0, 100%, 0);
+
+                    .box {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: -3px 0 0;
+                        h6 {
+                            line-height: 76px;
+                            font-weight: normal;
+                            font-size: 36px;
+                        }
+                        p {
+                            padding: 0 40px;
+                            font-size: 17px;
+                            line-height: 32px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .famous {
-    height: 670px;
+    min-height: 670px;
     background: url(../img/home_famous.png) center no-repeat;
+    text-align: center;
+    ul {
+        display: inline-block;
+        li {
+            float: left;
+            margin: 0 5px;
+            a {
+                display: block;
+                width: 295px;
+                box-shadow: 0px 0px 12px rgba(0, 0, 0, 0);
+                transition: all linear 0.3s;
+                &:hover {
+                    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+                }
+                i {
+                    display: block;
+                    height: 242px;
+                    background: url(../img/test/test09.png) center top no-repeat;
+                    background: url(../img/test/test09.png) center top/cover no-repeat;
+                }
+                .famous-content {
+                    background: #fff;
+                    min-height: 150px;
+                    .name {
+                        padding: 17px 0 11px;
+                        line-height: 2;
+                        color: #333;
+                        font-size: 17px;
+                        &:before,
+                        &:after {
+                            content: "";
+                            display: inline-block;
+                            width: 42px;
+                            border-top: 1px solid #bebebe;
+                            vertical-align: middle;
+                            margin: -3px 12px 0;
+                        }
+                    }
+                    .intro {
+                        font-size: 15px;
+                        line-height: 22px;
+                        color: #666;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // 新闻公告
@@ -265,8 +490,31 @@ h5.heading {
     }
 }
 
-.partners{
+.partners {
     background: #f6f6f6;
+    text-align: center;
+    padding: 0 0 70px;
+    ul {
+        display: block;
+        width: 1224px;
+        margin: -10px auto 0;
+        .clearfix();
+        li {
+            float: left;
+            width: 378px;
+            line-height: 142px;
+            height: 142px;
+            border: 1px solid #dcdcdc;
+            margin: 10px 14px;
+            background: #fff;
+            overflow: hidden;
+            img {
+                max-width: 100%;
+                vertical-align: middle;
+                margin: -3px 0 0;
+            }
+        }
+    }
 }
 
 ::-webkit-input-placeholder {
