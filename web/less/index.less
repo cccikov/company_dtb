@@ -49,6 +49,10 @@ h5.heading {
     }
 }
 
+.high {
+    pointer-events: none;
+}
+
 .swiper-container {
     .swiper-slide {
         position: relative;
@@ -165,9 +169,16 @@ h5.heading {
 }
 
 .hot {
+    position: relative;
     min-height: 840px;
     background: url(../img/home_hot.png) center no-repeat;
     text-align: center;
+
+    .high {
+        position: absolute;
+        top: -120px;
+        left: 0px;
+    }
 
     ul {
         display: inline-block;
@@ -250,8 +261,16 @@ h5.heading {
 }
 
 .accomplished {
+    position: relative;
     background: #fff;
     text-align: center;
+
+    .high {
+        position: absolute;
+        top: -300px;
+        right: 0px;
+    }
+
     ul {
         width: 1200px;
         margin: 0 auto;
@@ -338,9 +357,17 @@ h5.heading {
 }
 
 .famous {
+    position: relative;
     min-height: 670px;
     background: url(../img/home_famous.png) center no-repeat;
     text-align: center;
+
+    .high {
+        position: absolute;
+        top: -120px;
+        left: 0px;
+    }
+
     ul {
         display: inline-block;
         li {

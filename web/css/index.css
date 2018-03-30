@@ -824,6 +824,9 @@ h5.heading:before {
   color: #7d7d7d;
   font-size: 16px;
 }
+.high {
+  pointer-events: none;
+}
 .swiper-container .swiper-slide {
   position: relative;
 }
@@ -931,9 +934,15 @@ h5.heading:before {
   font-size: 19px;
 }
 .hot {
+  position: relative;
   min-height: 840px;
   background: url(../img/home_hot.png) center no-repeat;
   text-align: center;
+}
+.hot .high {
+  position: absolute;
+  top: -120px;
+  left: 0px;
 }
 .hot ul {
   display: inline-block;
@@ -1019,8 +1028,14 @@ h5.heading:before {
   width: 5em;
 }
 .accomplished {
+  position: relative;
   background: #fff;
   text-align: center;
+}
+.accomplished .high {
+  position: absolute;
+  top: -300px;
+  right: 0px;
 }
 .accomplished ul {
   width: 1200px;
@@ -1110,9 +1125,15 @@ h5.heading:before {
   line-height: 32px;
 }
 .famous {
+  position: relative;
   min-height: 670px;
   background: url(../img/home_famous.png) center no-repeat;
   text-align: center;
+}
+.famous .high {
+  position: absolute;
+  top: -120px;
+  left: 0px;
 }
 .famous ul {
   display: inline-block;
