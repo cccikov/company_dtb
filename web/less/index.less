@@ -50,6 +50,7 @@ h5.heading {
 }
 
 .high {
+    z-index: 1;
     pointer-events: none;
 }
 
@@ -112,8 +113,11 @@ h5.heading {
         margin-bottom: -6px;
         p {
             position: relative;
+            z-index: 10;
             float: left;
             width: 305px;
+            background: rgba(255, 255, 255, 1);
+
             &:before {
                 content: "";
                 display: block;
@@ -181,12 +185,15 @@ h5.heading {
     }
 
     ul {
+        position: relative;
+        z-index: 10;
         display: inline-block;
         li {
             float: left;
             margin: 0 5px;
             background: #fff;
             a {
+                position: relative;
                 display: block;
                 width: 293px;
                 border: 1px solid #d2d2d2;
@@ -196,10 +203,29 @@ h5.heading {
                     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
                     border-color: rgba(0, 0, 0, 0.3);
                 }
+                &.A-round:before{
+                    content:"";
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width: 78px;
+                    height: 79px;
+                    background: url(../img/A-round.png) center no-repeat;
+                }
+                &.B-round:before{
+                    content:"";
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width: 78px;
+                    height: 79px;
+                    background: url(../img/B-round.png) center no-repeat;
+                }
                 i {
                     display: block;
                     height: 334px;
-                    background: url(../img/test/test09.png);
+                    background: url(../img/test/test09.png) center no-repeat;
+                    background: url(../img/test/test09.png) center/cover no-repeat;
                 }
                 .project-content {
                     .project-title {
@@ -272,6 +298,8 @@ h5.heading {
     }
 
     ul {
+        position: relative;
+        z-index: 10;
         width: 1200px;
         margin: 0 auto;
         .clearfix();

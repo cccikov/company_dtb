@@ -147,10 +147,9 @@
 
                 <ul>
                     <li v-for="val in [1,2,3,4]">
-                        <a href="###">
-
+                        <a class="B-round" href="###">
                             <!-- 项目图片 -->
-                            <i></i>
+                            <i style="background-image: url(./img/test/test06.jpg)"></i>
 
                             <div class="project-content">
                                 <p class="project-title">
@@ -199,14 +198,9 @@
 
                 <ul>
                     <li :class="'proj'+val" v-for="val in [1,2,3,4,5]">
-                        <a href="###">
+                        <a href="###" style="background-image: url(./img/test/test06.jpg)">
                             <div class="proj-info">
-
-                                <!-- <div style="display:inline-block;line-height: 2;vertical-align: middle;">
-                                    <p>Lorem ipsum dolor sit.</p>
-                                    <p>Lorem ipsum dolor sit.</p>
-                                </div> -->
-                                <div class="box">
+                                <div class="box" >
                                     <h6>浩图只能</h6>
                                     <p>萌爆全城、最受泛90后俊男靓女喜爱的港式小吃餐饮品牌， 加盟店遍布全国，估值极低，升值潜力巨大。</p>
                                 </div>
@@ -438,30 +432,6 @@
         <img src="./img/新首页20180327.png" width="1920">;
     </div> -->
 
-    <script type="text/javascript">
-        new Vue({
-            "el":"#wrap",
-            mounted: function () {
-                this.$nextTick(function () {
-                    onload();
-                });
-            }
-        });
-
-        function onload(){
-            $(".progress-canvas").circleProgress({
-                size:76,
-                startAngle: -Math.PI / 2,
-                thickness:5,
-                fill: {
-                    gradient: ["#ff8a35", "#ff3b35"],
-                },
-            })
-        }
-
-
-
-    </script>
 </body>
 
 </html>
