@@ -41,29 +41,30 @@ body {
         .clearfix();
         .nav-line-l {
             float: left;
-            .tel {
-                &:before {
-                    content: "";
-                    display: inline-block;
-                    width: 20px;
-                    height: 18px;
-                    vertical-align: middle;
-                    margin: -3px 8px 0 0;
-                    background: url(../img/nav_tel.png) center no-repeat;
-                }
-            }
         }
         .nav-line-r {
             float: right;
             a {
+                position: relative;
                 padding: 0 8px;
-                border-right: 1px solid #fff;
+                border-left: 1px solid #fff;
                 &:last-of-type {
                     border-right: none;
                 }
                 &.active {
                     color: #ff9900;
                 }
+            }
+        }
+        .tel {
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 20px;
+                height: 18px;
+                vertical-align: middle;
+                margin: -3px 8px 0 0;
+                background: url(../img/nav_tel.png) center no-repeat;
             }
         }
     } // 主要导航
@@ -156,7 +157,7 @@ body {
     .horn {
         width: 1064px;
         padding: 0 0 10px;
-        border-bottom:1px solid #656565;
+        border-bottom: 1px solid #656565;
         margin: 0 auto;
     }
     .footer-main {
@@ -503,6 +504,7 @@ body {
         }
     }
 }
+
 
 
 

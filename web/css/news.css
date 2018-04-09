@@ -69,7 +69,21 @@ body {
 .nav .nav-line .nav-line-l {
   float: left;
 }
-.nav .nav-line .nav-line-l .tel:before {
+.nav .nav-line .nav-line-r {
+  float: right;
+}
+.nav .nav-line .nav-line-r a {
+  position: relative;
+  padding: 0 8px;
+  border-left: 1px solid #fff;
+}
+.nav .nav-line .nav-line-r a:last-of-type {
+  border-right: none;
+}
+.nav .nav-line .nav-line-r a.active {
+  color: #ff9900;
+}
+.nav .nav-line .tel:before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -77,19 +91,6 @@ body {
   vertical-align: middle;
   margin: -3px 8px 0 0;
   background: url(../img/nav_tel.png) center no-repeat;
-}
-.nav .nav-line .nav-line-r {
-  float: right;
-}
-.nav .nav-line .nav-line-r a {
-  padding: 0 8px;
-  border-right: 1px solid #fff;
-}
-.nav .nav-line .nav-line-r a:last-of-type {
-  border-right: none;
-}
-.nav .nav-line .nav-line-r a.active {
-  color: #ff9900;
 }
 .nav .nav-main {
   line-height: 80px;

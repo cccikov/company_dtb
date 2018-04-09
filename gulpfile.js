@@ -68,8 +68,8 @@ function synclessFn(path, base, destPath) { // 用于浏览器同步刷新 , 先
 /**
  * default 任务
  */
-gulp.task('default', ["less", "syncLess2"], function () {
-    console.log("********\n执行了 less & syncLess2\n********");
+gulp.task('default', ["less", "sync"], function () {
+    console.log("********\n执行了 less & sync\n********");
 });
 
 
@@ -410,6 +410,45 @@ gulp.task('web_syncless', function () {
                 port: 3002
             }
         }
+    });
+
+    // 转换less
+    gulp.watch("web/less/**/*.less").on('change', function (event) {
+        gulp.src("web/less/**/*.less", { // 这个是全部css变化且刷新
+                base: "web/less"
+            })
+            .pipe(less())
+            .pipe(gulp.dest("web/css"))
+            .pipe(browserSync.reload({
+                stream: true
+            }));;
+    });
+
+    // 监视文件变化同步浏览器
+    gulp.watch(["web/**/*.html", "web/js/*.js"]).on("change", function (event) {
+        gulp.src(event.path).pipe(browserSync.reload({
+            stream: true
+        }));
+    });
+
+});
+
+
+// 监视文件变化同步浏览器
+gulp.task('sync', function () {
+
+    browserSync.init({
+        server: {
+            baseDir: "web/",
+            index: "index.html"
+        },
+        port: 3000,
+        // ui: { // ui的默认端口
+        //     port: 3001,
+        //     // weinre: { // 不知道什么鬼 "weinre"好像也是用于远程调试的nodejs工具
+        //     //     port: 3002
+        //     // }
+        // }
     });
 
     // 转换less
