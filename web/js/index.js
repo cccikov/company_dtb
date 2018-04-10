@@ -106,7 +106,7 @@ function num_decrease(jqdom){
         return false;
     }
     var current = 0;
-    var per = (max - current) / 24;
+    var per = (max - current) / 40;
 
     var digits;
     var flag = isInteger(max);
@@ -123,7 +123,7 @@ function num_decrease(jqdom){
             clearInterval(timer);
         }
         _this.html(num_handle(current, digits));
-    }, 50);
+    }, 30);
 }
 
 /**
