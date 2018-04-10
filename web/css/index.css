@@ -74,14 +74,35 @@ body {
 }
 .nav .nav-line .nav-line-r a {
   position: relative;
+  float: left;
+  height: 18px;
+  line-height: 18px;
   padding: 0 8px;
-  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  margin: 8px 0 0;
 }
 .nav .nav-line .nav-line-r a:last-of-type {
   border-right: none;
 }
 .nav .nav-line .nav-line-r a.active {
   color: #ff9900;
+}
+.nav .nav-line .nav-line-r a div {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  top: 26px;
+  left: 50%;
+  width: 85px;
+  margin: 0 0 0 -42.5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+.nav .nav-line .nav-line-r a:hover div {
+  display: block;
+}
+.nav .nav-line .tel {
+  float: left;
+  margin: 0 0 0 20px;
 }
 .nav .nav-line .tel:before {
   content: "";
@@ -145,6 +166,15 @@ body {
 .nav .nav-main .top-login {
   float: right;
   padding: 24px 0;
+  color: #2b2b2b;
+}
+.nav .nav-main .top-login #userName:after {
+  content: "";
+  display: inline-block;
+  height: 16px;
+  border-right: 2px solid #666;
+  margin: -3px 8px 0;
+  vertical-align: middle;
 }
 .nav .nav-main .top-login .logged,
 .nav .nav-main .top-login .logging {
@@ -153,6 +183,15 @@ body {
 .nav .nav-main .top-login .logged.active,
 .nav .nav-main .top-login .logging.active {
   display: block;
+}
+.nav .nav-main .top-login .logging a:nth-of-type(1) {
+  line-height: 30px;
+  color: #3489d8;
+  border: 1px solid #3489d8;
+}
+.nav .nav-main .top-login .logging a:nth-of-type(2) {
+  background: #3489d8;
+  color: #fff;
 }
 .nav .nav-main .top-login a {
   float: left;
@@ -166,6 +205,9 @@ body {
 .nav .nav-main .top-login a.active {
   background: #ff6935;
   color: #fff;
+}
+.nav .nav-main .top-login a.active #userName:after {
+  border-color: #fff;
 }
 .main .blur {
   /* Chrome, Opera */
@@ -932,6 +974,9 @@ h5.heading:before {
   font-size: 32px;
   font-weight: normal;
 }
+.short-wrap .short p strong i {
+  font-style: normal;
+}
 .short-wrap .short p span {
   color: #666;
   display: block;
@@ -1044,6 +1089,9 @@ h5.heading:before {
   line-height: 76px;
   color: #666;
 }
+.hot ul li a .project-content .project-detail .progress .progress-num em {
+  font-style: normal;
+}
 .hot ul li a .project-content .project-detail .projec-major {
   overflow: hidden;
   line-height: 25px;
@@ -1128,7 +1176,7 @@ h5.heading:before {
   transition: box-shadow linear 0.2s;
 }
 .accomplished ul li a:hover {
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.8);
 }
 .accomplished ul li a:hover .proj-info {
   transform: translate3d(0, 0, 0);

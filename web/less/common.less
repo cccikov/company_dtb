@@ -46,17 +46,38 @@ body {
             float: right;
             a {
                 position: relative;
+                float: left;
+                height: 18px;
+                line-height: 18px;
                 padding: 0 8px;
-                border-left: 1px solid #fff;
+                border-right: 1px solid #fff;
+                margin: 8px 0 0;
                 &:last-of-type {
                     border-right: none;
                 }
                 &.active {
                     color: #ff9900;
                 }
+                div {
+                    display: none;
+                    position: absolute;
+                    z-index:100;
+                    top: 34-8px;
+                    left: 50%;
+                    width: 85px;
+                    margin: 0 0 0 -85/2px;
+                    box-shadow:0 0 12px rgba(0,0,0,0.2);
+                }
+                &:hover{
+                    div{
+                        display: block;
+                    }
+                }
             }
         }
         .tel {
+            float: left;
+            margin: 0 0 0 20px;
             &:before {
                 content: "";
                 display: inline-block;
@@ -115,11 +136,33 @@ body {
         .top-login {
             float: right;
             padding: 24px 0;
+            color:#2b2b2b;
+            #userName{
+                &:after{
+                    content:"";
+                    display: inline-block;
+                    height:16px;
+                    border-right: 2px solid #666;
+                    margin: -3px 8px 0;
+                    vertical-align:middle;
+                }
+            }
             .logged,
             .logging {
                 display: none;
                 &.active {
                     display: block;
+                }
+            }
+            .logging{
+                a:nth-of-type(1){
+                    line-height: 30px;
+                    color:#3489d8;
+                    border:1px solid #3489d8;
+                }
+                a:nth-of-type(2){
+                    background: #3489d8;;
+                    color:#fff;
                 }
             }
             a {
@@ -133,6 +176,9 @@ body {
                 &.active {
                     background: #ff6935;
                     color: #fff;
+                    #userName:after{
+                        border-color:#fff;
+                    }
                 }
             }
         }
@@ -504,6 +550,7 @@ body {
         }
     }
 }
+
 
 
 
