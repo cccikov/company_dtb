@@ -871,10 +871,10 @@ h5.heading:before {
   z-index: 1;
   pointer-events: none;
 }
-.swiper-container .swiper-slide {
+#banner.swiper-container .swiper-slide {
   position: relative;
 }
-.swiper-container .swiper-slide div {
+#banner.swiper-container .swiper-slide div {
   position: absolute;
   top: 60px;
   right: 300px;
@@ -882,28 +882,28 @@ h5.heading:before {
   text-align: right;
   line-height: 2;
 }
-.swiper-container .swiper-slide div h2 {
+#banner.swiper-container .swiper-slide div h2 {
   font-size: 60px;
 }
-.swiper-container .swiper-slide div p {
+#banner.swiper-container .swiper-slide div p {
   font-size: 25px;
 }
-.swiper-container .swiper-slide a {
+#banner.swiper-container .swiper-slide a {
   position: absolute;
   bottom: 10%;
   right: 18%;
 }
-.swiper-container .swiper-pagination-bullet {
+#banner.swiper-container .swiper-pagination-bullet {
   background: #fff;
   opacity: 1;
   border-radius: 10px;
   transition: width 0.2s;
 }
-.swiper-container .swiper-pagination-bullet.swiper-pagination-bullet-active {
+#banner.swiper-container .swiper-pagination-bullet.swiper-pagination-bullet-active {
   width: 20px;
   background: #fff;
 }
-.swiper-container img {
+#banner.swiper-container img {
   display: block;
   width: 100%;
   height: 100%;
@@ -992,29 +992,33 @@ h5.heading:before {
   top: -120px;
   left: 0px;
 }
-.hot ul {
-  position: relative;
-  z-index: 10;
-  display: inline-block;
+.hot div.index-show-wrap {
+  width: 1230px;
+  margin: -20px auto;
+  overflow: hidden;
 }
-.hot ul li {
-  float: left;
-  margin: 0 5px;
-  background: #fff;
+.hot div.index-show-wrap div.index-show {
+  width: 1210px;
+  overflow: visible;
 }
-.hot ul li a {
+.hot div.index-show-wrap div.index-show ul li {
+  width: 295px;
+  padding: 20px 0;
+}
+.hot div.index-show-wrap div.index-show ul li a {
   position: relative;
   display: block;
   width: 293px;
   border: 1px solid #d2d2d2;
-  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0);
   transition: all linear 0.3s;
+  background: #fff;
 }
-.hot ul li a:hover {
-  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.5);
+.hot div.index-show-wrap div.index-show ul li a:hover {
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.3);
 }
-.hot ul li a:before {
+.hot div.index-show-wrap div.index-show ul li a:before {
   content: "";
   position: absolute;
   top: 0;
@@ -1022,32 +1026,32 @@ h5.heading:before {
   width: 78px;
   height: 79px;
 }
-.hot ul li a.A-round:before {
+.hot div.index-show-wrap div.index-show ul li a.A-round:before {
   background: url(../img/A-round.png) center no-repeat;
 }
-.hot ul li a.B-round:before {
+.hot div.index-show-wrap div.index-show ul li a.B-round:before {
   background: url(../img/B-round.png) center no-repeat;
 }
-.hot ul li a.Pre-A-round:before {
+.hot div.index-show-wrap div.index-show ul li a.Pre-A-round:before {
   background: url(../img/Pre-A-round.png) center no-repeat;
 }
-.hot ul li a.seed-round:before {
+.hot div.index-show-wrap div.index-show ul li a.seed-round:before {
   background: url(../img/seed-round.png) center no-repeat;
 }
-.hot ul li a.angel-round:before {
+.hot div.index-show-wrap div.index-show ul li a.angel-round:before {
   background: url(../img/angel-round.png) center no-repeat;
 }
-.hot ul li a i {
+.hot div.index-show-wrap div.index-show ul li a i {
   display: block;
   height: 334px;
   background: url(../img/test/test09.png) center no-repeat;
   background: url(../img/test/test09.png) center / cover no-repeat;
 }
-.hot ul li a .project-content .project-title {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-title {
   display: inline-block;
   padding: 15px 12px 12px;
 }
-.hot ul li a .project-content .project-title span {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-title span {
   display: block;
   line-height: 24px;
   font-size: 14px;
@@ -1056,7 +1060,7 @@ h5.heading:before {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.hot ul li a .project-content .project-title em {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-title em {
   float: right;
   line-height: 22px;
   padding: 0 5px;
@@ -1066,21 +1070,21 @@ h5.heading:before {
   font-style: normal;
   color: #ff3935;
 }
-.hot ul li a .project-content .project-detail {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail {
   *zoom: 1;
 }
-.hot ul li a .project-content .project-detail:after {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail:after {
   content: '';
   display: block;
   clear: both;
 }
-.hot ul li a .project-content .project-detail .progress {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail .progress {
   position: relative;
   float: left;
   height: 100px;
   width: 140px;
 }
-.hot ul li a .project-content .project-detail .progress .progress-num {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail .progress .progress-num {
   position: absolute;
   top: 0;
   left: 0;
@@ -1088,17 +1092,17 @@ h5.heading:before {
   line-height: 76px;
   color: #666;
 }
-.hot ul li a .project-content .project-detail .progress .progress-num em {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail .progress .progress-num em {
   font-style: normal;
 }
-.hot ul li a .project-content .project-detail .projec-major {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail .projec-major {
   overflow: hidden;
   line-height: 25px;
   color: #666;
   font-size: 13px;
   text-align: left;
 }
-.hot ul li a .project-content .project-detail .projec-major span {
+.hot div.index-show-wrap div.index-show ul li a .project-content .project-detail .projec-major span {
   display: inline-block;
   vertical-align: middle;
   text-align: right;
@@ -1175,7 +1179,7 @@ h5.heading:before {
   transition: box-shadow linear 0.2s;
 }
 .accomplished ul li a:hover {
-  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.8);
 }
 .accomplished ul li a:hover .proj-info {
   transform: translate3d(0, 0, 0);
@@ -1225,11 +1229,11 @@ h5.heading:before {
 .famous ul li a {
   display: block;
   width: 295px;
-  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0);
   transition: all linear 0.3s;
 }
 .famous ul li a:hover {
-  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
 }
 .famous ul li a i {
   display: block;

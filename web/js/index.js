@@ -13,7 +13,7 @@ $(function() {
     function onload() {
 
         // 轮播
-        var mySwiper = new Swiper('.swiper-container', {
+        var banner = new Swiper('#banner', {
             // effect: 'fade', // 切换效果
             loop: true,
             autoplay: 5000,
@@ -21,9 +21,22 @@ $(function() {
             pagination: '.swiper-pagination',
             paginationClickable :true,
             onInit: function(swiper) {
-                var height = swiper.width * 0.2604166666666667;
+                var _this = swiper;
+                var height = _this.width * 0.2604166666666667;
                 height = height > 500 ? 500 : height;
-                swiper.slides.height(height);
+                _this.slides.height(height);
+            }
+        });
+
+        var indes_show = new Swiper('.index-show', {
+            slidesPerView:"auto",
+            spaceBetween : 10,
+            onlyExternal : true,
+            onInit: function(swiper) {
+                var _this = swiper;
+                if(_this.slides.length>4){
+                    console.log("应该要有左右按钮");
+                }
             }
         });
 
@@ -32,8 +45,6 @@ $(function() {
             var _this = $(value);
             num_decrease(_this);
         });
-
-
 
 
         window.onscroll = function(){
@@ -61,8 +72,6 @@ $(function() {
         }
 
     }
-
-
 
 
 

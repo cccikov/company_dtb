@@ -54,7 +54,7 @@ h5.heading {
     pointer-events: none;
 }
 
-.swiper-container {
+#banner.swiper-container {
     .swiper-slide {
         position: relative;
         div {
@@ -186,107 +186,121 @@ h5.heading {
         left: 0px;
     }
 
-    ul {
-        position: relative;
-        z-index: 10;
-        display: inline-block;
-        li {
-            float: left;
-            margin: 0 5px;
-            background: #fff;
-            a {
-                position: relative;
-                display: block;
-                width: 293px;
-                border: 1px solid #d2d2d2;
-                box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0);
-                transition: all linear 0.3s;
-                &:hover {
-                    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.5);
-                    border-color: rgba(0, 0, 0, 0.3);
-                }
-                &:before{
-                    content:"";
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    width: 78px;
-                    height: 79px;
-                }
-                &.A-round:before{
-                    background: url(../img/A-round.png) center no-repeat;
-                }
-                &.B-round:before{
-                    background: url(../img/B-round.png) center no-repeat;
-                }
-                &.Pre-A-round:before{
-                    background: url(../img/Pre-A-round.png) center no-repeat;
-                }
-                &.seed-round:before{
-                    background: url(../img/seed-round.png) center no-repeat;
-                }
-                &.angel-round:before{
-                    background: url(../img/angel-round.png) center no-repeat;
-                }
-                i {
-                    display: block;
-                    height: 334px;
-                    background: url(../img/test/test09.png) center no-repeat;
-                    background: url(../img/test/test09.png) center/cover no-repeat;
-                }
-                .project-content {
-                    .project-title {
-                        display: inline-block;
-                        padding: 15px 12px 15-3px;
-                        span {
+    div.index-show-wrap{ // 让swiper-slide里面的box-shadow显示出来 ， 一种是控制box-shadow不要超过spaceBetween ， 然后重设overflowhidden元素
+
+        // 有时候真的需要扩散得好大了 ， 这时只能在标签左右各加一个元素（可以使用before after） ，然后设置z-index ， 通过swiper里面js判断 ， “隐藏”的元素的z-index比其小 ； “显示”的元素z-index比其大
+
+        width:1210+20px;
+        margin:-20px auto;
+        overflow:hidden;
+        div.index-show{
+            width: 1210px;
+            overflow:visible;
+            ul {
+                // position: relative;
+                // z-index: 10;
+                // display: inline-block;
+                li {
+                    // float: left;
+                    // margin: 0 5px;
+                    width:295px;
+                    padding:20px 0;
+                    a {
+                        position: relative;
+                        display: block;
+                        width: 293px;
+                        border: 1px solid #d2d2d2;
+                        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0);
+                        transition: all linear 0.3s;
+                        background: #fff;
+                        &:hover {
+                            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+                            border-color: rgba(0, 0, 0, 0.3);
+                        }
+                        &:before{
+                            content:"";
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            width: 78px;
+                            height: 79px;
+                        }
+                        &.A-round:before{
+                            background: url(../img/A-round.png) center no-repeat;
+                        }
+                        &.B-round:before{
+                            background: url(../img/B-round.png) center no-repeat;
+                        }
+                        &.Pre-A-round:before{
+                            background: url(../img/Pre-A-round.png) center no-repeat;
+                        }
+                        &.seed-round:before{
+                            background: url(../img/seed-round.png) center no-repeat;
+                        }
+                        &.angel-round:before{
+                            background: url(../img/angel-round.png) center no-repeat;
+                        }
+                        i {
                             display: block;
-                            line-height: 24px;
-                            font-size: 14px;
-                            color: #2b2b2b;
-                            .elli();
+                            height: 334px;
+                            background: url(../img/test/test09.png) center no-repeat;
+                            background: url(../img/test/test09.png) center/cover no-repeat;
                         }
-                        em {
-                            float: right;
-                            line-height: 22px;
-                            padding: 0 5px;
-                            border: 1px solid #ff3935;
-                            border-radius: 5px;
-                            font-size: 14px;
-                            font-style: normal;
-                            color: #ff3935;
-                        }
-                    }
-                    .project-detail {
-                        .clearfix();
-                        .progress {
-                            position: relative;
-                            float: left;
-                            height: 100px;
-                            width: 140px;
-                            .progress-num {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                line-height: 76px;
-                                color: #666;
-                                em{
+                        .project-content {
+                            .project-title {
+                                display: inline-block;
+                                padding: 15px 12px 15-3px;
+                                span {
+                                    display: block;
+                                    line-height: 24px;
+                                    font-size: 14px;
+                                    color: #2b2b2b;
+                                    .elli();
+                                }
+                                em {
+                                    float: right;
+                                    line-height: 22px;
+                                    padding: 0 5px;
+                                    border: 1px solid #ff3935;
+                                    border-radius: 5px;
+                                    font-size: 14px;
                                     font-style: normal;
+                                    color: #ff3935;
                                 }
                             }
-                        }
-                        .projec-major {
-                            overflow: hidden;
-                            line-height: 25px;
-                            color: #666;
-                            font-size: 13px;
-                            text-align: left;
-                            span {
-                                display: inline-block;
-                                vertical-align: middle;
-                                text-align: right;
-                                margin: -3px 0 0;
-                                width: 5em;
+                            .project-detail {
+                                .clearfix();
+                                .progress {
+                                    position: relative;
+                                    float: left;
+                                    height: 100px;
+                                    width: 140px;
+                                    .progress-num {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        line-height: 76px;
+                                        color: #666;
+                                        em{
+                                            font-style: normal;
+                                        }
+                                    }
+                                }
+                                .projec-major {
+                                    overflow: hidden;
+                                    line-height: 25px;
+                                    color: #666;
+                                    font-size: 13px;
+                                    text-align: left;
+                                    span {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        text-align: right;
+                                        margin: -3px 0 0;
+                                        width: 5em;
+                                    }
+                                }
                             }
                         }
                     }
@@ -294,6 +308,7 @@ h5.heading {
             }
         }
     }
+
 }
 
 .accomplished {
@@ -359,7 +374,7 @@ h5.heading {
                 box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
                 transition: box-shadow linear 0.2s;
                 &:hover {
-                    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.8);
+                    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.8);
                     .proj-info {
                         transform: translate3d(0, 0, 0);
                     }
@@ -414,10 +429,10 @@ h5.heading {
             a {
                 display: block;
                 width: 295px;
-                box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0);
+                box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0);
                 transition: all linear 0.3s;
                 &:hover {
-                    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.5);
+                    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
                 }
                 i {
                     display: block;
