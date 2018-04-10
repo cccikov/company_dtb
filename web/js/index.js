@@ -15,14 +15,15 @@ $(function() {
         // 轮播
         var mySwiper = new Swiper('.swiper-container', {
             // effect: 'fade', // 切换效果
-            // loop: true,
+            loop: true,
             autoplay: 5000,
-            autoHeight: true,
             // 如果需要分页器
             pagination: '.swiper-pagination',
-            paginationClickable: true,
+            paginationClickable :true,
             onInit: function(swiper) {
-                swiper.slides.height(swiper.width * 0.2604166666666667);
+                var height = swiper.width * 0.2604166666666667;
+                height = height > 500 ? 500 : height;
+                swiper.slides.height(height);
             }
         });
 
