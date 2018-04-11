@@ -41,17 +41,41 @@ $(function() {
                     var dom = _this.container.parents(".index-swiper-contain");
                     var left = dom.find(".swiper-left");
                     var right = dom.find(".swiper-right");
-                    left.show().on("click",function(){
+                    left.on("click",function(){
                         _this.slidePrev() ;
+                        index_swiper_btn_show_hide(swiper);
                     });
                     right.show().on("click",function(){
                         _this.slideNext() ;
+                        index_swiper_btn_show_hide(swiper);
                     });
                 }else{
                     _this.stopAutoplay();
                 }
+            },
+            onAutoplay:function(swiper){
+                index_swiper_btn_show_hide(swiper);
             }
         });
+
+        // 当是第一个的时候 , 左按钮隐藏 ; 最后一个的时候 , 右按钮隐藏
+        function index_swiper_btn_show_hide(swiper){
+            var _this = swiper;
+            var progress = _this.progress;
+            var dom = _this.container.parents(".index-swiper-contain");
+            var left = dom.find(".swiper-left");
+            var right = dom.find(".swiper-right");
+            if(progress == 0){
+                left.hide();
+                right.show();
+            }else if(progress == 1){
+                right.hide();
+                left.show();
+            }else{
+                right.show();
+                left.show();
+            }
+        }
 
 
         $(".short .num").each(function(index, value) {
