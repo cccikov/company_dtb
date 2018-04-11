@@ -17,6 +17,7 @@ $(function() {
             // effect: 'fade', // 切换效果
             loop: true,
             autoplay: 5000,
+            autoplayDisableOnInteraction:false,
             // 如果需要分页器
             pagination: '.swiper-pagination',
             paginationClickable :true,
@@ -28,14 +29,26 @@ $(function() {
             }
         });
 
-        var indes_show = new Swiper('.index-show', {
+        indes_show = new Swiper('.index-swiper', {
             slidesPerView:"auto",
             spaceBetween : 10,
             onlyExternal : true,
+            autoplay:5000,
+            autoplayDisableOnInteraction:false,
             onInit: function(swiper) {
                 var _this = swiper;
                 if(_this.slides.length>4){
-                    console.log("应该要有左右按钮");
+                    var dom = _this.container.parents(".index-swiper-contain");
+                    var left = dom.find(".swiper-left");
+                    var right = dom.find(".swiper-right");
+                    left.show().on("click",function(){
+                        _this.slidePrev() ;
+                    });
+                    right.show().on("click",function(){
+                        _this.slideNext() ;
+                    });
+                }else{
+                    _this.stopAutoplay();
                 }
             }
         });
