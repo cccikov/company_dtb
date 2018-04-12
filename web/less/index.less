@@ -104,7 +104,6 @@ h5.heading {
 }
 
 .short-wrap {
-    padding: 95px 0 55px;
     text-align: center;
     background: #fff;
     .short {
@@ -115,41 +114,42 @@ h5.heading {
             z-index: 10;
             float: left;
             width: 305px;
+            padding: 25px 0 20px;
             background: rgba(255, 255, 255, 1);
 
             &:before {
                 content: "";
                 display: block;
-                height: 70px;
+                height: 48px;
                 margin: 0 0 5px;
-                background: url(../img/short1.png) center no-repeat;
+                background: url(../img/short1_smart.png) center no-repeat;
             }
             &:after {
                 content: "";
                 position: absolute;
-                top: (151-50)/2px;
+                top: (124+25+20-50)/2px;
                 right: 0;
                 height: 50px;
                 border-left: 1px solid #d6d6d6;
             }
             &.short1 {
                 &:before {
-                    background-image: url(../img/short1.png);
+                    background-image: url(../img/short1_smart.png);
                 }
             }
             &.short2 {
                 &:before {
-                    background-image: url(../img/short2.png);
+                    background-image: url(../img/short2_smart.png);
                 }
             }
             &.short3 {
                 &:before {
-                    background-image: url(../img/short3.png);
+                    background-image: url(../img/short3_smart.png);
                 }
             }
             &.short4 {
                 &:before {
-                    background-image: url(../img/short4.png);
+                    background-image: url(../img/short4_smart.png);
                 }
                 &:after {
                     display: none;
@@ -159,7 +159,7 @@ h5.heading {
                 color: #ff8a35;
                 display: block;
                 line-height: 1.8;
-                font-size: 32px;
+                font-size: 26px;
                 font-weight: normal;
                 i{
                     font-style: normal;
@@ -168,7 +168,7 @@ h5.heading {
             span {
                 color: #666;
                 display: block;
-                font-size: 19px;
+                font-size: 17px;
             }
         }
     }
@@ -555,15 +555,16 @@ h5.heading {
             left: 0;
             width: 32px;
             height: 3px;
-            background: -webkit-linear-gradient(left, #ff8935, #ff3a35);
-            background: -o-linear-gradient(left, #ff8935, #ff3a35);
-            background: linear-gradient(to right, #ff8935, #ff3a35);
-            background: linear-gradient(90deg, #ff8935, #ff3a35);
+            // background: -webkit-linear-gradient(left, #ff8935, #ff3a35);
+            // background: -o-linear-gradient(left, #ff8935, #ff3a35);
+            // background: linear-gradient(to right, #ff8935, #ff3a35);
+            // background: linear-gradient(90deg, #ff8935, #ff3a35);
+            background: #3489d8;
         }
         a {
             float: right;
             line-height: 24px;
-            color: #ff5307;
+            color: #3489d8;
         }
     }
     .content {

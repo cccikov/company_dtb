@@ -922,7 +922,6 @@ h5.heading:before {
   position: relative;
 }
 .short-wrap {
-  padding: 95px 0 55px;
   text-align: center;
   background: #fff;
 }
@@ -935,34 +934,35 @@ h5.heading:before {
   z-index: 10;
   float: left;
   width: 305px;
+  padding: 25px 0 20px;
   background: #ffffff;
 }
 .short-wrap .short p:before {
   content: "";
   display: block;
-  height: 70px;
+  height: 48px;
   margin: 0 0 5px;
-  background: url(../img/short1.png) center no-repeat;
+  background: url(../img/short1_smart.png) center no-repeat;
 }
 .short-wrap .short p:after {
   content: "";
   position: absolute;
-  top: 50.5px;
+  top: 59.5px;
   right: 0;
   height: 50px;
   border-left: 1px solid #d6d6d6;
 }
 .short-wrap .short p.short1:before {
-  background-image: url(../img/short1.png);
+  background-image: url(../img/short1_smart.png);
 }
 .short-wrap .short p.short2:before {
-  background-image: url(../img/short2.png);
+  background-image: url(../img/short2_smart.png);
 }
 .short-wrap .short p.short3:before {
-  background-image: url(../img/short3.png);
+  background-image: url(../img/short3_smart.png);
 }
 .short-wrap .short p.short4:before {
-  background-image: url(../img/short4.png);
+  background-image: url(../img/short4_smart.png);
 }
 .short-wrap .short p.short4:after {
   display: none;
@@ -971,7 +971,7 @@ h5.heading:before {
   color: #ff8a35;
   display: block;
   line-height: 1.8;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: normal;
 }
 .short-wrap .short p strong i {
@@ -980,7 +980,7 @@ h5.heading:before {
 .short-wrap .short p span {
   color: #666;
   display: block;
-  font-size: 19px;
+  font-size: 17px;
 }
 .hot {
   position: relative;
@@ -1350,15 +1350,12 @@ h5.heading:before {
   left: 0;
   width: 32px;
   height: 3px;
-  background: -webkit-linear-gradient(left, #ff8935, #ff3a35);
-  background: -o-linear-gradient(left, #ff8935, #ff3a35);
-  background: linear-gradient(to right, #ff8935, #ff3a35);
-  background: linear-gradient(90deg, #ff8935, #ff3a35);
+  background: #3489d8;
 }
 .index-news-notice h4 a {
   float: right;
   line-height: 24px;
-  color: #ff5307;
+  color: #3489d8;
 }
 .index-news-notice .content {
   padding: 13px 0 0;
