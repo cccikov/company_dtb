@@ -1004,6 +1004,7 @@ h5.heading:before {
   overflow: hidden;
 }
 .hot div.index-swiper-contain div.index-swiper-clip div.index-swiper {
+  z-index: 2;
   width: 1210px;
   overflow: visible;
 }
