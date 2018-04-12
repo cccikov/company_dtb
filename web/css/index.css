@@ -77,12 +77,9 @@ body {
   float: left;
   height: 18px;
   line-height: 18px;
-  padding: 0 8px;
+  padding: 0 30px;
   border-right: 1px solid #fff;
   margin: 8px 0 0;
-}
-.nav .nav-line .nav-line-r a:last-of-type {
-  border-right: none;
 }
 .nav .nav-line .nav-line-r a.active {
   color: #ff9900;
@@ -93,16 +90,20 @@ body {
   z-index: 100;
   top: 26px;
   left: 50%;
-  width: 85px;
-  margin: 0 0 0 -42.5px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  width: 160px;
+  margin: 0 0 0 -80px;
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.2);
+}
+.nav .nav-line .nav-line-r a div img {
+  display: block;
+  width: 100%;
 }
 .nav .nav-line .nav-line-r a:hover div {
   display: block;
 }
 .nav .nav-line .tel {
   float: left;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 30px;
 }
 .nav .nav-line .tel:before {
   content: "";
@@ -1059,19 +1060,20 @@ h5.heading:before {
 .hot div.index-swiper-contain div.index-swiper-clip div.index-swiper ul li a .project-content .project-title span {
   display: block;
   line-height: 24px;
-  font-size: 14px;
-  color: #2b2b2b;
+  font-size: 15px;
+  color: #333;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 .hot div.index-swiper-contain div.index-swiper-clip div.index-swiper ul li a .project-content .project-title em {
   float: right;
-  line-height: 22px;
+  line-height: 18px;
   padding: 0 5px;
   border: 1px solid #ff3935;
   border-radius: 5px;
-  font-size: 14px;
+  margin: 3px 0 0 12px;
+  font-size: 12px;
   font-style: normal;
   color: #ff3935;
 }
@@ -1166,12 +1168,24 @@ h5.heading:before {
   line-height: 238px;
   margin: 0 10px 10px 0;
 }
+.accomplished ul li.proj1 .proj-info .box h6 {
+  font-size: 30px;
+}
+.accomplished ul li.proj1 .proj-info .box p {
+  font-size: 16px;
+}
 .accomplished ul li.proj2 {
   float: right;
   width: 595px;
   height: 486px;
   line-height: 486px;
   margin: 0 0 10px 0;
+}
+.accomplished ul li.proj2 .proj-info .box h6 {
+  font-size: 30px;
+}
+.accomplished ul li.proj2 .proj-info .box p {
+  font-size: 16px;
 }
 .accomplished ul li.proj3 {
   float: left;
@@ -1180,12 +1194,24 @@ h5.heading:before {
   line-height: 238px;
   margin: 0 9px 10px 0;
 }
+.accomplished ul li.proj3 .proj-info .box h6 {
+  font-size: 24px;
+}
+.accomplished ul li.proj3 .proj-info .box p {
+  font-size: 14px;
+}
 .accomplished ul li.proj4 {
   float: left;
   width: 293px;
   height: 238px;
   line-height: 238px;
   margin: 0 10px 10px 0;
+}
+.accomplished ul li.proj4 .proj-info .box h6 {
+  font-size: 24px;
+}
+.accomplished ul li.proj4 .proj-info .box p {
+  font-size: 14px;
 }
 .accomplished ul li.proj5 {
   float: none;
@@ -1224,14 +1250,14 @@ h5.heading:before {
   margin: -3px 0 0;
 }
 .accomplished ul li a .proj-info .box h6 {
-  line-height: 76px;
+  line-height: 2.2;
   font-weight: normal;
   font-size: 36px;
 }
 .accomplished ul li a .proj-info .box p {
   padding: 0 40px;
   font-size: 17px;
-  line-height: 32px;
+  line-height: 2;
 }
 .famous {
   position: relative;

@@ -77,12 +77,9 @@ body {
   float: left;
   height: 18px;
   line-height: 18px;
-  padding: 0 8px;
+  padding: 0 30px;
   border-right: 1px solid #fff;
   margin: 8px 0 0;
-}
-.nav .nav-line .nav-line-r a:last-of-type {
-  border-right: none;
 }
 .nav .nav-line .nav-line-r a.active {
   color: #ff9900;
@@ -93,16 +90,20 @@ body {
   z-index: 100;
   top: 26px;
   left: 50%;
-  width: 85px;
-  margin: 0 0 0 -42.5px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  width: 160px;
+  margin: 0 0 0 -80px;
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.2);
+}
+.nav .nav-line .nav-line-r a div img {
+  display: block;
+  width: 100%;
 }
 .nav .nav-line .nav-line-r a:hover div {
   display: block;
 }
 .nav .nav-line .tel {
   float: left;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 30px;
 }
 .nav .nav-line .tel:before {
   content: "";
