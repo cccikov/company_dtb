@@ -828,6 +828,10 @@ html,
 body {
   background: #f6f6f6;
 }
+html img,
+body img {
+  height: auto;
+}
 @font-face {
   font-family: "myFont";
   src: url('../font/self.TTF');
@@ -904,7 +908,10 @@ h5.heading:before {
   width: 20px;
   background: #fff;
 }
-#banner.swiper-container img {
+#banner.swiper-container a {
+  display: block;
+}
+#banner.swiper-container a img {
   display: block;
   width: 100%;
   height: 100%;
