@@ -904,7 +904,10 @@ h5.heading:before {
   width: 20px;
   background: #fff;
 }
-#banner.swiper-container img {
+#banner.swiper-container a {
+  display: block;
+}
+#banner.swiper-container a img {
   display: block;
   width: 100%;
   height: 100%;
