@@ -22,7 +22,7 @@ h3.heading {
     width: 74px;
     height: 74px;
     line-height: 74px;
-    margin: 62px auto 0;
+    margin: 58px auto 0;
     background: #c2dbf3;
     color: #fff;
     font-size: 25px;
@@ -51,26 +51,34 @@ h3.heading {
     }
 }
 
+.section {
+    padding: 1px 0;
+    box-sizing: border-box;
+}
 
 .section1 {
     .p1 {
-        font-size: 22px;
+        margin: 40-6px 0 0;
+        font-size: 24px;
     }
     .p2 {
+        margin: 32-6-4px 0 0;
         font-size: 16px;
     }
     .p3 {
+        margin: 38-4-34/4px 0 0;
         font-size: 34px;
         color: @blue;
     }
     .p4 {
+        margin: 37-34/4-4px 0 0;
         font-size: 16px;
         color: #666;
     }
     .div1 {
         display: flex;
         width: 800px;
-        margin: 0 auto;
+        margin: 30-4px auto 70-(50-16)/2px;
         justify-content: space-between;
         align-items: center;
         &>div {
@@ -104,31 +112,40 @@ h3.heading {
 .section2 {
     background: #f6f6f6;
     .p1 {
-        font-size: 22px;
+        margin: 59-(23*1.5-23)/2px 0 0;
+        font-size: 23px;
     }
     .p2 {
+        margin: 22-4px 0 20px;
         font-size: 16px;
         color: #666;
     }
     ul {
         display: flex;
+        justify-content: space-around;
         width: 1200px;
-        margin: 0 auto;
-        justify-content: space-between;
+        padding: 38px 0 60px;
+        border-top: 1px solid #ddd;
+        margin: 38px auto 0;
         li {
             width: 200px;
             color: #000;
+            p {
+                margin: 25px 0 0;
+            }
         }
     }
 }
 
 .section3 {
     .p1 {
-        font-size: 22px;
+        margin: 25px 0 0;
+        font-size: 23px;
     }
     .div1 {
         display: flex;
         justify-content: center;
+        margin: 34px 0 0;
         img {
             display: block;
             margin: 0;
@@ -153,6 +170,7 @@ h3.heading {
         }
     }
     .p2 {
+        margin: 36px 0 0;
         color: #666;
         font-size: 25px;
         strong {
@@ -163,7 +181,7 @@ h3.heading {
     .div2 {
         display: flex;
         width: 1100px;
-        margin: 0 auto;
+        margin: 36px auto 98px;
         justify-content: space-between;
     }
 }
@@ -172,23 +190,46 @@ h3.heading {
     height: 460px;
     background: url(../img/guide/guide_19.png) center/cover no-repeat;
     color: #fff;
+    .p1 {
+        margin: 55px 0 0;
+        font-size: 24px;
+    }
+    .p2 {
+        margin: 12px 0 0;
+        font-size: 16px;
+    }
     ul {
         display: flex;
         width: 1000px;
-        margin: 0 auto;
+        margin: 40px auto 0;
         justify-content: space-between;
+        li {
+            width: 250px;
+            p:nth-of-type(1) {
+                margin: 5px 0;
+                font-size: 20px;
+            }
+            p {
+                font-size: 18px;
+            }
+        }
     }
 }
 
 .section5 {
-    .p1 {}
+    .p1 {
+        margin: 18px 0 0;
+        font-size: 23px;
+    }
     ul {
         display: flex;
         width: 1200px;
-        margin: 0 auto;
+        margin: 45px auto 0;
         justify-content: space-between;
         li {
+            width: 220px;
             p:nth-of-type(1) {
+                margin: 10px 0;
                 color: #666;
             }
             p:nth-of-type(2) {
@@ -196,23 +237,32 @@ h3.heading {
             }
         }
     }
-    .p2 {}
+    .p2 {
+        margin: 65px 0 0;
+        font-size: 23px;
+    }
     .p3 {
+        margin: 10px 0 0;
         color: #666;
     }
     .div1 {
         display: flex;
         width: 600px;
-        margin: 0 auto;
+        margin: 55px auto 38px;
         justify-content: space-between;
     }
 }
 
 .section6 {
+    background: #f6f6f6;
+    .p1 {
+        margin: 16px 0 0;
+        font-size: 23px;
+    }
     .p2 {
         display: flex;
         width: 1022px;
-        margin: 0 auto;
+        margin: 35px auto 0;
         justify-content: space-around;
         align-items: center;
         border: 1px solid #999;
@@ -220,7 +270,8 @@ h3.heading {
             position: relative;
             display: inline-block;
             width: 200px;
-            padding: 25px 80px;
+            font-size: 18px;
+            padding: 20px 80px;
             &:after {
                 content: "";
                 position: absolute;
@@ -229,6 +280,174 @@ h3.heading {
                 height: 40px;
                 border-left: 1px solid #999;
                 transform: translate3d(0, -50%, 0);
+            }
+        }
+    }
+    .p3 {
+        margin: 41px 0 40px;
+        font-size: 20px;
+    }
+}
+
+.section7 {
+    .p1 {
+        margin: 15px 0 0;
+        font-size: 23px;
+    }
+    .p2 {
+        margin: 20px 0 0;
+        color: #666;
+        font-size: 18px;
+    }
+    >img {
+        margin-top: 35px;
+    }
+    .p3 {
+        display: flex;
+        justify-content: space-between;
+        width: 1098px;
+        margin: 0 auto 0;
+        span {
+            display: inline-block;
+            width: 103px;
+            margin: 13px 0 0;
+            font-size: 17px;
+            color: #666;
+        }
+    }
+    .p4 {
+        font-size: 23px;
+        margin: 60px 0 0;
+    }
+    .p5 {
+        font-size: 18px;
+        margin: 30px 0 25px;
+        strong {
+            color: @blue;
+            font-weight: normal;
+        }
+    }
+    .div1 {
+        display: flex;
+        justify-content: center;
+        margin: 0 0 60px;
+        img:nth-of-type(1) {
+            margin: 0 33px 0 0;
+        }
+    }
+}
+
+.section8 {
+    height: 520px;
+    background: url(../img/guide/guide_34.png) center/cover no-repeat;
+    color: #fff;
+    .p1 {
+        margin: 35px 0 0;
+        font-size: 23px;
+    }
+    .p2 {
+        margin: 22px 0 0;
+        font-size: 18px;
+    }
+    .p3 {
+        margin: 24px 0 0;
+        font-size: 58px;
+        &:before {
+            position: relative;
+            top: 10px;
+            left: -15px;
+            content: "";
+            display: inline-block;
+            width: 78px;
+            height: 78px;
+            margin: -4px 0 0;
+            vertical-align: middle;
+            background: url(../img/guide/guide_35.png) center no-repeat;
+        }
+        &:after {
+            position: relative;
+            top: 10px;
+            right: -15px;
+            content: "";
+            display: inline-block;
+            width: 78px;
+            height: 78px;
+            margin: -4px 0 0;
+            vertical-align: middle;
+            background: url(../img/guide/guide_36.png) center no-repeat;
+        }
+    }
+    .p4 {
+        display: flex;
+        justify-content: center;
+        margin: 22px 0 0;
+        span {
+            padding: 12px;
+            border: 1px solid #fff;
+            margin: 0 -1px 0 0;
+        }
+    }
+}
+
+.section9 {
+    .p1 {
+        margin: 22px 0 30px;
+        font-size: 24px;
+    }
+    .div1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        align-content: space-between;
+        text-align: left;
+        height: 600px;
+        width: 1100px;
+        margin: 0 auto;
+        >div {
+            width: 480px;
+            margin: 20px 0;
+            span {
+                position: relative;
+                display: block;
+                line-height: 24px;
+                padding: 0 0 0 32px;
+                margin: 0 0 11px;
+                font-size: 18px;
+                color: #333;
+                &:before {
+                    content: "Q";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 24px;
+                    line-height: 24px;
+                    border-radius: 100px;
+                    text-align: center;
+                    color: #fff;
+                    background: #3489d8;
+                    font-size: 14px;
+                }
+            }
+            p {
+                position: relative;
+                line-height: 24px;
+                padding: 0 0 0 32px;
+                color: #666;
+                font-size: 14px;
+                &:before {
+                    content: "A";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 24px;
+                    line-height: 24px;
+                    border-radius: 100px;
+                    text-align: center;
+                    color: #fff;
+                    background: #faa520;
+                    font-size: 14px;
+                }
             }
         }
     }

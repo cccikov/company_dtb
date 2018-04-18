@@ -843,7 +843,7 @@ h3.heading {
   width: 74px;
   height: 74px;
   line-height: 74px;
-  margin: 62px auto 0;
+  margin: 58px auto 0;
   background: #c2dbf3;
   color: #fff;
   font-size: 25px;
@@ -871,24 +871,32 @@ h3.heading:after {
   background: #4291db;
   border-radius: 100px;
 }
+.section {
+  padding: 1px 0;
+  box-sizing: border-box;
+}
 .section1 .p1 {
-  font-size: 22px;
+  margin: 34px 0 0;
+  font-size: 24px;
 }
 .section1 .p2 {
+  margin: 22px 0 0;
   font-size: 16px;
 }
 .section1 .p3 {
+  margin: 25.5px 0 0;
   font-size: 34px;
   color: #3489d8;
 }
 .section1 .p4 {
+  margin: 24.5px 0 0;
   font-size: 16px;
   color: #666;
 }
 .section1 .div1 {
   display: flex;
   width: 800px;
-  margin: 0 auto;
+  margin: 26px auto 53px;
   justify-content: space-between;
   align-items: center;
 }
@@ -917,28 +925,37 @@ h3.heading:after {
   background: #f6f6f6;
 }
 .section2 .p1 {
-  font-size: 22px;
+  margin: 53.25px 0 0;
+  font-size: 23px;
 }
 .section2 .p2 {
+  margin: 18px 0 20px;
   font-size: 16px;
   color: #666;
 }
 .section2 ul {
   display: flex;
+  justify-content: space-around;
   width: 1200px;
-  margin: 0 auto;
-  justify-content: space-between;
+  padding: 38px 0 60px;
+  border-top: 1px solid #ddd;
+  margin: 38px auto 0;
 }
 .section2 ul li {
   width: 200px;
   color: #000;
 }
+.section2 ul li p {
+  margin: 25px 0 0;
+}
 .section3 .p1 {
-  font-size: 22px;
+  margin: 25px 0 0;
+  font-size: 23px;
 }
 .section3 .div1 {
   display: flex;
   justify-content: center;
+  margin: 34px 0 0;
 }
 .section3 .div1 img {
   display: block;
@@ -963,6 +980,7 @@ h3.heading:after {
   margin: 0 20px 0 0;
 }
 .section3 .p2 {
+  margin: 36px 0 0;
   color: #666;
   font-size: 25px;
 }
@@ -973,7 +991,7 @@ h3.heading:after {
 .section3 .div2 {
   display: flex;
   width: 1100px;
-  margin: 0 auto;
+  margin: 36px auto 98px;
   justify-content: space-between;
 }
 .section4 {
@@ -981,37 +999,75 @@ h3.heading:after {
   background: url(../img/guide/guide_19.png) center / cover no-repeat;
   color: #fff;
 }
+.section4 .p1 {
+  margin: 55px 0 0;
+  font-size: 24px;
+}
+.section4 .p2 {
+  margin: 12px 0 0;
+  font-size: 16px;
+}
 .section4 ul {
   display: flex;
   width: 1000px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   justify-content: space-between;
+}
+.section4 ul li {
+  width: 250px;
+}
+.section4 ul li p:nth-of-type(1) {
+  margin: 5px 0;
+  font-size: 20px;
+}
+.section4 ul li p {
+  font-size: 18px;
+}
+.section5 .p1 {
+  margin: 18px 0 0;
+  font-size: 23px;
 }
 .section5 ul {
   display: flex;
   width: 1200px;
-  margin: 0 auto;
+  margin: 45px auto 0;
   justify-content: space-between;
 }
+.section5 ul li {
+  width: 220px;
+}
 .section5 ul li p:nth-of-type(1) {
+  margin: 10px 0;
   color: #666;
 }
 .section5 ul li p:nth-of-type(2) {
   color: #999;
 }
+.section5 .p2 {
+  margin: 65px 0 0;
+  font-size: 23px;
+}
 .section5 .p3 {
+  margin: 10px 0 0;
   color: #666;
 }
 .section5 .div1 {
   display: flex;
   width: 600px;
-  margin: 0 auto;
+  margin: 55px auto 38px;
   justify-content: space-between;
+}
+.section6 {
+  background: #f6f6f6;
+}
+.section6 .p1 {
+  margin: 16px 0 0;
+  font-size: 23px;
 }
 .section6 .p2 {
   display: flex;
   width: 1022px;
-  margin: 0 auto;
+  margin: 35px auto 0;
   justify-content: space-around;
   align-items: center;
   border: 1px solid #999;
@@ -1020,7 +1076,8 @@ h3.heading:after {
   position: relative;
   display: inline-block;
   width: 200px;
-  padding: 25px 80px;
+  font-size: 18px;
+  padding: 20px 80px;
 }
 .section6 .p2 span:after {
   content: "";
@@ -1030,4 +1087,165 @@ h3.heading:after {
   height: 40px;
   border-left: 1px solid #999;
   transform: translate3d(0, -50%, 0);
+}
+.section6 .p3 {
+  margin: 41px 0 40px;
+  font-size: 20px;
+}
+.section7 .p1 {
+  margin: 15px 0 0;
+  font-size: 23px;
+}
+.section7 .p2 {
+  margin: 20px 0 0;
+  color: #666;
+  font-size: 18px;
+}
+.section7 > img {
+  margin-top: 35px;
+}
+.section7 .p3 {
+  display: flex;
+  justify-content: space-between;
+  width: 1098px;
+  margin: 0 auto 0;
+}
+.section7 .p3 span {
+  display: inline-block;
+  width: 103px;
+  margin: 13px 0 0;
+  font-size: 17px;
+  color: #666;
+}
+.section7 .p4 {
+  font-size: 23px;
+  margin: 60px 0 0;
+}
+.section7 .p5 {
+  font-size: 18px;
+  margin: 30px 0 25px;
+}
+.section7 .p5 strong {
+  color: #3489d8;
+  font-weight: normal;
+}
+.section7 .div1 {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 60px;
+}
+.section7 .div1 img:nth-of-type(1) {
+  margin: 0 33px 0 0;
+}
+.section8 {
+  height: 520px;
+  background: url(../img/guide/guide_34.png) center / cover no-repeat;
+  color: #fff;
+}
+.section8 .p1 {
+  margin: 35px 0 0;
+  font-size: 23px;
+}
+.section8 .p2 {
+  margin: 22px 0 0;
+  font-size: 18px;
+}
+.section8 .p3 {
+  margin: 24px 0 0;
+  font-size: 58px;
+}
+.section8 .p3:before {
+  position: relative;
+  top: 10px;
+  left: -15px;
+  content: "";
+  display: inline-block;
+  width: 78px;
+  height: 78px;
+  margin: -4px 0 0;
+  vertical-align: middle;
+  background: url(../img/guide/guide_35.png) center no-repeat;
+}
+.section8 .p3:after {
+  position: relative;
+  top: 10px;
+  right: -15px;
+  content: "";
+  display: inline-block;
+  width: 78px;
+  height: 78px;
+  margin: -4px 0 0;
+  vertical-align: middle;
+  background: url(../img/guide/guide_36.png) center no-repeat;
+}
+.section8 .p4 {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0 0;
+}
+.section8 .p4 span {
+  padding: 12px;
+  border: 1px solid #fff;
+  margin: 0 -1px 0 0;
+}
+.section9 .p1 {
+  margin: 22px 0 30px;
+  font-size: 24px;
+}
+.section9 .div1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-between;
+  text-align: left;
+  height: 600px;
+  width: 1100px;
+  margin: 0 auto;
+}
+.section9 .div1 > div {
+  width: 480px;
+  margin: 20px 0;
+}
+.section9 .div1 > div span {
+  position: relative;
+  display: block;
+  line-height: 24px;
+  padding: 0 0 0 32px;
+  margin: 0 0 11px;
+  font-size: 18px;
+  color: #333;
+}
+.section9 .div1 > div span:before {
+  content: "Q";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  line-height: 24px;
+  border-radius: 100px;
+  text-align: center;
+  color: #fff;
+  background: #3489d8;
+  font-size: 14px;
+}
+.section9 .div1 > div p {
+  position: relative;
+  line-height: 24px;
+  padding: 0 0 0 32px;
+  color: #666;
+  font-size: 14px;
+}
+.section9 .div1 > div p:before {
+  content: "A";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  line-height: 24px;
+  border-radius: 100px;
+  text-align: center;
+  color: #fff;
+  background: #faa520;
+  font-size: 14px;
 }
