@@ -1156,8 +1156,8 @@ h3.heading:after {
 }
 .section8 .p3:before {
   position: relative;
-  top: 10px;
-  left: -15px;
+  top: 15px;
+  left: -50px;
   content: "";
   display: inline-block;
   width: 78px;
@@ -1168,8 +1168,8 @@ h3.heading:after {
 }
 .section8 .p3:after {
   position: relative;
-  top: 10px;
-  right: -15px;
+  top: 14px;
+  right: -50px;
   content: "";
   display: inline-block;
   width: 78px;
