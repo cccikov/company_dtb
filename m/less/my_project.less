@@ -109,13 +109,24 @@ html {
                 display: inline-block;
                 text-decoration: underline;
             }
-            :nth-child(1) {
+            a:nth-child(1) {
                 float: left;
                 color: #3d8ce9;
             }
-            :nth-child(2) {
+            a:nth-child(2) {
                 float: right;
                 color: #ff110c;
+            }
+            a.star {
+                float: right;
+                line-height: 2;
+                padding: 0 8px;
+                border-radius: 8px;
+                margin: 8px 0;
+                text-decoration: none;
+                color: #fff;
+                background: #ff8b35;
+                font-size: 12px;
             }
         }
     }
