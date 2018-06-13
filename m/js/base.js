@@ -1,5 +1,6 @@
 $(function() {
     alinkAnimation();
+    maskNoScroll();
 });
 
 function getUrlParam(name) {
@@ -253,7 +254,12 @@ Vue.mixin({
             phone = String(phone);
             return phone.slice(0,3)+" **** ****"
         }
-
-    },
-
+    }
 });
+
+
+function maskNoScroll() { // 蒙层后面内容不能翻滚
+    $(".mask").on('touchmove', function(e) {
+        e.preventDefault();
+    });
+}

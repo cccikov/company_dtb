@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>投后管理</title>
+    <link rel="stylesheet" href="/m/css/delivery.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>投后管理</h2>
+            </div>
+
+
+            <!-- main begin -->
+            <div class="main">
+
+                <!-- 链接 交易详情 -->
+                <a class="item" v-for="val in [1,2,3]" href="###">
+
+                    <!-- 第一part begin-->
+                    <div class="part1">
+                        <!-- 图片 -->
+                        <div class="pic">
+                            <i></i>
+                        </div>
+                        <!-- 内容 -->
+                        <div class="content">
+                            <!-- 标题 标签 -->
+                            <div class="title">
+                                <!-- 标签部分 -->
+                                <p class="labels">
+                                    <span>交割</span>
+                                    <span>30天</span>
+                                </p>
+                                <h4>智慧驾驶科技-Maxieye</h4>
+                            </div>
+                            <!-- 简介 -->
+                            <p class="brief">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 第一part end -->
+
+                    <!-- 第二part begin -->
+                    <div class="part2">
+                        <p>
+                            <span>保密金</span>
+                            <strong>￥2000</strong>
+                        </p>
+                        <p>
+                            <span>保证金</span>
+                            <strong>￥500000</strong>
+                        </p>
+                        <p>
+                            <span>投资金</span>
+                            <strong>￥2000000</strong>
+                        </p>
+                    </div>
+                    <!-- 第二part end -->
+
+                    <!-- 第三part begin -->
+                    <div class="part3">
+                        <button class="alink" @click="showStep($event,2)">查看流程</button>
+                    </div>
+                    <!-- 第三part end -->
+
+                </a>
+
+            </div>
+            <!-- main end -->
+
+        </div>
+        <!-- 内容 end -->
+
+
+    </div>
+
+    <!-- 浮窗 -->
+    <div class="float">
+        <div class="mask black-mask" onclick="vm.hideStep();"></div>
+        <div class="manage-float">
+            <div class="step step1">
+                <p>带投兵平台已收到客户所支付全款</p>
+            </div>
+            <div class="step step2">
+                <p>带投兵平台付款给投资主体</p>
+                <a href="javascript:void(0)" target="_blank">查看水单</a>
+            </div>
+            <div class="step step3">
+                <p>投资主体付款给融资主体</p>
+                <a href="javascript:void(0)" target="_blank">查看水单</a>
+            </div>
+            <div class="step step4">
+                <p>出资证明书</p>
+                <a href="javascript:void(0)" target="_blank">下载出资证明书</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="/m/js/delivery.js"></script>
+</body>
+
+</html>
