@@ -24,7 +24,41 @@
             </div>
 
             <!-- main begin -->
-            <div class="main"></div>
+            <div class="main">
+
+                <!-- 已认证的 -->
+                <div v-show="certified" class="certified">
+                    <p>
+                        <span>姓名</span>
+                        <span>哈哈哈</span>
+                    </p>
+                    <p>
+                        <span>手机</span>
+                        <span>15920123456</span>
+                    </p>
+                    <p>
+                        <span>身份证号</span>
+                        <span>440681199002112617</span>
+                    </p>
+                    <p>
+                        <span>银行卡号</span>
+                        <span>44058771122344564</span>
+                    </p>
+                    <p>
+                        <span>审核状态：</span>
+                        <strong>审核中</strong>
+                    </p>
+                    <div class="action">
+                        <a @click="certify" href="javascript:void(0)">资料更改</a>
+                    </div>
+                </div>
+
+                <!-- 未认证 -->
+                <div class="certify">
+
+                </div>
+
+            </div>
             <!-- main end -->
 
         </div>

@@ -5,31 +5,38 @@ body {
 }
 
 .main {
-    strong {
-        color: #fd5e23;
+    padding: 10px 0;
+}
+
+.certified {
+    padding: 8px 12px 30px;
+    background: #fff;
+    p {
+        display: flex;
+        justify-content: space-between;
+        line-height: 2.5;
+        border-bottom: 1px solid #eee;
+        font-size: 15px;
+        strong {
+            color: #ff8b35;
+            font-weight: 400;
+        }
+        &:last-of-type {
+            justify-content: center;
+            padding: 12px 0;
+            border-bottom: none;
+        }
     }
-    li {
-        padding: 12px;
-        margin: 0 0 10px;
-        background: #fff;
-        table {
-            box-sizing: border-box;
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            td {
-                min-width: 20px;
-                line-height: 2;
-                border: 1px solid #ddd;
-                p {
-                    display: flex;
-                    justify-content: space-around;
-                    a {
-                        color: #0070ff;
-                        text-decoration: underline;
-                    }
-                }
-            }
+    .action {
+        text-align: center;
+        a {
+            display: inline-block;
+            width: 90%;
+            line-height: 40px;
+            font-size: 16px;
+            border-radius: 5px;
+            background: #ff8b35;
+            color: #fff;
         }
     }
 }

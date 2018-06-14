@@ -498,30 +498,38 @@ a {
 body {
   background: #edecf1;
 }
-.main strong {
-  color: #fd5e23;
+.main {
+  padding: 10px 0;
 }
-.main li {
-  padding: 12px;
-  margin: 0 0 10px;
+.certified {
+  padding: 8px 12px 30px;
   background: #fff;
 }
-.main li table {
-  box-sizing: border-box;
-  width: 100%;
-  border-collapse: collapse;
+.certified p {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2.5;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+.certified p strong {
+  color: #ff8b35;
+  font-weight: 400;
+}
+.certified p:last-of-type {
+  justify-content: center;
+  padding: 12px 0;
+  border-bottom: none;
+}
+.certified .action {
   text-align: center;
 }
-.main li table td {
-  min-width: 20px;
-  line-height: 2;
-  border: 1px solid #ddd;
-}
-.main li table td p {
-  display: flex;
-  justify-content: space-around;
-}
-.main li table td p a {
-  color: #0070ff;
-  text-decoration: underline;
+.certified .action a {
+  display: inline-block;
+  width: 90%;
+  line-height: 40px;
+  font-size: 16px;
+  border-radius: 5px;
+  background: #ff8b35;
+  color: #fff;
 }
