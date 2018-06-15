@@ -627,11 +627,12 @@ html {
   display: inline-block;
   text-decoration: underline;
 }
-.order-list li .order-status a:nth-child(1) {
+.order-list li .order-status :nth-child(1) {
   float: left;
   color: #3d8ce9;
 }
-.order-list li .order-status a:nth-child(2) {
+.order-list li .order-status :nth-child(2),
+.order-list li .order-status .status-right {
   float: right;
   color: #ff110c;
 }
