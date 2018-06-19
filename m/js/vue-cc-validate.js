@@ -42,7 +42,7 @@ function reallyHandle(el, vm) {
     var rule = vm.validate_rule[field]; // 获取 该验证项目的规则
 
     // 勾选表单操作 , 就只会有是否必选
-    if (input_type == "radio" || input_type == "checkbox") {
+    if (input_type == "checkbox") {
         if (required && !el.checked) {
             vm.validate_error[input_name] = 1;
         } else {
@@ -334,7 +334,7 @@ validate.install = function(Vue, options) {
                 handle();
             }
 
-            if (el.type == "radio" || el.type == "checkbox") {
+            if (el.type == "checkbox") { // radio 是无法使用这个插件的，由于name是几个元素都一样；但是其实radio也不需要做什么验证，如果想必选，那么写html的时候只需要默认选上默认值就可以了，选上后除了用js改变，基本就是必选的
                 el.addEventListener("change", handle, false);
             }else{
                 el.addEventListener("blur", handle, false);
