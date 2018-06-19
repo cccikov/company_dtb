@@ -136,7 +136,7 @@ function reallyHandle(el, vm) {
         $.ajax({
             url: rule.ajax.url,
             async: true,
-            success: function(result) {
+            success: function (result) {
                 if (!result) {
                     Vue.set(vm.validate_error, input_name, 3);
                 } else {
@@ -144,7 +144,7 @@ function reallyHandle(el, vm) {
                 }
             },
             data: ajaxData,
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.error(XMLHttpRequest);
                 console.error(textStatus);
                 console.error(errorThrown);
@@ -168,7 +168,7 @@ function reallyHandle(el, vm) {
  *
  */
 var validate = {};
-validate.install = function(Vue, options) {
+validate.install = function (Vue, options) {
     options = options || {}; // 里面会用到options.XXX属性 , 要是没有options 会报错
 
     /**
@@ -177,14 +177,14 @@ validate.install = function(Vue, options) {
      */
 
     /* 增加验证规则 */
-    Vue.prototype.addRule = function(obj) {
+    Vue.prototype.addRule = function (obj) {
         for (var i in obj) {
             this.$set(this.validate_rule, i, obj[i]);
         }
     }
 
     /* 根据错误类型数字返回中文 */
-    Vue.prototype.errorType = function(num) {
+    Vue.prototype.errorType = function (num) {
         switch (num) {
             case 0:
                 return "没有错误";
@@ -202,7 +202,7 @@ validate.install = function(Vue, options) {
 
     /* 查看错误类型 返回数字 */
     if (!Vue.prototype.error) {
-        Vue.prototype.error = function(name) {
+        Vue.prototype.error = function (name) {
             return this.validate_error[name];
         }
     } else {
@@ -212,7 +212,7 @@ validate.install = function(Vue, options) {
     /**
      * 清除全部错误信息
      */
-    Vue.prototype.clearerror = function() {
+    Vue.prototype.clearerror = function () {
         for (var i in this.validate_error) {
             this.validate_error[i] = null;
         }
@@ -224,10 +224,10 @@ validate.install = function(Vue, options) {
      * @return {boolean}                      组合是否全验证正确
      */
     if (!Vue.prototype.group) {
-        Vue.prototype.group = function() {
+        Vue.prototype.group = function () {
             var arr = getArg(arguments); // input_name的集合
 
-            var result = arr.every(function(val) {
+            var result = arr.every(function (val) {
                 return this.validate_error[val] == 0;
             }, this);
 
@@ -242,9 +242,9 @@ validate.install = function(Vue, options) {
      * @param  ['phone','email'] 或者 'phone|email' 或者 "phone","email" 三种形式选一的参数     需要验证的表单组合
      * @return {undefined} undefined
      */
-    Vue.prototype.focusErrorEl = function() {
+    Vue.prototype.focusErrorEl = function () {
         var arr = getArg(arguments); // input_name的集合
-        var result = arr.every(function(val) {
+        var result = arr.every(function (val) {
             var flag = (this.validate_error[val] == 0);
             if (!flag) {
                 this.validate_el[val].focus();
@@ -258,10 +258,10 @@ validate.install = function(Vue, options) {
      * @param  ['phone','email'] 或者 'phone|email' 或者 "phone","email" 三种形式选一的参数    需要验证的表单组合
      * @return {undefined} undefined
      */
-    Vue.prototype.manual = function() {
+    Vue.prototype.manual = function () {
         var arr = getArg(arguments); // input_name的集合
         var vm = this;
-        arr.forEach(function(val) {
+        arr.forEach(function (val) {
             var thisEle = vm.validate_el[val];
             if (!!thisEle) { // 有才执行 , 因为有时候name没有对应任何元素
                 reallyHandle(thisEle, vm);
@@ -278,10 +278,10 @@ validate.install = function(Vue, options) {
      * 任何vue实例创建的时候 , 都会自动加入下面选项
      */
     Vue.mixin({
-        data: function() {
+        data: function () {
             return {
                 validate_rule: options.rules || {}, // 记录全部验证规则
-                validata_immediate: options.immediate || false, // 立即检验一次 , 适合修改 , 新增的时候一般为false ; 而且true的时候必须
+                validate_immediate: options.immediate || false, // 立即检验一次 , 适合修改 , 新增的时候一般为false ; 而且true的时候必须
                 validate_error: {}, // 记录错误 , 以input_name作为属性名
                 validate_el: {}, // 记录元素 , 以input_name作为属性名
                 validate_field: {}, // 记录验证项目名 , 以input_name作为属性名
@@ -298,8 +298,8 @@ validate.install = function(Vue, options) {
     /**
      * 自定义指令
      */
-    Vue.directive("validata", {
-        bind: function(_el, _binding, _vnode) {
+    Vue.directive("validate", {
+        bind: function (_el, _binding, _vnode) {
             // 获取变量
             var el = _el; // 当前元素
             var input_name = el.name; // 表单名
@@ -330,13 +330,13 @@ validate.install = function(Vue, options) {
             }
 
             // 添加事件监听器
-            if (vm.validata_immediate) {
+            if (vm.validate_immediate) {
                 handle();
             }
 
-            if (el.type == "checkbox") { // radio 是无法使用这个插件的，由于name是几个元素都一样；但是其实radio也不需要做什么验证，如果想必选，那么写html的时候只需要默认选上默认值就可以了，选上后除了用js改变，基本就是必选的
+            if (el.type == "checkbox" || el.type == "file") { // radio 是无法使用这个插件的，由于name是几个元素都一样；但是其实radio也不需要做什么验证，如果想必选，那么写html的时候只需要默认选上默认值就可以了，选上后除了用js改变，基本就是必选的
                 el.addEventListener("change", handle, false);
-            }else{
+            } else {
                 el.addEventListener("blur", handle, false);
             }
         }
@@ -375,13 +375,13 @@ var validate_rule = {
         ajax: {
             url: "https://cccikov.github.io/remoteData/array.json",
             data: {
-                name: function() {
+                name: function () {
                     return $("#name").val;
                 },
-                id: function() {
+                id: function () {
                     return 211
                 },
-                msg: function(vm) {
+                msg: function (vm) {
                     return vm.msg;
                 }
             }

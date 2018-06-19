@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/m/js/vue.min.js"></script>
     <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/m/js/base.js"></script>
+    <script src="/m/js/vue-cc-validate.js"></script>
 </head>
 
 <body>
@@ -55,12 +56,13 @@
 
                 <!-- 未认证 -->
                 <div class="certify">
+                    <p>{{validate_error}}</p>
                     <div class="base-info">
                         <div class="item">
                             <label class="item-content">
                                 <span class="item-name">姓名</span>
                                 <p class="item-input">
-                                    <input placeholder="请输入您的名字" type="text">
+                                    <input placeholder="请输入您的名字" v-validate="'required'" type="text" name="name">
                                 </p>
                             </label>
                         </div>
@@ -68,7 +70,7 @@
                             <label class="item-content">
                                 <span class="item-name">手机</span>
                                 <p class="item-input">
-                                    <input placeholder="请输入11位数手机号码" type="text">
+                                    <input name="phone" v-validate="'required'" placeholder="请输入11位数手机号码" type="text">
                                 </p>
                             </label>
                         </div>
@@ -76,7 +78,7 @@
                             <label class="item-content">
                                 <span class="item-name">身份证号</span>
                                 <p class="item-input">
-                                    <input placeholder="根据法律规定投资人需要实名认证" type="text">
+                                    <input name="id" v-validate="'required'" placeholder="根据法律规定投资人需要实名认证" type="text">
                                 </p>
                             </label>
                         </div>
@@ -84,7 +86,7 @@
                         <div class="item identity">
                             <p>身份证正反面</p>
                             <label>
-                                <input type="file">
+                                <input name="font" v-validate="'required'" type="file">
                                 <div>
                                     <p>请上传身份证正面</p>
                                     <p>+</p>
@@ -92,7 +94,7 @@
                                 <a href="###"></a>
                             </label>
                             <label>
-                                <input type="file">
+                                <input name="back" v-validate="'required'" type="file">
                                 <div>
                                     <p>请上传身份证反面</p>
                                     <p>+</p>
@@ -111,12 +113,12 @@
                         <div v-show="type=='select'" class="bank-list">
                             <a :class="{active:val==2}" v-for="(val,index) of [1,2,3,4,5]" href="javascript:void(0)">123123{{index}}</a>
                         </div>
-                        <div v-show="type=='add'"class="add-card">
+                        <div v-show="type=='add'" class="add-card">
                             <div class="item">
                                 <label class="item-content">
                                     <span class="item-name">银行卡号</span>
                                     <p class="item-input">
-                                        <input placeholder="请输入您的银行卡卡号" type="text">
+                                        <input @input="formatBankCard($event)" v-validate="'required'" name="cardno" placeholder="请输入您的银行卡卡号" type="text">
                                     </p>
                                 </label>
                             </div>
@@ -124,7 +126,7 @@
                                 <label class="item-content">
                                     <span class="item-name">开户行</span>
                                     <p class="item-input">
-                                        <input placeholder="请输入银行卡所属银行" type="text">
+                                        <input v-validate="'required'" name="bank" placeholder="请输入银行卡所属银行" type="text">
                                     </p>
                                 </label>
                             </div>
@@ -132,7 +134,7 @@
                                 <label class="item-content">
                                     <span class="item-name">开户行网点</span>
                                     <p class="item-input">
-                                        <input placeholder="请输入开户行分支行" type="text">
+                                        <input v-validate="'required'" name="bankadd" placeholder="请输入开户行分支行" type="text">
                                     </p>
                                 </label>
                             </div>
@@ -144,7 +146,7 @@
                             <label class="item-content">
                                 <span class="item-name">验证码</span>
                                 <p class="item-input">
-                                    <input placeholder="请输入验证码" type="text">
+                                    <input v-validate="'required'" name="code" placeholder="请输入验证码" type="text">
                                 </p>
                             </label>
                             <a href="javascript:void(0)">获取验证码</a>
