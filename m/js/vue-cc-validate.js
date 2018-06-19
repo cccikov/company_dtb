@@ -136,7 +136,7 @@ function reallyHandle(el, vm) {
         $.ajax({
             url: rule.ajax.url,
             async: true,
-            success: function (result) {
+            success: function(result) {
                 if (!result) {
                     Vue.set(vm.validate_error, input_name, 3);
                 } else {
@@ -144,7 +144,7 @@ function reallyHandle(el, vm) {
                 }
             },
             data: ajaxData,
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.error(XMLHttpRequest);
                 console.error(textStatus);
                 console.error(errorThrown);
@@ -155,8 +155,20 @@ function reallyHandle(el, vm) {
 }
 
 
+/**
+ * 当使用插件的时候，Vue.use(validate,...) 执行以下操作（也算是插件运行流程）
+ *
+ * 添加实例属性，方法；即添加但凡是Vue的实例都可以使用的方法。  Vue.prototype....
+ *
+ * 全局混合，这里主要让，使用了这个插件的页面，里面的vue实例都会自动添加初始数据（其实是空，就是添加了属性而已，主要用于后续存放数据进去）
+ *
+ * 自定义指令，即对绑定 v-validate 指令的元素进行的操作；这里主要用于记录表单元素的name，需要验证的内容，以及添加change事件(或者blur)监听器
+ *
+ * 触发change时，真正操作的函数是reallyHandle
+ *
+ */
 var validate = {};
-validate.install = function (Vue, options) {
+validate.install = function(Vue, options) {
     options = options || {}; // 里面会用到options.XXX属性 , 要是没有options 会报错
 
     /**
@@ -165,14 +177,14 @@ validate.install = function (Vue, options) {
      */
 
     /* 增加验证规则 */
-    Vue.prototype.addRule = function (obj) {
+    Vue.prototype.addRule = function(obj) {
         for (var i in obj) {
             this.$set(this.validate_rule, i, obj[i]);
         }
     }
 
     /* 根据错误类型数字返回中文 */
-    Vue.prototype.errorType = function (num) {
+    Vue.prototype.errorType = function(num) {
         switch (num) {
             case 0:
                 return "没有错误";
@@ -190,7 +202,7 @@ validate.install = function (Vue, options) {
 
     /* 查看错误类型 返回数字 */
     if (!Vue.prototype.error) {
-        Vue.prototype.error = function (name) {
+        Vue.prototype.error = function(name) {
             return this.validate_error[name];
         }
     } else {
@@ -200,7 +212,7 @@ validate.install = function (Vue, options) {
     /**
      * 清除全部错误信息
      */
-    Vue.prototype.clearerror = function () {
+    Vue.prototype.clearerror = function() {
         for (var i in this.validate_error) {
             this.validate_error[i] = null;
         }
@@ -212,10 +224,10 @@ validate.install = function (Vue, options) {
      * @return {boolean}                      组合是否全验证正确
      */
     if (!Vue.prototype.group) {
-        Vue.prototype.group = function () {
+        Vue.prototype.group = function() {
             var arr = getArg(arguments); // input_name的集合
 
-            var result = arr.every(function (val) {
+            var result = arr.every(function(val) {
                 return this.validate_error[val] == 0;
             }, this);
 
@@ -230,9 +242,9 @@ validate.install = function (Vue, options) {
      * @param  ['phone','email'] 或者 'phone|email' 或者 "phone","email" 三种形式选一的参数     需要验证的表单组合
      * @return {undefined} undefined
      */
-    Vue.prototype.focusErrorEl = function () {
+    Vue.prototype.focusErrorEl = function() {
         var arr = getArg(arguments); // input_name的集合
-        var result = arr.every(function (val) {
+        var result = arr.every(function(val) {
             var flag = (this.validate_error[val] == 0);
             if (!flag) {
                 this.validate_el[val].focus();
@@ -246,10 +258,10 @@ validate.install = function (Vue, options) {
      * @param  ['phone','email'] 或者 'phone|email' 或者 "phone","email" 三种形式选一的参数    需要验证的表单组合
      * @return {undefined} undefined
      */
-    Vue.prototype.manual = function () {
+    Vue.prototype.manual = function() {
         var arr = getArg(arguments); // input_name的集合
         var vm = this;
-        arr.forEach(function (val) {
+        arr.forEach(function(val) {
             var thisEle = vm.validate_el[val];
             if (!!thisEle) { // 有才执行 , 因为有时候name没有对应任何元素
                 reallyHandle(thisEle, vm);
@@ -266,7 +278,7 @@ validate.install = function (Vue, options) {
      * 任何vue实例创建的时候 , 都会自动加入下面选项
      */
     Vue.mixin({
-        data: function () {
+        data: function() {
             return {
                 validate_rule: options.rules || {}, // 记录全部验证规则
                 validata_immediate: options.immediate || false, // 立即检验一次 , 适合修改 , 新增的时候一般为false ; 而且true的时候必须
@@ -287,7 +299,7 @@ validate.install = function (Vue, options) {
      * 自定义指令
      */
     Vue.directive("validata", {
-        bind: function (_el, _binding, _vnode) {
+        bind: function(_el, _binding, _vnode) {
             // 获取变量
             var el = _el; // 当前元素
             var input_name = el.name; // 表单名
@@ -327,11 +339,29 @@ validate.install = function (Vue, options) {
             }else{
                 el.addEventListener("blur", handle, false);
             }
-
         }
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////
+// 例子 //
+////////
 
 // validate_rule 总验证规则 结构
 var validate_rule = {
@@ -345,11 +375,14 @@ var validate_rule = {
         ajax: {
             url: "https://cccikov.github.io/remoteData/array.json",
             data: {
-                name: function () {
+                name: function() {
                     return $("#name").val;
                 },
-                id: function () {
+                id: function() {
                     return 211
+                },
+                msg: function(vm) {
+                    return vm.msg;
                 }
             }
         }
