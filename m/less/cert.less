@@ -180,6 +180,10 @@ input {
             }
         }
         .submit {
+            &.canclick{
+                opacity: 1;
+                pointer-events: all;
+            }
             display: block;
             border-radius: 8px;
             margin: 20px 16px 0;
@@ -187,8 +191,16 @@ input {
             background: #ff8b35;
             line-height: 3;
             color: #fff;
+            opacity: 0.5;
+            pointer-events: none;
         }
     }
+}
+
+.error {
+    padding: 0 8px;
+    margin: 10px 0;
+    color: #f00;
 }
 
 ::-webkit-input-placeholder {

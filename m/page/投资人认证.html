@@ -56,7 +56,6 @@
 
                 <!-- 未认证 -->
                 <div class="certify">
-                    <p>{{validate_error}}</p>
                     <div class="base-info">
                         <div class="item">
                             <label class="item-content">
@@ -111,14 +110,15 @@
                             <a @click="change_type('add')" :class="{active:type=='add'}" href="javascript:void(0)">+添加银行卡</a>
                         </div>
                         <div v-show="type=='select'" class="bank-list">
-                            <a :class="{active:val==2}" v-for="(val,index) of [1,2,3,4,5]" href="javascript:void(0)">123123{{index}}</a>
+                            <a :class="{active:cardid==index}" @click="selectCard(index)" v-for="(val,index) of [1,2,3,4,5]" href="javascript:void(0)">{{formatBankCard("719237675491273"+index)}}</a>
+                            <input style="display: none;" value="cardid" type="text">
                         </div>
                         <div v-show="type=='add'" class="add-card">
                             <div class="item">
                                 <label class="item-content">
                                     <span class="item-name">银行卡号</span>
                                     <p class="item-input">
-                                        <input @input="formatBankCard($event)" v-validate="'required'" name="cardno" placeholder="请输入您的银行卡卡号" type="text">
+                                        <input @input="bankCardInput($event)" v-validate="'required'" name="cardno" placeholder="请输入您的银行卡卡号" type="text">
                                     </p>
                                 </label>
                             </div>
@@ -141,6 +141,15 @@
                         </div>
                     </div>
 
+                    <p class="error" v-if="error('name')==1">请输入姓名</p>
+                    <p class="error" v-else-if="error('phone')==1">请输入手机号</p>
+                    <p class="error" v-else-if="error('id')==1">请输入身份证号</p>
+                    <p class="error" v-else-if="error('font')==1">请上传身份证正面</p>
+                    <p class="error" v-else-if="error('back')==1">请上传身份证背面</p>
+                    <p class="error" v-else-if="error('cardno')==1">请输入银行卡号</p>
+                    <p class="error" v-else-if="error('bank')==1">请输入银行</p>
+                    <p class="error" v-else-if="error('bankadd')==1">请输入银行支行</p>
+
                     <div class="code">
                         <div class="item">
                             <label class="item-content">
@@ -149,10 +158,12 @@
                                     <input v-validate="'required'" name="code" placeholder="请输入验证码" type="text">
                                 </p>
                             </label>
-                            <a href="javascript:void(0)">获取验证码</a>
+                            <a @click="getCode" href="javascript:void(0)">获取验证码</a>
                         </div>
-                        <a class="submit" href="javascript:void(0)">提交认证</a>
+                        <a class="submit" :class="{canclick:false}" href="javascript:void(0)">提交认证</a>
                     </div>
+
+                    <p>{{validate_error}}</p>
                 </div>
 
             </div>

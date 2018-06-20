@@ -674,6 +674,17 @@ input:focus {
   background: #ff8b35;
   line-height: 3;
   color: #fff;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.certify .code .submit.canclick {
+  opacity: 1;
+  pointer-events: all;
+}
+.error {
+  padding: 0 8px;
+  margin: 10px 0;
+  color: #f00;
 }
 ::-webkit-input-placeholder {
   color: #a6a6a6;
