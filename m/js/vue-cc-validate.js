@@ -145,6 +145,7 @@ function reallyHandle(el, vm) {
             },
             data: ajaxData,
             error: function (XMLHttpRequest, textStatus, errorThrown) {
+                Vue.set(vm.validate_error, input_name, 3);
                 console.error(XMLHttpRequest);
                 console.error(textStatus);
                 console.error(errorThrown);
@@ -320,7 +321,9 @@ validate.install = function (Vue, options) {
             } else {
                 Vue.set(vm.validate_error, input_name, 0); // 非必要的,不填也是正确的嘛;
             }
+            console.log(binding_val);
             var field = binding_val[0]; // 获取需要验证的项目 1项
+
             Vue.set(vm.validate_field, input_name, field);
             Vue.set(vm.validate_required, input_name, required);
 
@@ -337,7 +340,7 @@ validate.install = function (Vue, options) {
             if (el.type == "checkbox" || el.type == "file") { // radio 是无法使用这个插件的，由于name是几个元素都一样；但是其实radio也不需要做什么验证，如果想必选，那么写html的时候只需要默认选上默认值就可以了，选上后除了用js改变，基本就是必选的
                 el.addEventListener("change", handle, false);
             } else {
-                el.addEventListener("blur", handle, false);
+                el.addEventListener("input", handle, false);
             }
         }
     });

@@ -61,7 +61,7 @@
                             <label class="item-content">
                                 <span class="item-name">姓名</span>
                                 <p class="item-input">
-                                    <input placeholder="请输入您的名字" v-validate="'required'" type="text" name="name">
+                                    <input placeholder="请输入您的名字" v-validate="'required'" type="text" name="username">
                                 </p>
                             </label>
                         </div>
@@ -69,7 +69,7 @@
                             <label class="item-content">
                                 <span class="item-name">手机</span>
                                 <p class="item-input">
-                                    <input name="phone" v-validate="'required'" placeholder="请输入11位数手机号码" type="text">
+                                    <input name="mobile" v-validate="'required'" placeholder="请输入11位数手机号码" type="text">
                                 </p>
                             </label>
                         </div>
@@ -77,7 +77,7 @@
                             <label class="item-content">
                                 <span class="item-name">身份证号</span>
                                 <p class="item-input">
-                                    <input name="id" v-validate="'required'" placeholder="根据法律规定投资人需要实名认证" type="text">
+                                    <input name="idCard" v-validate="'required'" placeholder="根据法律规定投资人需要实名认证" type="text">
                                 </p>
                             </label>
                         </div>
@@ -85,20 +85,22 @@
                         <div class="item identity">
                             <p>身份证正反面</p>
                             <label>
-                                <input name="font" v-validate="'required'" type="file">
+                                <input id="front" type="file">
+                                <input id="frontpic" name="frontpic" type="hidden" :value="frontImg">
                                 <div>
                                     <p>请上传身份证正面</p>
                                     <p>+</p>
                                 </div>
-                                <a href="###"></a>
+                                <a :style="{'background-image':'url('+frontImg+')'}" :href="frontImg"></a>
                             </label>
                             <label>
-                                <input name="back" v-validate="'required'" type="file">
+                                <input id="back" type="file">
+                                <input id="backpic" name="backpic" type="hidden" :value="backImg">
                                 <div>
                                     <p>请上传身份证反面</p>
                                     <p>+</p>
                                 </div>
-                                <a href="###"></a>
+                                <a :style="{'background-image':'url('+backImg+')'}" :href="backImg"></a>
                             </label>
                         </div>
                     </div>
@@ -110,15 +112,15 @@
                             <a @click="change_type('add')" :class="{active:type=='add'}" href="javascript:void(0)">+添加银行卡</a>
                         </div>
                         <div v-show="type=='select'" class="bank-list">
-                            <a :class="{active:cardid==index}" @click="selectCard(index)" v-for="(val,index) of [1,2,3,4,5]" href="javascript:void(0)">{{formatBankCard("719237675491273"+index)}}</a>
-                            <input style="display: none;" value="cardid" type="text">
+                            <a :class="{active:cardnoS==index}" @click="selectCard(index)" v-for="(val,index) of [1,2,3,4,5]" href="javascript:void(0)">{{formatBankCard("719237675491273"+index)}}</a>
+                            <input style="display: none;" value="cardnoS" type="text">
                         </div>
                         <div v-show="type=='add'" class="add-card">
                             <div class="item">
                                 <label class="item-content">
                                     <span class="item-name">银行卡号</span>
                                     <p class="item-input">
-                                        <input @input="bankCardInput($event)" v-validate="'required'" name="cardno" placeholder="请输入您的银行卡卡号" type="text">
+                                        <input @input="bankCardInput($event)" v-validate="'required'" name="cardNo" placeholder="请输入您的银行卡卡号" type="text">
                                     </p>
                                 </label>
                             </div>
@@ -126,7 +128,7 @@
                                 <label class="item-content">
                                     <span class="item-name">开户行</span>
                                     <p class="item-input">
-                                        <input v-validate="'required'" name="bank" placeholder="请输入银行卡所属银行" type="text">
+                                        <input v-validate="'required'" name="bankName" placeholder="请输入银行卡所属银行" type="text">
                                     </p>
                                 </label>
                             </div>
@@ -134,28 +136,30 @@
                                 <label class="item-content">
                                     <span class="item-name">开户行网点</span>
                                     <p class="item-input">
-                                        <input v-validate="'required'" name="bankadd" placeholder="请输入开户行分支行" type="text">
+                                        <input v-validate="'required'" name="dotName" placeholder="请输入开户行分支行" type="text">
                                     </p>
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                    <p class="error" v-if="error('name')==1">请输入姓名</p>
-                    <p class="error" v-else-if="error('phone')==1">请输入手机号</p>
-                    <p class="error" v-else-if="error('id')==1">请输入身份证号</p>
-                    <p class="error" v-else-if="error('font')==1">请上传身份证正面</p>
-                    <p class="error" v-else-if="error('back')==1">请上传身份证背面</p>
-                    <p class="error" v-else-if="error('cardno')==1">请输入银行卡号</p>
-                    <p class="error" v-else-if="error('bank')==1">请输入银行</p>
-                    <p class="error" v-else-if="error('bankadd')==1">请输入银行支行</p>
+                    <p class="error" v-if="error('username')==1">请输入姓名</p>
+                    <p class="error" v-else-if="error('mobile')==1">请输入手机号</p>
+                    <p class="error" v-else-if="error('idCard')==1">请输入身份证号</p>
+                    <p class="error" v-else-if="!frontImg">请上传身份证正面</p>
+                    <p class="error" v-else-if="!backImg">请上传身份证背面</p>
+                    <p class="error" v-else-if="error('cardNo')==1">请输入银行卡号</p>
+                    <p class="error" v-else-if="error('bankName')==1">请输入银行</p>
+                    <p class="error" v-else-if="error('dotName')==1">请输入银行支行</p>
+                    <p class="error" v-else-if="error('dotName')==1">请输入验证码</p>
+                    <p class="error" v-else-if="error('dotName')==3">验证码错误</p>
 
                     <div class="code">
                         <div class="item">
                             <label class="item-content">
                                 <span class="item-name">验证码</span>
                                 <p class="item-input">
-                                    <input v-validate="'required'" name="code" placeholder="请输入验证码" type="text">
+                                    <input name="mobilevaildcode" v-validate="'required|code'" placeholder="请输入验证码" type="text">
                                 </p>
                             </label>
                             <a @click="getCode" href="javascript:void(0)">获取验证码</a>
