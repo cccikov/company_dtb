@@ -321,7 +321,6 @@ validate.install = function (Vue, options) {
             } else {
                 Vue.set(vm.validate_error, input_name, 0); // 非必要的,不填也是正确的嘛;
             }
-            console.log(binding_val);
             var field = binding_val[0]; // 获取需要验证的项目 1项
 
             Vue.set(vm.validate_field, input_name, field);

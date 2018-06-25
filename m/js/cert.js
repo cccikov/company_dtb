@@ -1,7 +1,7 @@
 /* 使用插件 */
 Vue.use(validate, {
     // 验证项目 field是项目名
-    rules:{
+    rules: {
         "code": {
             // 验证项目 里面的规则
             ajax: {
@@ -24,14 +24,40 @@ var vm = new Vue({
     data: {
         certified: false,
         type: "select",
-        cardnoS: 2, //选择的银行卡
-        frontImg: "",
-        backImg: ""
+        time: 0,
+        canSubmit: false,
+        formData: {
+            cardnoS: 2, //选择的银行卡
+            frontImg: "",
+            backImg: "",
+            username: null,
+            mobile: null,
+            idCard: null,
+            cardNo: null,
+            bankName: null,
+            dotName: null,
+            mobilevaildcode: null
+        }
     },
     mounted: function () {
         this.$nextTick(function () {
             compressImg();
         });
+    },
+    watch: {
+        formData: {
+            handler: function (val) {
+                if (this.type == "select") {
+                    var result = this.group("username|mobile|idCard|mobilevaildcode");
+                } else if (this.type == "add") {
+                    var result = this.group("username|mobile|idCard|cardNo|bankName|dotName|mobilevaildcode");
+                }
+                console.log(result);
+                this.canSubmit = result;
+            },
+            deep: true
+        }
+
     },
     methods: {
         certify: function () {
@@ -46,17 +72,18 @@ var vm = new Vue({
             el.value = this.formatBankCard(el.value);
         },
         getCode: function () {
-
-        },
-        canSubmit: function () {
-            if (this.type == "select") {
-                var result = this.group("username|mobile|idCard");
-            } else if (this.type == "add") {
-                var result = this.group("username|mobile|idCard|cardNo|bankName|dotName");
-            }
+            var _this = this;
+            _this.time = 30; // 30秒
+            var timer = setInterval(function () {
+                _this.time--;
+                if (_this.time == 0) {
+                    clearInterval(timer);
+                    console.log(_this.time);
+                }
+            }, 1000);
         },
         selectCard: function (cardnoS) {
-            this.cardnoS = cardnoS;
+            this.formData.cardnoS = cardnoS;
         },
         formatBankCard: function (card, spacing) { // 格式化银行卡
             card = String(card);
@@ -132,8 +159,8 @@ function compressImg() {
             }
 
             function callback() { // img 加载好callback
-                console.dir(img);
-                console.log(img.complete);
+                // console.dir(img);
+                // console.log(img.complete);
                 var data = compress(img);
                 showImg(data, "frontImg");
                 upload(data, file.type);
@@ -183,8 +210,8 @@ function compressImg() {
             }
 
             function callback() { // img 加载好callback
-                console.dir(img);
-                console.log(img.complete);
+                // console.dir(img);
+                // console.log(img.complete);
                 var data = compress(img);
                 showImg(data, "backImg");
                 upload(data, file.type);
@@ -243,9 +270,9 @@ function compressImg() {
         // 进行最小压缩
         var nData = canvas.toDataURL('image/jpeg', 0.3);
 
-        console.log('压缩前：' + initSize);
-        console.log('压缩后：' + nData.length);
-        console.log('压缩率：' + ~~(100 * (initSize - nData.length) / initSize) + '%');
+        // console.log('压缩前：' + initSize);
+        // console.log('压缩后：' + nData.length);
+        // console.log('压缩率：' + ~~(100 * (initSize - nData.length) / initSize) + '%');
 
         tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
         return nData;
@@ -253,7 +280,7 @@ function compressImg() {
 
     // 显示图片
     function showImg(basestr, which) {
-        vm[which] = basestr;
+        vm.formData[which] = basestr;
     }
 
 
@@ -296,10 +323,10 @@ function compressImg() {
                 var imageData = jsonData[0] || {}
                 var text = imageData.path ? '上传成功：' + imageData.path : '上传失败'
 
-                console.log(text)
+                // console.log(text)
 
                 clearInterval(loop)
-                console.log('进度：' + percent)
+                // console.log('进度：' + percent)
             }
         }
 
@@ -309,7 +336,7 @@ function compressImg() {
                 return
             }
             percent = ~~(100 * e.loaded / e.total) / 2
-            console.log(percent)
+            // console.log(percent)
             if (percent === 50) {
                 mockProgress()
             }
@@ -321,7 +348,7 @@ function compressImg() {
             }
             loop = setInterval(function () {
                 percent++
-                console.log(percent)
+                // console.log(percent)
                 if (percent >= 99) {
                     clearInterval(loop)
                 }
