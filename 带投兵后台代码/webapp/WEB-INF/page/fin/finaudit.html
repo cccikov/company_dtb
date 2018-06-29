@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目审核</title>
+    #parse("header.html")
+    <script src="${rc.contextPath}/statics/libs/getBankBin.js"></script>
+    <style>
+        .receipt-win .accname {
+            width: 8em;
+        }
+
+        .receipt-win .bankno {
+            width: 216px;
+        }
+
+        .receipt-win .bankname {
+            width: 16em;
+        }
+
+        .receipt-win .amount {
+            width: 8em;
+        }
+        .receipt-win .amount input{
+            text-align: right;
+        }
+
+        .receipt-win input {
+            line-height: 32px;
+            width: 100%;
+            border: none;
+        }
+
+        .float-win .del {
+            color: #f00;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <!-- <li :class="{active:BM}"><a href="javascript:void(0)" @click='changeView("BM")'>保密金</a></li> -->
+            <li :class="{active:DJ}"><a href="javascript:void(0)" @click='changeView("DJ")'>保证金</a></li>
+            <li :class="{active:YK}"><a href="javascript:void(0)" @click='changeView("YK")'>余款</a></li>
+        </ul>
+        <!-- 待审核 -->
+        <div v-show="BM">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="BMData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query_BM">查询</a>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click="receiptInfo('BM')"><i class="fa fa-search"></i>&nbsp;查看凭证</a>
+            </div>
+            <table id="jqGrid-BM" style="width:500px"></table>
+            <div id="jqGridPager-BM"></div>
+        </div>
+        <!-- 已审核-->
+        <div v-show="DJ">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="DJData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query_DJ">查询</a>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click="receiptInfo('DJ')"><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+            </div>
+            <table id="jqGrid-DJ"></table>
+            <div id="jqGridPager-DJ"></div>
+        </div>
+        <!-- 已驳回 -->
+        <div v-show="YK">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="YKData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query_YK">查询</a>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click="receiptInfo('YK')"><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+            </div>
+            <table id="jqGrid-YK"></table>
+            <div id="jqGridPager-YK"></div>
+        </div>
+    </div>
+    <!-- 凭证详情浮窗 -->
+    <div id="receipt-win" class="mask" v-show='show_receipt_win' :class="{active:show_receipt_win}">
+        <div class="receipt-win float-win" style="min-width:1000px;width:90%;">
+            <h4>
+                凭证信息
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+            <p style="color:#fff;padding:15px;margin:0">
+                <a href="javascript:void(0)" class="btn btn-info" @click='receiptAudit(1)'><i class="fa fa-search"></i>通过</a>
+                <a href="javascript:void(0)" class="btn btn-danger" @click='receiptAudit(-1)'><i class="fa fa-search"></i>驳回</a>
+            </p>
+            <div class="box-table">
+                <table>
+                    <tr>
+                        <th style="width: 112px;">订单号/保密单号</th>
+                        <th>金额(元)</th>
+                        <th>上传时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for='(item,key) in payinfo' :key='item.id'>
+                        <td v-if="item.type === 'BM'">{{item.secrecyid}}</td>
+                        <td v-else>{{item.orderid}}</td>
+                        <!-- 判断item。type === 'BM' 取{{item.secrecyid}} 否则取{{item.orderid}} -->
+                        <td class="amount">
+                            <input type="text" name="amount" @input="formMoney(key,$event)" :amount="item.id" v-model="receiptData.amount[key]">
+                        </td>
+                        <td>{{item.createtime}}</td>
+                        <td v-if="item.type === 'BM'"><a @click="del(key,item.id,item.secrecyid)" class="del" href="javascript:void(0)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a></td>
+                        <td v-else><a @click="del(key,item.id,item.orderid)" class="del" href="javascript:void(0)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 查看会员信息 -->
+    <div id="user-msg">
+        <member-tpl :show="show_win" :userinfo="userinfo" :tab="tab" :carinfos="carinfos" @change-view="changeView" @closewin="closewin"></member-tpl>
+    </div>
+    <script src="${rc.contextPath}/js/fin/finaudit.js?_${date.systemTime}"></script>
+</body>
+
+</html>

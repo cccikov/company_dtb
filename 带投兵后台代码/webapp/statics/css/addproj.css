@@ -1,0 +1,125 @@
+#wrap {
+    display: inline-block;
+    width: 100%;
+    max-width: 1130px;
+    min-width: 530px;
+    margin-top: -30px;
+}
+
+p {
+    margin: 0;
+}
+
+h4 {
+    font-weight: 700;
+    font-size: 18px;
+    clear: both;
+    padding: 50px 12px 5px;
+    margin: 0;
+}
+
+label {
+    float: left;
+    width: 50%;
+    min-width: 375px;
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+label.textarea {
+    width: 100%;
+}
+
+label span {
+    display: inline-block;
+    width: 8em;
+    text-align: right;
+    font-weight: inherit;
+}
+
+input {
+    width: 240px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+#wrap textarea {
+    box-sizing: content-box;
+    width: 480px;
+    height: 6em;
+    line-height: 1.5;
+    padding: 6px 12px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+#wrap .submit {
+    padding: 35px 0 20px;
+    text-align: center;
+    clear: both;
+}
+
+#wrap .addinput {
+    clear: both;
+    padding: 15px 0;
+    text-align: center
+}
+
+#wrap input[type=file] {
+    border: none;
+    display: inline-block;
+    padding-left: 0;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list-wrap {
+    padding: 0 20px 0 40px;
+}
+
+.list {
+    display: table;
+    width: 100%;
+    border-bottom: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.list li {
+    display: table-row;
+}
+
+.list span {
+    display: table-cell;
+    min-width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.list img {
+    max-height: 50px;
+}
+
+.list .fa {
+    cursor: pointer;
+    color: red;
+}
+
+select {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: inherit;
+    font-weight: inherit;
+}

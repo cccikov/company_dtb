@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目详情</title>
+    <link rel="stylesheet" href="/m/css/project_detail.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>项目详情</h2>
+            </div>
+
+            <div class="main">
+                <!-- 项目列表 -->
+                <div class="section">
+                    <tpl-project-list :data="[projectListData]"></tpl-project-list>
+                </div>
+
+                <!-- 项目筹资流程 -->
+                <div class="section step">
+                    <div class="title">项目筹资流程</div>
+                    <div class="step-main">
+                        <p>
+                            <span :class="{active:projectListData.status === 20}">预热</span>
+                            <span :class="{active:projectListData.status === 30}">募集</span>
+                            <span :class="{active:projectListData.status === 50}">交割</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 投资亮点 -->
+                <div class="section" v-if="!!projectListData.pjDocumentEntities.LD">
+                    <div class="title">投资亮点</div>
+                    <div>
+                        <img v-for="(val,index) in projectListData.pjDocumentEntities.LD" :src="val.pic" :alt="val.typedes">
+                    </div>
+                </div>
+
+                <!-- 项目介绍 -->
+                <div class="section" v-if="!!projectListData.pjDocumentEntities.XQ">
+                    <div class="title">项目介绍</div>
+                    <div>
+                        <img v-for="(val,index) in projectListData.pjDocumentEntities.XQ" :src="val.pic" :alt="val.typedes">
+                    </div>
+                </div>
+
+
+                <!-- 团队成员 -->
+                <div class="section" v-if="!!projectListData.pjDocumentEntities.CY">
+                    <div class="title">团队成员</div>
+                    <div>
+                        <img v-for="(val,index) in projectListData.pjDocumentEntities.CY" :src="val.pic" :alt="val.typedes">
+                    </div>
+                </div>
+
+                <!-- 投资方案 -->
+                <div class="section" v-if="!!projectListData.pjDocumentEntities.FA">
+                    <div class="title">投资方案</div>
+                    <div>
+                        <img v-for="(val,index) in projectListData.pjDocumentEntities.FA" :src="val.pic" :alt="val.typedes">
+                    </div>
+                </div>
+
+                <!-- 本轮投资意向 -->
+                <div class="section" v-if="projectListData.orderList.length != 0">
+                    <div class="title">本轮投资意向</div>
+                    <ul class="investor-list" v-if="projectListData.status === 20">
+                        <li class="investor-item" v-for='val in projectListData.orderList' key='val.id'>
+                            <i :style="'background-image: url('+unescape(val.tbUserEntity.pic)+')'"></i>
+                            <div>
+                                <p>
+                                    <span>{{formatPhone(val.tbUserEntity.mobile)}}</span>
+                                    <span>意向投资金额：{{changeMillion(val.intentionamount)}}元</span>
+                                </p>
+                                <p v-if="projectListData.status != 50">
+                                    	意向确认时间：{{val.createtime}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="investor-list" v-else>
+                        <li class="investor-item" v-for='val in projectListData.orderList' key='val.id'>
+                            <i :style="'background-image: url('+unescape(val.tbUserEntity.pic)+')'"></i>
+                            <div>
+                                <p>
+                                    <span>{{formatPhone(val.tbUserEntity.mobile)}}</span>
+                                    <span>投资金额：{{changeMillion(val.amount)}}元</span>
+                                </p>
+                                <p v-if="projectListData.status != 50">
+                                    	确认时间：{{val.createtime}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- 内容 end -->
+
+
+        <!-- 底部 -->
+        <div class="footer-float">
+            <a v-if="projectListData.userBookmark === null" @click="bookmark(projectListData.id,$event)" class="star">关注</a>
+            <a v-if="projectListData.userBookmark != null" @click="bookmark(projectListData.id,$event)" class="star active">取消关注</a>
+
+            <a class="btn" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 20 && !projectListData.userOrder">我要报名</a>
+            <a class="btn" href="javascript:void(0)" @click="contract('T')" v-if="projectListData.status === 30 && projectListData.userOrder && projectListData.userOrder.status === 10 && projectListData.userOrder.amount === 0 && !projectListData.tZContract">我要投资</a>
+            <a class="btn" :href="'order.html?pjid='+projectListData.id" v-if="projectListData.status === 30 && projectListData.userOrder && projectListData.userOrder.status === 10 && projectListData.userOrder.amount === 0 && projectListData.tZContract">我要投资</a>
+            <a class="btn" :href="'pay.html?orderid='+projectListData.userOrder.id" v-if="projectListData.status === 30 && projectListData.userOrder && projectListData.userOrder.status === 20">我要出资</a>
+
+
+            <a class="btn" href="javascript:void(0)" v-if="projectListData.status === 20 && projectListData.userOrder">已报名</a>
+            <a class="btn" href="javascript:void(0)" v-if="projectListData.status === 30 && projectListData.userOrder && projectListData.userOrder.status === 10 && projectListData.userOrder.amount > 0">已投资</a>
+
+
+            <template v-if="projectListData.pjDocumentEntities.HX || projectListData.pjDocumentEntities.JH">
+
+            	<a v-if="(projectListData.bMContract && projectListData.bMContract.status === 20) || (projectListData.userOdOrder && projectListData.userOdOrder.status >=20) " class="document-menu" @click="show_document_list(true)">资料</a>
+
+            	<a v-else-if="projectListData.status === 20 || projectListData.status === 30" class="document-menu" @click="show_document_tips(true)">资料</a>
+
+            </template>
+
+        </div>
+
+        <!-- 浮窗系列 -->
+        <div class="float">
+            <div class="mask" :class="maskClass"></div>
+
+			<template v-if="(projectListData.bMContract && projectListData.bMContract.status === 20) || (projectListData.userOdOrder && projectListData.userOdOrder.status >=20)">
+	            <!-- 资料列表 -->
+	            <div class="document-menu-list" :class="documentListClass">
+	                <a v-if="projectListData.pjDocumentEntities.JH" class="document-menu-item" :href="projectListData.pjDocumentEntities.JH[0].pic" >融资计划书</a>
+	                <a v-if="projectListData.pjDocumentEntities.HX" class="document-menu-item" :href="projectListData.pjDocumentEntities.HX[0].pic" >核心资料</a>
+	            </div>
+
+	            <div class="mask" :class="maskClass2" style="z-index: 20" @click="show_document_list(0)"></div>
+
+            </template>
+
+
+
+
+            <!-- show_document_tips(true) -->
+            <div class="document-tips-float" :class="documentClass">
+                <a class="close" @click="show_document_tips(0)"  href="javascript:void(0)"></a>
+                <h5>提示</h5>
+                <div class="box box1 active" v-if="!projectListData.bMContract || projectListData.bMContract.status === 10">
+                    <p>此项目还有部分核心内容，需要签署<strong>【保密协议】</strong>并交纳保密金（起投金额的1%）后方可查看，项目募集完成后保密金原路退回，亦可直接报名。</p>
+                    <button @click="contract('B')">签署保密协议</button>
+                    <button @click="show_document_tips(0)" style="background: #ff8f35;margin:0 0 0 30px;">不看资料</button>
+                </div>
+            </div>
+
+			<!-- show_contract_tips(true) -->
+            <div class="contract-tips-float" :class="contractClass">
+                正跳转到合同签署界面......
+            </div>
+
+            <!-- show_risk_tips(true) -->
+            <div class="risk-tips-float"  :class="riskClass">
+                <a class="close" href="javascript:void(0)" @click="show_risk_tips(0)"></a>
+                <h5>尊敬的投资人</h5>
+                <p class="p1">为了让您在进行互联网非公开股权投资前，尽可能多地了解互联网非公开股权投资的风险，带投兵（深圳）网络科技股份有限公司在此郑重提醒，请您务必仔细阅读并理解本《风险提示书》，谨慎评估风险后，再决定是否继续进行互联网非公开股权投资。</p>
+                <p class="p2">
+                    <a target="_blank" href="/risks.html">【风险提示书】</a>
+                </p>
+                <p class="p3">
+                    同时，为保证您投资后的合伙权益，请知悉如下合同
+                </p>
+                <p class="p4">
+                    <a target="_blank" href="/partnership.html">【合伙协议】</a>
+                    <a target="_blank" href="/partner.html">【合伙人协议】</a>
+                    <a target="_blank" href="/transferOfRights.html">【合伙人转让权益协议】</a>
+                </p>
+                <p class="p5">
+                    <button>已阅读，同意</button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/m/js/tpl_project_list.js"></script>
+    <script type="text/javascript" src="/m/js/project_detail.js"></script>
+</body>
+
+</html>

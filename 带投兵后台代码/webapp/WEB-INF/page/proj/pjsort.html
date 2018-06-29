@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目排序</title>
+    #parse("header.html")
+    <style type="text/css">
+    table {
+        width: 90%;
+        max-width: 800px;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #333;
+    }
+
+    table td,
+    table th {
+        padding: 0 8px;
+        line-height: 38px;
+        border: 1px solid #ddd;
+    }
+
+    #wrap th {
+        font-weight: 700;
+    }
+
+    td:nth-of-type(1) {
+        text-align: center;
+    }
+
+    th:nth-of-type(1) {
+        width: 60px;
+        text-align: center;
+    }
+
+    th:nth-of-type(3) {
+        width: 100px;
+        text-align: center;
+    }
+
+
+    i.fa {
+        font-size: 20px;
+        vertical-align: middle;
+        margin: 0 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>项目名称</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="(item,index) in realData.pjInfoList" :key="item.id">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <a @click="select(index+1)" href="javascript:void(0)"><i style="color:#009688" class="fa fa-align-justify" aria-hidden="true"></i></a>
+                    <a v-show="item.name" @click="del(index+1)" href="javascript:void(0)"><i style="color:#f44336" class="fa fa-times" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- 选择菜单 -->
+    <div id="menuLayer" style="display: none;padding:10px;">
+        <ul id="menuTree" class="ztree"></ul>
+    </div>
+    <script src="${rc.contextPath}/js/proj/pjsort.js?_${date.systemTime}"></script>
+</body>
+
+</html>

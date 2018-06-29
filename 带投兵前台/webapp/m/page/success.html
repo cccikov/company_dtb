@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单</title>
+    <link rel="stylesheet" href="/m/css/success.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+            <template v-if="type === 'create'">
+            	<template v-if="r.code === 500">
+            		<div class="status error">
+	                    <div class="icon"></div>
+	                    <div class="text">
+	                        <p class="p1">报名失败</p>
+	                        <p class="p2">请重试</p>
+	                    </div>
+	                </div>
+	                <p class="tips">失败原因：{{r.msg}}</p>
+	                <a href="javascript:history.back()" class="alink">重新报名</a>
+                </template>
+                <template v-else>
+	                <div class="status success">
+	                    <div class="icon"></div>
+	                    <div class="text">
+	                        <p class="p1">报名成功</p>
+	                        <p class="p2">恭喜您，报名成功。项目正式募集阶段，我们会以短信的方式通知您进行认购！如有疑问，请联系我们工作人员。</p>
+	                    </div>
+	                </div>
+	                <a :href="'/m/page/project_detail.html?id='+id" class="alink timeout">点击返回项目详情</a>
+                </template>
+            </template>
+
+            <template v-else-if="type === 'raise'">
+            	<template v-if="r.code === 500">
+            		<div class="status error">
+	                    <div class="icon"></div>
+	                    <div class="text">
+	                        <p class="p1">更新订单失败</p>
+	                        <p class="p2">请重试</p>
+	                    </div>
+	                </div>
+	                <p class="tips">失败原因：{{r.msg}}</p>
+	                <a href="javascript:history.back()" class="alink">返回</a>
+                </template>
+                <template v-else>
+	                <div class="status success">
+	                    <div class="icon"></div>
+	                    <div class="text">
+	                        <p class="p1">更新订单成功</p>
+	                        <p class="p2">订单更新成功，请在规定时间内支付保证金</p>
+	                    </div>
+	                </div>
+	                <a :href="'/m/page/pay.html?orderid='+r.orderno" class="alink timeout">上传保证金凭证</a>
+                </template>
+            </template>
+
+            <template v-else-if="type === 'receipt'">
+            	<template v-if="r.code === 500">
+            		<div class="status error">
+	                    <div class="icon"></div>
+	                    <div class="text">
+	                        <p class="p1">提交凭证失败</p>
+	                        <p class="p2">请重试</p>
+	                    </div>
+	                </div>
+	                <p class="tips">失败原因：{{r.msg}}</p>
+	                <a href="javascript:history.back()" class="alink">返回</a>
+                </template>
+                <template v-else>
+	                <div class="status success">
+	                    <div class="icon"></div>
+	                    <div class="text">
+	                        <p class="p1">提交凭证成功</p>
+	                        <p class="p2">恭喜您，提交凭证成功，我们工作人员会尽快完成审核并通知您! 如有疑问，请联系我们工作人员。</p>
+	                    </div>
+	                </div>
+	                <template v-if="id">
+	                	<a class="alink timeout" :href="'/m/page/project_detail.html?id='+id">点击查看项目详情</a>
+	                </template>
+					<template v-if="!id">
+						<a class="alink timeout" href="/member/index?frame=project">点击查看订单</a>
+					</template>
+                </template>
+            </template>
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+    <script type="text/javascript" src="/m/js/success.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/project.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+            <!-- 导航 -->
+            <div class="nav swiper-container">
+                <div class="swiper-wrapper">
+                    <a class="notAppLink swiper-slide" href="project.html" qstatus="all">所有</a>
+                    <a class="notAppLink swiper-slide" href="project.html?qstatus=20" qstatus="20">预热中</a>
+                    <a class="notAppLink swiper-slide" href="project.html?qstatus=30" qstatus="30">募集中</a>
+                    <!-- <a class="notAppLink swiper-slide" href="project.html?qstatus=40" qstatus="40">出资中</a> -->
+                    <a class="notAppLink swiper-slide" href="project.html?qstatus=50" qstatus="50">交割中</a>
+                    <a class="notAppLink swiper-slide" href="project.html?qstatus=100" qstatus="100">成功</a>
+                </div>
+            </div>
+            <!-- 项目列表 -->
+            <div class="main">
+                <tpl-project-list :data="projectListData"></tpl-project-list>
+            </div>
+            <div class="tips">
+                <p class="loading active">正在加载...</p>
+                <p class="nomore">暂无更多项目</p>
+            </div>
+        </div>
+        <!-- 内容 end -->
+        <!-- 底部 -->
+        <footer-tpl :page="page"></footer-tpl>
+    </div>
+    <script src="/m/js/tpl_project_list.js"></script>
+    <script type="text/javascript" src="/m/js/project.js"></script>
+</body>
+
+</html>

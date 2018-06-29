@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传凭证</title>
+    <link rel="stylesheet" href="/m/css/pay.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script src="/statics/libs/ajaxupload.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>上传凭证</h2>
+            </div>
+
+            <div class="main">
+                <div class="img">
+                    <img :src="pjInfo.pjDocumentEntities.SY[0].pic">
+                </div>
+
+                <div class="info">
+                    <p>
+                        <strong class="left">项目信息:</strong>
+                    </p>
+                    <p>
+                        <span class="left">{{pjInfo.name}}</span>
+                        <span class="right">{{pjInfo.brief}}</span>
+                    </p>
+                    <p>
+                        <span class="left">意向人</span>
+                        <span class="right">{{username}}</span>
+                    </p>
+                    <p>
+                        <span class="left">保密金</span>
+                        <span class="right">{{odSecrecy.amount}}元({{secrecy_ratio}}%)</span>
+                    </p>
+                    <p>
+                        <span class="left">汇款金额</span>
+                        <span class="right orange-font">￥ {{odSecrecy.amount}}</span>
+                    </p>
+
+                    <p>
+                        <strong class="left">收款账号信息：</strong>
+                    </p>
+                    <p>
+                        <span class="left">账号</span>
+                        <span class="right">{{platform_accno}}</span>
+                    </p>
+                    <p>
+                        <span class="left">银行</span>
+                        <span class="right">{{platform_bankname}}</span>
+                    </p>
+                    <p>
+                        <span class="left">户名</span>
+                        <span class="right">{{platform_accname}}</span>
+                    </p>
+                    <div class="action">
+                        <input type="number" style="border:1px solid #ccc" v-model="amount">元
+                        <a href="javascript:void(0)" @click="uploadInputClick">上传凭证</a>
+                        <input type="file" id="cert" @change="upload($event)">
+                    </div>
+                </div>
+
+                <div class="imgs" v-if="odPayEntities.length != 0">
+                    <h4>凭证信息:</h4>
+                    <a href="###" v-for='val in odPayEntities' key='val.id'>
+                        <img :src="val.attach">
+                        <p>￥{{val.amount}}</p>
+                        <span class="del" @click="secrecydel(val.id)"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 底部 -->
+            <div class="footer-float">
+                <a class="btn" href="###" @click="secrecysubmit">确认提交</a>
+            </div>
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+
+
+
+<script type="text/javascript" src="/m/js/secrecy.js"></script>
+</body>
+
+</html>

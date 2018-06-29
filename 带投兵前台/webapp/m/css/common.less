@@ -1,0 +1,409 @@
+@import url("./reset.less");
+html,
+body {
+    line-height: 1.4;
+    font-size: 14px;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+// 按钮动画效果
+// .btn-normal {
+//     opacity: 1;
+// transition: opacity 0.1s;
+// }
+// 没有按钮动画效果
+.no-animation {
+    opacity: 1;
+    // &.touch {
+    //     opacity: 0.95;
+    // }
+}
+
+// .btn-active {
+//     opacity: 0.8;
+//     transform: scale(0.95);
+// }
+a {
+    opacity: 1;
+}
+
+// 内容区域
+.container {
+    padding-bottom: 80px;
+}
+
+.top-nav {
+    display: none;
+    position: relative;
+    line-height: 2.5;
+    text-align: center;
+    font-size: 16px;
+    background: -webkit-linear-gradient(left, #ff8b35, #fd5e23);
+    background: -o-linear-gradient(left, #ff8b35, #fd5e23);
+    background: linear-gradient(to right, #ff8b35, #fd5e23);
+    color: #fff;
+    text-align: center;
+    h2 {
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    .back {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+        background: url(../img/arrow.png) center/21px no-repeat;
+        transform: rotate(180deg);
+    }
+    .star {
+        position: absolute;
+        top: 7px;
+        right: 12px;
+        line-height: 20px;
+        padding: 3px 8px 3px 25px;
+        border-radius: 5px;
+        background: #ffb380 url(../img/star-empty.png) left 5px center/18px no-repeat;
+        &:after {
+            content: "收藏";
+            font-size: 13px;
+        }
+        &.active {
+            background-image: url(../img/star-full.png);
+            &:after {
+                content: "已收藏"
+            }
+        }
+    }
+}
+
+// 底栏
+.footer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    font-size: 12px;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
+    &.active{
+        display: block;
+    }
+    a {
+        float: left;
+        width: 25%;
+        height: 48px;
+        color: #6d6d6d;
+        line-height: 1em;
+        &:before {
+            content: "";
+            display: block;
+            height: 24px;
+            margin: 4px 0;
+            background: url(../img/navicon_01s.png) center/contain no-repeat;
+        }
+        &:nth-of-type(1):before {
+            background-image: url(../img/navicon_01s.png);
+        }
+        &:nth-of-type(2):before {
+            background-image: url(../img/navicon_02s.png);
+        }
+        &:nth-of-type(3):before {
+            background-image: url(../img/navicon_03s.png);
+        }
+        &:nth-of-type(4):before {
+            background-image: url(../img/navicon_04s.png);
+        }
+        // 活动状态
+        &.active {
+            color: #ff7200;
+            pointer-events: none;
+            &:nth-of-type(1):before {
+                background-image: url(../img/navicon_01.png);
+            }
+            &:nth-of-type(2):before {
+                background-image: url(../img/navicon_02.png);
+            }
+            &:nth-of-type(3):before {
+                background-image: url(../img/navicon_03.png);
+            }
+            &:nth-of-type(4):before {
+                background-image: url(../img/navicon_04.png);
+            }
+        }
+    }
+}
+
+// 项目列表
+.project-list {
+    .project-item {
+        position: relative;
+        display: block;
+        padding: 0 0 1px 0;
+        margin: 10px 0;
+        background: #fff;
+        &:last-of-type {
+            margin: 0 0 0px;
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            width: 58px;
+            height: 39px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+        &.yr:before {
+            background-image: url(../img/yr.png);
+        }
+        &.mj:before {
+            background-image: url(../img/mj.png);
+        }
+        &.jg:before {
+            background-image: url(../img/jg.png);
+        }
+        &.cz:before {
+            background-image: url(../img/cz.png);
+        }
+        &.finish:after {
+            content: "";
+            position: absolute;
+            bottom: 90px;
+            right: 14px;
+            z-index: 3;
+            width: 100px;
+            height: 100px;
+            background: url(../img/home03.png) center/contain no-repeat;
+        }
+        .clearfix();
+        // 项目图片
+        .project-img {
+            // 以下3行代码是为了没有图片的时候
+            img {
+                display: block;
+                width: 100%;
+            }
+            div.img {
+                min-height: 150px;
+                background: #f9f9f9 url(/m/img/logo.png) center no-repeat;
+            }
+        }
+        // 项目内容
+        .project-content {
+            position: relative;
+            padding: 0 12px;
+            // 标题 与 进度
+            .project-major {
+                .clearfix();
+                // 标题
+                .project-title {
+                    line-height: 35px;
+                    color: #333;
+                    font-size: 15px;
+                    font-weight: 700;
+                    .elli();
+                }
+                // 摘要
+                .project-abstract {
+                    line-height: 14px;
+                    font-size: 11px;
+                    color: #999;
+                    .elli();
+                }
+            }
+            // 其他信息
+            .project-info {
+                margin: 20px 0;
+                .clearfix();
+                p {
+                    box-sizing: border-box;
+                    float: left;
+                    width: 25%;
+                    height:30px;
+                    line-height: 15px;
+                    color: #333333;
+                    border-left: 1px solid #eee;
+                    text-align: center;
+                    color:#666;
+                    font-size: 14px;
+                    &:first-of-type{
+                        border: none;
+                    }
+                    strong{
+                        margin: -5px 0 0;
+                    }
+                    span{
+                        margin: 10px 0 0;
+                    }
+                    span,strong{
+                        display: block;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        // 倒计时
+        .project-limit-time{
+            width: 80%;
+            margin: 0 auto 15px;
+            padding: 10px 0;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            p{
+                display: inline-block;
+                line-height: 40px;
+                padding: 0 0 0 12px;
+                color: #bbbab6;
+                text-align: center;
+                &:before{
+                    content:"";
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin: -3px 12px 0 0;
+                    background:url(/m/img/clock.png) center/contain no-repeat;
+                    vertical-align: middle;
+                }
+                span{
+                    display: inline-block;
+                    min-width: 20px;
+                    line-height: 30px;
+                    height: 30px;
+                    padding: 0 5px;
+                    margin:-3px 5px 0 8px;
+                    background: #f0f0f0;
+                    color:#fe2830;
+                    vertical-align: middle;
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+// 新闻列表
+.news-list {
+    border-bottom: 1px solid #e6e6e6;
+    background: #e6e6e6;
+    .news-item {
+        display: block;
+        padding: 8px;
+        // border-bottom: 1px solid #e6e6e6;
+        margin: 0 0 1px;
+        background: #fff;
+        &:last-of-type {
+            margin: 0 0 0px;
+        }
+        .clearfix();
+        // 资讯图片
+        .news-img {
+            float: right;
+            height: 62px;
+            img {
+                max-width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                margin: 5px 0 5px 8px;
+            }
+        }
+        // 资讯内容
+        .news-content {
+            overflow: hidden;
+            p {
+                line-height: 24px;
+            }
+            .news-title {
+                color: #333;
+                font-weight: 700;
+                .elli();
+            }
+            .news-abstract {
+                font-size: 13px;
+                color: #999;
+                height: 24px;
+                line-height: 24px;
+                .elli();
+                * {
+                    display: inline !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    font-size: 13px !important;
+                    font-weight: 500 !important;
+                    color: #999 !important;
+                }
+            }
+            .news-date {
+                // text-align: right;
+                font-size: 10px;
+                color: #999;
+            }
+        }
+    }
+}
+
+// 毛玻璃效果
+.blur() {
+    /* Chrome, Opera */
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    // filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+    /* IE6~IE9 */
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.float{
+    .mask{
+        display: none;
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        &.active{
+            display: block;
+        }
+        &.black-mask{
+            background: #000;
+            opacity: 0.2;
+        }
+        &.white-mask{
+            background: #fff;
+            opacity: 0.2;
+        }
+    }
+}
+
+@media screen and (max-width:320px) {
+    .project-list {
+        .project-item {
+            // 倒计时
+            .project-limit-time{
+                width: 90%;
+            }
+        }
+    }
+}

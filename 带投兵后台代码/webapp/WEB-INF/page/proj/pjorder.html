@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目跟投情况</title>
+    #parse("header.html")
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <li class="active"><a href="javascript:void(0)">项目列表</a></li>
+        </ul>
+
+        <div>
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="queryData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query">查询</a>
+            </div>
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo()'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                #if($shiro.hasPermission("pjorder:info"))
+                <a href="javascript:void(0)" class="btn btn-success" @click="look()"><i class="fa fa-check"></i>&nbsp;查看会员跟投</a>
+                #end
+            </div>
+
+            <table id="jqGrid" style="width:500px"></table>
+            <div id="jqGridPager"></div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 详情浮窗 -->
+    <div id="pro-detail">
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+
+
+    <!-- 查看跟投弹窗 -->
+    <div id="first" v-show='show_win' class="mask active" v-cloak >
+        <div class="float-win" style="width:980px">
+            <h4>
+                跟投情况
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+            <table id="jqGridOrder"></table>
+            <div id="jqGridPagerOrder"></div>
+        </div>
+    </div>
+
+
+    <!-- 查看会员信息 -->
+    <div id="user-msg">
+        <member-tpl :show="show_win" :userinfo="userinfo" :tab="tab" :carinfos="carinfos" @change-view="changeView" @closewin="closewin"></member-tpl>
+    </div>
+
+    <script type="text/javascript" src="${rc.contextPath}/js/math.min.js"></script>
+    <script src="${rc.contextPath}/js/proj/pjorder.js?_${date.systemTime}"></script>
+</body>
+
+</html>

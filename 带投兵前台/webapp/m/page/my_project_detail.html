@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端-订单详情</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/my_project_detail.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>订单详情</h2>
+            </div>
+            <!-- 顶 -->
+            <div class="top">
+                <!-- 第一行 -->
+                <div class="order-num">
+                    <span>订单编号：{{odOrderEntity.id}}</span>
+                    <span>{{odOrderEntity.createtime}}</span>
+                </div>
+                <!-- 第二行 -->
+                <a href="my_project_detail.html" class="pj-detail">
+                    <i style="background-image: url('/m//img/logo.png');"></i>
+                    <div class="pj-detail-right">
+                        <!-- 项目标题 状态 时间 -->
+                        <div class="pj-detail-title">
+                            <div class="pj-detail-title-right">
+                                <span class="pj-step">{{pjInfoEntity.statusDesc}}</span>
+                                <span v-if="pjInfoEntity.status === 20 && pjInfoEntity.pjFinacingEntity.preheatdays != 0" class="pj-time">{{pjInfoEntity.pjFinacingEntity.preheatdays}}天</span>
+                                <span v-if="pjInfoEntity.status === 30 && pjInfoEntity.pjFinacingEntity.raisedays != 0" class="pj-time">{{pjInfoEntity.pjFinacingEntity.raisedays}}天</span>
+                                <span v-if="pjInfoEntity.status === 40 && pjInfoEntity.pjFinacingEntity.contributivedays != 0" class="pj-time">{{pjInfoEntity.pjFinacingEntity.contributivedays}}天</span>
+                                <span v-if="pjInfoEntity.status === 50 && pjInfoEntity.pjFinacingEntity.deliverydays != 0" class="pj-time">{{pjInfoEntity.pjFinacingEntity.deliverydays}}天</span>
+                            </div>
+                            <div class="pj-detail-title-left">{{pjInfoEntity.name}}</div>
+                        </div>
+                        <!-- 金额 -->
+                        <div class="pj-detail-detail-amount">
+                            <span>投资金：{{odOrderEntity.depositamount}}</span>
+                            <span>保证金：{{odOrderEntity.amount}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- 中 -->
+            <div class="section middle">
+                <div class="title">订单详情</div>
+                <ul class="order-detail">
+                    <li>
+                        <span>意向投资金额：</span>
+                        <span class="orange-font">{{odOrderEntity.intentionamount}}</span>
+                    </li>
+                    <li>
+                        <span>订单状态：</span>
+                        <tempale v-if="pjInfoEntity.status === 20">
+                            <span class="blue-font" v-if="pjInfoEntity.status === 20 && odOrderEntity.status === 0" class="status-right">待付保密金</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 20 && odOrderEntity.status === 5" class="status-right">保密金待审核</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 20 && odOrderEntity.status === 10" class="status-right">报名成功</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 20 && odOrderEntity.status === -100" class="status-right">订单取消</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 20 && odOrderEntity.status === -10" class="status-right">已退款</span>
+                            <span class="blue-font" v-else>逾期未付款</span>
+                        </tempale>
+
+                        <tempale v-else-if="pjInfoEntity.status === 30">
+                            <span class="blue-font" v-if="pjInfoEntity.status === 30 && odOrderEntity.status === 10 && amount === 0 && (odOrderEntity.tJContract === null || odOrderEntity.tJContract.status === 10) "
+                                class="status-right">待签投资合同</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === 10 && amount === 0 && odOrderEntity.tJContract != null && odOrderEntity.tJContract.status !== 10 "
+                                class="status-right">待投资</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === 10 && amount > 0" class="status-right">待付保证金</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === 15" class="status-right">保证金待审核</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === 20" class="status-right">待付余款</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === 25" class="status-right">余款待审核</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === 100" class="status-right">已付余款</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === -100" class="status-right">订单取消</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 30 && odOrderEntity.status === -10" class="status-right">已退款</span>
+                            <span class="blue-font" v-else>逾期未付款</span>
+                        </tempale>
+
+                        <tempale v-else-if="pjInfoEntity.status === 50">
+                            <span class="blue-font" v-if="pjInfoEntity.status === 50 && odOrderEntity.status === 100" class="status-right">交割中</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 50 && odOrderEntity.status === -100" class="status-right">订单取消</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 50 && odOrderEntity.status === -10" class="status-right">已退款</span>
+                            <span class="blue-font" v-else>逾期未付款</span>
+                        </tempale>
+
+                        <tempale v-else-if="pjInfoEntity.status === 100">
+                            <span class="blue-font" v-if="pjInfoEntity.status === 100 && status === 100" class="status-right">交易成功</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 100 && status === -100" class="status-right">订单取消</span>
+                            <span class="blue-font" v-else-if="pjInfoEntity.status === 100 && status === -10" class="status-right">已退款</span>
+                            <span class="blue-font" v-else>逾期未付款</span>
+                        </tempale>
+
+                    </li>
+                    <li>
+                        <span>保证金：</span>
+                        <span class="orange-font">{{odOrderEntity.depositamount}}</span>
+                    </li>
+                    <li>
+                        <span>实际投资金额：</span>
+                        <span class="orange-font">{{odOrderEntity.amount}}</span>
+                    </li>
+                    <li>
+                        <span>打款账号：</span>
+                        <span class="orange-font">{{platform_accno}}</span>
+                    </li>
+                    <li>
+                        <span>打款户名：</span>
+                        <span class="orange-font">{{platform_accname}}</span>
+                    </li>
+                    <li>
+                        <span>打款银行：</span>
+                        <span class="orange-font">{{platform_bankname}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 内容 end -->
+    </div>
+    <script type="text/javascript" src="/m/js/my_project_detail.js"></script>
+</body>
+
+</html>

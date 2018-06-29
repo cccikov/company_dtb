@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>资讯详情</title>
+    <link rel="stylesheet" href="/m/css/news_detail.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>资讯详情</h2>
+            </div>
+
+            <!-- main begin -->
+            <div class="main">
+                <h2 class="news-title">
+                    {{nwNewsEntity.title}}
+                </h2>
+                <p class="news-info">
+                    <span>
+                        日期： {{nwNewsEntity.createtime}}
+                    </span>
+                    <span>
+                        类型： {{nwNewsEntity.sortname}}
+                    </span>
+                </p>
+                <div v-html="nwNewsEntity.content"></div>
+            </div>
+            <!-- main end -->
+
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+
+    <script type="text/javascript" src="/m/js/news_detail.js"></script>
+</body>
+
+</html>

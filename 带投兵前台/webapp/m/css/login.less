@@ -1,0 +1,162 @@
+@import url("./common.less");
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    background: #e6e6e6;
+}
+
+input {
+    &:focus {
+        outline: none;
+    }
+}
+
+// input label
+.name {
+    line-height: 32px;
+    font-size: 14px;
+}
+
+// input 输入框
+.input {
+    input {
+        box-sizing: border-box;
+        width: 100%;
+        line-height: 32px;
+        padding: 0 12px;
+        border-radius: 5px;
+        background: #e6e6e6;
+        color: #666;
+    }
+}
+
+.container {
+    padding: 0;
+    background: #fff;
+    .login-box {
+        padding: 20px 0 30px;
+        width: 280px;
+        margin: 0 auto;
+        .img-wrap {
+            padding: 0 0 20px;
+            text-align: center;
+            img {
+                display: inline-block;
+                width: 135px;
+            }
+        }
+    }
+}
+
+.error {
+    opacity: 0;
+    color: #e4393c;
+    font-size: 14px;
+    line-height: 1.5;
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        margin: -3px 5px 0 0;
+        background: url(../img/error.png) center/contain no-repeat;
+    }
+    &.active {
+        opacity: 1;
+    }
+}
+
+.code {
+    .code-wrap {
+        .clearfix();
+        a {
+            float: right;
+            margin: 0 0 0 12px;
+            img {
+                display: block;
+                border-radius: 5px;
+                max-height: 32px;
+            }
+        }
+        .input {
+            overflow: hidden;
+            border-radius: 5px;
+            input {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.remember {
+    padding: 6px 0 6px;
+    .clearfix();
+    font-size: 14px;
+    label {
+        float: left;
+        input {
+            margin: -3px 0 0;
+            vertical-align: middle;
+        }
+    }
+    a {
+        float: right;
+        line-height: 32px;
+        font-size: inherit;
+        text-decoration: underline
+    }
+}
+
+.action {
+    .clearfix();
+    a {
+        float: left;
+        width: 45%;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 7px;
+        color: #fff;
+        font-size: 14px;
+        &:nth-of-type(1) {
+            background: #ff8000;
+            margin: 0 10% 0 0;
+        }
+        &:nth-of-type(2) {
+            background: #3399cc;
+        }
+    }
+}
+
+.bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #979797;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #979797;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #979797;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #979797;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>投后管理</title>
+    <link rel="stylesheet" href="/m/css/delivery.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>投后管理</h2>
+            </div>
+
+
+            <!-- main begin -->
+            <div class="main">
+
+                <!-- 链接 交易详情 -->
+                <a class="item" v-for="(val , index) in odOrderEntities" href="###">
+
+                    <!-- 第一part begin-->
+                    <div class="part1">
+                        <!-- 图片 -->
+                        <div class="pic" v-if="!!val.pjInfoEntity.pjDocumentEntities.SY">
+                            <i :style="{'background-image':'url('+val.pjInfoEntity.pjDocumentEntities.SY[0].pic+')'}"></i>
+                        </div>
+                        <!-- 内容 -->
+                        <div class="content">
+                            <!-- 标题 标签 -->
+                            <div class="title">
+                                <!-- 标签部分 -->
+                                <p class="labels">
+                                    <span>{{val.pjInfoEntity.statusDesc}}</span>
+                                    <span>{{val.pjInfoEntity.pjFinacingEntity.deliverydays}}天</span>
+                                </p>
+                                <h4>{{val.pjInfoEntity.name}}</h4>
+                            </div>
+                            <!-- 简介 -->
+                            <p class="brief">
+                                {{val.pjInfoEntity.brief}}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 第一part end -->
+
+                    <!-- 第二part begin -->
+                    <div class="part2">
+                        <p>
+                            <span>认购费</span>
+                            <strong>￥{{val.subscribe}}</strong>
+                        </p>
+                        <p>
+                            <span>保证金</span>
+                            <strong>￥{{val.depositamount}}</strong>
+                        </p>
+                        <p>
+                            <span>投资金</span>
+                            <strong>￥{{val.amount}}</strong>
+                        </p>
+                    </div>
+                    <!-- 第二part end -->
+
+                    <!-- 第三part begin -->
+                    <div class="part3">
+                        <button v-if="val.pjInfoEntity.pjLogEntities.certificate != null" class="alink" @click="showStep($event,4,val.pjInfoEntity.pjLogEntities.paytoowner.pic,val.pjInfoEntity.pjLogEntities.paytofinancing,val.pjInfoEntity.pjLogEntities.certificate)">查看流程</button>
+                        <button v-else-if="val.pjInfoEntity.pjLogEntities.paytofinancing != null" class="alink" @click="showStep($event,3,val.pjInfoEntity.pjLogEntities.paytoowner.pic,val.pjInfoEntity.pjLogEntities.paytofinancing)">查看流程</button>
+                        <button v-else-if="val.pjInfoEntity.pjLogEntities.paytoowner != null" class="alink" @click="showStep($event,2,val.pjInfoEntity.pjLogEntities.paytoowner.pic)">查看流程</button>
+                        <button v-else-if="val.pjInfoEntity.pjLogEntities.paymentreceived != null" class="alink" @click="showStep($event,1)">查看流程</button>
+                        <button v-else="val.pjInfoEntity.pjLogEntities === null" class="alink" @click="showStep($event,0)">查看流程</button>
+                    </div>
+                    <!-- 第三part end -->
+                </a>
+                <div class="tips"></div>
+
+            </div>
+            <!-- main end -->
+
+        </div>
+        <!-- 内容 end -->
+
+
+    </div>
+
+    <!-- 浮窗 -->
+    <div class="float">
+        <div class="mask black-mask" onclick="vm.hideStep();"></div>
+        <div class="manage-float">
+            <div class="step step1">
+                <p>带投兵平台已收到客户所支付全款</p>
+            </div>
+            <div class="step step2">
+                <p>带投兵平台付款给投资主体</p>
+                <a href="javascript:void(0)" target="_blank">查看水单</a>
+            </div>
+            <div class="step step3">
+                <p>投资主体付款给融资主体</p>
+                <a href="javascript:void(0)" target="_blank">查看水单</a>
+            </div>
+            <div class="step step4">
+                <p>出资证明书</p>
+                <a href="javascript:void(0)" target="_blank">下载出资证明书</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="/m/js/my_delivery.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目审核</title>
+    #parse("header.html")
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <li :class="{active:showList}"><a href="javascript:void(0)">订单列表</a></li>
+        </ul>
+
+        <div v-show="showList">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>订单号：<input type="text" v-model="queryData.id" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query">查询</a>
+            </div>
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo()'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+            </div>
+
+            <table id="jqGrid" style="width:500px"></table>
+            <div id="jqGridPager"></div>
+        </div>
+
+    </div>
+
+
+    <!-- 详情浮窗 -->
+    <div id="pro-detail">
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+
+    <!-- 查看会员信息 -->
+    <div id="user-msg">
+        <member-tpl :show="show_win" :userinfo="userinfo" :tab="tab" :carinfos="carinfos" @change-view="changeView" @closewin="closewin"></member-tpl>
+    </div>
+
+    <script src="${rc.contextPath}/js/order/orderlist.js?_${date.systemTime}"></script>
+</body>
+
+</html>

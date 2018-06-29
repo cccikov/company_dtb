@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>投资人认证</title>
+    <link rel="stylesheet" href="/m/css/cert.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script src="/m/js/vue-cc-validate.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>投资人认证</h2>
+            </div>
+
+            <!-- main begin -->
+            <div class="main">
+
+                <!-- 已认证的 -->
+                <div v-show="certified" class="certified">
+                    <p>
+                        <span>姓名</span>
+                        <span>哈哈哈</span>
+                    </p>
+                    <p>
+                        <span>手机</span>
+                        <span>15920123456</span>
+                    </p>
+                    <p>
+                        <span>身份证号</span>
+                        <span>440681199002112617</span>
+                    </p>
+                    <p>
+                        <span>银行卡号</span>
+                        <span>44058771122344564</span>
+                    </p>
+                    <p>
+                        <span>审核状态：</span>
+                        <strong>审核中</strong>
+                    </p>
+                    <div class="action">
+                        <a @click="certify" href="javascript:void(0)">资料更改</a>
+                    </div>
+                </div>
+
+                <!-- 未认证 -->
+                <div class="certify">
+                    <div class="base-info">
+                        <div class="item">
+                            <label class="item-content">
+                                <span class="item-name">姓名</span>
+                                <p class="item-input">
+                                    <input placeholder="请输入您的名字" v-validate="'required'" type="text" name="username" v-model="formData.username">
+                                </p>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <label class="item-content">
+                                <span class="item-name">手机</span>
+                                <p class="item-input">
+                                    <input name="mobile" v-model="formData.mobile" v-validate="'required'" placeholder="请输入11位数手机号码" type="text">
+                                </p>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <label class="item-content">
+                                <span class="item-name">身份证号</span>
+                                <p class="item-input">
+                                    <input name="idCard" v-model="formData.idCard" v-validate="'required'" placeholder="根据法律规定投资人需要实名认证" type="text">
+                                </p>
+                            </label>
+                        </div>
+
+                        <div class="item identity">
+                            <p>身份证正反面</p>
+                            <label>
+                                <input id="front" type="file">
+                                <input id="frontpic" name="frontpic" type="hidden" :value="formData.frontImg">
+                                <div>
+                                    <p>请上传身份证正面</p>
+                                    <p>+</p>
+                                </div>
+                                <a :style="{'background-image':'url('+formData.frontImg+')'}" :href="formData.frontImg"></a>
+                            </label>
+                            <label>
+                                <input id="back" type="file">
+                                <input id="backpic" name="backpic" type="hidden" :value="formData.backImg">
+                                <div>
+                                    <p>请上传身份证反面</p>
+                                    <p>+</p>
+                                </div>
+                                <a :style="{'background-image':'url('+formData.backImg+')'}" :href="formData.backImg"></a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bank-info">
+                        <p>银行信息</p>
+                        <div class="select-add">
+                            <a @click="change_type('select')" :class="{active:type=='select'}" href="javascript:void(0)">选择已绑定银行卡</a>
+                            <a @click="change_type('add')" :class="{active:type=='add'}" href="javascript:void(0)">+添加银行卡</a>
+                        </div>
+                        <div v-show="type=='select'" class="bank-list">
+                            <a :class="{active:formData.cardnoS==index}" @click="selectCard(index)" v-for="(val,index) of [1,2,3,4,5]" href="javascript:void(0)">{{formatBankCard("719237675491273"+index)}}</a>
+                            <input style="display: none;" value="formData.cardnoS" type="text">
+                        </div>
+                        <div v-show="type=='add'" class="add-card">
+                            <div class="item">
+                                <label class="item-content">
+                                    <span class="item-name">银行卡号</span>
+                                    <p class="item-input">
+                                        <input @input="bankCardInput($event)" v-validate="'required'" name="cardNo" v-model="formData.cardNo" placeholder="请输入您的银行卡卡号" type="text">
+                                    </p>
+                                </label>
+                            </div>
+                            <div class="item">
+                                <label class="item-content">
+                                    <span class="item-name">开户行</span>
+                                    <p class="item-input">
+                                        <input v-validate="'required'" name="bankName" v-model="formData.bankName" placeholder="请输入银行卡所属银行" type="text">
+                                    </p>
+                                </label>
+                            </div>
+                            <div class="item">
+                                <label class="item-content">
+                                    <span class="item-name">开户行网点</span>
+                                    <p class="item-input">
+                                        <input v-validate="'required'" name="dotName" v-model="formData.dotName" placeholder="请输入开户行分支行" type="text">
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="error" v-if="error('username')==1">请输入姓名</p>
+                    <p class="error" v-else-if="error('mobile')==1">请输入手机号</p>
+                    <p class="error" v-else-if="error('idCard')==1">请输入身份证号</p>
+                    <p class="error" v-else-if="!formData.frontImg">请上传身份证正面</p>
+                    <p class="error" v-else-if="!formData.backImg">请上传身份证背面</p>
+                    <p class="error" v-else-if="error('cardNo')==1">请输入银行卡号</p>
+                    <p class="error" v-else-if="error('bankName')==1">请输入银行</p>
+                    <p class="error" v-else-if="error('dotName')==1">请输入银行支行</p>
+                    <p class="error" v-else-if="error('dotName')==1">请输入验证码</p>
+                    <p class="error" v-else-if="error('dotName')==3">验证码错误</p>
+
+                    <div class="code">
+                        <div class="item">
+                            <label class="item-content">
+                                <span class="item-name">验证码</span>
+                                <p class="item-input">
+                                    <input name="mobilevaildcode" v-model="formData.mobilevaildcode" v-validate="'required|code'" placeholder="请输入验证码" type="text">
+                                </p>
+                            </label>
+                            <a v-show="time == 0" @click="getCode" href="javascript:void(0)">获取验证码</a>
+                            <a v-show="time != 0" href="javascript:void(0)">重新获取{{time}}</a>
+                        </div>
+                        <a class="submit" :class="{canclick:canSubmit}" href="javascript:void(0)">提交认证</a>
+                        <a class="submit" :class="{canclick:true}" href="javascript:void(0)">永远可以提交（测试用）</a>
+                    </div>
+
+                    <p>{{validate_error}}</p>
+                    <p>{{formData}}</p>
+                </div>
+
+            </div>
+            <!-- main end -->
+
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+
+    <script type="text/javascript" src="/m/js/cert.js"></script>
+</body>
+
+</html>

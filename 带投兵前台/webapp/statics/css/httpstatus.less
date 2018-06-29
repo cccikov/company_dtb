@@ -1,0 +1,51 @@
+// http 状态码
+@import url("./common.less");
+html,
+body {
+    background: #f0f0f0;
+}
+
+.main {
+    padding: 40px 0 @footerHeight+40px;
+}
+
+.main-content {
+    width: 1200px;
+    background: #fff;
+    padding: 130px 0 150px;
+    margin: 0 auto;
+    text-align: center;
+    .main-wrap {
+        display: inline-block;
+        padding: 0 20px 0 0;
+        .left {
+            float: left;
+        }
+        .right {
+            float: left;
+            line-height: 40px;
+            margin: 0 0 0 40px;
+            font-size: 16px;
+            color: #333333;
+            text-align: left;
+            img {
+                margin: 0 0 15px;
+            }
+            p {
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 3px;
+                    height: 3px;
+                    margin: -3px 10px 0 0;
+                    vertical-align: middle;
+                    background: #666;
+                }
+            }
+            a {
+                font-size: 18px;
+                color: #ff6935;
+            }
+        }
+    }
+}

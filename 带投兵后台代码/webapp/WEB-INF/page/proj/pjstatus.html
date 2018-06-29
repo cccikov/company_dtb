@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目审核</title>
+    #parse("header.html")
+    <script src="${rc.contextPath}/statics/libs/ajaxupload.js"></script>
+    <!-- 修改详情的样式 -->
+    <style>
+    .detail-win textarea {
+        background: #fff;
+    }
+
+    .detail-win input[type=file] {
+        display: inline-block;
+        border: none;
+    }
+
+    .detail-win input[type=file][disabled] {
+        opacity: 0.3;
+    }
+
+    .detail-win .detail-table {
+        border: 1px solid #ccc;
+    }
+
+    .detail-win .box-content,
+    .detail-win .detail-table {
+        padding-bottom: 0;
+    }
+
+    .detail-win .detail-table table {
+        width: 94%;
+        margin: 0 3% 20px;
+    }
+
+    .detail-table .box-content-left,
+    .detail-table .box-content-right,
+    .detail-table .box-content-bottom {
+        text-align: left;
+    }
+
+    .detail-table .box-content-left,
+    .detail-table .box-content-right {
+        margin-top: 15px;
+    }
+
+    i.required:before {
+        content: "*";
+        color: red;
+        vertical-align: top;
+    }
+
+    select {
+        padding: 1px 12px 6px;
+        border: 1px solid #c3c3c3;
+        font-size: 14px;
+    }
+
+    .input-action {
+        padding: 15px 0 20px;
+        margin: 0;
+        text-align: center;
+        clear: both;
+    }
+
+    button.btn[disabled],
+    button.btn.disabled,
+    button.btn.disable,
+    button.btn[disabled='true'] {
+        background: #ccc;
+        border-color: #ccc;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .fa-minus-circle {
+        color: red;
+    }
+
+    .textlen {
+        font-size: 14px;
+        margin: 0 0 0 5px;
+    }
+
+    .textlenerror {
+        color: #a71616;
+    }
+    #detail-win .win-nav li{
+        display: none;
+    }
+    #detail-win .win-nav li.active{
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+    <input name="token" id="token" type="hidden"></input>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <li class="active">
+                <a href="javascript:void(0)">项目列表</a>
+            </li>
+        </ul>
+        <div>
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="queryData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query">查询</a>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo()'>
+                    <i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                <a href="javascript:void(0)" class="btn btn-warning" @click="pause">
+                    <i class="fa fa-pause"></i>&nbsp;暂停</a>
+                <a href="javascript:void(0)" class="btn btn-success" @click="showraise">
+                    <i class="fa fa-jpy"></i>&nbsp;募集</a>
+                <a href="javascript:void(0)" class="btn btn-primary" @click="delivery">
+                    <i class="fa fa-american-sign-language-interpreting"></i>&nbsp;交割</a>
+                <a href="javascript:void(0)" class="btn btn-primary" @click="finish">
+                    <i class="fa fa-american-sign-language-interpreting"></i>&nbsp;完成</a>
+                <a href="javascript:void(0)" class="btn btn-danger" @click="stop">
+                    <i class="fa fa-stop"></i>&nbsp;停止</a>
+            </div>
+            <table id="jqGrid" style="width:500px"></table>
+            <div id="jqGridPager"></div>
+        </div>
+    </div>
+    <!-- 详情浮窗 -->
+    <div id="pro-detail">
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+
+    <!-- 修改浮窗 -->
+    <div id="detail-win" v-show='show_win' class="mask" :class="{active:show_win}">
+        <div class="float-win">
+            <h4>项目详细信息
+                <a href="javascript:void(0)" @click='closewin'>
+                    <i class="fa fa-close"></i>
+                </a>
+            </h4>
+            <!-- 详情浮窗 导航 -->
+            <ul class="win-nav">
+                <li :class="{active:tab1,show:showEditArr[0]}">
+                    <a href="javascript:void(0)" @click="changeView('tab1')">募资成功介绍</a>
+                </li>
+                <li :class="{active:tab2,show:showEditArr[1]}">
+                    <a href="javascript:void(0)" @click="changeView('tab2')">融资需求</a>
+                </li>
+                <li :class="{active:tab4,show:showEditArr[3]}">
+                    <a href="javascript:void(0)" @click="changeView('tab4')">
+                        <span v-if="flag === 1">募资成功图片</span>
+                        <span v-else>项目材料</span>
+                    </a>
+                </li>
+                <li :class="{active:tab5,show:showEditArr[4]}">
+                    <a href="javascript:void(0)" @click="changeView('tab5')">融资阶段</a>
+                </li>
+            </ul>
+            <div class="box-content" v-show='tab1'>
+                <div class="box-content-bottom">
+                    <label>
+                        <span>成功简介：</span>
+                        <textarea v-model="info.sucbrief" name="sucbrief" v-validata="'required|sucbriefMax'"></textarea>
+                        <em class="textlen" :class="{textlenerror:sucbriefLen>500}"> {{sucbriefLen}}/500</em>
+                        <i class="pass fa fa-check-circle" v-if="error('sucbrief') == 0"></i>
+                        <p class="tips" v-if="error('sucbrief') == 1">请输入成功简介</p>
+                        <p class="error" v-if="error('sucbrief') == 4"><i class="fa fa-times"></i> 成功简介字数超出范围(500字)</p>
+                    </label>
+                </div>
+                <p class='input-action'>
+                    <button class="btn btn-primary" :disabled='!info.sucbrief' @click='editInfo()'>保存</button>
+                </p>
+            </div>
+            <!-- 融资需求 -->
+            <div class="box-content" v-show='tab2'>
+                <div class="clearfix">
+                    <div class="box-content-left">
+                        <label>
+                            <span>预热期限：</span>
+                            <input type="text" v-model="finacing.preheatdays" name="preheatdays" v-validata="'required'">
+                            <i>天</i>
+                            <i class="pass fa fa-check-circle" v-if="error('preheatdays') == 0"></i>
+                            <p class="tips" v-if="error('preheatdays') == 1">请输入预热期限</p>
+                        </label>
+                        <label>
+                            <span>交割期限：</span>
+                            <input type="text" v-model="finacing.deliverydays" name="deliverydays" v-validata="'required'">
+                            <i>天</i>
+                            <i class="pass fa fa-check-circle" v-if="error('deliverydays') == 0"></i>
+                            <p class="tips" v-if="error('deliverydays') == 1">请输入交割期限</p>
+                        </label>
+                    </div>
+                    <div class="box-content-right">
+                        <label>
+                            <span>募资期限：</span>
+                            <input type="text" v-model="finacing.raisedays" name="raisedays" v-validata="'required'">
+                            <i>天</i>
+                            <i class="pass fa fa-check-circle" v-if="error('raisedays') == 0"></i>
+                            <p class="tips" v-if="error('raisedays') == 1">请输入募资期限</p>
+                        </label>
+                    </div>
+                </div>
+                <p class='input-action'>
+                    <button class="btn btn-primary" @click='editFinacing()'>保存</button>
+                </p>
+            </div>
+            <!-- 项目材料 -->
+            <div class="box-content" v-show='tab4'>
+                <div class="clearfix">
+                    <label>
+                        <span>材料类型：</span>
+                        <select v-model='document.type'>
+                        	<template v-if="flag === 1">
+                        		<option value="SUC" >成功宣传图片</option>
+                        	</template>
+                        	<template v-if="flag === 0">
+                                <option disabled value="" selected>请选择</option>
+                                <option value="SY">首页(293*334)</option>
+                                 <option value="HF">详情横幅</option>
+                                <option value="XQ">项目介绍 (推荐宽766)</option>
+                                <option value="LD">投资亮点 (推荐宽766)</option>
+                                <option value="FA">投资方案 (推荐宽766)</option>
+                                <option value="CY">团队成员 (推荐宽766)</option>
+                                <option value="HX">项目资料</option>
+                                <option value="JH">融资计划书</option>
+                                <option value="SP">视频</option>
+                                <option value="BP">简易BP</option>
+                            </template>
+                        </select>
+                        <i class="required"></i>
+                    </label>
+                </div>
+                <div class="clearfix">
+                    <div class="box-content-left">
+                        <label>
+                            <span>编号：</span>
+                            <input style="width: 5em;" type="text" v-model='document.num' name="num">
+                            <p style="padding: 0 0 0 6em;font-size: 14px;color:#999">若同时上传多张同类型 , 务必填写编号(即显示顺序)</p>
+                        </label>
+                    </div>
+                    <div class="box-content-right">
+                        <label>
+                            <span>操作：</span>
+                            <button class="btn btn-default" id="uploadDocument" :class='{disable:!document.type}'>上传</button>
+                        </label>
+                    </div>
+                </div>
+                <table v-if='documents.length>0'>
+                    <tr>
+                        <th></th>
+                        <th>上传者</th>
+                        <th>材料类型</th>
+                        <th>编号</th>
+                        <th>上传时间</th>
+                        <th>详情</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for='item in documents' :key='item.id'>
+                    <template v-if="flag === 1">
+                    	<template v-if="item.type === 'SUC' ">
+	                    	<td>{{item.id}}</td>
+	                        <td>{{item.creator}}</td>
+	                        <td>{{item.typedes}}</td>
+	                        <td>{{item.num}}</td>
+	                        <td>{{item.createtime}}</td>
+	                        <td>
+	                            <a class="table-action" target="_blank" :href="item.pic">
+	                                <i class="icon-search"></i>
+	                            </a>
+	                        </td>
+	                        <td>
+	                            <a href="javascript:void(0)" @click="delDocument(item.id)">
+	                                <i class="fa fa-minus-circle"></i>
+	                            </a>
+	                        </td>
+                    	</template>
+                    </template>
+                    <template v-if="flag === 0">
+                    	<template v-if="item.type != 'SUC' ">
+	                    	<td>{{item.id}}</td>
+	                        <td>{{item.creator}}</td>
+	                        <td>{{item.typedes}}</td>
+	                        <td>{{item.num}}</td>
+	                        <td>{{item.createtime}}</td>
+	                        <td>
+	                            <a class="table-action" target="_blank" :href="item.pic">
+	                                <i class="icon-search"></i>
+	                            </a>
+	                        </td>
+	                        <td>
+	                            <a href="javascript:void(0)" @click="delDocument(item.id)">
+	                                <i class="fa fa-minus-circle"></i>
+	                            </a>
+	                        </td>
+                    	</template>
+                    </template>
+                    </tr>
+                </table>
+            </div>
+            <!-- 融资阶段 -->
+            <div class="box-content" v-show='tab5'>
+                <div class="box-content-bottom">
+                    <label>
+                        <span>融资阶段：</span>
+                        <input @change = "financingChange" type="radio" v-model="info.financing" name="financing" value="seed"><i class="radio-label">种子轮</i>
+                        <input @change = "financingChange" type="radio" v-model="info.financing" name="financing" value="angel"><i class="radio-label">天使轮</i>
+                        <input @change = "financingChange" type="radio" v-model="info.financing" name="financing" value="A"><i class="radio-label">A轮</i>
+                        <input @change = "financingChange" type="radio" v-model="info.financing" name="financing" value="Pre-A"><i class="radio-label">Pre-A轮</i>
+                        <input @change = "financingChange" type="radio" v-model="info.financing" name="financing" value="B"><i class="radio-label">B轮</i>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 出资填写合伙人弹窗 -->
+    <div id="partner-win" class="mask" :class="{active:show}">
+        <div class="float-win" style="width:430px;">
+            <h4>
+                项目材料补充
+                <a href="javascript:void(0)" @click='closewin'>
+                    <i class="fa fa-close"></i>
+                </a>
+            </h4>
+            <div class="box-content only">
+                <label>
+                    <span>原有限合伙人：</span>
+                    <input type="text" v-model="lp" name="lp" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('lp') == 0"></i>
+                    <p class="tips" v-if="error('lp') == 1">请输入丁方合伙人</p>
+                </label>
+                <label>
+                    <span>LP法大大编号：</span>
+                    <input type="text" v-model="lpcustomerid" name="lpcustomerid" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('lpcustomerid') == 0"></i>
+                    <p class="tips" v-if="error('lpcustomerid') == 1">请输入LP法大大编号</p>
+                </label>
+                <label>
+                    <span>普通合伙人：</span>
+                    <input type="text" v-model="gp" name="gp" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('gp') == 0"></i>
+                    <p class="tips" v-if="error('gp') == 1">请输入普通合伙人</p>
+                </label>
+                <label>
+                    <span>GP法大大编号：</span>
+                    <input type="text" v-model="gpcustomerid" name="gpcustomerid" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('gpcustomerid') == 0"></i>
+                    <p class="tips" v-if="error('gpcustomerid') == 1">请输入GP法大大编号</p>
+                </label>
+                <label>
+                    <span>普通合伙人2：</span>
+                    <input type="text" v-model="gp2" name="gp2" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('gp2') == 0"></i>
+                    <p class="tips" v-if="error('gp2') == 1">请输入普通合伙人</p>
+                </label>
+                <label>
+                    <span>GP法大大编号2：</span>
+                    <input type="text" v-model="gpcustomerid2" name="gpcustomerid2" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('gpcustomerid2') == 0"></i>
+                    <p class="tips" v-if="error('gpcustomerid2') == 1">请输入GP法大大编号</p>
+                </label>
+                <label>
+                    <span>合伙企业名称：</span>
+                    <input type="text" v-model="companyname" name="companyname" v-validata="'required'" style="width:250px">
+                    <i class="pass fa fa-check-circle" v-if="error('companyname') == 0"></i>
+                    <p class="tips" v-if="error('companyname') == 1">请输入合伙企业名称</p>
+                </label>
+                <label>
+                    <span>合伙企业出资额：</span>
+                    <input type="text" v-model="capital" name="capital" v-validata="'required'">
+                    <i>万元</i>
+                    <i class="pass fa fa-check-circle" v-if="error('capital') == 0"></i>
+                    <p class="tips" v-if="error('capital') == 1">请输入合伙企业出资额</p>
+                </label>
+                <label>
+                    <span>合伙企业成立日期：</span>
+                    <input class="data-input" type="date" v-model="establishmentdate" name="establishmentdate" placeholder="2000-01-01" v-validata="'required'">
+                    <i class="pass fa fa-check-circle" v-if="error('establishmentdate') == 0"></i>
+                    <p class="tips" v-if="error('establishmentdate') == 1">请输入合伙企业成立日期</p>
+                </label>
+                <p class='input-action' style="text-align:center;">
+                    <button class="btn btn-primary" @click='save()'>保存</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="${rc.contextPath}/js/proj/pjstatus.js?_${date.systemTime}"></script>
+</body>
+
+</html>

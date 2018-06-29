@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端-我的订单</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/my_project.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>我的订单</h2>
+            </div>
+
+            <!-- 导航 -->
+            <div class="nav swiper-container">
+                <div class="swiper-wrapper">
+                    <a class="notAppLink swiper-slide" href="my_project.html" qstatus="all">所有</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=10" qstatus="10">待付保证金</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=15" qstatus="15">保证金待审核</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=20" qstatus="20">待付余款</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=25" qstatus="25">余款待审核</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=100" qstatus="100">成功</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=-10" qstatus="-10">已退款</a>
+                    <a class="notAppLink swiper-slide" href="my_project.html?qstatus=-100" qstatus="-100">订单取消</a>
+                </div>
+            </div>
+            <ul class="order-list">
+                <li v-for="(val , index) in odOrderEntities">
+                    <!-- 第一行 -->
+                    <div class="order-num">
+                        <span>订单编号：{{val.id}}</span>
+                        <span>{{val.createtime}}</span>
+                    </div>
+                    <!-- 第二行 -->
+                    <a :href="'my_project_detail.html?orderid='+val.id" class="pj-detail">
+                        <i v-if="!!val.pjInfoEntity.pjDocumentEntities.SY" :style="'background-image: url('+ val.pjInfoEntity.pjDocumentEntities.SY[0].pic+');'"></i>
+                        <i v-else style="background-image: url('/m/img/logo.png');"></i>
+
+                        <div class="pj-detail-right">
+                            <!-- 项目标题 状态 时间 -->
+                            <div class="pj-detail-title">
+                                <div class="pj-detail-title-right">
+                                    <span class="pj-step">{{val.pjInfoEntity.statusDesc}}</span>
+                                    <span v-if="val.pjInfoEntity.status === 20 && val.pjInfoEntity.pjFinacingEntity.preheatdays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.preheatdays}}天</span>
+                                    <span v-if="val.pjInfoEntity.status === 30 && val.pjInfoEntity.pjFinacingEntity.raisedays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.raisedays}}天</span>
+                                    <span v-if="val.pjInfoEntity.status === 40 && val.pjInfoEntity.pjFinacingEntity.contributivedays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.contributivedays}}天</span>
+                                    <span v-if="val.pjInfoEntity.status === 50 && val.pjInfoEntity.pjFinacingEntity.deliverydays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.deliverydays}}天</span>
+                                </div>
+                                <div class="pj-detail-title-left">{{val.pjInfoEntity.name}}</div>
+                            </div>
+                            <!-- 金额 -->
+                            <div class="pj-detail-detail-amount">
+                                 <span>投资金：{{val.depositamount}}</span>
+                                <span>保证金：{{val.amount}}</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 第三行 -->
+                    <div class="order-status">
+                        <span v-if="val.pjInfoEntity.status === 30 && val.status === 10 && val.tJContract != null && val.tJContract.status === 10 && val.amount === 0"  class="status-left">有待签合同</span>
+
+                       	<template v-if="val.pjInfoEntity.status === 20">
+	                       	<span v-if="val.pjInfoEntity.status === 20 && val.status === 0" class="status-right">待付保密金</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 20 && val.status === 5" class="status-right">保密金待审核</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 20 && val.status === 10" class="status-right">报名成功</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 20 && val.status === -100" class="status-right">订单取消</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 20 && val.status === -10" class="status-right">已退款</span>
+	                        <span v-else class="status-right">逾期未付款</span>
+                       	</template>
+
+                       	<template v-else-if="val.pjInfoEntity.status === 30">
+	                       	<span v-if="val.pjInfoEntity.status === 30 && val.status === 10 && val.amount === 0 && (val.tJContract === null || val.tJContract.status === 10) " class="status-left"><a @click="contract(val.projid,val.id,'T')" href="javascript:void(0)" >待签投资合同</a></span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === 10 && val.amount === 0 && val.tJContract != null && val.tJContract.status !== 10 " class="status-right"><a :href="'/m/page/order.html?pjid='+val.projid">待投资</a></span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === 10 && val.amount > 0" class="status-right"><a :href="'/m/page/pay.html?orderid='+val.id">待付保证金</a></span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === 15" class="status-right">保证金待审核</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === 20" class="status-right"><a :href="'/m/page/pay.html?orderid='+val.id">待付余款</a></span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === 25" class="status-right">余款待审核</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === 100" class="status-right">已付余款</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === -100" class="status-right">订单取消</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 30 && val.status === -10" class="status-right">已退款</span>
+	                        <span v-else class="status-right">逾期未付款</span>
+                       	</template>
+
+                       	<template v-else-if="val.pjInfoEntity.status === 50">
+	                       	<span v-if="val.pjInfoEntity.status === 50 && val.status === 100" class="status-right">交割中</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 50 && val.status === -100" class="status-right">订单取消</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 50 && val.status === -10" class="status-right">已退款</span>
+	                        <span v-else class="status-right">逾期未付款</span>
+                       	</template>
+
+                       	<template v-else-if="val.pjInfoEntity.status === 100">
+	                       	<span v-if="val.pjInfoEntity.status === 100 && val.status === 100" class="status-right">交易成功</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 100 && val.status === -100" class="status-right">订单取消</span>
+	                        <span v-else-if="val.pjInfoEntity.status === 100 && val.status === -10" class="status-right">已退款</span>
+	                        <span v-else class="status-right">逾期未付款</span>
+                       	</template>
+
+                    </div>
+                </li>
+                <li class="tips"></li>
+            </ul>
+        </div>
+        <!-- 内容 end -->
+    </div>
+    <script type="text/javascript" src="/m/js/my_project.js"></script>
+</body>
+
+</html>

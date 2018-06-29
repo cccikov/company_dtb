@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <link rel="stylesheet" href="/m/css/login.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" >
+        <div class="container">
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <h2>用户登录</h2>
+            </div>
+            <form name="frmAction" id="frmAction" method="post" action="/m/mlogin">
+
+            <!-- login-box begin -->
+            <div class="login-box">
+                <div class="img-wrap">
+                    <img src="/m/img/logo.png">
+                </div>
+                <label class="text">
+                    <p class="name">账号</p>
+                    <p class="input">
+                        <input type="text" name="tradername" placeholder="请输入账号">
+                    </p>
+                </label>
+                <label class="text">
+                    <p class="name">密码</p>
+                    <p class="input">
+                        <input type="password" name="password" placeholder="请输入密码">
+                    </p>
+                </label>
+                <div style="margin:20px 0 0;" class="action">
+                    <a href="javascript:frmAction.submit()">登录</a>
+                    <a href="register.html">注册</a>
+                </div>
+            </div>
+
+            </form>
+            <!-- login-box end -->
+        </div>
+    </div>
+</body>
+
+</html>

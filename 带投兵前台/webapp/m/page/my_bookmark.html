@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端-我的订单</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/my_project.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>我的收藏</h2>
+            </div>
+
+            <ul class="order-list">
+                <li v-for="val in bookmarkEntities">
+                    <!-- 第二行 -->
+                    <a href="my_project_detail.html" class="pj-detail">
+                        <i v-if="!!val.pjInfoEntity.pjDocumentEntities.SY" :style="'background-image: url('+ val.pjInfoEntity.pjDocumentEntities.SY[0].pic+');'"></i>
+                        <i v-else style="background-image: url('/m/img/logo.png');"></i>
+
+                        <div class="pj-detail-right">
+                            <!-- 项目标题 状态 时间 -->
+                            <div class="pj-detail-title">
+                                <div class="pj-detail-title-right">
+                                    <span class="pj-step">{{val.pjInfoEntity.statusDesc}}</span>
+                                    <span v-if="val.pjInfoEntity.status === 20 && val.pjInfoEntity.pjFinacingEntity.preheatdays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.preheatdays}}天</span>
+                                    <span v-if="val.pjInfoEntity.status === 30 && val.pjInfoEntity.pjFinacingEntity.raisedays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.raisedays}}天</span>
+                                    <span v-if="val.pjInfoEntity.status === 40 && val.pjInfoEntity.pjFinacingEntity.contributivedays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.contributivedays}}天</span>
+                                    <span v-if="val.pjInfoEntity.status === 50 && val.pjInfoEntity.pjFinacingEntity.deliverydays != 0" class="pj-time">{{val.pjInfoEntity.pjFinacingEntity.deliverydays}}天</span>
+                                </div>
+                                <div class="pj-detail-title-left">{{val.pjInfoEntity.name}}</div>
+                            </div>
+                            <!-- 金额 -->
+                            <div class="pj-detail-detail-amount">
+                                <span>{{val.pjInfoEntity.brief}}</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 第三行 -->
+                    <div class="order-status">
+                        <a class="star" href="javascript:void(0)" @click="unbookmark(val.projid)">取消收藏</a>
+                    </div>
+                </li>
+                <li class="tips"></li>
+            </ul>
+        </div>
+        <!-- 内容 end -->
+    </div>
+    <script type="text/javascript" src="/m/js/my_bookmark.js"></script>
+</body>
+
+</html>

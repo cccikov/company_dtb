@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>添加项目</title>
+    #parse("header.html")
+    <script src="${rc.contextPath}/statics/libs/ajaxupload.js"></script>
+    <style>
+    .detail-win textarea {
+        background: #fff;
+    }
+
+    .detail-win input[type=file] {
+        display: inline-block;
+        border: none;
+    }
+
+    .detail-win input[type=file][disabled] {
+        opacity: 0.3;
+    }
+
+    .detail-win .detail-table {
+        border: 1px solid #ccc;
+    }
+
+    .detail-win .box-content,
+    .detail-win .detail-table {
+        padding-bottom: 0;
+    }
+
+    .detail-win .detail-table table {
+        width: 94%;
+        margin: 0 3% 20px;
+    }
+
+    .detail-table .box-content-left,
+    .detail-table .box-content-right,
+    .detail-table .box-content-bottom {
+        text-align: left;
+    }
+
+    .detail-table .box-content-left,
+    .detail-table .box-content-right {
+        margin-top: 15px;
+    }
+
+    i.required:before {
+        content: "*";
+        color: red;
+        vertical-align: top;
+    }
+
+    select {
+        padding: 1px 12px 6px;
+        border: 1px solid #c3c3c3;
+        font-size: 14px;
+    }
+
+    .input-action {
+        padding: 15px 0 20px;
+        margin: 0;
+        text-align: center;
+        clear: both;
+    }
+
+    button.btn[disabled],
+    button.btn.disabled,
+    button.btn.disable,
+    button.btn[disabled='true'] {
+        background: #ccc;
+        border-color: #ccc;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .fa-minus-circle {
+        color: red;
+    }
+
+    .textlen {
+        font-size: 14px;
+        margin: 0 0 0 5px;
+    }
+
+    .textlenerror {
+        color: #a71616;
+    }
+    </style>
+</head>
+
+<body>
+    <input name="token" id="token" type="hidden"></input>
+    <!-- 表格显示 -->
+    <div id="wrap" v-cloak>
+        <div class="grid-input form-inline">
+            <div class="form-group">
+                <label>项目名称：
+                    <input type="text" v-model="checkingData.name" class="form-control">
+                </label>
+            </div>
+            <a class="btn btn-primary" @click="query_checking">查询</a>
+        </div>
+        <div class="btn-wrap">
+            <a href="javascript:void(0)" class="btn btn-success" @click='addpj'><i class="fa fa-plus"></i>&nbsp;添加项目</a>
+            <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("checking")'><i class="fa fa-edit"></i>&nbsp;修改项目</a>
+        </div>
+        <table id="jqGrid-checking" style="width:500px"></table>
+        <div id="jqGridPager-checking"></div>
+    </div>
+    <!-- 详情浮窗 -->
+    <div id="detail-win" v-show='show_win' class="mask" :class="{active:show_win}">
+        <div class="float-win">
+            <h4>项目详细信息<a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a></h4>
+            <!-- 详情浮窗 导航 -->
+            <ul class="win-nav">
+                <li :class="{active:tab1}">
+                    <a href="javascript:void(0)" @click="changeView('tab1')">项目基本信息</a>
+                </li>
+                <li :class="{active:tab2}">
+                    <a href="javascript:void(0)" @click="changeView('tab2')">融资需求</a>
+                </li>
+                <li :class="{active:tab4}">
+                    <a href="javascript:void(0)" @click="changeView('tab4')">项目材料</a>
+                </li>
+                <li :class="{active:tab5}">
+                    <a href="javascript:void(0)" @click="changeView('tab5')">收款人信息</a>
+                </li>
+            </ul>
+            <!-- 项目基本信息 -->
+            <div class="box-content" v-show='tab1'>
+                <div class="box-content-left">
+                    <label>
+                        <span>项目名称：</span>
+                        <input type="text" v-model="info.name" name="name" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('name') == 0"></i>
+                        <p class="tips" v-if="error('name') == 1">请输入项目名称</p>
+                    </label>
+                    <label>
+                        <span>项目标签：</span>
+                        <input type="text" v-model="info.tabs" name="tabs" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('tabs') == 0"></i>
+                        <p class="tips" v-if="error('tabs') == 1">请输入项目标签</p>
+                    </label>
+                </div>
+                <div class="box-content-bottom">
+                    <label>
+                        <span>融资阶段：</span>
+                        <input type="radio" v-model="info.financing" name="financing" value="seed"><i class="radio-label">种子轮</i>
+                        <input type="radio" v-model="info.financing" name="financing" value="angel"><i class="radio-label">天使轮</i>
+                        <input type="radio" v-model="info.financing" name="financing" value="A"><i class="radio-label">A轮</i>
+                        <input type="radio" v-model="info.financing" name="financing" value="Pre-A"><i class="radio-label">Pre-A轮</i>
+                        <input type="radio" v-model="info.financing" name="financing" value="B"><i class="radio-label">B轮</i>
+                    </label>
+                </div>
+                <div class="box-content-bottom">
+                    <label>
+                        <span>项目简介：</span>
+                        <textarea v-model="info.brief" name="brief" v-validata="'required|briefMax'"></textarea>
+                        <em class="textlen" :class="{textlenerror:textLen>500}"> {{textLen}}/500</em>
+                        <i class="pass fa fa-check-circle" v-if="error('brief') == 0"></i>
+                        <p class="tips" v-if="error('brief') == 1">请输入项目简介</p>
+                        <p class="error" v-if="error('brief') == 4"><i class="fa fa-times"></i> 项目简介字数超出范围(500字)</p>
+                    </label>
+                </div>
+                <p class='input-action'>
+                    <button class="btn btn-primary" :disabled='!info.name' @click='editInfo()'>保存</button>
+                </p>
+            </div>
+            <!-- 融资需求 -->
+            <div class="box-content" v-show='tab2'>
+                <div class="clearfix">
+                	<div class="box-content-left">
+	                    <label>
+	                        <span>目标金额：</span>
+	                        <input type="text" v-model="finacing.amount" name="amount" v-validata="'required'">
+	                        <i>万元</i>
+	                        <i class="pass fa fa-check-circle" v-if="error('amount') == 0"></i>
+	                        <p class="tips" v-if="error('amount') == 1">请输入目标金额</p>
+	                    </label>
+                    </div>
+                    <div class="box-content-right">
+                        <label>
+                            <span>最高目标金额：</span>
+                            <input type="text" v-model="finacing.maxamount" name="maxamount" v-validata="'required'">
+                            <i>万元</i>
+                            <i class="pass fa fa-check-circle" v-if="error('maxamount') == 0"></i>
+                            <p class="tips" v-if="error('maxamount') == 1">请输入最高目标金额</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="box-content-left">
+                        <label>
+                            <span>最低投资金额：</span>
+                            <input type="text" v-model="finacing.minamount" name="minamount" v-validata="'required'">
+                            <i>万元</i>
+                            <i class="pass fa fa-check-circle" v-if="error('minamount') == 0"></i>
+                            <p class="tips" v-if="error('minamount') == 1">最低投资金额</p>
+                        </label>
+                    </div>
+                    <div class="box-content-right">
+                        <label>
+                            <span>最高投资金额：</span>
+                            <input type="text" v-model="finacing.pmaxamount" name="pmaxamount" v-validata="'required'">
+                            <i>万元</i>
+                            <i class="pass fa fa-check-circle" v-if="error('pmaxamount') == 0"></i>
+                            <p class="tips" v-if="error('pmaxamount') == 1">请输入最高投资金额</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="box-content-left">
+                        <label>
+                            <span>保证金天数：</span>
+                            <input type="text" v-model="finacing.depositdays" name="depositdays" v-validata="'required'">
+                            <i>天</i>
+                            <i class="pass fa fa-check-circle" v-if="error('depositdays') == 0"></i>
+                            <p class="tips" v-if="error('depositdays') == 1">请输入保证金天数</p>
+                        </label>
+                    </div>
+                    <div class="box-content-right">
+                        <label>
+                            <span>余额天数：</span>
+                            <input type="text" v-model="finacing.balancedays" name="balancedays" v-validata="'required'">
+                            <i>天</i>
+                            <i class="pass fa fa-check-circle" v-if="error('balancedays') == 0"></i>
+                            <p class="tips" v-if="error('balancedays') == 1">请输入余额天数</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="box-content-left">
+                        <template v-if="timeLimit">
+                            <label>
+                                <span>预热期限：</span>
+                                <input type="text" v-model="finacing.preheatdays" name="preheatdays" v-validata="'required'">
+                                <i>天</i>
+                                <i class="pass fa fa-check-circle" v-if="error('preheatdays') == 0"></i>
+                                <p class="tips" v-if="error('preheatdays') == 1">请输入预热期限</p>
+                            </label>
+                            <label>
+                                <span>交割期限：</span>
+                                <input type="text" v-model="finacing.deliverydays" name="deliverydays" v-validata="'required'">
+                                <i>天</i>
+                                <i class="pass fa fa-check-circle" v-if="error('deliverydays') == 0"></i>
+                                <p class="tips" v-if="error('deliverydays') == 1">请输入交割期限</p>
+                            </label>
+                        </template>
+                    </div>
+                    <div class="box-content-right">
+                        <template v-if="timeLimit">
+                            <label>
+                                <span>募资期限：</span>
+                                <input type="text" v-model="finacing.raisedays" name="raisedays" v-validata="'required'">
+                                <i>天</i>
+                                <i class="pass fa fa-check-circle" v-if="error('raisedays') == 0"></i>
+                                <p class="tips" v-if="error('raisedays') == 1">请输入募资期限</p>
+                            </label>
+                        </template>
+                    </div>
+                </div>
+                <div class="box-content-bottom">
+                    <label>
+                        <span>认购费率：</span>
+                        <input type="text" v-model="finacing.subscriberatio" name="subscriberatio" v-validata="'required'">
+                        <i>%</i>
+                        <i class="pass fa fa-check-circle" v-if="error('subscriberatio') == 0"></i>
+                        <p class="tips" v-if="error('subscriberatio') == 1">请输入认购费率</p>
+                    </label>
+                </div>
+                <div class="box-content-bottom">
+                    <label>
+                        <span>资金用途：</span>
+                        <textarea v-model="finacing.useto" name="useto" v-validata="'required|usetoMax'"></textarea>
+                        <em class="textlen" :class="{textlenerror:usetolen>500}"> {{usetolen}}/500</em>
+                        <i class="pass fa fa-check-circle" v-if="error('useto') == 0"></i>
+                        <p class="tips" v-if="error('useto') == 1">请输入资金用途</p>
+                        <p class="error" v-if="error('useto') == 4"><i class="fa fa-times"></i> 资金用途字数超出范围(500字)</p>
+                    </label>
+                    <label>
+                        <span></span>
+                        <input type="checkbox" v-model="timeLimit">
+                        <i>是否启用时间限制</i>
+                    </label>
+                    <label v-if="timeLimit">
+                        <span></span>
+                        <input type="checkbox" v-model="finacing.autoflag">
+                        <i>是否到期自动进入状态</i>
+                    </label>
+                </div>
+                <p class='input-action'>
+                    <button class="btn btn-primary" @click='editFinacing()'>保存</button>
+                </p>
+            </div>
+            <!-- 项目材料 -->
+            <div class="box-content" v-show='tab4'>
+                <div class="clearfix">
+                    <label>
+                        <span>材料类型：</span>
+                        <select v-model='document.type'>
+                            <option disabled value="" selected>请选择</option>
+                            <option value="SY">首页 (293*334)</option>
+                            <option value="HF">详情横幅</option>
+                            <option value="XQ">项目介绍 (推荐宽766)</option>
+                            <option value="LD">投资亮点 (推荐宽766)</option>
+                            <option value="FA">投资方案 (推荐宽766)</option>
+                            <option value="CY">团队成员 (推荐宽766)</option>
+                            <option value="HX">项目资料</option>
+                            <option value="JH">融资计划书</option>
+                            <option value="SP">视频</option>
+                            <option value="BP">简易BP</option>
+                        </select>
+                        <i class="required"></i>
+                    </label>
+                </div>
+                <div class="clearfix">
+                    <div class="box-content-left">
+                        <label>
+                            <span>编号：</span>
+                            <input style="width: 5em;" type="text" v-model='document.num' name="num">
+                            <p style="padding: 0 0 0 6em;font-size: 14px;color:#999">若同时上传多张同类型 , 务必填写编号(即显示顺序)</p>
+                        </label>
+                    </div>
+                    <div class="box-content-right">
+                        <label>
+                            <span>操作：</span>
+                            <button class="btn btn-default" id="uploadDocument" :class='{disable:!document.type}'>上传</button>
+                        </label>
+                    </div>
+                </div>
+                <table v-if='documents.length>0'>
+                    <tr>
+                        <th></th>
+                        <th>上传者</th>
+                        <th>材料类型</th>
+                        <th>编号</th>
+                        <th>上传时间</th>
+                        <th>详情</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for='item in documents' :key='item.id'>
+                        <td>{{item.id}}</td>
+                        <td>{{item.creator}}</td>
+                        <td>{{item.typedes}}</td>
+                        <td>{{item.num}}</td>
+                        <td>{{item.createtime}}</td>
+                        <td>
+                            <a class="table-action" target="_blank" :href="item.pic">
+                                <i class="icon-search"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" @click="delDocument(item.id)">
+                                <i class="fa fa-minus-circle"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 收款人信息 -->
+            <div class="box-content" v-show='tab5'>
+                <h5>收款人基础信息</h5>
+                <div class="box-content-left">
+                    <label>
+                        <span>真实姓名：</span>
+                        <input type="text" v-model="receiver.realname" name="realname" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('realname') == 0"></i>
+                        <p class="tips" v-if="error('realname') == 1">请输入真实姓名</p>
+                    </label>
+                    <label>
+                        <span>联系电话：</span>
+                        <input type="text" v-model="receiver.phone" name="phone" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('phone') == 0"></i>
+                        <p class="tips" v-if="error('phone') == 1">请输入联系电话</p>
+                    </label>
+                </div>
+                <div class="box-content-right">
+                    <label>
+                        <span>邮箱地址：</span>
+                        <input type="text" v-model="receiver.email" name="email" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('email') == 0"></i>
+                        <p class="tips" v-if="error('email') == 1">请输入邮箱地址</p>
+                    </label>
+                </div>
+                <h5>收款人账号信息</h5>
+                <div class="box-content-left">
+                    <label>
+                        <span>银行名称：</span>
+                        <input type="text" v-model="receiver.bankname" name="bankname" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('bankname') == 0"></i>
+                        <p class="tips" v-if="error('bankname') == 1">请输入>银行名称</p>
+                    </label>
+                    <label>
+                        <span>网点名称：</span>
+                        <input type="text" v-model="receiver.branch" name="branch" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('branch') == 0"></i>
+                        <p class="tips" v-if="error('branch') == 1">请输入网点名称</p>
+                    </label>
+                </div>
+                <div class="box-content-right">
+                    <label>
+                        <span>开户名称：</span>
+                        <input type="text" v-model="receiver.accname" name="accname" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('accname') == 0"></i>
+                        <p class="tips" v-if="error('accname') == 1">请输入开户名称</p>
+                    </label>
+                    <label>
+                        <span>银行卡号：</span>
+                        <input type="text" v-model="receiver.accno" name="accno" v-validata="'required'">
+                        <i class="pass fa fa-check-circle" v-if="error('accno') == 0"></i>
+                        <p class="tips" v-if="error('accno') == 1">请输入银行卡号</p>
+                    </label>
+                </div>
+                <p class='input-action'>
+                    <button class="btn btn-primary" @click='editReceiver()'>保存</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    /* 使用插件 */
+    Vue.use(validate, {
+        rules: {
+            phone: {
+                reg: /^0?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/
+            },
+            mail: {
+                reg: /^[a-zA-Z0-9]+([._\\-]*[a-zA-Z0-9])*@([a-zA-Z0-9]+[-a-zA-Z0-9]*[a-zA-Z0-9]+.){1,63}[a-zA-Z0-9]+$/
+            },
+            briefMax: {
+                maxLength: 500
+            },
+            usetoMax: {
+                maxLength: 500
+            }
+        }
+    })
+    </script>
+    <script src="${rc.contextPath}/js/proj/addproj.js?_${date.systemTime}"></script>
+</body>
+
+</html>

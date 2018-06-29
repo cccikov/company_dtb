@@ -1,0 +1,66 @@
+@import url("./common.less");
+.main {
+    padding: 100px 0 @footerHeight+100px;
+    ;
+}
+
+// 成功页面
+.action-response {
+    background: #fff;
+    div {
+        text-align: center;
+        p {
+            padding: 75px 0 0;
+            margin: 0 0 15px;
+            color: #333;
+            font-size: 20px;
+            &.success:before {
+                content: "";
+                display: inline-block;
+                margin: -3px 15px 0 0;
+                vertical-align: middle;
+                width: 59px;
+                height: 46px;
+                background: url(../img/order01.png) center no-repeat;
+            }
+            &.error {
+                margin: 0 0 120px;
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    margin: -3px 15px 0 0;
+                    vertical-align: middle;
+                    width: 59px;
+                    height: 46px;
+                    background: url(../img/order02.png) center no-repeat;
+                    background: url(../img/order02.png) center/46px no-repeat;
+                }
+            }
+            &.jump {
+                padding: 15px 0 15px;
+                font-size: 16px;
+                strong {
+                    color: #d50000;
+                    margin: 0 5px 0 0;
+                    font-size: 18px;
+                }
+                a {
+                    color: #009ad2;
+                    text-decoration: underline;
+                }
+            }
+        }
+        button,
+        .btn {
+            display: inline-block;
+            width: 192px;
+            height: 42px;
+            line-height: 42px;
+            border-radius: 5px;
+            margin: 0 0 100px 0;
+            background: #009ad2;
+            color: #fff;
+            font-size: 16px;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的好友</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/common.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+    <style>
+        html,
+        body {
+            background: #f0eff4;
+        }
+
+        li {
+            line-height: 40px;
+            padding: 0 20px;
+            background: #fff;
+        }
+
+        li::after {
+            content: "";
+            display: block;
+            clear: both;
+            border-bottom: 1px solid #eee;
+        }
+
+        li a {
+            float: right;
+            color: #2fc300;
+        }
+    </style>
+    <script>
+        function call(id) {
+            var obj = {
+                "type": "chat",
+                "userid": id
+            }
+            appAction(obj, function (error) {
+                console.error(error);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <span>id为8的用户</span>
+            <a href="javascript:void(0)" onclick="call(8)">通话</a>
+        </li>
+        <li>
+            <span>id为9的用户</span>
+            <a href="javascript:void(0)" onclick="call(9)">通话</a>
+        </li>
+        <li>
+            <span>id为21的用户</span>
+            <a href="javascript:void(0)" onclick="call(21)">通话</a>
+        </li>
+        <li>
+            <span>id为30的用户</span>
+            <a href="javascript:void(0)" onclick="call(30)">通话</a>
+        </li>
+    </ul>
+</body>
+
+</html>

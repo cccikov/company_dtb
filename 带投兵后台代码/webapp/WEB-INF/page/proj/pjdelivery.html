@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目审核</title>
+    #parse("header.html")
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <li class="active">
+                <a href="javascript:void(0)">项目列表</a>
+            </li>
+        </ul>
+
+        <div>
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="queryData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query">查询</a>
+            </div>
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo()'>
+                    <i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                <a href="javascript:void(0)" class="btn btn-warning" @click="show">
+                    添加</a>
+            </div>
+
+            <table id="jqGrid" style="width:500px"></table>
+            <div id="jqGridPager"></div>
+        </div>
+
+    </div>
+
+    <!-- 详情浮窗 -->
+    <div id="pro-detail">
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+
+	<!-- 出资填写合伙人弹窗 -->
+    <div id="partner-win" class="mask" :class="{active:show}">
+        <div class="float-win" style="width:430px;">
+            <h4>
+                项目材料补充
+                <a href="javascript:void(0)" @click='closewin'>
+                    <i class="fa fa-close"></i>
+                </a>
+            </h4>
+            <div class="box-content only">
+                <label>
+                    <span>投资人姓名：</span>
+                    <input type="text" v-model="username" name="username" v-validata="'required'">
+                    <input type="checkbox" v-model="username_need" disabled style="margin:0px 5px">
+                    <i class="pass fa fa-check-circle" v-if="error('username') == 0"></i>
+                    <p class="tips" v-if="error('username') == 1">请输入投资人姓名</p>
+                </label>
+                <label>
+                    <span>投资人电话：</span>
+                    <input type="text" v-model="mobile" name="mobile" v-validata="'required'">
+                    <input type="checkbox" v-model="mobile_need" style="margin:0px 5px">
+                    <i class="pass fa fa-check-circle" v-if="error('mobile') == 0"></i>
+                    <p class="tips" v-if="!!mobile_need && error('mobile') == 1">请输入投资人电话</p>
+                </label>
+                <label>
+                    <span>投资金额：</span>
+                    <input type="text" v-model="amount" name="amount" v-validata="'required'">
+                    <i>万元</i>
+                    <i class="pass fa fa-check-circle" v-if="error('amount') == 0"></i>
+                    <p class="tips" v-if="error('amount') == 1">请输入投资金额</p>
+                </label>
+
+                <p class='input-action' style="text-align:center;">
+                    <button class="btn btn-primary" @click='save()'>保存</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="${rc.contextPath}/js/proj/pjdelivery.js?_${date.systemTime}"></script>
+</body>
+
+</html>

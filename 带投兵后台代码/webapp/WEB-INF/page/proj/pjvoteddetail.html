@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>添加项目</title>
+    #parse("header.html")
+    <script src="${rc.contextPath}/statics/libs/ajaxupload.js"></script>
+    <style>
+    .detail-win textarea {
+        background: #fff;
+    }
+
+    .detail-win input[type=file] {
+        display: inline-block;
+        border: none;
+    }
+
+    .detail-win input[type=file][disabled] {
+        opacity: 0.3;
+    }
+
+    .detail-win .detail-table {
+        border: 1px solid #ccc;
+    }
+
+    .detail-win .box-content,
+    .detail-win .detail-table {
+        padding-bottom: 0;
+    }
+
+    .detail-win .detail-table table {
+        width: 94%;
+        margin: 0 3% 20px;
+    }
+
+    .detail-table .box-content-left,
+    .detail-table .box-content-right,
+    .detail-table .box-content-bottom {
+        text-align: left;
+    }
+
+    .detail-table .box-content-left,
+    .detail-table .box-content-right {
+        margin-top: 15px;
+    }
+
+    i.required:before {
+        content: "*";
+        color: red;
+        vertical-align: top;
+    }
+
+    select {
+        padding: 1px 12px 6px;
+        border: 1px solid #c3c3c3;
+        font-size: 14px;
+    }
+
+    .input-action {
+        padding: 15px 0 20px;
+        margin: 0;
+        text-align: center;
+        clear: both;
+    }
+
+    button.btn[disabled],
+    button.btn.disabled,
+    button.btn.disable,
+    button.btn[disabled='true'] {
+        background: #ccc;
+        border-color: #ccc;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .fa-minus-circle {
+        color: red;
+    }
+
+    .textlen {
+        font-size: 14px;
+        margin: 0 0 0 5px;
+    }
+
+    .textlenerror {
+        color: #a71616;
+    }
+    </style>
+</head>
+
+<body>
+    <input name="token" id="token" type="hidden"></input>
+    <!-- 表格显示 -->
+    <div id="wrap" v-cloak>
+        <div class="grid-input form-inline">
+            <div class="form-group">
+                <label>附件名称：
+                    <input type="text" v-model="Data.name" class="form-control">
+                </label>
+            </div>
+            <a class="btn btn-primary" @click="query">查询</a>
+            <a class="btn btn-primary" href="pjvoted.html">返回</a>
+        </div>
+        <table id="jqGrid" style="width:500px"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <script src="${rc.contextPath}/js/proj/pjvoteddetail.js?_${date.systemTime}"></script>
+</body>
+
+</html>

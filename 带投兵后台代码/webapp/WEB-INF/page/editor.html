@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+document.domain = "${domain}";
+// main js function
+function fMain(){
+	alert('main function execute success');
+}
+
+// exec iframe function
+function t(){
+	var s =window.reditor.fIframe();
+	alert(s);
+}
+</script>
+</head>
+<body>
+<button onclick="t()">TEST</button>
+<iframe name="reditor" src="http://www.dtb.cn/ueditor/show?token=${token}" width="1600" height="900"></iframe>
+
+</body>
+</html>

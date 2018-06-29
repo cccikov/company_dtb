@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>投后资料</title>
+    #parse("header.html")
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <div class="grid-input form-inline">
+            <div class="form-group">
+                <label>项目名称：
+                    <input type="text" v-model="queryData.name" class="form-control">
+                </label>
+            </div>
+            <a class="btn btn-primary" @click="query">查询</a>
+        </div>
+
+        <div class="btn-wrap">
+            <a href="javascript:void(0)" @click="show_add" class="btn btn-success">
+                <i class="fa fa-plus-circle"></i>&nbsp;添加资料
+            </a>
+            <a href="javascript:void(0)" @click="show_win" class="btn btn-info">
+                <i class="fa fa-search"></i>&nbsp;查看投后资料
+            </a>
+        </div>
+
+        <table id="jqGrid" style="width:500px"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+
+    <div id="add">
+        <single-win-tpl name="添加资料" :show="show_win" win-style="width:460px" @close="closewin">
+            <div class="box-content only" style="padding:12px 0;">
+                <label>
+                    <span>编号：</span>
+                    <input type="text" name="num" v-model="num">
+                </label>
+                <label>
+                    <span>文件名称：</span>
+                    <input type="text" name="name" v-model="name">
+                </label>
+                <label>
+                    <span></span>
+                    <input type="checkbox" name="download" v-model="download">
+                    <i>是否允许下载</i>
+                </label>
+                <label>
+                    <span>操作：</span>
+                    <button class="btn btn-default" id="uploadDocument" >上传</button>
+                </label>
+                <!-- 上传成功后显示 -->
+                <a v-if="url" :href="url" style="color:#337ab7;display:block;line-height:40px;padding-left:150px;">{name}.pdf</a>
+            </div>
+        </single-win-tpl>        
+    </div>
+
+    <div id="win" v-show='show_win' class="mask active" v-cloak>
+        <div class="float-win">
+            <h4>付款情况
+                <a href="javascript:void(0)" @click='closewin'>
+                    <i class="fa fa-close"></i>
+                </a>
+            </h4>
+            <table id="jqGrid_delivery"></table>
+            <div id="jqGridPager_delivery"></div>
+        </div>
+    </div>
+
+
+   
+    <script src="${rc.contextPath}/js/proj/delivery.js?_${date.systemTime}"></script>
+</body>
+
+</html>

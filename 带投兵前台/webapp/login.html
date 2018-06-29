@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录带投兵</title>
+    <link rel="shortcut icon" href="statics/img/favicon.ico" />
+    <link rel="icon" href="statics/img/favicon.ico"/>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="statics/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="statics/css/login.css">
+</head>
+
+<body>
+    <!--[if lte IE 10]>
+        <script>
+            location.href="lower.html"
+        </script>
+    <![endif]-->
+
+    <div id="wrap" v-cloak>
+        <!-- 导航 begin -->
+        <div class="nav">
+            <div class="nav-main">
+                <div class="width-wrap">
+                    <div class="top-img">
+                        <a href="/">
+                            <img src="/statics/img/logo.png">
+                        </a>
+                        <!-- <img src="/statics/img/index00.png"> -->
+                    </div>
+                    <!-- <div class="top-link">
+                        <a href="/">首页</a>
+                        <a href="/project/projpage/all/1">募集项目</a>
+                        <a href="###">发起项目</a>
+                        <a href="###">新手指南</a>
+                        <a href="###">关于我们</a>
+                    </div> -->
+                    <!-- <div class="top-login">
+                        <a class="" href="/login.html">登录</a>
+                        <a class="" href="/registerpage">注册</a>
+                    </div> -->
+                </div>
+            </div>
+            <!-- nav-main end -->
+        </div>
+        <!-- 导航 end -->
+        <div class="main">
+            <div class="main-login">
+                <h4>欢迎登录带投兵
+                    <a href="/registerpage">免费注册</a>
+                </h4>
+                <ul>
+                    <li class="error-li" v-if="error">
+                        <p>
+                            <i class="fa fa-exclamation-triangle"></i> &nbsp; {{errorMsg}}</p>
+                    </li>
+                    <li class="name-li">
+                        <input type="text" class="form-control tradername" @keyup.enter="login" v-model="tradername" placeholder="账号/手机号">
+                    </li>
+                    <li class="password-li">
+                        <input type="password" class="form-control password" @keyup.enter="login" v-model="password" placeholder="密码">
+                    </li>
+                    <li class="code-li" v-if="time > 2">
+                        <!-- <span class="alink" @click="refreshCode">点击刷新</span> -->
+                        <p>
+                            <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
+                        </p>
+                        <label>
+                            <input type="text" class="form-control captcha" v-model="captcha" @keyup.enter="login" placeholder="验证码">
+                        </label>
+                    </li>
+                    <li class="remeber-li">
+                        <!--
+                        <label>
+                            <input type="checkbox" name="">记住用户名
+                        </label>
+                         -->
+                        <a href="/password/findpassword">忘记密码?</a>
+                    </li>
+                    <li>
+                        <button @click="login">登录</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 页面底部 begin -->
+        <div class="footer">
+            <div class="footer-main">
+                <div class="footer-left">
+                    <img src="/statics/img/bottom-logo_g.png">
+                </div>
+                <div class="footer-middle">
+                    <a class="about" target="_blank" href="/about.html">关于我们</a>
+                    <a class="new" target="_blank" href="/guide.html">新手指南</a>
+                    <a class="question" href="javascript:void(0)">常见问题</a>
+                </div>
+                <div class="footer-right">
+                    <p>
+                        <img src="/statics/img/gongzhonghao.jpg" alt="公众号二维码">官方公众号
+                    </p>
+                    <p>
+                        <img src="/statics/img/kefu.jpg" alt="公众号二维码">在线客服
+                    </p>
+                </div>
+                <div class="footer-bottom">
+                    <p>客服电话：400-1116-199</p>
+                    <p>工作时间：周一到周五 9:00-19:00</p>
+                    <p>客服邮箱：kf@dtb.cn</p>
+                </div>
+            </div>
+            <img style="position:absolute;bottom:0px;right:15px;opacity:0.05" src="/statics/img/fdd.png">
+            <p class="right">版权所有&copy;Copyright 2017 带投兵 - <a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">粤ICP备17129433号</a></p>
+        </div>
+        <!-- 页面底部 end -->
+    </div>
+    <!-- /.login-box -->
+    <script src="statics/libs/jquery.min.js"></script>
+    <script src="statics/libs/vue.min.js"></script>
+    <script type="text/javascript" src="statics/libs/base.js"></script>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#wrap',
+        data: {
+            tradername: '',
+            password: '',
+            captcha: '',
+            error: false,
+            errorMsg: '',
+            time: 0,
+            src: 'captcha.jpg'
+        },
+        beforeCreate: function() {
+            if (self != top) {
+                top.location.href = self.location.href;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/gettime",
+                dataType: "json",
+                success: function(result) {
+                    if (result.code == 0) { //登录成功
+                        vm.time = result.time;
+                    }
+                }
+            });
+        },
+        methods: {
+            refreshCode: function() {
+                this.src = "captcha.jpg?t=" + $.now();
+            },
+            login: function(event) {
+                if (vm.tradername == "") {
+                    $(".tradername")[0].focus();
+                    return
+                }
+                if (vm.password == "") {
+                    $(".password")[0].focus();
+                    return
+                }
+                if (vm.time > 2 && vm.captcha == "") {
+                    $(".captcha")[0].focus();
+                    return;
+                }
+                var data = "tradername=" + vm.tradername + "&password=" + vm.password + "&captcha=" +
+                    vm.captcha;
+                $.ajax({
+                    type: "POST",
+                    url: "member/login?r=" + Math.random(),
+                    data: data,
+                    dataType: "json",
+                    success: function(result) {
+                        if (result.code == 0) { //登录成功
+                        	var referrer = GetQueryString("referrer");
+                        	if(referrer != ""){
+                        		parent.location.href = referrer;
+                        	}else if((document.referrer).indexOf("password")>=0
+                        			|| (document.referrer).indexOf("registerpage") >= 0
+                        			|| (document.referrer).indexOf("logout") >= 0
+                        			|| (document.referrer).indexOf("unlogin") >= 0
+                        			){
+                        		parent.location.href = "/";
+                        	}else{
+                        		parent.location.href = document.referrer;
+                        	}
+                        } else {
+                            vm.error = true;
+                            vm.errorMsg = result.msg;
+                            vm.time = result.time;
+                            vm.refreshCode();
+                        }
+                    }
+                });
+            }
+        }
+    });
+
+
+    function GetQueryString(name)
+    {
+         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);
+         if(r!=null)return  unescape(r[2]); return "";
+    }
+    </script>
+</body>
+
+</html>

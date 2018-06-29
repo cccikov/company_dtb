@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目保密金退款</title>
+    #parse("header.html")
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <li :class="{active:checking}">
+                <a href="javascript:void(0)" @click='changeView("checking")'>待退款</a>
+            </li>
+            <li :class="{active:checked}">
+                <a href="javascript:void(0)" @click='changeView("checked")'>已退款</a>
+            </li>
+        </ul>
+        <!-- 待审核 -->
+        <div v-show="checking">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="checkingData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query_checking">查询</a>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("checking")'>
+                    <i class="fa fa-search"></i>&nbsp;查看详细信息
+                </a>
+                #if($shiro.hasPermission("pjrefund:view"))
+                <a href="javascript:void(0)" class="btn btn-success" @click="refund">
+                    <i class="fa fa-check"></i>&nbsp;查看保密金
+                </a>
+                #end
+                <a href="javascript:void(0)" class="btn btn-success" @click="refund2('checking')">
+                    <i class="fa fa-check"></i>&nbsp;查看退款情况
+                </a>
+            </div>
+            <table id="jqGrid-checking" style="width:500px"></table>
+            <div id="jqGridPager-checking"></div>
+        </div>
+        <!-- 已审核-->
+        <div v-show="checked">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：
+                        <input type="text" v-model="checkedData.name" class="form-control">
+                    </label>
+                </div>
+                <a class="btn btn-primary" @click="query_checked">查询</a>
+            </div>
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("checked")'>
+                    <i class="fa fa-search"></i>&nbsp;查看详细信息
+                </a> #if($shiro.hasPermission("pjinfo:release")) #end
+                <a href="javascript:void(0)" class="btn btn-success" @click="refund2('checked')">
+                    <i class="fa fa-check"></i>&nbsp;查看退款情况
+                </a>
+            </div>
+            <table id="jqGrid-checked"></table>
+            <div id="jqGridPager-checked"></div>
+        </div>
+    </div>
+    <!-- 详情浮窗 -->
+    <div id="pro-detail">
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+    <!-- 退款弹窗 -->
+    <div id="refund-win" v-show='show_win' class="mask active" v-cloak>
+        <div class="float-win">
+            <h4>付款情况
+                <a href="javascript:void(0)" @click='closewin'>
+                    <i class="fa fa-close"></i>
+                </a>
+            </h4>
+            <table id="jqGridRefund"></table>
+            <div id="jqGridPagerRefund"></div>
+        </div>
+    </div>
+    <!-- 退款弹窗2-->
+    <div id="refund2-win" v-show='show_win' class="mask active" v-cloak>
+        <div class="float-win">
+            <h4>付款情况
+                <a href="javascript:void(0)" @click='closewin'>
+                    <i class="fa fa-close"></i>
+                </a>
+            </h4>
+            <table id="jqGridRefund2"></table>
+            <div id="jqGridPagerRefund2"></div>
+        </div>
+    </div>
+    <!-- 确定退款 -->
+    <div id="sure-refund" v-cloak>
+        <single-win-tpl :name="title" :show="show_win" :win-style="style" @close="close">
+            <p class="sure-refund-p p1">
+                <span>姓名：<strong>{{name}}</strong></span>
+                <span>金额：<strong>{{amount}}</strong></span>
+            </p>
+            <p class="sure-refund-p p2">
+                退款操作不可回转 , 请谨慎操作!!
+            </p>
+            <p class="sure-refund-p p3">
+                <button class="btn btn-sm btn-primary" :class="{canClick:time==0}" @click="refund">确定退款<span v-show='time!=0'>({{time}})</span></button>
+                <button class="canClick btn btn-sm btn-danger" @click="close">取消</button>
+            </p>
+        </single-win-tpl>
+    </div>
+    <style>
+    #refund-win .detail-win {
+        width: 80%;
+        min-width: 980px;
+    }
+
+    #jqGridRefund td {
+        vertical-align: middle;
+    }
+
+    .sure-refund-p {
+        text-align: center;
+        margin: 12px 0;
+    }
+
+    .sure-refund-p.p1 span {
+        color: #333;
+        margin: 0 12px;
+    }
+
+    .sure-refund-p.p2 {
+        color: #ff6f68;
+    }
+
+    .sure-refund-p.p3 button {
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .sure-refund-p.p3 button.canClick {
+        cursor: pointer;
+        pointer-events: all;
+        opacity: 1;
+    }
+    </style>
+
+
+    <!-- 查看会员信息 -->
+    <div id="user-msg">
+        <member-tpl :show="show_win" :userinfo="userinfo" :tab="tab" :carinfos="carinfos" @change-view="changeView" @closewin="closewin"></member-tpl>
+    </div>
+
+    <script src="${rc.contextPath}/js/proj/pjsrefund.js?_${date.systemTime}"></script>
+</body>
+
+</html>

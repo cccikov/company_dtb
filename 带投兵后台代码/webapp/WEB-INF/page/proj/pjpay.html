@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目付款</title>
+    #parse("header.html")
+    <script src="${rc.contextPath}/statics/libs/ajaxupload.js"></script>
+    <style type="text/css">
+        .pay-img{
+            text-align: center;
+            padding: 12px 15px;
+        }
+        .pay-img a{
+            display: block;
+        }
+        .pay-img img{
+            max-width: 500px;
+        }
+        .pay-action{
+            text-align: center;
+            margin:0 0 12px;
+        }
+        .pay-action .btn{
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+           <li :class="{active:paytoowner}"><a href="javascript:void(0)" @click='changeView("paytoowner")'>待付款给投资主体</a></li>
+           <li :class="{active:paytofinancing}"><a href="javascript:void(0)" @click='changeView("paytofinancing")'>待付款给融资主体</a></li>
+           <li :class="{active:certificate}"><a href="javascript:void(0)" @click='changeView("certificate")'>待上传出资证明书</a></li>
+        </ul>
+
+        <!-- 待审核 -->
+        <div v-show="paytoowner">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="paytoownerData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query_paytoowner">查询</a>
+            </div>
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("paytoowner")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                #if($shiro.hasPermission("pjpay:paytoowner"))
+                <a href="javascript:void(0)" class="btn btn-success" @click="review_ok"><i class="fa fa-check"></i>&nbsp;付款</a>
+                 #end
+            </div>
+
+            <table id="jqGrid-paytoowner" style="width:500px"></table>
+            <div id="jqGridPager-paytoowner"></div>
+        </div>
+
+
+        <!-- 已审核-->
+        <div v-show="paytofinancing">
+
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="paytofinancingData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query_paytofinancing">查询</a>
+            </div>
+
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("paytofinancing")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                #if($shiro.hasPermission("pjpay:paytoowner"))
+                <a href="javascript:void(0)" class="btn btn-success" @click="review_ok"><i class="fa fa-check"></i>&nbsp;付款</a>
+                 #end
+            </div>
+
+            <table id="jqGrid-paytofinancing"></table>
+            <div id="jqGridPager-paytofinancing"></div>
+        </div>
+
+
+        <!-- 已驳回 -->
+        <div v-show="certificate">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="certificateData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query_certificate">查询</a>
+            </div>
+
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("grid-input")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                #if($shiro.hasPermission("pjpay:paytoowner"))
+                <a href="javascript:void(0)" class="btn btn-success" @click="review_ok"><i class="fa fa-check"></i>&nbsp;上传出资证明书</a>
+                 #end
+            </div>
+
+            <table id="jqGrid-certificate"></table>
+            <div id="jqGridPager-certificate"></div>
+        </div>
+
+    </div>
+
+
+
+
+     <!-- 详情浮窗 -->
+    <div id="pro-detail" v-cloak>
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+
+    <!-- 付款弹窗 -->
+    <div id="pay" v-cloak>
+        <single-win-tpl :show="show_win" @close="closewin" name="付款弹窗" :win-style="style">
+            <div class="pay-img">
+                <a v-show="imgSrc" :href="imgSrc" target="_blank">
+                    <img :src="imgSrc" alt="凭证" title="凭证">
+                </a>
+            </div>
+            <p class="pay-action">
+                <button class="btn btn-default" id="upload">上传凭证</button>
+                <button v-show="imgSrc" @click="topay" class="btn btn-success">确定</button>
+            </p>
+        </single-win-tpl>
+    </div>
+	<input name="token" id="token" type="hidden"></input>
+    <script src="${rc.contextPath}/js/proj/pjpay.js?_${date.systemTime}"></script>
+</body>
+
+</html>

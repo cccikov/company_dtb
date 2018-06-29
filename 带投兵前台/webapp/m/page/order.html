@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单</title>
+    <link rel="stylesheet" href="/m/css/order.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>订单</h2>
+            </div>
+
+            <div class="main">
+                <div class="pj">
+                    <tpl-project-list :data="[projectListData]"></tpl-project-list>
+                </div>
+
+
+                <!-- 投资金额 -->
+                <div class="investment" v-if="projectListData.status === 20">
+                    <div>
+                        <span class="left">意向投资金额</span>
+                        <p class="right input-invest">
+                            <a class="no-animation" @click="add" href="javascript:void(0)">+</a>
+                            <input type="number" @input="inputing" v-model="inputValue">
+                            <a class="no-animation" @click="minus" href="javascript:void(0)">-</a>
+                            <span class="unit">万元</span>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">意向认购费</span>
+                        <p class="right">
+                            {{amount}}×1% =
+                            <strong> {{offerToBuy}}</strong>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">意向保证金</span>
+                        <p class="right">
+                            {{amount}}×20% =
+                            <strong>{{deposit}}</strong>
+                        </p>
+                    </div>
+                </div>
+
+				<div class="investment" v-if="projectListData.status === 30">
+                    <div>
+                        <span class="left">投资金额</span>
+                        <p class="right input-invest">
+                            <a class="no-animation" @click="add" href="javascript:void(0)">+</a>
+                            <input type="number" @input="inputing" v-model="inputValue">
+                            <a class="no-animation" @click="minus" href="javascript:void(0)">-</a>
+                            <span class="unit">万元</span>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">认购费</span>
+                        <p class="right">
+                            {{amount}}×1% =
+                            <strong> {{offerToBuy}}</strong>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">保证金</span>
+                        <p class="right">
+                            {{amount}}×20% =
+                            <strong>{{deposit}}</strong>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="left">余款</span>
+                        <p class="right">
+                            {{amount}}×80% =
+                            <strong>{{remain}}</strong>
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- 提示 -->
+                <div class="tips">
+                    <!-- 保证金规则 -->
+                    <h5>保证金规则</h5>
+                    <ul>
+                        <li>保证金为投资额20%</li>
+                        <li>在支付保证金的同时，需缴纳投资额的1%作为认购费</li>
+                        <li>如放弃支付余款，则保证金与认购费不予退还</li>
+                        <li>保证金支付完成后，平台将指定余款支付日期</li>
+                    </ul>
+                    <!-- 余款规则 -->
+                    <h5>余款规则</h5>
+                    <ul>
+                        <li>余款为投资额80%</li>
+                        <li>需在平台通知后于指定日期前一次性付清</li>
+                        <li>逾期放弃支付，视为违约，保证金与认购费不予退还</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- main end -->
+
+            <div class="bottom" v-if="projectListData.status === 20">
+                <p class="right">
+                    <a :class="{active:canclick}" href="javascript:void(0)" @click="createorder">确认报名</a>
+                </p>
+            </div>
+
+			<div class="bottom" v-if="projectListData.status === 30">
+                <p class="left">需支付：
+                    <strong>￥{{sum}}</strong>
+                </p>
+                <p class="right">
+                    <a :class="{active:canclick}" href="javascript:void(0)"  @click="raiseorder" >提交订单</a>
+                </p>
+            </div>
+
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+    <script src="/m/js/tpl_project_list.js"></script>
+    <script type="text/javascript" src="/m/js/order.js"></script>
+</body>
+
+</html>

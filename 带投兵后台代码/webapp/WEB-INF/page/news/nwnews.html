@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+    var notSetDocumentdomain = true;
+    </script>
+    <title>新闻</title>
+    #parse("sys/header.html")
+    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js?${date.systemTime}"></script>
+    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js">
+    </script>
+    <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js?${date.systemTime}"></script>
+    <script type="text/javascript">
+    function getUeditorContent() {
+        return UE.getEditor('editor').getContent();
+    }
+    </script>
+</head>
+
+<body>
+    <div id="rrapp" v-cloak>
+        <div v-show="showList">
+            <div class="grid-btn">
+                #if($shiro.hasPermission("nwnews:save"))
+                <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a> #end #if($shiro.hasPermission("nwnews:update"))
+                <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a> #end #if($shiro.hasPermission("nwnews:delete"))
+                <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a> #end
+            </div>
+            <table id="jqGrid"></table>
+            <div id="jqGridPager"></div>
+        </div>
+        <div v-show="!showList" class="panel panel-default">
+            <div class="panel-heading">{{title}}</div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">标题</div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" v-model="nwNews.title" placeholder="标题" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">内容</div>
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" v-model="nwNews.content" placeholder="内容" />
+                        <script id="editor" type="text/plain" style="width:800px;height:500px;"></script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">文章栏目</div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" @click='menuTree' readonly="readonly" v-model="nwNews.sortname" placeholder="请选择" />
+                    </div>
+                </div>
+                <div class="form-group" v-show='nwNews.sortid == "XMGG"'>
+                    <div class="col-sm-2 control-label">公告所述项目</div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" @click='projectTree' readonly="readonly" v-model="nwNews.pjname" placeholder="请选择" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"></div>
+                    <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定" /> &nbsp;&nbsp;
+                    <input type="button" class="btn btn-warning" @click="reload" value="返回" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+	<!-- 选择菜单 -->
+	<div id="menuLayer" style="display: none;padding:10px;">
+		<ul id="menuTree" class="ztree"></ul>
+	</div>
+
+    <!-- 选择菜单 -->
+	<div id="projectLayer" style="display: none;padding:10px;">
+		<ul id="projectTree" class="ztree"></ul>
+	</div>
+
+    <script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+    ue.ready(function() {
+        ue.execCommand('serverparam', 'token', '${token}');
+        //alert('ready');
+    });
+    </script>
+
+    <script src="${rc.contextPath}/js/news/nwnews.js?_${date.systemTime}"></script>
+</body>
+
+</html>

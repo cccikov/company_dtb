@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>会员审核</title>
+	#parse("header.html")
+	<style type="text/css">
+		#ok-win th:nth-of-type(1) {
+			width: auto;
+		}
+
+		#ok-win table a {
+			color: #eee;
+		}
+
+		#ok-win table a:hover,
+		#ok-win table a.active {
+			color: #5cb85c;
+		}
+
+		#no-win .detail-win {
+			width: 480px;
+		}
+
+		#no-win span {
+			width: auto;
+		}
+
+		#no-win textarea {
+			display: block;
+			width: 100%;
+			background: #fff;
+			margin: 15px 0;
+		}
+
+
+		/*身份证*/
+
+		#idcard .box-content div {
+			float: left;
+			text-align: center;
+			width: 50%;
+			padding: 12px;
+			color: #666;
+			font-size: 14px;
+		}
+
+		#idcard .box-content img {
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrap" v-cloak>
+		<ul class="nav nav-tabs proj-nav">
+			<li :class="{active:checking}"><a href="javascript:void(0)" @click='changeView("checking")'>待审核</a></li>
+			<li :class="{active:checked}"><a href="javascript:void(0)" @click='changeView("checked")'>已过审</a></li>
+			<li :class="{active:reject}"><a href="javascript:void(0)" @click='changeView("reject")'>已驳回</a></li>
+		</ul>
+		<!-- 待审核 -->
+		<div v-show="checking">
+			<div class="grid-input form-inline">
+				<div class="form-group">
+					<label>姓名：<input type="text" v-model="checkingData.username"  class="form-control"></label>
+				</div>
+				<div class="form-group">
+					<label>手机：<input type="text" v-model="checkingData.mobile"  class="form-control"></label>
+				</div>
+				<a class="btn btn-primary" @click="query_checking">查询</a>
+			</div>
+
+			<div class="btn-wrap">
+				<a href="#" class="btn btn-info" @click='getuserinfo("checking")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a> #if($shiro.hasPermission("tbuser:review"))
+				<a href="#" class="btn btn-success" @click="review_ok_show"><i class="fa fa-check"></i>&nbsp;通过</a>
+				<a href="#" class="btn btn-danger" @click="review_no_show"><i class="fa fa-times"></i>&nbsp;驳回</a> #end
+			</div>
+
+			<table id="jqGrid-checking" style="width:500px"></table>
+			<div id="jqGridPager-checking"></div>
+		</div>
+
+
+		<!-- 已审核 -->
+		<div v-show="checked">
+			<div class="grid-input form-inline">
+				<div class="form-group">
+					<label>姓名：<input type="text" v-model="checkedData.username" name="username" id="username" class="form-control"></label>
+				</div>
+				<div class="form-group">
+					<label>手机：<input type="text" v-model="checkedData.mobile" name="mobile" id="mobile" class="form-control"></label>
+				</div>
+				<div class="form-group">
+					<label>
+                        	会员类型：
+                        <select class="form-control" v-model="checkedData.memberType" name="memberType" id="memberType">
+                         	<option value="" selected = "selected">所有</option>
+                            <option value="0">普通</option>
+                            <option value="1">超级</option>
+                        </select>
+                    </label>
+				</div>
+				<a class="btn btn-primary" @click="query_checked">查询</a>
+			</div>
+
+
+			<div class="btn-wrap">
+				<a href="#" class="btn btn-info" @click='getuserinfo("checked")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+			</div>
+
+			<table id="jqGrid-checked"></table>
+			<div id="jqGridPager-checked"></div>
+		</div>
+
+
+		<!-- 已驳回 -->
+		<div v-show="reject">
+			<div class="grid-input form-inline">
+				<div class="form-group">
+					<label>姓名：<input type="text"  v-model="rejectData.username"  name="username" id="username" class="form-control"></label>
+				</div>
+				<div class="form-group">
+					<label>手机：<input type="text"  v-model="rejectData.mobile"  name="mobile" id="mobile" class="form-control"></label>
+				</div>
+				<a class="btn btn-primary" @click="query_reject">查询</a>
+			</div>
+
+
+			<div class="btn-wrap">
+				<a href="#" class="btn btn-info" @click='getuserinfo("reject")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+			</div>
+
+			<table id="jqGrid-reject"></table>
+			<div id="jqGridPager-reject"></div>
+		</div>
+	</div>
+
+
+	<!-- 会员详情浮窗 -->
+	<div id="detail-win" class="mask active" v-show='show_win' v-cloak>
+		<div class="float-win">
+			<h4>
+                会员详细信息
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+			<div class="box-content no-tab">
+				<!-- 左 -->
+				<div class="box-content-left">
+					<label>
+                        <span>账号名：</span>
+                        <input type="text" readonly v-model="userinfo.tradername">
+                    </label>
+					<label>
+                        <span>姓名：</span>
+                        <input type="text" readonly v-model="userinfo.username">
+                    </label>
+					<label>
+                        <span>身份证：</span>
+                        <input type="text" readonly v-model="userinfo.idCard">
+                    </label>
+					<label>
+                        <span>微信号：</span>
+                        <input type="text" readonly v-model="userinfo.wechar">
+                    </label>
+					<label>
+                        <span>状态：</span>
+                        <input type="text" readonly v-model="userinfo.status">
+                    </label>
+					<label>
+                        <span>省份：</span>
+                        <input type="text" readonly v-model="userinfo.province">
+                    </label>
+				</div>
+				<!-- 右 -->
+				<div class="box-content-right">
+					<label>
+                        <span>手机：</span>
+                        <input type="text" readonly v-model="userinfo.mobile">
+                    </label>
+					<label>
+                        <span>所属公司：</span>
+                        <input type="text" readonly v-model="userinfo.company">
+                    </label>
+					<label>
+                        <span>邮箱：</span>
+                        <input type="text" readonly v-model="userinfo.email">
+                    </label>
+					<label>
+                        <span>QQ号码：</span>
+                        <input type="text" readonly v-model="userinfo.qq">
+                    </label>
+					<label>
+                        <span>会员类型：</span>
+                        <input type="text" readonly v-model="userinfo.memberType">
+                    </label>
+					<label>
+                        <span>城市：</span>
+                        <input type="text" readonly v-model="userinfo.city">
+                    </label>
+				</div>
+				<!-- 底 -->
+				<div class="box-content-bottom">
+					<label>
+                        <span>地址：</span>
+                        <input type="text" style= "width:400px;" readonly v-model="userinfo.address">
+                    </label>
+					<label>
+                        <span>备注：</span>
+                        <textarea readonly v-model="userinfo.remark"></textarea>
+                    </label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- 通过弹窗 -->
+	<div id="ok-win" class="mask active" v-show='show_win' v-cloak>
+		<div class="float-win">
+			<h4>
+                会员类型选择
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+			<div class="box-table no-tab">
+				<table>
+					<tr>
+						<th>级别代码</th>
+						<th>级别名称</th>
+						<th>级别简介</th>
+						<th></th>
+					</tr>
+					<tr v-for='item in userRanks' :key='item.id'>
+						<td>{{item.id}}</td>
+						<td>{{item.rankname}}</td>
+						<td>{{item.remark}}</td>
+						<td><a class="select-rank" href="javascript:void(0)" @click='review_ok(item.id,$event)'><i class="fa fa-check-circle"></i></a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<!-- 驳回弹窗 -->
+	<div id="no-win" class="mask active" v-show='show_win' v-cloak>
+		<div class="float-win">
+			<h4>
+                反驳
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+			<div class="box-content no-tab">
+				<!-- 底 -->
+				<div class="box-content-bottom">
+					<span>反驳理由：</span>
+					<textarea v-model="remark"></textarea>
+					<div style='text-align: right;'>
+						<a href="#" class="btn btn-default" @click='review_no()'>确认驳回</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- 查看身份证弹窗 -->
+	<div id="idcard" v-cloak>
+		<single-win-tpl @close="closewin" :show="show_idcard" name="查看身份证" win-style="width:auto;max-width:600px;">
+			<div>
+				<a target="_blank" :href="front">
+                    <img :src="front" alt="身份证正面">
+                </a>
+				<p>身份证正面</p>
+			</div>
+			<div>
+				<a target="_blank" :href="back">
+                    <img :src="back" alt="身份证反面">
+                </a>
+				<p>身份证反面</p>
+			</div>
+		</single-win-tpl>
+	</div>
+
+	<script src="${rc.contextPath}/js/tbuser/useraudit.js?_${date.systemTime}"></script>
+</body>
+
+</html>

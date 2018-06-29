@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>项目审核</title>
+    #parse("header.html")
+
+</head>
+
+<body>
+<input name="token" id="token" type="hidden"></input>
+    <div id="wrap" v-cloak>
+        <ul class="nav nav-tabs proj-nav">
+            <li :class="{active:checking}"><a href="javascript:void(0)" @click='changeView("checking")'>待审核</a></li>
+            <li :class="{active:checked}"><a href="javascript:void(0)" @click='changeView("checked")'>已审核</a></li>
+            <li :class="{active:reject}"><a href="javascript:void(0)" @click='changeView("reject")'>已驳回</a></li>
+        </ul>
+
+        <!-- 待审核 -->
+        <div v-show="checking">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="checkingData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query_checking">查询</a>
+            </div>
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("checking")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a> #if($shiro.hasPermission("pjinfo:review"))
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfoviw("checking")'><i class="fa fa-search"></i>&nbsp;项目预览</a>
+                <a href="javascript:void(0)" class="btn btn-success" @click="review_ok"><i class="fa fa-check"></i>&nbsp;通过</a>
+                <a href="javascript:void(0)" class="btn btn-danger" @click="review_no"><i class="fa fa-times"></i>&nbsp;驳回</a> #end
+            </div>
+
+            <table id="jqGrid-checking" style="width:500px"></table>
+            <div id="jqGridPager-checking"></div>
+        </div>
+
+
+        <!-- 已审核-->
+        <div v-show="checked">
+
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="checkedData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query_checked">查询</a>
+            </div>
+
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("checked")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+                 <a href="javascript:void(0)" class="btn btn-info" @click='projectinfoviw("checked")'><i class="fa fa-search"></i>&nbsp;项目预览</a>
+                 #if($shiro.hasPermission("pjinfo:release"))
+                <a href="javascript:void(0)" class="btn btn-success" @click="release"><i class="fa fa-check"></i>&nbsp;发布</a> #end
+            </div>
+
+            <table id="jqGrid-checked"></table>
+            <div id="jqGridPager-checked"></div>
+        </div>
+
+
+        <!-- 已驳回 -->
+        <div v-show="reject">
+            <div class="grid-input form-inline">
+                <div class="form-group">
+                    <label>项目名称：<input type="text" v-model="rejectData.name" class="form-control"></label>
+                </div>
+                <a class="btn btn-primary" @click="query_reject">查询</a>
+            </div>
+
+
+            <div class="btn-wrap">
+                <a href="javascript:void(0)" class="btn btn-info" @click='projectinfo("reject")'><i class="fa fa-search"></i>&nbsp;查看详细信息</a>
+            </div>
+
+            <table id="jqGrid-reject"></table>
+            <div id="jqGridPager-reject"></div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 详情浮窗 -->
+    <div id="pro-detail">
+        <detail-win-tpl :msg="projectData" :show="show_win" @close="closewin"></detail-win-tpl>
+    </div>
+
+    <script src="${rc.contextPath}/js/proj/pjinfo.js?_${date.systemTime}"></script>
+</body>
+
+</html>

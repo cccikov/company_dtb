@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机端</title>
+    <link rel="stylesheet" type="text/css" href="/m/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" href="/m/css/index.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+    <script type="text/javascript" src="/m/plugins/swiper/swiper.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 登录和导航 -->
+            <div class="section">
+                <!-- 登录 -->
+                <div class="login">
+                    <i v-if="tbuser == null || (!!tbuser.pic && tbuser.pic == null)" :style="{'background-image':'url(/m/img/userpic.png)'}"></i>
+                    <i v-if="tbuser != null && tbuser.pic != null" :style="{'background-image':'url('+tbuser.pic+')'}"></i>
+                    <a class="notAppLink" v-if="tbuser == null" href="/m/page/mlogin.html">点击登录</a>
+                    <a class="notAppLink" v-if="tbuser != null && tbuser.username != null" :href="'me.html?id='+tbuser.userId">{{tbuser.username}}</a>
+                    <a class="notAppLink" v-if="tbuser != null && tbuser.username == null" :href="'me.html?id='+tbuser.userId">{{tbuser.stradername}}</a>
+                </div>
+                <!-- 导航 -->
+                <div class="nav">
+                    <a v-if="tbuser != null" href="/m/page/my_delivery.html">投后资讯</a>
+                    <a v-if="tbuser != null" href="/m/page/my_project.html?qstatus=10,20">等待付款</a>
+                    <a v-if="tbuser != null" href="/m/page/my_project.html">全部订单</a>
+                </div>
+            </div>
+
+            <!--法大大 提示 -->
+            <p class="fadada">
+                <span>温馨提示：</span>本平台特聘广东十大律所「星辰律师事务所」为您提供法律保障，并由国内知名电子合同签署平台「法大大」为您提供证据保全服务
+            </p>
+
+            <!-- 预热项目(轮播) -->
+            <div class="swiper-container carouse-swiper">
+                <div class="swiper-wrapper">
+                    <a class="swiper-slide" v-for='val in carouselListData' :key='val.id' class="pre-project no-animation" :href="changUrl(val.src)">
+                        <img :src="val.pic">
+                    </a>
+                </div>
+            </div>
+
+            <!-- 众筹项目 -->
+            <div class="section">
+                <h4 class="section-title-pj">
+                    <img src="/m/img/index_bg1.png">
+                </h4>
+                <div class="pj-list">
+                    <a class="pj-item" v-for="(val,index) in projectListData" :key="val.id" :href="'/m/page/project_detail.html?id='+val.id">
+                        <i v-if="!!val.pjDocumentEntities.SY" :style="{'background-image':'url('+val.pjDocumentEntities.SY[0].pic+')'}"></i>
+                        <i v-else></i>
+                        <div class="pj-content">
+                            <h5 class="pj-title">{{val.name}}
+                                <span v-if="val.status == '100'" class="label">完成</span>
+                                <span v-if="val.status == '20'" class="label">预热中</span>
+                                <span v-if="val.status == '30'" class="label">募集中</span>
+                                <span v-if="val.status == '40'" class="label">出资中</span>
+                                <span v-if="val.status == '50'" class="label">交割中</span>
+                            </h5>
+                            <p class="pj-lead">
+                                {{val.brief}}
+                            </p>
+                            <p class="pj-money">
+                                <span>目标：{{changeMillion(val.pjFinacingEntity.amount)}}元</span>
+                                <span>已募集：{{changeMillion(val.orderAmount)}}元</span>
+                            </p>
+                        </div>
+                    </a>
+                    <a class="more" @click="more_project" href="javascript:void(0)">查看更多众筹项目</a>
+                </div>
+            </div>
+
+            <!-- 新闻资讯 -->
+            <div class="section">
+                <div class="title">新闻资讯</div>
+                <tpl-news-list :data="newsData"></tpl-news-list>
+                <a class="more"  @click="more_news" href="javascript:void(0)">查看更多新闻资讯</a>
+            </div>
+
+        </div>
+        <!-- 内容 end -->
+
+        <!-- 底部 -->
+        <footer-tpl :page="page"></footer-tpl>
+    </div>
+
+    <script src="/m/js/tpl_project_list.js"></script>
+    <script src="/m/js/tpl_news_list.js"></script>
+    <script type="text/javascript" src="/m/js/index.js"></script>
+</body>
+
+</html>

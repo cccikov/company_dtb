@@ -1,0 +1,302 @@
+/* 新代码 */
+.proj-nav {
+  margin: 0 0 12px;
+}
+.grid-input {
+  margin: 12px 0 12px 12px;
+}
+.grid-input label {
+  margin: 0 15px 0 0;
+}
+.btn-wrap {
+  margin: 15px 0 12px;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  overflow: hidden;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  content: ".";
+}
+.img-wrap {
+  padding: 12px;
+  text-align: center;
+}
+img {
+  max-width: 100%;
+}
+.alink {
+  color: #337ab7 !important;
+  text-decoration: underline !important;
+}
+select {
+  background: none;
+}
+/* 模板部分 */
+[v-cloak] {
+  display: none !important;
+}
+.mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+}
+.mask.active {
+  display: block;
+}
+.float-win {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  width: 880px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.25);
+}
+.float-win a {
+  color: inherit;
+}
+.float-win a:hover {
+  text-decoration: none;
+}
+.float-win a:focus {
+  outline: none;
+  text-decoration: none;
+}
+.float-win label {
+  color: #333;
+  font-weight: 500;
+  font-size: 0;
+  padding: 5px 0 0 10px;
+}
+.float-win input {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 0px 12px;
+  border: 1px solid #c3c3c3;
+  font-size: 14px;
+  line-height: 2;
+  vertical-align: middle;
+}
+.float-win input[readonly] {
+  background: #eeeeee;
+}
+.float-win input[type=checkbox],
+.float-win input[type=radio] {
+  width: auto;
+  margin: 0;
+  vertical-align: middle;
+}
+.float-win select {
+  vertical-align: middle;
+}
+.float-win textarea {
+  width: 400px;
+  height: 6em;
+  line-height: 1.5em;
+  padding: 6px 12px;
+  border: 1px solid #c3c3c3;
+  background: #fff;
+  font-size: 14px;
+  resize: none;
+  vertical-align: top;
+}
+.float-win textarea[readonly] {
+  background: #eeeeee;
+}
+.float-win h4 {
+  position: relative;
+  padding: 6px 12px;
+  border-bottom: 1px solid #008484;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  background: #e0e0e0;
+  color: #353535;
+  cursor: move;
+  user-select: none;
+}
+.float-win h4 a {
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  width: 18px;
+  line-height: 16px;
+  text-align: center;
+  border: 1px solid #bdbdbd;
+  background: #fff;
+  color: #666666;
+}
+.float-win h5 {
+  clear: both;
+  margin: 0;
+  font-weight: 700;
+  padding: 20px 12px 10px;
+}
+.float-win .win-nav {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  padding: 0;
+  margin: 15px 15px 0;
+}
+.float-win .win-nav li {
+  float: left;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #c3c3c3;
+  border-right: 0;
+  background: #eaeaea;
+  color: #333333;
+  font-size: 12px;
+}
+.float-win .win-nav li.active {
+  background: #008484;
+  color: #fff;
+  border-color: #008484;
+}
+.float-win .win-nav li:last-of-type {
+  border: 1px solid #c3c3c3;
+}
+.float-win .win-nav li a {
+  display: block;
+  line-height: 30px;
+  padding: 0 14px;
+}
+.float-win .box-table table,
+.float-win .box-content table {
+  width: 100%;
+  line-height: 30px;
+}
+.float-win .box-table table th,
+.float-win .box-content table th {
+  border: 1px solid #ccc;
+  background: #fff2df;
+  text-align: center;
+}
+.float-win .box-table table th:nth-of-type(1),
+.float-win .box-content table th:nth-of-type(1) {
+  width: 48px;
+}
+.float-win .box-table table td,
+.float-win .box-content table td {
+  border: 1px solid #ccc;
+}
+.float-win .box-table table .table-action,
+.float-win .box-content table .table-action {
+  vertical-align: middle;
+}
+.float-win .box-table table .table-action .icon-search,
+.float-win .box-content table .table-action .icon-search {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OURCQzAwQUQ5QzE5MTFFN0EwMzNCQjA1NDE5RUI0NkYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OURCQzAwQUU5QzE5MTFFN0EwMzNCQjA1NDE5RUI0NkYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5REJDMDBBQjlDMTkxMUU3QTAzM0JCMDU0MTlFQjQ2RiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5REJDMDBBQzlDMTkxMUU3QTAzM0JCMDU0MTlFQjQ2RiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsOmjWQAAAMWSURBVHjalJRbSBRhFMf/33yzs7uVmWYFaghq1HaVrmyyZFiaGklZZBnoQxBS0FNEWRYEYvQQ2FMP0YUuGogSlWVimJes7SoIlbot3nazKHXHnZ2d3Zm+2YdYV5M68A3M4Tu/c85//gzRNA2RQQhZD05YbTCbTMrEuJul2tm9b5ghSDiIATZk5ew8mZ2ZYUtKTIzTE17vhP99V/fn6tq6O65+RxW775sRRKihoOz0qRsF+bvmOEclOMYVyAEV800cVi2ai18jLly8XNXY+rzpAKv5OS2INV5bdra87WBhofnqy16MxKRgzoJ4UEohT4jwDn5B3iIVqVEUx0+crrF3thVOAbFDs3Ly7ldeOL/n1kc3RlPTsTB2HlRFgapPy1EEOR6DXa9RnBiA+0s3jhw9lq0qcmM4iGMnbUfmVptz1IeRBZYQxBiQYUAQqqpCDSggig/xK9ahccgPi2UprJut+yMn4jiDMW1xQvz8fokgamE8gn4/FDaJLxh2i70LlIM4Kw6yRrFy2TILk4NOAjGRjYQjxM+GozwNraNDIk2ha8kZzSAGAWazeZbJBH4SKCh7XaI4IccYAL8kgXDc9EZheSp5QNnag8OuYUnS5MkaaWrbuw9dDss8AbLLAZUXpnqE8hjziEihHgQkEfY39hdT+rCRv9c+eHjj+5ATWdFeuHu6EeRNoIIJHFtDX2dckmF0vkfeklhcv31P7P/qqPubj2ZbbVvqK86d2SYaotA8omFMiGZ6GMFJ40jmPMhNjUFrSwsGht1aR2fng9bmpsOs9sdUZxMSu2bdxiuHiw8dWLHcQvxUYCsJ4IM+KF4RN+/WeBISF0ddqqxgq71FWXl557OGx0Ws3vHna4QfFtmbrOnXiktK2ktLSz/m797zKCEp+STLr7LaMupf2e2aHr19fdrewoNOll8fqosEhQF1n5gicnFbMre//vTpcwjWPzCgFRWX6BOt/itohgbJ+QX7HD29vSHYveoaZjD+GI//DF0Tpuc+oyBU5+XmpDY8edoBLfiYTPdj+5dgsJXsaWPoRsbo+y3AALYzsDV4iNLfAAAAAElFTkSuQmCC) no-repeat;
+  vertical-align: middle;
+}
+.float-win .box-content {
+  position: relative;
+  top: -1px;
+  max-height: 600px;
+  padding: 15px 0 15px;
+  border: 1px solid #c3c3c3;
+  margin: 0px 15px 15px;
+  overflow: auto;
+}
+.float-win .box-content.no-tab {
+  padding: 15px 0 0;
+  margin: 0 15px 15px;
+  border: none;
+}
+.float-win .box-content.only {
+  padding: 0;
+  margin: 0;
+  top: 0px;
+}
+.float-win .box-content label.half-input input {
+  width: 115px;
+  margin: 0 10px 0 0;
+}
+.float-win .box-content label span {
+  display: inline-block;
+  width: 10em;
+  margin-top: -3px;
+  text-align: right;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.float-win .box-content label input.data-input {
+  box-sizing: content-box;
+  width: 176px;
+  line-height: 1;
+  padding: 5px 12px 4px;
+}
+.float-win .box-content label i {
+  display: inline-block;
+  line-height: 20px;
+  font-size: 14px;
+  font-style: normal;
+  margin: -3px 0 0 5px;
+  vertical-align: middle;
+}
+.float-win .box-content label i.radio-label {
+  margin: 0 20px 0 3px;
+}
+.float-win .box-content label .pass {
+  font-size: 18px;
+  margin: 0 0 0 5px;
+  color: #449d44;
+}
+.float-win .box-content label .tips {
+  color: #999;
+  padding: 0 0 0 10em;
+  font-size: 14px;
+}
+.float-win .box-content label .error {
+  color: #a71616;
+  padding: 0 0 0 10em;
+  font-size: 14px;
+}
+.float-win .box-content .box-content-left {
+  float: left;
+  width: 50%;
+}
+.float-win .box-content .box-content-right {
+  float: right;
+  width: 50%;
+}
+.float-win .box-content .box-content-bottom {
+  clear: both;
+}
+.float-win .box-content table {
+  width: 90%;
+  text-align: center;
+  margin: 12px 5% 0;
+}
+.float-win .box-table {
+  position: relative;
+  top: -1px;
+  border: none;
+  margin: 0px 15px 15px;
+  text-align: center;
+  max-height: 600px;
+  overflow: auto;
+}
+.float-win .box-table.only,
+.float-win .box-table.no-tab {
+  padding: 0;
+  margin: 0;
+  top: 0px;
+}
+/* 旧代码 */

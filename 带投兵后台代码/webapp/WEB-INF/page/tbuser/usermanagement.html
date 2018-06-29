@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>会员管理</title>
+    #parse("header.html")
+</head>
+
+<body>
+    <div id="rrapp" v-cloak>
+        <div v-show="showList">
+            <div class="grid-btn row">
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" v-model="q.username" @keyup.enter="query" placeholder="用户名">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" v-model="q.mobile" @keyup.enter="query" placeholder="手机号">
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" v-model="q.memberType" >
+                        <option value="">
+                            全部
+                        </option>
+                        <option v-for="item in userranks" :value='item.id'>
+                            {{item.rankname}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-default" @click="query">查询</a>
+                </div>
+            </div>
+            <div class="btn-wrap">
+                #if($shiro.hasPermission("tbuser:userinfo"))
+                <a href="#" class="btn btn-info" @click="getuserinfo"><i class="fa fa-search"></i>&nbsp;查看详细信息</a> #end #if($shiro.hasPermission("tbuser:cardinfo"))
+                <a class="btn btn-info" @click="cardinfo"><i class="fa fa-search"></i>&nbsp;银行卡信息</a> #end
+            </div>
+            <table id="jqGrid"></table>
+            <div id="jqGridPager"></div>
+        </div>
+    </div>
+
+
+    <!-- 会员详情浮窗 -->
+    <div id="detail-win" class="mask active" v-show='show_win' v-cloak>
+        <div class="float-win">
+            <h4>
+                会员详细信息
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+            <div class="box-content no-tab" >
+                <!-- 左 -->
+                <div class="box-content-left">
+                    <label>
+                        <span>账号名：</span>
+                        <input type="text" readonly v-model="userinfo.tradername">
+                    </label>
+                    <label>
+                        <span>姓名：</span>
+                        <input type="text" readonly v-model="userinfo.username">
+                    </label>
+                    <label>
+                        <span>身份证：</span>
+                        <input type="text" readonly v-model="userinfo.idCard">
+                    </label>
+                    <label>
+                        <span>微信号：</span>
+                        <input type="text" readonly v-model="userinfo.wechar">
+                    </label>
+                    <label>
+                        <span>状态：</span>
+                        <input type="text" readonly v-model="userinfo.status">
+                    </label>
+                    <label>
+                        <span>省份：</span>
+                        <input type="text" readonly v-model="userinfo.province">
+                    </label>
+                </div>
+                <!-- 右 -->
+                <div class="box-content-right">
+                     <label>
+                        <span>手机：</span>
+                        <input type="text" readonly v-model="userinfo.mobile">
+                    </label>
+                    <label>
+                        <span>所属公司：</span>
+                        <input type="text" readonly v-model="userinfo.company">
+                    </label>
+                    <label>
+                        <span>邮箱：</span>
+                        <input type="text" readonly v-model="userinfo.email">
+                    </label>
+                    <label>
+                        <span>QQ号码：</span>
+                        <input type="text" readonly v-model="userinfo.qq">
+                    </label>
+                    <label>
+                        <span>会员类型：</span>
+                        <input type="text" readonly v-model="userinfo.memberType">
+                    </label>
+                    <label>
+                        <span>城市：</span>
+                        <input type="text" readonly v-model="userinfo.city">
+                    </label>
+                </div>
+                <!-- 底 -->
+                <div class="box-content-bottom">
+                	<label>
+                        <span>地址：</span>
+                        <input type="text" style= "width:400px;" readonly v-model="userinfo.address">
+                    </label>
+                    <label>
+                        <span>备注：</span>
+                        <textarea readonly v-model="userinfo.remark"></textarea>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 银行卡 -->
+    <div id="card-win" v-show='show_card_win' class="mask active" v-cloak>
+        <div class="float-win">
+            <h4>
+                银行卡信息
+                <a href="javascript:void(0)" @click='closewin'><i class="fa fa-close"></i></a>
+            </h4>
+            <div class="box-table no-tab">
+                <table>
+                    <tr>
+                        <th>账号</th>
+                        <th>银行名称</th>
+                        <th>开户名称</th>
+                        <th>网点名称</th>
+                    </tr>
+                    <tr v-for='item in carinfos' :key='item.cardNo'>
+                        <td>{{item.cardNo}}</td>
+                        <td>{{item.bankName}}</td>
+                        <td>{{item.accountName}}</td>
+                        <td>{{item.dotDame}}</td>
+                     </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="${rc.contextPath}/js/tbuser/usermanagement .js?_${date.systemTime}"></script>
+</body>
+
+</html>

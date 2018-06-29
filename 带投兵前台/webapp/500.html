@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>500</title>
+    <link rel="shortcut icon" href="statics/img/favicon.ico" />
+    <link rel="icon" href="statics/img/favicon.ico"/>
+    <link rel="stylesheet" href="/statics/css/httpstatus.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <!--[if lte IE 10]>
+            <script>
+                location.href="lower.html"
+            </script>
+        <![endif]-->
+        <!-- 导航 begin -->
+        <div class="nav">
+            <div class="nav-line">
+                <div class="width-wrap">
+                    <p class="nav-line-l">
+                        <span> 欢迎您来到带投兵，投资有风险，选择需谨慎！</span>
+                    </p>
+                    <!-- <p class="nav-line-r">
+                        <a class="" href="javascript:void(0)">新手指南</a>
+                    </p> -->
+                </div>
+            </div>
+            <!-- nav-line end -->
+
+
+            <div class="nav-main">
+                <div class="width-wrap">
+                    <div class="top-img">
+                        <a href="/"><img src="/statics/img/logo.png"></a>
+                        <!-- <img src="/statics/img/index00.png"> -->
+                    </div>
+                    <div class="top-link">
+                        <a href="/">首页</a>
+                        <a href="/project/projpage/all/1">募集项目</a>
+                        <!-- <a href="###">发起项目</a> -->
+                        <a href="/guide.html">新手指南</a>
+                        <a href="/about.html">关于我们</a>
+                    </div>
+                </div>
+                <!-- width-wrap end -->
+            </div>
+            <!-- nav-main end -->
+
+
+        </div>
+        <!-- 导航 end -->
+
+        <div class="main">
+            <div class="main-content">
+                <div class="main-wrap">
+                    <img class="left" src="/statics/img/jianshe.png">
+                    <div class="right">
+                        <img src="/statics/img/500pic.png">
+                        <p>你所在的页面无法浏览或者已经不存在</p>
+                        <p>输入的地址不正确</p>
+                        <p>页面重定义或程序错误</p>
+                        <a id="alink" href="/">本页面将于 <span id="time">10</span> 秒后自动跳转</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 页面底部 begin -->
+        <div class="footer">
+            <div class="footer-main">
+                <div class="footer-left">
+                    <img src="/statics/img/bottom-logo.png">
+                </div>
+                <div class="footer-middle">
+                    <a class="about" target="_blank" href="/about.html">关于我们</a>
+                    <a class="new" target="_blank" href="/guide.html">新手指南</a>
+                    <a class="question" href="javascript:void(0)">常见问题</a>
+                </div>
+                <div class="footer-right">
+                    <p>
+                        <img src="/statics/img/gongzhonghao.jpg" alt="公众号二维码">官方公众号
+                    </p>
+                    <p>
+                        <img src="/statics/img/kefu.jpg" alt="公众号二维码">在线客服
+                    </p>
+                </div>
+                <div class="footer-bottom">
+                    <p>客服电话：400-1116-199</p>
+                    <p>工作时间：周一到周五 9:00-19:00</p>
+                    <p>客服邮箱：kf@dtb.cn</p>
+                </div>
+            </div>
+            <img style="position:absolute;bottom:0px;right:15px;opacity:0.05" src="/statics/img/fdd.png">
+            <p class="right">版权所有&copy;Copyright 2017 带投兵 - <a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">粤ICP备17129433号</a></p>
+        </div>
+        <!-- 页面底部 end -->
+    </div>
+    <script type="text/javascript">
+
+        var alink = document.getElementById("alink");
+        if(top != window){ // 在iframe里面
+            var nav = document.getElementsByClassName("nav")[0];
+            var footer = document.getElementsByClassName("footer")[0];
+            var main_content = document.getElementsByClassName("main-content")[0];
+            var main = document.getElementsByClassName("main")[0];
+            nav.style.display = "none";
+            footer.style.display = "none";
+            main_content.style.width = "960px";
+            main_content.style.margin = 0;
+            main.style.padding = 0;
+            alink.style.display = "none";
+        }else{
+            var time = document.getElementById("time");
+
+            var second = Number(time.innerHTML);
+            var timer = setInterval(function () {
+                second--;
+                time.innerHTML = second;
+                if (second == 0) {
+                    clearInterval(timer);
+                    alink.click();
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

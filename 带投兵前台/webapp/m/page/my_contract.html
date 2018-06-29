@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>合同管理</title>
+    <link rel="stylesheet" href="/m/css/contract.css">
+    <script type="text/javascript" src="/m/js/vue.min.js"></script>
+    <script type="text/javascript" src="/m/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/m/js/base.js"></script>
+</head>
+
+<body>
+    <div id="wrap" v-cloak>
+        <!-- 内容 begin -->
+        <div class="container">
+
+            <!-- 顶部title -->
+            <div class="top-nav web_platform">
+                <a class="back no-animation" href="javascript:history.go(-1)"></a>
+                <h2>合同管理</h2>
+            </div>
+
+            <!-- main begin -->
+            <ul class="main">
+                <li v-for="(val,index) in ctContractEntities">
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>{{index+1}}</strong>
+                            </td>
+                            <td colspan="2">合同编号</td>
+                            <td>{{val.id}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2">所属项目</td>
+                            <td>{{val.pjinfoName}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2">合同类型</td>
+                            <td v-if="val.type === 'B'">保密合同</td>
+                            <td v-else>投资合同</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2">状态</td>
+                            <td v-if="val.status === 20">已签</td>
+                            <td v-else>待签</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2">生成时间</td>
+                            <td>{{val.createtime}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">操作</td>
+                            <td colspan="2">
+                                <p>
+                                    <a :href="val.viewpdfUrl">查看合同</a>
+                                    <a v-if="val.status != 20" :href="val.signUrl">签署合同</a>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+            <!-- main end -->
+<div class="tips"></div>
+        </div>
+        <!-- 内容 end -->
+
+    </div>
+
+
+    <script type="text/javascript" src="/m/js/my_contract.js"></script>
+</body>
+
+</html>
